@@ -28,18 +28,15 @@ public class GameManagerInGame : MonoBehaviour
 
     public int Coins => _coins;
     public int MineCost => _mineCost;
-    private AudioManager _audioManager;
 
     private void Start()
     {
         _countCoins.text = _coins.ToString();
-        LevelsManager levelsManager = FindObjectOfType<LevelsManager>();
-        _audioManager = FindObjectOfType<AudioManager>();
-        if(levelsManager != null)
+        if(LevelsManager.Instance != null)
         {
-            for(int i = 0; i < levelsManager.Levels.Count; i++)
+            for(int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
             {
-                Level level = levelsManager.Levels[i];
+                Level level = LevelsManager.Instance.Levels[i];
                 LevelView levelPref = Instantiate(_levelViewPrefab, _conteiner);
                 levelPref.Level = level;
                 levelPref.LabelText.text = level.Label;
@@ -59,7 +56,7 @@ public class GameManagerInGame : MonoBehaviour
             IsDisableButtonColliders = true;
             _pouseMenu.IsPouse = true;
             IsPouse = true;
-            _audioManager.PauseAudio();
+            AudioManager.Instance.PauseAudio();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && _pouseMenu.IsPouse)
         {
@@ -68,7 +65,7 @@ public class GameManagerInGame : MonoBehaviour
             IsDisableButtonColliders = false;
             _pouseMenu.IsPouse = false;
             IsPouse = false;
-            _audioManager.PlayAudio();
+            AudioManager.Instance.PlayAudio();
         }
     }
      
@@ -96,7 +93,7 @@ public class GameManagerInGame : MonoBehaviour
     public void GameOver()
     {
         GameOverWindow.SetActive(true);
-        _audioManager.PauseAudio();
+        AudioManager.Instance.PauseAudio();
         IsPouse = true;
         IsDisableButtonColliders = true;
         _isGameOver = true;

@@ -39,7 +39,6 @@ public class TowerOfCold : Tower
         if (_targetEnemy == null)
         {
             if(_coldEfect.isPlaying)_coldEfect.Stop();
-            //_coldEfect.gameObject.SetActive(false);
             return;
         }
         _coldEfect.gameObject.SetActive(true);

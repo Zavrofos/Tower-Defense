@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 8
   m_Name: Rocket
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
   DamageRadius: 2
   ButtonAbility: {fileID: 0}
   _rocketTransform: {fileID: 1336678595652331472}
-  _speed: 0.5
+  _speed: 1
 --- !u!1 &1336678595652331477
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336678595652331477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.7, y: -10.84, z: 0}
+  m_LocalPosition: {x: 38.31, y: -20.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

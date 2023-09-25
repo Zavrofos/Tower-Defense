@@ -20,10 +20,7 @@ public class TowerLaser : Tower
 
     public bool IsImproved = false;
 
-
-
     public AudioSource AudioLaser;
-    private bool _isOnAudio;
 
     public override void StartGame()
     {

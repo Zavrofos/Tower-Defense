@@ -6,7 +6,7 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public static GameManager _instance;
+        public static GameManager Instance;
         public bool IsStartGame = true;
 
         public List<(int, int)> Resolutions { get; private set; } 
@@ -21,9 +21,9 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            if(_instance == null)
+            if(Instance == null)
             {
-                _instance = this;
+                Instance = this;
                 DontDestroyOnLoad(this);
                 SetStartGameSettings();
                 return;

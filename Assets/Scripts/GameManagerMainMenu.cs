@@ -6,16 +6,15 @@ public class GameManagerMainMenu : MonoBehaviour
 {
     [SerializeField] private Transform _conteiner;
     [SerializeField] private LevelView _levelViewPref;
-    private LevelsManager levelsManager;
 
     private void Start()
     {
-        levelsManager = FindObjectOfType<LevelsManager>();
-        if(levelsManager != null)
+        LevelsManager.Instance = FindObjectOfType<LevelsManager>();
+        if(LevelsManager.Instance != null)
         {
-            for (int i = 0; i < levelsManager.Levels.Count; i++)
+            for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
             {
-                Level level = levelsManager.Levels[i];
+                Level level = LevelsManager.Instance.Levels[i];
                 LevelView levelPref = Instantiate(_levelViewPref, _conteiner);
                 levelPref.Level = level;
                 levelPref.LabelText.text = level.Label;

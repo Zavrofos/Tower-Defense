@@ -19,7 +19,6 @@ public class Tower : MonoBehaviour
     public SpriteRenderer SpriteRender;
     public Color ApplayDamageColor;
     public Color CurrentColor;
-    protected AudioManager AudioManager;
 
     public float FiringRadius => _firingRadius; 
     public Transform PositionTower => _partToRotate; 
@@ -39,7 +38,6 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         CurrentColor = SpriteRender.color;
-        AudioManager = FindObjectOfType<AudioManager>();
         StartGame();
     }
     

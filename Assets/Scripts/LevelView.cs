@@ -18,7 +18,7 @@ public class LevelView : MonoBehaviour
     {
         if (Level.IsOpen)
         {
-            FindObjectOfType<GameManager>().CurrentLevel = int.Parse(Level.Label);
+            GameManager.Instance.CurrentLevel = int.Parse(Level.Label);
             SceneManager.LoadScene("GameLevel" + Level.Label);
             Time.timeScale = 1;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelsManager : MonoBehaviour
 {
-    public LevelsManager Instance;
+    public static LevelsManager Instance;
     public List<Level> Levels;
     public int CountLevels;
 
@@ -16,7 +16,6 @@ public class LevelsManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeLevels();
-            Debug.Log(Application.persistentDataPath);
             return;
         }
         Destroy(gameObject);

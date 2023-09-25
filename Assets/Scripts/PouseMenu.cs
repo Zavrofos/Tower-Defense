@@ -21,15 +21,13 @@ public class PouseMenu : MonoBehaviour
     [SerializeField] private GameObject _optionsMenu;
 
     public bool IsPouse;
-    private LevelsManager _levelsManager;
+    
     private GameManagerInGame _gameManagerInGame;
-    private AudioManager _audioManager;
+    
 
     private void Start()
     {
-        _levelsManager = FindObjectOfType<LevelsManager>();
         _gameManagerInGame = FindObjectOfType<GameManagerInGame>();
-        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void OnOpenLevelsMenu()
@@ -52,7 +50,7 @@ public class PouseMenu : MonoBehaviour
 
     private void OnQuit()
     {
-        SaveSystem.SaveLevels(_levelsManager.Levels);
+        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 
@@ -61,7 +59,7 @@ public class PouseMenu : MonoBehaviour
         gameObject.SetActive(false);
         _gameManagerInGame.IsDisableButtonColliders = false;
         _gameManagerInGame.IsPouse = false;
-        _audioManager.PlayAudio();
+        AudioManager.Instance.PlayAudio();
         Time.timeScale = 1;
     }
 

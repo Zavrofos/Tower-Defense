@@ -21,17 +21,13 @@ public class WinMenu : MonoBehaviour
 
     [HideInInspector] public Dictionary<string, LevelView> LevelsViews = new Dictionary<string, LevelView>();
     private GameManagerInGame _gameManagerInGame;
-    private GameManager _gameManager;
-    private LevelsManager _levelManager;
 
     private void Awake()
     {
-        _gameManager = FindObjectOfType<GameManager>();
         _gameManagerInGame = FindObjectOfType<GameManagerInGame>();
-        _levelManager = FindObjectOfType<LevelsManager>();
-        for (int i = 0; i < _levelManager.Levels.Count; i++)
+        for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
         {
-            Level level = _levelManager.Levels[i];
+            Level level = LevelsManager.Instance.Levels[i];
             LevelView levelPref = Instantiate(_levelViewPrefab, _levelsConteiner);
             levelPref.Level = level;
             levelPref.LabelText.text = level.Label;
@@ -42,9 +38,9 @@ public class WinMenu : MonoBehaviour
 
     public void OpenNextLevel()
     {
-        if(_gameManager.CurrentLevel < _levelManager.CountLevels)
+        if(GameManager.Instance.CurrentLevel < LevelsManager.Instance.CountLevels)
         {
-            _levelManager.Levels[_gameManager.CurrentLevel].OpenLevel();
+            LevelsManager.Instance.Levels[GameManager.Instance.CurrentLevel].OpenLevel();
         }
         _winWindow.SetActive(true);
         _gameManagerInGame.IsDisableButtonColliders = true;
@@ -53,13 +49,13 @@ public class WinMenu : MonoBehaviour
 
     public void NextLevel()
     {
-        if (_gameManager.CurrentLevel >= _levelManager.CountLevels)
+        if (GameManager.Instance.CurrentLevel >= LevelsManager.Instance.CountLevels)
         {
             _winWindow.SetActive(true);
             return;
         }
-        _gameManager.CurrentLevel++;
-        SceneManager.LoadScene("GameLevel" + _gameManager.CurrentLevel);
+        GameManager.Instance.CurrentLevel++;
+        SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentLevel);
         Time.timeScale = 1;
     }
 
@@ -77,7 +73,7 @@ public class WinMenu : MonoBehaviour
 
     public void Quit()
     {
-        SaveSystem.SaveLevels(_levelManager.Levels);
+        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 
@@ -91,7 +87,7 @@ public class WinMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_gameManager.CurrentLevel < _levelManager.CountLevels)
+        if(GameManager.Instance.CurrentLevel < LevelsManager.Instance.CountLevels)
         {
             _nextLevelButton.onClick.AddListener(NextLevel);
         }
@@ -103,7 +99,7 @@ public class WinMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        if (_gameManager.CurrentLevel < _levelManager.CountLevels)
+        if (GameManager.Instance.CurrentLevel < LevelsManager.Instance.CountLevels)
         {
             _nextLevelButton.onClick.RemoveListener(NextLevel);
         }

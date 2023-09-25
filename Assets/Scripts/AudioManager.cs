@@ -6,16 +6,17 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     [SerializeField] public AudioSource AudioSourceMelody;
     private List<AudioSource> _currentAudioPlaying;
 
     private void Awake()
+
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(this);
             AudioMelodyPlay();
             _currentAudioPlaying = new List<AudioSource>();

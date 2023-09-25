@@ -19,16 +19,12 @@ public class GameOver : MonoBehaviour
     [SerializeField] private LevelView _levelViewPrefab;
 
     private List<LevelView> levels = new List<LevelView>();
-    private LevelsManager _levelsManager;
-    private AudioManager _audioManager;
-
 
     private void Start()
     {
-        _levelsManager = FindObjectOfType<LevelsManager>();
-        for (int i = 0; i < _levelsManager.Levels.Count; i++)
+        for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
         {
-            Level level = _levelsManager.Levels[i];
+            Level level = LevelsManager.Instance.Levels[i];
             LevelView levelPref = Instantiate(_levelViewPrefab, _levelsConteiner);
             levelPref.Level = level;
             levelPref.LabelText.text = level.Label;
@@ -37,9 +33,8 @@ public class GameOver : MonoBehaviour
     }
     private void ResetLevel()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameLevel" + gameManager.CurrentLevel);
+        SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentLevel);
     }
 
     private void SelectALevel()
@@ -56,7 +51,7 @@ public class GameOver : MonoBehaviour
 
     private void Quit()
     {
-        SaveSystem.SaveLevels(_levelsManager.Levels);
+        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 

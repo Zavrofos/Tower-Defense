@@ -17,18 +17,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _levelsMenu;
     [SerializeField] private GameObject _optionsMenu;
 
-    private LevelsManager _levelsManager;
-
-    private void Start()
-    {
-        _levelsManager = FindObjectOfType<LevelsManager>();
-    }
-
-
     private void OnPlay()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
-        gameManager.CurrentLevel = 1;
+        GameManager.Instance.CurrentLevel = 1;
         SceneManager.LoadScene("GameLevel1");
     }
 
@@ -45,7 +36,7 @@ public class MainMenu : MonoBehaviour
     private void OnQuit()
     {
         Debug.Log("Quit!!!");
-        SaveSystem.SaveLevels(_levelsManager.Levels);
+        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 

@@ -14,57 +14,55 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private TMP_Dropdown _dropdownGraphics;
     [SerializeField] private Toggle _toggle;
     [SerializeField] private TMP_Dropdown _dropdownResolutions;
-    private GameManager _gameManager;
 
     private void Start()
     {
-        _gameManager = FindObjectOfType<GameManager>();
 
         _dropdownResolutions.ClearOptions();
-        _dropdownResolutions.AddOptions(_gameManager.Options);
-        _dropdownResolutions.value = _gameManager.ResolutionIndex;
+        _dropdownResolutions.AddOptions(GameManager.Instance.Options);
+        _dropdownResolutions.value = GameManager.Instance.ResolutionIndex;
         _dropdownResolutions.RefreshShownValue();
-        SetResolution(_gameManager.ResolutionIndex);
+        SetResolution(GameManager.Instance.ResolutionIndex);
 
-        _sliderVolumeMusic.value = _gameManager.MusicVolumeValue;
-        SetVolumeMusic(_gameManager.MusicVolumeValue);
+        _sliderVolumeMusic.value = GameManager.Instance.MusicVolumeValue;
+        SetVolumeMusic(GameManager.Instance.MusicVolumeValue);
 
-        _dropdownGraphics.value = _gameManager.IndexQuality;
-        SetQuality(_gameManager.IndexQuality);
+        _dropdownGraphics.value = GameManager.Instance.IndexQuality;
+        SetQuality(GameManager.Instance.IndexQuality);
 
-        _toggle.isOn = _gameManager.IsFullscreen;
-        SetFullscreen(_gameManager.IsFullscreen);
+        _toggle.isOn = GameManager.Instance.IsFullscreen;
+        SetFullscreen(GameManager.Instance.IsFullscreen);
     }
 
     private void SetVolumeMusic(float value)
     {
         _audioMixer.SetFloat("MusicVolume", value);
-        _gameManager.MusicVolumeValue = value;
+        GameManager.Instance.MusicVolumeValue = value;
     }
 
     private void SetVolumeGame(float value)
     {
         _audioMixer.SetFloat("GameVolume", value);
-        _gameManager.GameVolumeValue = value;
+        GameManager.Instance.GameVolumeValue = value;
     }
 
     private void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        _gameManager.IndexQuality = qualityIndex;
+        GameManager.Instance.IndexQuality = qualityIndex;
     }
 
     private void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
-        _gameManager.IsFullscreen = isFullscreen;
+        GameManager.Instance.IsFullscreen = isFullscreen;
     }
 
     public void SetResolution(int resolutionIndex)
     {
-        (int, int) resolution = _gameManager.Resolutions[resolutionIndex];
+        (int, int) resolution = GameManager.Instance.Resolutions[resolutionIndex];
         Screen.SetResolution(resolution.Item1, resolution.Item2, Screen.fullScreen);
-        _gameManager.ResolutionIndex = resolutionIndex;
+        GameManager.Instance.ResolutionIndex = resolutionIndex;
     }
 
     private void OnEnable()

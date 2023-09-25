@@ -22,11 +22,10 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
-        _pointsOfWay = new Transform[PointsOfWayForEnemy[gameManager.CurrentLevel - 1].transform.childCount];
+        _pointsOfWay = new Transform[PointsOfWayForEnemy[GameManager.Instance.CurrentLevel - 1].transform.childCount];
         for(int i = 0; i < _pointsOfWay.Length; i++)
         {
-            _pointsOfWay[i] = PointsOfWayForEnemy[gameManager.CurrentLevel - 1].transform.GetChild(i);
+            _pointsOfWay[i] = PointsOfWayForEnemy[GameManager.Instance.CurrentLevel - 1].transform.GetChild(i);
         }
         _initialColor = _spriteRenderer.color;
         _currentColor = _initialColor;

@@ -22,12 +22,11 @@ public class Spawner : MonoBehaviour
     public bool IsWin;
 
     private GameManagerInGame _gameManager;
-    private AudioManager _audioManager;
+
     private void Start()
     {
         SetWave(_currentWaveNumber);
         _gameManager = FindObjectOfType<GameManagerInGame>();
-        _audioManager = FindObjectOfType<AudioManager>();
 
         foreach(var wave in _waves)
         {
@@ -53,7 +52,7 @@ public class Spawner : MonoBehaviour
             }
             IsWin = true;
             _gameManager.IsPouse = true;
-            _audioManager.PauseAudio();
+            AudioManager.Instance.PauseAudio();
             return;
         }
 
