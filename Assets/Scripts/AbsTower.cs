@@ -9,6 +9,7 @@ public abstract class AbsTower : MonoBehaviour
 {
     public IFinderEnemyesSystem FinderEnemyesSystem;
     public IDamageSystem DamageSystem;
+    public IRotation RotationSystem;
 
     public Transform _partToRotate;
     public Sprite _icon;
@@ -32,6 +33,7 @@ public abstract class AbsTower : MonoBehaviour
     {
         DamageSystem = GetComponent<IDamageSystem>();
         FinderEnemyesSystem = GetComponent<IFinderEnemyesSystem>();
+        RotationSystem = GetComponent<IRotation>();
         StartGame();
     }
 

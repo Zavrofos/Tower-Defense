@@ -64,7 +64,7 @@ public class TowerLaser : AbsTower
         {
             Lazer.BoxCollider.enabled = true;
             if (IsImproved) LazerImprove.BoxCollider.enabled = true;
-            _partToRotate.Rotate(Vector3.forward * _speedRotation * Time.deltaTime);
+            RotationSystem.Rotate();
         }
     }
 
@@ -72,7 +72,7 @@ public class TowerLaser : AbsTower
     {
         if (_partToRotate.rotation.eulerAngles.z > 0.5f || _partToRotate.rotation.eulerAngles.z < -0.5f)
         {
-            _partToRotate.Rotate(Vector3.forward * _speedRotation * Time.deltaTime);
+            RotationSystem.Rotate();
         }
         else if (_endPoint.localPosition.y > 0)
         {

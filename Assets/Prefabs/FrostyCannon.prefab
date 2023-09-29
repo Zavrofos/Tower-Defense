@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8089048781468047273}
   - component: {fileID: 2280242018962470004}
   - component: {fileID: 7757498313105595762}
+  - component: {fileID: -6241205000940755608}
   m_Layer: 11
   m_Name: FrostyCannon
   m_TagString: Tower
@@ -103,13 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3834a4d8c9a9048aac5ed79fac4580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChangerColor: {fileID: 0}
-  FinderEnemyes: {fileID: 2280242018962470004}
-  DamageSystem: {fileID: 7757498313105595762}
   _partToRotate: {fileID: 6789707796415871934}
   _icon: {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
   _label: TowerOfCold
-  _health: 700
   _price: 20
   _upgradePrice: 20
   _firingRadius: 2
@@ -283,7 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c61b4de96faba47a3450c196a3a25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetEnemy: {fileID: 0}
 --- !u!114 &7757498313105595762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +295,20 @@ MonoBehaviour:
   _health: 700
   SpriteRender: {fileID: 6789707796415871935}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
+--- !u!114 &-6241205000940755608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022bfb1831a75c146b7abafecafacd74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _partToRotate: {fileID: 6789707796415871934}
+  _speedRotation: 10
 --- !u!1 &6789707796415871933
 GameObject:
   m_ObjectHideFlags: 0

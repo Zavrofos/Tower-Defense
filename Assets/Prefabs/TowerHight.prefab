@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5797507730239762008}
   - component: {fileID: 7551023591002531745}
   - component: {fileID: -2492162560843213039}
+  - component: {fileID: 5787807825410386409}
   m_Layer: 11
   m_Name: TowerHight
   m_TagString: Tower
@@ -103,13 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e12fb55fff1fd345a456efa7cda51f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChangerColor: {fileID: 0}
-  FinderEnemyes: {fileID: 7551023591002531745}
-  DamageSystem: {fileID: -2492162560843213039}
   _partToRotate: {fileID: 6789707796415871934}
   _icon: {fileID: 21300000, guid: a5350621791e92f4c82c67de23597ad2, type: 3}
   _label: TowerHight
-  _health: 400
   _price: 40
   _upgradePrice: 30
   _firingRadius: 3
@@ -283,7 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c61b4de96faba47a3450c196a3a25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetEnemy: {fileID: 0}
 --- !u!114 &-2492162560843213039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +295,20 @@ MonoBehaviour:
   _health: 400
   SpriteRender: {fileID: 6789707796415871935}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
+--- !u!114 &5787807825410386409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022bfb1831a75c146b7abafecafacd74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _partToRotate: {fileID: 6789707796415871934}
+  _speedRotation: 10
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,10 +35,7 @@ public class TowerLow : AbsTower
             return;
         }
 
-        Vector2 direction = FinderEnemyesSystem.TargetEnemy.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        _partToRotate.rotation = Quaternion.Lerp(_partToRotate.rotation, rotation, Time.deltaTime * _speedRotation);
+        RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
 
         Physics2D.Raycast(transform.position, (_shootPoint.position - transform.position), contactFilter, results, _firingRadius);
         Debug.DrawRay(transform.position, (_shootPoint.position - transform.position) * _firingRadius, Color.red);
