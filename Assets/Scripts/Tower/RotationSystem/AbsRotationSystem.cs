@@ -8,6 +8,8 @@ namespace Assets.Scripts.Tower.RotationSystem
     {
         [SerializeField] protected Transform _partToRotate;
         [SerializeField] protected float _speedRotation;
+        public Transform PartToRotate => _partToRotate;
+
         public abstract void Rotate(Transform target = null);
     }
 }

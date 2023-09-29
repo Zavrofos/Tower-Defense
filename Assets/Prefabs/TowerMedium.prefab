@@ -107,11 +107,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6789707795654957658}
-  - component: {fileID: 6789707795654957657}
-  - component: {fileID: 4081404120655278273}
-  - component: {fileID: 374991481687455904}
   - component: {fileID: -9219974274020576529}
+  - component: {fileID: 6789707795654957657}
+  - component: {fileID: 374991481687455904}
   - component: {fileID: -2020818281240043316}
+  - component: {fileID: 4081404120655278273}
   - component: {fileID: 8161732003769946562}
   - component: {fileID: -1707071543564513389}
   - component: {fileID: -1659519302324027187}
@@ -138,6 +138,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &-9219974274020576529
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!212 &6789707795654957657
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -190,40 +211,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4081404120655278273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789707795654957662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da8d3d58d7d0f1549809776c1069fdf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _partToRotate: {fileID: 6789707796415871934}
-  _icon: {fileID: 21300000, guid: 531b4374a0e3c7341bed4f05a95afa4e, type: 3}
-  _label: TowerMedium
-  _price: 20
-  _upgradePrice: 25
-  _firingRadius: 3
-  _speedRotation: 10
-  _description: 'Targets: Ground'
-  _shootPoint: {fileID: 6789707795951662982}
-  _bulletPrefabs:
-  - {fileID: 911548638440573115, guid: 96260f00a70aee542bdc16d3c5fe16db, type: 3}
-  - {fileID: 8462349614032495991, guid: d25d94a8354108740ba9972707d5fd78, type: 3}
-  _delayTimeToShoot: 0.5
-  _spriteRendererTower: {fileID: 6789707796415871935}
-  _spritesTower:
-  - {fileID: 21300000, guid: 531b4374a0e3c7341bed4f05a95afa4e, type: 3}
-  - {fileID: 21300000, guid: c10adbfb585edd9488133f2dee8f6ec6, type: 3}
-  _fire: {fileID: 7705580741368652392}
-  _currentBullet: {fileID: 0}
-  DirectionToShoot: {x: 0, y: 0}
-  _timeToShoot: 0
-  AudioShoot: {fileID: -2020818281240043316}
 --- !u!61 &374991481687455904
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -250,27 +237,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3241796, y: 1.3419745}
   m_EdgeRadius: 0
---- !u!50 &-9219974274020576529
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789707795654957662}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!82 &-2020818281240043316
 AudioSource:
   m_ObjectHideFlags: 0
@@ -367,6 +333,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4081404120655278273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da8d3d58d7d0f1549809776c1069fdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _partToRotate: {fileID: 6789707796415871934}
+  _icon: {fileID: 21300000, guid: 531b4374a0e3c7341bed4f05a95afa4e, type: 3}
+  _label: TowerMedium
+  _price: 20
+  _upgradePrice: 25
+  _firingRadius: 3
+  _description: 'Targets: Ground'
+  _shootPoint: {fileID: 6789707795951662982}
+  _bulletPrefabs:
+  - {fileID: 911548638440573115, guid: 96260f00a70aee542bdc16d3c5fe16db, type: 3}
+  - {fileID: 8462349614032495991, guid: d25d94a8354108740ba9972707d5fd78, type: 3}
+  _delayTimeToShoot: 0.5
+  _spriteRendererTower: {fileID: 6789707796415871935}
+  _spritesTower:
+  - {fileID: 21300000, guid: 531b4374a0e3c7341bed4f05a95afa4e, type: 3}
+  - {fileID: 21300000, guid: c10adbfb585edd9488133f2dee8f6ec6, type: 3}
+  _fire: {fileID: 7705580741368652392}
+  _currentBullet: {fileID: 0}
+  DirectionToShoot: {x: 0, y: 0}
+  _timeToShoot: 0
+  AudioShoot: {fileID: -2020818281240043316}
 --- !u!114 &8161732003769946562
 MonoBehaviour:
   m_ObjectHideFlags: 0

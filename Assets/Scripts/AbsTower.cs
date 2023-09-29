@@ -11,17 +11,14 @@ public abstract class AbsTower : MonoBehaviour
     public IDamageSystem DamageSystem;
     public IRotation RotationSystem;
 
-    public Transform _partToRotate;
     public Sprite _icon;
     public string _label;
     public int _price;
     public int _upgradePrice;
     public float _firingRadius;
-    public float _speedRotation;
     public string _description;
 
 
-    public Transform PartToRotate => _partToRotate;
     public Sprite Icon => _icon;
     public string Label => _label;
     public int Price => _price;

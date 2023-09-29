@@ -70,7 +70,8 @@ public class TowerLaser : AbsTower
 
     public void StopTower()
     {
-        if (_partToRotate.rotation.eulerAngles.z > 0.5f || _partToRotate.rotation.eulerAngles.z < -0.5f)
+        if (RotationSystem.PartToRotate.rotation.eulerAngles.z > 0.5f || 
+            RotationSystem.PartToRotate.rotation.eulerAngles.z < -0.5f)
         {
             RotationSystem.Rotate();
         }

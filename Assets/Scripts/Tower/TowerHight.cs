@@ -66,7 +66,7 @@ public class TowerHight : AbsTower
         {
             Bullet bullet = Instantiate(_currentBullet, _shootPoint.position, Quaternion.identity);
             bullet.Direction = DirectionToShoot;
-            bullet.StartPosition = PartToRotate.position;
+            bullet.StartPosition = RotationSystem.PartToRotate.position;
             bullet.distanceBullet = _firingRadius;
             bullet.Tower = this;
             _timeToShoot = 0;
@@ -81,7 +81,7 @@ public class TowerHight : AbsTower
 
     public override Vector2 GetDirectionToShoot()
     {
-        Vector3 worldposition = transform.TransformPoint(_partToRotate.position);
+        Vector3 worldposition = transform.TransformPoint(RotationSystem.PartToRotate.position);
         Vector3 worldPositionPointToShoot = transform.TransformPoint(_shootPoint.position);
         return worldPositionPointToShoot - worldposition;
     }
