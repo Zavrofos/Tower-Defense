@@ -50,15 +50,7 @@ public class TowerLaser : AbsTower
     {
         if (_endPoint.localPosition.y < _firingRadius)
         {
-            if (!IsImproved)
-            {
-                OnLazer();
-            }
-            else
-            {
-                OnLazer();
-                OnLazerImprove();
-            }
+            OnLazer();
         }
         else
         {
@@ -77,15 +69,7 @@ public class TowerLaser : AbsTower
         }
         else if (_endPoint.localPosition.y > 0)
         {
-            if (!IsImproved)
-            {
-                OffLazer();
-            }
-            else
-            {
-                OffLazer();
-                OffLazerImprove();
-            }
+            OffLazer();
         }
     }
 
@@ -97,6 +81,15 @@ public class TowerLaser : AbsTower
         Vector2 newPosition = new Vector2(0, positionY);
         _endPoint.localPosition = newPosition;
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
+
+        if(IsImproved)
+        {
+            float positionY1 = _endPointImprove.localPosition.y;
+            positionY += LaserSpawnRate * Time.deltaTime;
+            Vector2 newPosition1 = new Vector2(0, positionY);
+            _endPointImprove.localPosition = newPosition;
+            LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
+        }
     }
 
     public void OffLazer()
@@ -107,25 +100,16 @@ public class TowerLaser : AbsTower
         Vector2 newPosition = new Vector2(0, positionY);
         _endPoint.localPosition = newPosition;
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
-    }
 
-    public void OnLazerImprove()
-    {
-        float positionY = _endPointImprove.localPosition.y;
-        positionY += LaserSpawnRate * Time.deltaTime;
-        Vector2 newPosition = new Vector2(0, positionY);
-        _endPointImprove.localPosition = newPosition;
-        LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
-    }
-
-    public void OffLazerImprove()
-    {
-        LazerImprove.BoxCollider.enabled = false;
-        float positionY = _endPointImprove.localPosition.y;
-        positionY -= LaserSpawnRate * Time.deltaTime;
-        Vector2 newPosition = new Vector2(0, positionY);
-        _endPointImprove.localPosition = newPosition;
-        LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
+        if(IsImproved)
+        {
+            LazerImprove.BoxCollider.enabled = false;
+            float positionY1 = _endPointImprove.localPosition.y;
+            positionY -= LaserSpawnRate * Time.deltaTime;
+            Vector2 newPosition1 = new Vector2(0, positionY);
+            _endPointImprove.localPosition = newPosition;
+            LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
+        }
     }
 
     public override void Improve()
@@ -142,6 +126,11 @@ public class TowerLaser : AbsTower
         if (enemy is EnemyFly) return;
         enemy.ApplayDamage(_damage);
     }
+
+
+
+
+
 
     private void OnEnable()
     {

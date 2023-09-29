@@ -38,8 +38,7 @@ public class TowerLow : AbsTower
         RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
 
         Physics2D.Raycast(transform.position, (_shootPoint.position - transform.position), contactFilter, results, _firingRadius);
-        Debug.DrawRay(transform.position, (_shootPoint.position - transform.position) * _firingRadius, Color.red);
-
+        
         foreach (var result in results)
         {
             if (result)
