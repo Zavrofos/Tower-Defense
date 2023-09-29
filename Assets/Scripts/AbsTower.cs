@@ -18,7 +18,6 @@ public abstract class AbsTower : MonoBehaviour
     public float _firingRadius;
     public string _description;
 
-
     public Sprite Icon => _icon;
     public string Label => _label;
     public int Price => _price;
