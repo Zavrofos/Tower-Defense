@@ -18,7 +18,7 @@ public class ImprovementButton : MonoBehaviour
     private void Start()
     {
         _improvementPriceObj.SetActive(true);
-        UpgradePriceText.text = _buildingPoint.CurrentTower.GetComponent<Tower>().UpgradePrice.ToString();
+        UpgradePriceText.text = _buildingPoint.CurrentTower.GetComponent<AbsTower>().UpgradePrice.ToString();
     }
 
     private void OnMouseDown()
@@ -29,7 +29,7 @@ public class ImprovementButton : MonoBehaviour
         {
             return;
         }
-        Tower tower = _buildingPoint.CurrentTower.GetComponent<Tower>();
+        AbsTower tower = _buildingPoint.CurrentTower.GetComponent<AbsTower>();
         gameManager.SpendCoins(tower.UpgradePrice);
         tower.Improve();
         _improvementPriceObj.SetActive(false);

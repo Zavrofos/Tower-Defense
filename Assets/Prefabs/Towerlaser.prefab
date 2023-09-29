@@ -658,6 +658,8 @@ GameObject:
   - component: {fileID: -696675950956576577}
   - component: {fileID: -947922700031299267}
   - component: {fileID: 342288999019610341}
+  - component: {fileID: -1309191670883414274}
+  - component: {fileID: 372127327293934796}
   m_Layer: 11
   m_Name: Towerlaser
   m_TagString: Tower
@@ -745,22 +747,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822ab03cf871fb5448cc3805ad0c79a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firingRadius: 2.5
+  ChangerColor: {fileID: 0}
+  FinderEnemyes: {fileID: -1309191670883414274}
+  DamageSystem: {fileID: 372127327293934796}
   _partToRotate: {fileID: 825172555351694145}
-  _speedRotation: 100
-  _upgradePrice: 20
   _icon: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
   _label: TowerLaser
+  _health: 400
   _price: 30
+  _upgradePrice: 20
+  _firingRadius: 2.5
+  _speedRotation: 100
   _description: 'Targets: Ground'
-  Health: 150
-  SpriteRender: {fileID: 2124735760161885360}
-  ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
-  CurrentColor: {r: 0, g: 0, b: 0, a: 0}
   _startPoint: {fileID: 1986548969348663761}
   _endPoint: {fileID: 1986548969163610207}
   Lazer: {fileID: 2452748731239334243}
   _secondPartTowerImprove: {fileID: 3229257956280969233}
+  _secondPartTowerSpriteRenderer: {fileID: 5561687096201172710}
   _startPointImprove: {fileID: 7088653429026806007}
   _endPointImprove: {fileID: 3547749273237646618}
   LazerImprove: {fileID: 2204317646490640735}
@@ -914,6 +917,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1309191670883414274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956219493098163114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c61b4de96faba47a3450c196a3a25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetEnemy: {fileID: 0}
+--- !u!114 &372127327293934796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956219493098163114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb861e956c27ae4eba26de28c69b2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 400
+  SpriteRender: {fileID: 2124735760161885360}
+  ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
+  _secondPartTowerSpriteRenderer: {fileID: 5561687096201172710}
 --- !u!1 &8468037333358978348
 GameObject:
   m_ObjectHideFlags: 0

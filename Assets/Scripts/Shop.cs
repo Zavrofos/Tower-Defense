@@ -28,7 +28,7 @@ public class Shop : MonoBehaviour
     private void InstantiateTower(GameObject towerObject)
     {
         ProductInShop product = Instantiate(_productPrefab, _conteiner.transform);
-        Tower tower = towerObject.GetComponent<Tower>();
+        AbsTower tower = towerObject.GetComponent<AbsTower>();
         if (tower == null) return;
         product.ImageProduct.sprite = tower.Icon;
         product.ImageProduct.SetNativeSize();

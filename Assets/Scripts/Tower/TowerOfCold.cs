@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class TowerOfCold : Tower
+public class TowerOfCold : AbsTower
 {
     public Transform _shootPoint;
     public float _delayTimeToShoot;
@@ -13,7 +13,6 @@ public class TowerOfCold : Tower
     public Vector2 DirectionToShoot;
     public float _timeToShoot;
     public ParticleSystem _coldEfect;
-    public Transform _targetEnemy;
     public LayerMask enemyLayer;
 
     private RaycastHit2D[] results;
@@ -21,11 +20,10 @@ public class TowerOfCold : Tower
     [SerializeField] private AudioSource AudioCold;
     private GameManagerInGame _gameManager;
 
-    
+
 
     public override void StartGame()
     {
-        InvokeRepeating("UpdateTarget", 0, 1f);
         _spriteRendererTower.sprite = _spritesTower[0];
         results = new RaycastHit2D[10];
         contactFilter = new ContactFilter2D();
@@ -36,15 +34,15 @@ public class TowerOfCold : Tower
 
     public override void UpdateGame()
     {
-        if (_targetEnemy == null)
+        if (FinderEnemyesSystem.TargetEnemy == null)
         {
-            if(_coldEfect.isPlaying)_coldEfect.Stop();
+            if (_coldEfect.isPlaying) _coldEfect.Stop();
             return;
         }
         _coldEfect.gameObject.SetActive(true);
-        if(!_coldEfect.isPlaying)_coldEfect.Play();
+        if (!_coldEfect.isPlaying) _coldEfect.Play();
         if (!AudioCold.isPlaying && !_gameManager.IsPouse) AudioCold.Play();
-        Vector2 direction = _targetEnemy.position - transform.position;
+        Vector2 direction = FinderEnemyesSystem.TargetEnemy.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         _partToRotate.rotation = Quaternion.Lerp(_partToRotate.rotation, rotation, Time.deltaTime * _speedRotation);
@@ -70,32 +68,6 @@ public class TowerOfCold : Tower
             return false;
         }
         return true;
-    }
-
-    public override void UpdateTarget()
-    {
-        GameObject[] enemyes = GameObject.FindGameObjectsWithTag("Enemy");
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (var enemy in enemyes)
-        {
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-        }
-
-        if (nearestEnemy != null && shortestDistance < _firingRadius)
-        {
-            _targetEnemy = nearestEnemy.transform;
-        }
-        else
-        {
-            _targetEnemy = null;
-        }
     }
 
     public override void Improve()

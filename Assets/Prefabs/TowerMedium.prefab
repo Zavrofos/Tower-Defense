@@ -112,6 +112,8 @@ GameObject:
   - component: {fileID: 374991481687455904}
   - component: {fileID: -9219974274020576529}
   - component: {fileID: -2020818281240043316}
+  - component: {fileID: 8161732003769946562}
+  - component: {fileID: -1707071543564513389}
   m_Layer: 11
   m_Name: TowerMedium
   m_TagString: Tower
@@ -199,18 +201,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8d3d58d7d0f1549809776c1069fdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firingRadius: 3
+  ChangerColor: {fileID: 0}
+  FinderEnemyes: {fileID: 8161732003769946562}
+  DamageSystem: {fileID: -1707071543564513389}
   _partToRotate: {fileID: 6789707796415871934}
-  _speedRotation: 10
-  _upgradePrice: 25
   _icon: {fileID: 21300000, guid: 531b4374a0e3c7341bed4f05a95afa4e, type: 3}
   _label: TowerMedium
+  _health: 300
   _price: 20
+  _upgradePrice: 25
+  _firingRadius: 3
+  _speedRotation: 10
   _description: 'Targets: Ground'
-  Health: 120
-  SpriteRender: {fileID: 6789707796415871935}
-  ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
-  CurrentColor: {r: 0, g: 0, b: 0, a: 0}
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
   - {fileID: 911548638440573115, guid: 96260f00a70aee542bdc16d3c5fe16db, type: 3}
@@ -222,7 +224,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c10adbfb585edd9488133f2dee8f6ec6, type: 3}
   _fire: {fileID: 7705580741368652392}
   _currentBullet: {fileID: 0}
-  _targetEnemy: {fileID: 0}
   DirectionToShoot: {x: 0, y: 0}
   _timeToShoot: 0
   AudioShoot: {fileID: -2020818281240043316}
@@ -369,6 +370,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8161732003769946562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c61b4de96faba47a3450c196a3a25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetEnemy: {fileID: 0}
+--- !u!114 &-1707071543564513389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94f87236b7bbe0498de5f1603787b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 300
+  SpriteRender: {fileID: 6789707796415871935}
+  ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0

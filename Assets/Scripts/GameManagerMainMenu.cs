@@ -9,7 +9,6 @@ public class GameManagerMainMenu : MonoBehaviour
 
     private void Start()
     {
-        LevelsManager.Instance = FindObjectOfType<LevelsManager>();
         if(LevelsManager.Instance != null)
         {
             for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)

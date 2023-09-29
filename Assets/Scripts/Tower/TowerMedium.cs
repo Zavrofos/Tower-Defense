@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerHight : Tower
+public class TowerMedium : AbsTower
 {
     public Transform _shootPoint;
     public Bullet[] _bulletPrefabs;
     public float _delayTimeToShoot;
     public SpriteRenderer _spriteRendererTower;
     public Sprite[] _spritesTower;
+    public Fire _fire;
     public Bullet _currentBullet;
-    public Transform _targetEnemy;
     public Vector2 DirectionToShoot;
     public float _timeToShoot;
-    public AudioSource AudioExplosion;
+    public AudioSource AudioShoot;
+
 
     private RaycastHit2D[] results;
     private ContactFilter2D contactFilter;
 
     public override void StartGame()
     {
-        InvokeRepeating("UpdateTarget", 0, 1f);
         _spriteRendererTower.sprite = _spritesTower[0];
         _currentBullet = _bulletPrefabs[0];
         results = new RaycastHit2D[10];
@@ -33,12 +33,12 @@ public class TowerHight : Tower
     {
         DirectionToShoot = GetDirectionToShoot();
 
-        if (_targetEnemy == null)
+        if (FinderEnemyesSystem.TargetEnemy == null)
         {
             return;
         }
 
-        Vector2 direction = _targetEnemy.position - transform.position;
+        Vector2 direction = FinderEnemyesSystem.TargetEnemy.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         _partToRotate.rotation = Quaternion.Lerp(_partToRotate.rotation, rotation, Time.deltaTime * _speedRotation);
@@ -55,10 +55,11 @@ public class TowerHight : Tower
             }
         }
     }
+
     public void CheckEnemy(RaycastHit2D hit)
     {
         hit.collider.TryGetComponent(out Enemy enemy);
-        if (enemy != null && enemy.gameObject == _targetEnemy.gameObject)
+        if (enemy != null && enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
         {
             Shoot();
         }
@@ -71,10 +72,11 @@ public class TowerHight : Tower
         {
             Bullet bullet = Instantiate(_currentBullet, _shootPoint.position, Quaternion.identity);
             bullet.Direction = DirectionToShoot;
-            bullet.StartPosition = PositionTower.position;
+            bullet.StartPosition = PartToRotate.position;
             bullet.distanceBullet = _firingRadius;
-            bullet.Tower = this;
             _timeToShoot = 0;
+            _fire.gameObject.SetActive(true);
+            AudioShoot.Play();
         }
     }
 
@@ -82,32 +84,7 @@ public class TowerHight : Tower
     {
         _spriteRendererTower.sprite = _spritesTower[1];
         _currentBullet = _bulletPrefabs[1];
-    }
-
-    public override void UpdateTarget()
-    {
-        GameObject[] enemyes = GameObject.FindGameObjectsWithTag("Enemy");
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (var enemy in enemyes)
-        {
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-        }
-
-        if (nearestEnemy != null && shortestDistance < _firingRadius)
-        {
-            _targetEnemy = nearestEnemy.transform;
-        }
-        else
-        {
-            _targetEnemy = null;
-        }
+        _fire.Transform.localScale = new Vector2(2, 1);
     }
 
     public override Vector2 GetDirectionToShoot()

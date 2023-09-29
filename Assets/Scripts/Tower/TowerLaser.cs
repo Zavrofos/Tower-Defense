@@ -3,13 +3,14 @@ using System.Collections;
 using System.Net;
 using UnityEngine;
 
-public class TowerLaser : Tower
+public class TowerLaser : AbsTower
 {
     public Transform _startPoint;
     public Transform _endPoint;
     public Laser Lazer;
 
     public GameObject _secondPartTowerImprove;
+    public SpriteRenderer _secondPartTowerSpriteRenderer;
     public Transform _startPointImprove;
     public Transform _endPointImprove;
     public Laser LazerImprove;
@@ -35,7 +36,7 @@ public class TowerLaser : Tower
 
     public override void UpdateGame()
     {
-        if (CheckEnemyes())
+        if (FinderEnemyesSystem.TargetEnemy != null)
         {
             WorkTower();
         }
@@ -45,30 +46,11 @@ public class TowerLaser : Tower
         }
     }
 
-    public override IEnumerator ChangeColorForHit()
-    {
-        if(IsImproved) _secondPartTowerImprove.gameObject.GetComponent<SpriteRenderer>().color = ApplayDamageColor;
-        SpriteRender.color = ApplayDamageColor;
-        yield return new WaitForSeconds(0.2f);
-        SpriteRender.color = CurrentColor;
-        if(IsImproved) _secondPartTowerImprove.gameObject.GetComponent<SpriteRenderer>().color = CurrentColor;
-    }
-
-    public bool CheckEnemyes()
-    {
-        Collider2D[] enemyes = Physics2D.OverlapCircleAll(transform.position, _firingRadius, enemyLayer);
-        if (enemyes.Length == 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
     public void WorkTower()
     {
         if (_endPoint.localPosition.y < _firingRadius)
         {
-            if(!IsImproved)
+            if (!IsImproved)
             {
                 OnLazer();
             }
@@ -81,7 +63,7 @@ public class TowerLaser : Tower
         else
         {
             Lazer.BoxCollider.enabled = true;
-            if(IsImproved) LazerImprove.BoxCollider.enabled = true;
+            if (IsImproved) LazerImprove.BoxCollider.enabled = true;
             _partToRotate.Rotate(Vector3.forward * _speedRotation * Time.deltaTime);
         }
     }
@@ -94,7 +76,7 @@ public class TowerLaser : Tower
         }
         else if (_endPoint.localPosition.y > 0)
         {
-            if(!IsImproved)
+            if (!IsImproved)
             {
                 OffLazer();
             }
@@ -108,7 +90,7 @@ public class TowerLaser : Tower
 
     public void OnLazer()
     {
-        if(!AudioLaser.isPlaying) AudioLaser.Play();
+        if (!AudioLaser.isPlaying) AudioLaser.Play();
         float positionY = _endPoint.localPosition.y;
         positionY += LaserSpawnRate * Time.deltaTime;
         Vector2 newPosition = new Vector2(0, positionY);

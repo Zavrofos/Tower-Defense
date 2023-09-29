@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected float _speed;
     [SerializeField] protected int _damage;
     public Vector2 Direction;
-    public Tower Tower;
+    public AbsTower Tower;
     public Vector3 StartPosition;
     public float distanceBullet;
 
