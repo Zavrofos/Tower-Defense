@@ -85,7 +85,7 @@ public class TowerMedium : AbsTower
 
     public override Vector2 GetDirectionToShoot()
     {
-        Vector3 worldposition = transform.TransformPoint(RotationSystem.PartToRotate.position);
+        Vector3 worldposition = transform.TransformPoint(transform.position);
         Vector3 worldPositionPointToShoot = transform.TransformPoint(_shootPoint.position);
         return worldPositionPointToShoot - worldposition;
     }

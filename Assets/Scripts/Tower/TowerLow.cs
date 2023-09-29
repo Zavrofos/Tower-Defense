@@ -7,9 +7,12 @@ public class TowerLow : AbsTower
 {
     public Transform _shootPoint;
     public Bullet[] _bulletPrefabs;
+
     public float _delayTimeToShoot;
+
     public SpriteRenderer _spriteRendererTower;
     public Sprite[] _spritesTower;
+
     public Fire _fire;
     public Bullet _currentBullet;
     public Vector2 DirectionToShoot;
@@ -83,7 +86,7 @@ public class TowerLow : AbsTower
     
     public override Vector2 GetDirectionToShoot()
     {
-        Vector3 worldposition = transform.TransformPoint(RotationSystem.PartToRotate.position);
+        Vector3 worldposition = transform.TransformPoint(transform.position);
         Vector3 worldPositionPointToShoot = transform.TransformPoint(_shootPoint.position);
         return worldPositionPointToShoot - worldposition;
     }
