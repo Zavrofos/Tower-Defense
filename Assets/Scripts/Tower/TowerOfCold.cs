@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -24,6 +25,7 @@ public class TowerOfCold : AbsTower
 
     public override void StartGame()
     {
+        FinderEnemyesSystem = new FinderEnemyesForTower(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         results = new RaycastHit2D[10];
         contactFilter = new ContactFilter2D();

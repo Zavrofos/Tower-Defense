@@ -26,13 +26,13 @@ public abstract class AbsTower : MonoBehaviour
     public int UpgradePrice => _upgradePrice;
     public float FiringRadius => _firingRadius;
     public string Description => _description;
-    
+
     private void Start()
     {
         DamageSystem = GetComponent<IDamageSystem>();
-        FinderEnemyesSystem = GetComponent<IFinderEnemyesSystem>();
         RotationSystem = GetComponent<IRotation>();
         StartGame();
+        InvokeRepeating("Invoker", 0, 1);
     }
 
     private void Update()
@@ -50,5 +50,10 @@ public abstract class AbsTower : MonoBehaviour
     public void ApplayDamage(int damage)
     {
         DamageSystem.ApplayDamage(damage);
+    }
+
+    private void Invoker()
+    {
+        FinderEnemyesSystem.FindNearbyEnemy();
     }
 }

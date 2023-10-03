@@ -5,9 +5,13 @@ namespace Assets.Scripts.Tower.FinderEnemyes
 {
     public class FinderEnemyesForLowTower : AbsFinderEnemyes
     {
-        public override GameObject[] FindEnemyes()
+        public FinderEnemyesForLowTower(GameObject tower) : base(tower)
         {
-            Enemy[] enemyes = FindObjectsOfType<Enemy>();
+        }
+
+        protected override GameObject[] FindEnemyes()
+        {
+            Enemy[] enemyes = GameObject.FindObjectsOfType<Enemy>();
             GameObject[] result = new GameObject[enemyes.Length];
             for(int i = 0; i < result.Length; i++)
             {

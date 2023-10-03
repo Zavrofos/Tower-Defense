@@ -1,3 +1,4 @@
+using Assets.Scripts.Tower.FinderEnemyes;
 using System;
 using System.Collections;
 using System.Net;
@@ -25,6 +26,7 @@ public class TowerLaser : AbsTower
 
     public override void StartGame()
     {
+        FinderEnemyesSystem = new FinderEnemyesForTower(this.gameObject);
         _endPoint.localPosition = new Vector2(0, 0);
         Lazer.LineRenderer.SetPosition(0, _startPoint.localPosition);
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);

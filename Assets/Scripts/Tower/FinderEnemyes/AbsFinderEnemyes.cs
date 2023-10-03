@@ -3,27 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbsFinderEnemyes : MonoBehaviour, IFinderEnemyesSystem
+public abstract class AbsFinderEnemyes : IFinderEnemyesSystem
 {
     [HideInInspector] private Transform _targetEnemy;
+    private GameObject _tower;
+
+    public AbsFinderEnemyes(GameObject tower)
+    {
+        _tower = tower;
+    }
 
     Transform IFinderEnemyesSystem.TargetEnemy => _targetEnemy;
-
-    private void Start()
-    {
-        InvokeRepeating("FindNearbyEnemy", 0, 1);
-    }
 
     public void FindNearbyEnemy()
     {
         GameObject[] enemyes = FindEnemyes();
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
-        float FiringRadius = gameObject.GetComponent<AbsTower>().FiringRadius;
+        float FiringRadius = _tower.GetComponent<AbsTower>().FiringRadius;
 
         foreach (var enemy in enemyes)
         {
-            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+            float distanceToEnemy = Vector2.Distance(_tower.transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
@@ -41,5 +42,5 @@ public abstract class AbsFinderEnemyes : MonoBehaviour, IFinderEnemyesSystem
         }
     }
 
-    public abstract GameObject[] FindEnemyes();
+    protected abstract GameObject[] FindEnemyes();
 }

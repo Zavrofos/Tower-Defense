@@ -1,3 +1,4 @@
+using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class TowerHight : AbsTower
 
     public override void StartGame()
     {
+        FinderEnemyesSystem = new FinderEnemyesForTower(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         _currentBullet = _bulletPrefabs[0];
         results = new RaycastHit2D[10];
