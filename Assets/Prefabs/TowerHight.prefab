@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7551023591002531745}
   - component: {fileID: -2492162560843213039}
   - component: {fileID: 5787807825410386409}
+  - component: {fileID: -5013286127694005183}
   m_Layer: 11
   m_Name: TowerHight
   m_TagString: Tower
@@ -104,13 +105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e12fb55fff1fd345a456efa7cda51f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _partToRotate: {fileID: 6789707796415871934}
+  TowerInfo: {fileID: 0}
   _icon: {fileID: 21300000, guid: a5350621791e92f4c82c67de23597ad2, type: 3}
   _label: TowerHight
   _price: 40
   _upgradePrice: 30
   _firingRadius: 3
-  _speedRotation: 10
   _description: 'Targets: Ground'
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
@@ -309,6 +309,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partToRotate: {fileID: 6789707796415871934}
   _speedRotation: 10
+--- !u!114 &-5013286127694005183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789707795654957662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c08f9b25612055439ed44cb4def5c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 0}
+  _label: 
+  _price: 0
+  _upgradePrice: 0
+  _firingRadius: 0
+  _description: 
+  _shootPoint: {fileID: 0}
+  _bulletPrefabs: []
+  _delayTimeToShoot: 0
+  _spriteRendererTower: {fileID: 0}
+  _spritesTower: []
+  _currentBullet: {fileID: 0}
+  _audioShoot: {fileID: 0}
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0

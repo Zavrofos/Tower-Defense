@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbsTowerInfo 
+public abstract class AbsTowerInfo : MonoBehaviour
 {
     [SerializeField] protected Sprite _icon;
     [SerializeField] protected string _label;

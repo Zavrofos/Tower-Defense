@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Tower.TowerInfo
 {
-    public class ShooterTowerWithShotEfectInfo : MonoBehaviour
+    public class ShooterTowerWithShotEfectInfo : ShooterTowerInfo
     {
         [SerializeField] protected GameObject _shotEfect;
         public GameObject ShotEfect { get; }
