@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2621638852909648112}
   - component: {fileID: 8128222943056851881}
   - component: {fileID: 3722984617934631173}
-  - component: {fileID: 8184512864601409206}
+  - component: {fileID: 1276913023513255936}
   m_Layer: 10
   m_Name: EnemyFly
   m_TagString: EnemyFly
@@ -155,7 +155,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8184512864601409206
+--- !u!114 &1276913023513255936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4934421654313914877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98ce98149bf52344b2b8d3a4d8c297e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10

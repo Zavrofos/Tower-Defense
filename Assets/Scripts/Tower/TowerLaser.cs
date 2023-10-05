@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using Assets.Scripts.Tower.FinderEnemyes;
 using System;
 using System.Collections;
@@ -125,7 +126,7 @@ public class TowerLaser : AbsTower
 
     public void GiveDamageEnemy(Enemy enemy)
     {
-        if (enemy is EnemyFly) return;
+        if (enemy.Type is EnemyType.Fly) return;
         enemy.ApplayDamage(_damage);
     }
 
