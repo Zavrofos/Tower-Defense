@@ -130,11 +130,6 @@ public class TowerLaser : AbsTower
         enemy.ApplayDamage(_damage);
     }
 
-
-
-
-
-
     private void OnEnable()
     {
         Lazer.FoundEnemy += GiveDamageEnemy;
