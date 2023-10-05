@@ -74,9 +74,18 @@ public class Tower : AbsTower
             bullet.Direction = DirectionToShoot;
             bullet.StartPosition = RotationSystem.PartToRotate.position;
             bullet.distanceBullet = _firingRadius;
-            _timeToShoot = 0;
+            
+
+            if(bullet is BulletHight)
+            {
+                bullet.Tower = this;
+                _timeToShoot = 0;
+                return;
+            }
+
             _fire.gameObject.SetActive(true);
             AudioShoot.Play();
+            _timeToShoot = 0;
         }
     }
 
@@ -84,7 +93,11 @@ public class Tower : AbsTower
     {
         _spriteRendererTower.sprite = _spritesTower[1];
         _currentBullet = _bulletPrefabs[1];
-        _fire.Transform.localScale = new Vector2(2, 1);
+
+        if (_fire != null)
+        {
+            _fire.Transform.localScale = new Vector2(2, 1);
+        }
     }
     
     public override Vector2 GetDirectionToShoot()

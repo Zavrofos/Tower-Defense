@@ -47,7 +47,7 @@ public class BulletHight : Bullet
                 enemyObj.ApplayDamage(_damage);
             }
         }
-        Tower.gameObject.GetComponent<TowerHight>().AudioExplosion.Play();
+        Tower.gameObject.GetComponent<Tower>().AudioShoot.Play();
         Destroy(gameObject);
     }
 }
