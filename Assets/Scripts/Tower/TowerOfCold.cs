@@ -11,26 +11,18 @@ public class TowerOfCold : AbsTower
     public float _delayTimeToShoot;
     public SpriteRenderer _spriteRendererTower;
     public Sprite[] _spritesTower;
-    public Vector2 DirectionToShoot;
     public float _timeToShoot;
     public ParticleSystem _coldEfect;
-    public LayerMask enemyLayer;
-
     private RaycastHit2D[] results;
-    private ContactFilter2D contactFilter;
+    [SerializeField] private ContactFilter2D contactFilter;
     [SerializeField] private AudioSource AudioCold;
     private GameManagerInGame _gameManager;
-
-
 
     public override void StartGame()
     {
         FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         results = new RaycastHit2D[10];
-        contactFilter = new ContactFilter2D();
-        contactFilter.useTriggers = true;
-        contactFilter.SetLayerMask(LayerMask.GetMask("Enemy"));
         _gameManager = FindObjectOfType<GameManagerInGame>();
     }
 
@@ -59,25 +51,9 @@ public class TowerOfCold : AbsTower
             }
         }
     }
-    public bool CheckEnemyes()
-    {
-        Collider2D[] enemyes = Physics2D.OverlapCircleAll(transform.position, _firingRadius, enemyLayer);
-        if (enemyes.Length == 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
+    
     public override void Improve()
     {
         _spriteRendererTower.sprite = _spritesTower[1];
-    }
-
-    public override Vector2 GetDirectionToShoot()
-    {
-        Vector3 worldposition = transform.TransformPoint(transform.position);
-        Vector3 worldPositionPointToShoot = transform.TransformPoint(_shootPoint.position);
-        return worldPositionPointToShoot - worldposition;
     }
 }
