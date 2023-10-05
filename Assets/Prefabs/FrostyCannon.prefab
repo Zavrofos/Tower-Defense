@@ -110,6 +110,7 @@ MonoBehaviour:
   _upgradePrice: 20
   _firingRadius: 2
   _description: 'Targets: Ground'
+  TargetsEnemyType: 00000000
   _shootPoint: {fileID: 7221265811103244077}
   _delayTimeToShoot: 1
   _spriteRendererTower: {fileID: 6789707796415871935}

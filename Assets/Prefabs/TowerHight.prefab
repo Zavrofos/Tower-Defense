@@ -111,6 +111,7 @@ MonoBehaviour:
   _upgradePrice: 30
   _firingRadius: 3
   _description: 'Targets: Ground'
+  TargetsEnemyType: 00000000
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
   - {fileID: 1208741241206559477, guid: 9a0366dbe6668ef4cb27bdce67d7121c, type: 3}

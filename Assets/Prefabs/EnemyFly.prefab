@@ -185,3 +185,4 @@ MonoBehaviour:
   _pointsOfWay: []
   _currentPointOfWay: 0
   _isFrozen: 0
+  Type: 1

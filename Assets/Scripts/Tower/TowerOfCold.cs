@@ -25,7 +25,7 @@ public class TowerOfCold : AbsTower
 
     public override void StartGame()
     {
-        FinderEnemyesSystem = new FinderEnemyesForTower(this.gameObject);
+        FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         results = new RaycastHit2D[10];
         contactFilter = new ContactFilter2D();

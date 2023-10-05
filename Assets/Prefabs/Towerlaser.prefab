@@ -755,6 +755,7 @@ MonoBehaviour:
   _upgradePrice: 20
   _firingRadius: 2.5
   _description: 'Targets: Ground'
+  TargetsEnemyType: 00000000
   _startPoint: {fileID: 1986548969348663761}
   _endPoint: {fileID: 1986548969163610207}
   Lazer: {fileID: 2452748731239334243}

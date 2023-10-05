@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using Assets.Scripts.Tower;
 using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
@@ -26,6 +27,8 @@ public abstract class AbsTower : MonoBehaviour
     public int UpgradePrice => _upgradePrice;
     public float FiringRadius => _firingRadius;
     public string Description => _description;
+
+    public EnemyType[] TargetsEnemyType;
 
     private void Start()
     {

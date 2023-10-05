@@ -1,9 +1,10 @@
 using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class TowerMedium : AbsTower
+public class Tower : AbsTower
 {
     public Transform _shootPoint;
     public Bullet[] _bulletPrefabs;
@@ -16,26 +17,22 @@ public class TowerMedium : AbsTower
     public float _timeToShoot;
     public AudioSource AudioShoot;
 
-
     private RaycastHit2D[] results;
-    private ContactFilter2D contactFilter;
+    [SerializeField] private ContactFilter2D contactFilter;
 
     public override void StartGame()
     {
-        FinderEnemyesSystem = new FinderEnemyesForTower(this.gameObject);
+        FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         _currentBullet = _bulletPrefabs[0];
-        results = new RaycastHit2D[10];
-        contactFilter = new ContactFilter2D();
-        contactFilter.useTriggers = true;
-        contactFilter.SetLayerMask(LayerMask.GetMask("Enemy"));
+        results = new RaycastHit2D[3];
     }
 
     public override void UpdateGame()
     {
         DirectionToShoot = GetDirectionToShoot();
 
-        if (FinderEnemyesSystem.TargetEnemy == null)
+        if(FinderEnemyesSystem.TargetEnemy == null)
         {
             return;
         }
@@ -43,7 +40,7 @@ public class TowerMedium : AbsTower
         RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
 
         Physics2D.Raycast(transform.position, (_shootPoint.position - transform.position), contactFilter, results, _firingRadius);
-
+        
         foreach (var result in results)
         {
             if (result)
@@ -53,13 +50,18 @@ public class TowerMedium : AbsTower
             }
         }
     }
-
     public void CheckEnemy(RaycastHit2D hit)
     {
-        hit.collider.TryGetComponent(out Enemy enemy);
-        if (enemy != null && enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
+        if (hit.collider.gameObject == null) return;
+
+        foreach (var type in TargetsEnemyType)
         {
-            Shoot();
+            if (hit.collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy) &&
+                enemy.Type == type &&
+                enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
+            {
+                Shoot();
+            }
         }
     }
 
@@ -84,7 +86,7 @@ public class TowerMedium : AbsTower
         _currentBullet = _bulletPrefabs[1];
         _fire.Transform.localScale = new Vector2(2, 1);
     }
-
+    
     public override Vector2 GetDirectionToShoot()
     {
         Vector3 worldposition = transform.TransformPoint(transform.position);

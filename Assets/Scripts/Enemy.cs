@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public Transform[] _pointsOfWay;
     public int _currentPointOfWay;
     public bool _isFrozen;
+    public EnemyType Type;
 
     private void Start()
     {

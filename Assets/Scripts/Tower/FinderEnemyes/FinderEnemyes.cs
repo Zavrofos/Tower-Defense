@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbsFinderEnemyes : IFinderEnemyesSystem
+public class FinderEnemyes : IFinderEnemyesSystem
 {
-    [HideInInspector] private Transform _targetEnemy;
+    private Transform _targetEnemy;
     private GameObject _tower;
 
-    public AbsFinderEnemyes(GameObject tower)
+    public FinderEnemyes(GameObject tower)
     {
         _tower = tower;
     }
@@ -17,7 +17,7 @@ public abstract class AbsFinderEnemyes : IFinderEnemyesSystem
 
     public void FindNearbyEnemy()
     {
-        GameObject[] enemyes = FindEnemyes();
+        GameObject[] enemyes = Find();
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
         float FiringRadius = _tower.GetComponent<AbsTower>().FiringRadius;
@@ -42,5 +42,21 @@ public abstract class AbsFinderEnemyes : IFinderEnemyesSystem
         }
     }
 
-    protected abstract GameObject[] FindEnemyes();
+    private GameObject[] Find()
+    {
+        Enemy[] enemyes = GameObject.FindObjectsOfType<Enemy>();
+        List<GameObject> result = new List<GameObject>();
+
+        foreach(var enemy in enemyes)
+        {
+            foreach(var type in _tower.GetComponent<AbsTower>().TargetsEnemyType)
+            {
+                if(type == enemy.Type)                {
+                    result.Add(enemy.gameObject);
+                }
+            }
+        }
+
+        return result.ToArray();
+    }
 }
