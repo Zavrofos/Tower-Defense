@@ -11,7 +11,7 @@ public class BulletMedium : Bullet
     private void RotateBullet()
     {
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = rotation;
     }
 }

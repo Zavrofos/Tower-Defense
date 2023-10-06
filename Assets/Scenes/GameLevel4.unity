@@ -2521,7 +2521,7 @@ MonoBehaviour:
   _timeToSpawnNextWave: 20
   _waves:
   - Templates:
-    - {fileID: 1845349280365932795, guid: bbad78e06e3c58349beb71e036729764, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
     Delay: 2
     CurrentTemplateNumber: 0
   - Templates:

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IFrozen
+public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 {
     public int _health;
     public int _damage;

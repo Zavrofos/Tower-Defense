@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 027e6d5166253514e86a1d4e3fcff1b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57db7713601fa744d888dcb10e2d56bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,5 +141,5 @@ MonoBehaviour:
   _damage: 5
   Direction: {x: 0, y: 0}
   Tower: {fileID: 0}
-  StartPosition: {fileID: 0}
+  StartPosition: {x: 0, y: 0, z: 0}
   distanceBullet: 0

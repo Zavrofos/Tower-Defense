@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,23 +15,15 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
         _rigidbody.AddForce(Direction * _speed);
         Destroy();
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out Shield shield))
+        if(collision.TryGetComponent(out IApplayDamage damagedObj))
         {
-            shield.ApplayDamage(_damage);
-            Hit();
-            return;
-        }
-
-        if(collision.TryGetComponent(out Enemy enemy))
-        {
-            GiveDamage(enemy);
+            damagedObj.ApplayDamage(_damage);
             Hit();
         }
     }
@@ -50,10 +43,5 @@ public class Bullet : MonoBehaviour
     protected virtual void Hit()
     {
         Destroy(gameObject);
-    }
-
-    protected void GiveDamage(Enemy enemy)
-    {
-        enemy.ApplayDamage(_damage);
     }
 }
