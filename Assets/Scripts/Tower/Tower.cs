@@ -13,7 +13,6 @@ public class Tower : AbsTower
     public Sprite[] _spritesTower;
     public Fire _fire;
     public Bullet _currentBullet;
-    public Vector2 DirectionToShoot;
     public float _timeToShoot;
     public AudioSource AudioShoot;
 
@@ -30,8 +29,6 @@ public class Tower : AbsTower
 
     public override void UpdateGame()
     {
-        DirectionToShoot = GetDirectionToShoot();
-
         if(FinderEnemyesSystem.TargetEnemy == null)
         {
             return;
@@ -46,8 +43,6 @@ public class Tower : AbsTower
             if (result.collider != null &&
                 result.collider.gameObject.TryGetComponent(out Enemy enemy))
             {
-                //CheckEnemy(result);
-                //break;
                 foreach (var type in TargetsEnemyType)
                 {
                     if (enemy.Type == type &&
@@ -60,28 +55,18 @@ public class Tower : AbsTower
             }
         }
     }
-    //public void CheckEnemy(RaycastHit2D hit)
-    //{
-    //    if (hit.collider.gameObject == null) return;
-
-    //    foreach (var type in TargetsEnemyType)
-    //    {
-    //        if (hit.collider.gameObject.TryGetComponent(out Enemy enemy) &&
-    //            enemy.Type == type &&
-    //            enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
-    //        {
-    //            Shoot();
-    //        }
-    //    }
-    //}
 
     public override void Shoot()
     {
         _timeToShoot += Time.deltaTime;
         if (_timeToShoot >= _delayTimeToShoot)
         {
-            Bullet bullet = Instantiate(_currentBullet, _shootPoint.position, Quaternion.identity);
-            bullet.Direction = DirectionToShoot;
+            Vector2 direction = GetDirectionToShoot();
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+
+            Bullet bullet = Instantiate(_currentBullet, _shootPoint.position, rotation);
+            bullet.Direction = direction;
             bullet.StartPosition = RotationSystem.PartToRotate.position;
             bullet.distanceBullet = _firingRadius;
             

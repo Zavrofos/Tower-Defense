@@ -7,18 +7,6 @@ public class BulletHight : Bullet
     [SerializeField] private Explosion _explosion;
     [SerializeField] private float _damageRadius;
 
-    private void Start()
-    {
-        RotateBullet();
-    }
-
-    public void RotateBullet()
-    {
-        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        transform.rotation = rotation;
-    }
-
     protected override void Hit()
     {
         ExplosonPlay();

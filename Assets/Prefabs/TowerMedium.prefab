@@ -410,8 +410,8 @@ MonoBehaviour:
   TargetsEnemyType: 00000000
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
-  - {fileID: 911548638440573115, guid: 96260f00a70aee542bdc16d3c5fe16db, type: 3}
-  - {fileID: 8462349614032495991, guid: d25d94a8354108740ba9972707d5fd78, type: 3}
+  - {fileID: 752198365432817130, guid: 96260f00a70aee542bdc16d3c5fe16db, type: 3}
+  - {fileID: 5383864418626831403, guid: d25d94a8354108740ba9972707d5fd78, type: 3}
   _delayTimeToShoot: 0.5
   _spriteRendererTower: {fileID: 6789707796415871935}
   _spritesTower:
@@ -419,7 +419,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c10adbfb585edd9488133f2dee8f6ec6, type: 3}
   _fire: {fileID: 7705580741368652392}
   _currentBullet: {fileID: 0}
-  DirectionToShoot: {x: 0, y: 0}
   _timeToShoot: 0
   AudioShoot: {fileID: -2020818281240043316}
   contactFilter:

@@ -39,7 +39,6 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
     protected virtual void Hit()
     {
         Destroy(gameObject);
