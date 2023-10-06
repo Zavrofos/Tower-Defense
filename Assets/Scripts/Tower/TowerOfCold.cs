@@ -45,10 +45,9 @@ public class TowerOfCold : AbsTower
         {
             if (result)
             {
-                if(result.collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+                if(result.collider.gameObject.TryGetComponent(out IFrozen frozenObj))
                 {
-                    enemy.Freeze();
-                    break;
+                    frozenObj.Freeze();
                 }
             }
         }

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1845349280365932807}
   - component: {fileID: 1845349280365932806}
   - component: {fileID: 1845349280365932805}
-  - component: {fileID: 1845349280365932804}
+  - component: {fileID: 176164949377452826}
   m_Layer: 9
   m_Name: EnemyBoss
   m_TagString: Enemy
@@ -240,7 +240,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1845349280365932804
+--- !u!114 &176164949377452826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845349280365932795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732f5349cdf4efd49b72f3de57610775, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 500
@@ -270,7 +270,7 @@ MonoBehaviour:
   _pointsOfWay: []
   _currentPointOfWay: 0
   _isFrozen: 0
-  Swords: {fileID: 4201743296141278564}
+  Type: 0
 --- !u!1 &1845349280453290769
 GameObject:
   m_ObjectHideFlags: 0
