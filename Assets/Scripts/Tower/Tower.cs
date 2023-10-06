@@ -43,27 +43,37 @@ public class Tower : AbsTower
         
         foreach (var result in results)
         {
-            if (result)
+            if (result.collider != null &&
+                result.collider.gameObject.TryGetComponent(out Enemy enemy))
             {
-                CheckEnemy(result);
+                //CheckEnemy(result);
+                //break;
+                foreach (var type in TargetsEnemyType)
+                {
+                    if (enemy.Type == type &&
+                        enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
+                    {
+                        Shoot();
+                    }
+                }
                 break;
             }
         }
     }
-    public void CheckEnemy(RaycastHit2D hit)
-    {
-        if (hit.collider.gameObject == null) return;
+    //public void CheckEnemy(RaycastHit2D hit)
+    //{
+    //    if (hit.collider.gameObject == null) return;
 
-        foreach (var type in TargetsEnemyType)
-        {
-            if (hit.collider.gameObject.TryGetComponent<Enemy>(out Enemy enemy) &&
-                enemy.Type == type &&
-                enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
-            {
-                Shoot();
-            }
-        }
-    }
+    //    foreach (var type in TargetsEnemyType)
+    //    {
+    //        if (hit.collider.gameObject.TryGetComponent(out Enemy enemy) &&
+    //            enemy.Type == type &&
+    //            enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
+    //        {
+    //            Shoot();
+    //        }
+    //    }
+    //}
 
     public override void Shoot()
     {
