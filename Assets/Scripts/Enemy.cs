@@ -112,4 +112,9 @@ public class Enemy : MonoBehaviour
             home.ApplayDamage(_damage);
         }
     }
+
+    public void ChangeSpeed(float speed)
+    {
+        _speed = speed;
+    }
 }

@@ -21,7 +21,14 @@ public class Bullet : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<Enemy>(out Enemy enemy))
+        if(collision.TryGetComponent(out Shield shield))
+        {
+            shield.ApplayDamage(_damage);
+            Hit();
+            return;
+        }
+
+        if(collision.TryGetComponent(out Enemy enemy))
         {
             GiveDamage(enemy);
             Hit();

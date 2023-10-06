@@ -9,7 +9,7 @@ public class Shield : MonoBehaviour
     public SpriteRenderer SpriteRenderer;
     public Color ApplayDamageColor;
     private Color CurrentColor;
-    public Coroutine ChangeColorForHitCoroutine;
+    public float SpeedAfterShilBroken;
 
     private void Start()
     {
@@ -30,15 +30,15 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public void Destroy(EnemyShield enemy)
+    public void ApplayDamage(int damage)
     {
-        enemy._speed = enemy.SpeedAfterShilBroken;
-        StopCoroutine(ChangeColorForHitCoroutine);
-        Destroy(gameObject);
-    }
-
-    public void ChangeColorForHitStart()
-    {
-        ChangeColorForHitCoroutine = StartCoroutine(ChangeColorForHit());
+        Health -= damage;
+        StartCoroutine(ChangeColorForHit());
+        if (Health <= 0)
+        {
+            Enemy parent = GetComponentInParent<Enemy>();
+            parent.ChangeSpeed(SpeedAfterShilBroken);
+            Destroy(this.gameObject);
+        }
     }
 }

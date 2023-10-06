@@ -2531,6 +2531,7 @@ MonoBehaviour:
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
     Delay: 2
     CurrentTemplateNumber: 0
   - Templates:

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4076020991978838716}
   - component: {fileID: 4076020991978838714}
   - component: {fileID: 4076020991978838715}
+  - component: {fileID: 5731061397995239202}
   m_Layer: 9
   m_Name: Shield
   m_TagString: Untagged
@@ -101,6 +102,23 @@ MonoBehaviour:
   SpeedRotate: 200
   SpriteRenderer: {fileID: 4076020991978838714}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
+  SpeedAfterShilBroken: 2
+--- !u!58 &5731061397995239202
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4076020991978838717}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7285714
 --- !u!1 &4076020992478401941
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +132,7 @@ GameObject:
   - component: {fileID: 4076020992478401937}
   - component: {fileID: 4076020992478401938}
   - component: {fileID: 4076020992478401939}
-  - component: {fileID: 4076020992478401940}
+  - component: {fileID: 4300872444834205330}
   m_Layer: 9
   m_Name: EnemyWithShield
   m_TagString: Enemy
@@ -257,7 +275,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4076020992478401940
+--- !u!114 &4300872444834205330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4076020992478401941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90a2da4b84741ab4eb02c512ab0acd62, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 70
@@ -281,11 +299,11 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4076020992478401936}
   Animator: {fileID: 4076020992478401939}
   _applayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
-  _freezeColor: {r: 0, g: 0, b: 0, a: 0}
+  _freezeColor: {r: 0.39215687, g: 0.59607846, b: 1, a: 1}
   _initialColor: {r: 0, g: 0, b: 0, a: 0}
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
   _pointsOfWay: []
   _currentPointOfWay: 0
   _isFrozen: 0
-  Shield: {fileID: 4076020991978838715}
-  SpeedAfterShilBroken: 2
+  Type: 0
+  Protection: {fileID: 4076020991978838717}
