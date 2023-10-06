@@ -70,16 +70,15 @@ public class Tower : AbsTower
             bullet.StartPosition = RotationSystem.PartToRotate.position;
             bullet.distanceBullet = _firingRadius;
             
-
-            if(bullet is BulletHight)
+            if(_fire != null)
             {
-                bullet.Tower = this;
+                _fire.gameObject.SetActive(true);
+                AudioShoot.Play();
                 _timeToShoot = 0;
                 return;
             }
 
-            _fire.gameObject.SetActive(true);
-            AudioShoot.Play();
+            bullet.Tower = this;
             _timeToShoot = 0;
         }
     }

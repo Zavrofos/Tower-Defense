@@ -35,12 +35,19 @@ public class Bullet : MonoBehaviour
         float distance = vectorBetweenObjects.magnitude;
         if(distance >= distanceBullet)
         {
-            Destroy(gameObject);
+            Hit();
         }
     }
 
     protected virtual void Hit()
     {
-        Destroy(gameObject);
+        if(gameObject.TryGetComponent(out Explosion explosion))
+        {
+            explosion.ExplosonPlay(_damage, Tower.gameObject.GetComponent<Tower>().AudioShoot);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
