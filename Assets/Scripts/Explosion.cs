@@ -1,17 +1,36 @@
+using Assets.Scripts.ObjectPooler;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion : MonoBehaviour, IPooledObject
 {
     [SerializeField] private ParticleSystem _explosionParticle;
-    [SerializeField] private float _damageRadius;
+    [SerializeField] private AudioSource _audioExplosion;
 
-    public void ExplosonPlay(int damage, AudioSource audioShoot)
+    private void OnEnable()
+    {
+        Invoke(nameof(TurnOff), 0.5f);
+    }
+
+    public void OnObjectSpawn(GameObject sender)
+    {
+        if(sender.TryGetComponent(out Bullet bullet))
+        {
+            ExplosonPlay(bullet.Damage, bullet.DamageRadius);
+        }
+
+        if(sender.TryGetComponent(out Ability ability))
+        {
+            ExplosonPlay(ability.Damage, ability.DamageRadius);
+        }
+    }
+
+    public void ExplosonPlay(int damage, float damageRadius)
     {
         ParticleSystem.ShapeModule shapeModule = _explosionParticle.shape;
-        shapeModule.radius = _damageRadius / 2;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _damageRadius);
+        shapeModule.radius = damageRadius / 2;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius);
         _explosionParticle.Play();
         foreach (var collider in colliders)
         {
@@ -21,23 +40,11 @@ public class Explosion : MonoBehaviour
                 enemyObj.ApplayDamage(damage);
             }
         }
-        audioShoot.Play();
+        _audioExplosion.Play();
+    }
 
-        if(TryGetComponent<Bullet>(out Bullet bullet))
-        {
-            bullet.enabled = false;
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            GetComponent<SpriteRenderer>().enabled = false;
-        }
-        
-        
-
-        if(TryGetComponent<Ability>(out Ability ability))
-        {
-            ability.enabled = false;
-            GetComponentInChildren<SpriteRenderer>().enabled = false;
-        }
-
-        Destroy(gameObject, 0.5f);
+    private void TurnOff()
+    {
+        gameObject.SetActive(false);
     }
 }
