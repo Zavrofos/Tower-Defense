@@ -22,9 +22,22 @@ public class Explosion : MonoBehaviour
             }
         }
         audioShoot.Play();
-        GetComponent<Bullet>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        if(TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            bullet.enabled = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
+        
+        
+
+        if(TryGetComponent<Ability>(out Ability ability))
+        {
+            ability.enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
+
         Destroy(gameObject, 0.5f);
     }
 }
