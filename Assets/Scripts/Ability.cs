@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
-    [SerializeField] protected int _damage;
+    [SerializeField] public int Damage;
     public float DamageRadius;
     [HideInInspector] public ButtonAbility ButtonAbility;
+    public bool IsExplosive;
 
     protected void Destroy()
     {
-        GetComponent<Explosion>().ExplosonPlay(_damage, ButtonAbility.AudioExplosion);
+        if(IsExplosive)
+        {
+            ObjectPooler.Instance.SpawnFromPool("Explosion", transform.position, Quaternion.identity, this.gameObject);
+        }
+
+        Destroy(gameObject);
     }
 }

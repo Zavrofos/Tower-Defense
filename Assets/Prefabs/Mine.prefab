@@ -128,9 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360686f62b80cbe4caea9f4c998a603d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  DamageRadius: 3
+  Damage: 5
+  DamageRadius: 2
   ButtonAbility: {fileID: 0}
+  IsExplosive: 1
   Price: 10
 --- !u!95 &6232032564592555884
 Animator:
@@ -159,13 +160,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6232032564592555885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3977e1b6cd85f9046b14f1e95d3bf7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionParticle: {fileID: 2392891167910716257}
-  _damageRadius: 3
+  _audioExplosion: {fileID: 0}
 --- !u!199 &8908872598184253719
 ParticleSystemRenderer:
   serializedVersion: 6

@@ -7,11 +7,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D _rigidbody;
     [SerializeField] protected float _speed;
-    [SerializeField] protected int _damage;
+    [SerializeField] public int Damage;
     public Vector2 Direction;
     public AbsTower Tower;
     public Vector3 StartPosition;
     public float distanceBullet;
+    public float DamageRadius;
+    public bool IsExplosive;
 
     private void FixedUpdate()
     {
@@ -23,7 +25,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.TryGetComponent(out IApplayDamage damagedObj))
         {
-            damagedObj.ApplayDamage(_damage);
+            damagedObj.ApplayDamage(Damage);
             Hit();
         }
     }
@@ -41,13 +43,14 @@ public class Bullet : MonoBehaviour
 
     protected virtual void Hit()
     {
-        if(gameObject.TryGetComponent(out Explosion explosion))
+        if(IsExplosive)
         {
-            explosion.ExplosonPlay(_damage, Tower.gameObject.GetComponent<Tower>().AudioShoot);
+            ObjectPooler.Instance.SpawnFromPool("Explosion", 
+                transform.position, 
+                Quaternion.identity, 
+                this.gameObject); 
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        Destroy(gameObject);
     }
 }

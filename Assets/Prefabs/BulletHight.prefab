@@ -4906,11 +4906,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2321600036226989755}
   _speed: 100
-  _damage: 10
+  Damage: 5
   Direction: {x: 0, y: 0}
   Tower: {fileID: 0}
   StartPosition: {x: 0, y: 0, z: 0}
   distanceBullet: 0
+  DamageRadius: 2
+  IsExplosive: 1
 --- !u!114 &7142972742343532626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4918,13 +4920,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909212067704529392}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3977e1b6cd85f9046b14f1e95d3bf7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionParticle: {fileID: 4851699216776673934}
-  _damageRadius: 1.5
+  _audioExplosion: {fileID: 0}
 --- !u!199 &8246796369317214692
 ParticleSystemRenderer:
   serializedVersion: 6

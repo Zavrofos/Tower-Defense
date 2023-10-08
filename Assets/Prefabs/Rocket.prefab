@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3656b33555debeb4695cff22c67f6245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  _explosionPrefab: {fileID: 4160885126168922835, guid: b3e0b260244826243898d5b7d6a2bb69, type: 3}
+  Damage: 5
   DamageRadius: 2
   ButtonAbility: {fileID: 0}
+  IsExplosive: 1
   _rocketTransform: {fileID: 1336678595652331472}
   _speed: 1
 --- !u!114 &5898018538556873655
@@ -61,13 +61,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336678594888281769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3977e1b6cd85f9046b14f1e95d3bf7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionParticle: {fileID: 3203426448914458939}
-  _damageRadius: 2
+  _audioExplosion: {fileID: 0}
 --- !u!199 &1794561075131701435
 ParticleSystemRenderer:
   serializedVersion: 6
