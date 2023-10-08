@@ -5,6 +5,6 @@ namespace Assets.Scripts.ObjectPooler
 {
     public interface IPooledObject 
     {
-        void OnObjectSpawn();
+        void OnObjectSpawn(GameObject sender);
     }
 }

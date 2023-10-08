@@ -1,4 +1,5 @@
 using Assets.Scripts.ObjectPooler;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,19 +7,19 @@ using UnityEngine;
 public class ObjectPooler : MonoBehaviour
 {
     private Dictionary<string, Queue<GameObject>> _poolsMap;
-    private List<Pool> _pools;
+    [SerializeField] private List<Pool> _pools;
 
     public static ObjectPooler Instance;
 
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
     {
         _poolsMap = new Dictionary<string, Queue<GameObject>>();
-        _pools = new List<Pool>();
 
         foreach(var pool in _pools)
         {
@@ -26,7 +27,7 @@ public class ObjectPooler : MonoBehaviour
 
             for(int i = 0; i < pool.Count; i++)
             {
-                GameObject poolObj = Instantiate(pool.Prefab);
+                GameObject poolObj = Instantiate(pool.Prefab, transform);
                 poolObj.SetActive(false);
                 newPool.Enqueue(poolObj);
             }
@@ -36,7 +37,7 @@ public class ObjectPooler : MonoBehaviour
     }
 
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, GameObject sender)
     {
         if (!_poolsMap.ContainsKey(tag))
         {
@@ -52,7 +53,7 @@ public class ObjectPooler : MonoBehaviour
 
         if(pooledObject != null)
         {
-            pooledObject.OnObjectSpawn();
+            pooledObject.OnObjectSpawn(sender);
         }
 
         _poolsMap[tag].Enqueue(objToSpawn);
@@ -61,7 +62,7 @@ public class ObjectPooler : MonoBehaviour
     }
 }
 
-[SerializeField]
+[Serializable]
 public class Pool
 {
     public string Tag;
