@@ -26,7 +26,7 @@ public class Explosion : MonoBehaviour, IPooledObject
         }
     }
 
-    public void ExplosonPlay(int damage, float damageRadius)
+    private void ExplosonPlay(int damage, float damageRadius)
     {
         ParticleSystem.ShapeModule shapeModule = _explosionParticle.shape;
         shapeModule.radius = damageRadius / 2;

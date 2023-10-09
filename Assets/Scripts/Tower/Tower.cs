@@ -78,7 +78,6 @@ public class Tower : AbsTower
                 return;
             }
 
-            bullet.Tower = this;
             _timeToShoot = 0;
         }
     }
