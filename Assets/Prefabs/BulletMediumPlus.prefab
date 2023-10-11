@@ -138,8 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2321600036226989755}
   _speed: 200
-  _damage: 7
+  Damage: 0
   Direction: {x: 0, y: 0}
-  Tower: {fileID: 0}
   StartPosition: {x: 0, y: 0, z: 0}
   distanceBullet: 0
+  DamageRadius: 0
+  IsExplosive: 0
+  BulletType: 3

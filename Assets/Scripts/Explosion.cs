@@ -7,37 +7,31 @@ public class Explosion : MonoBehaviour, IPooledObject
 {
     [SerializeField] private ParticleSystem _explosionParticle;
     [SerializeField] private AudioSource _audioExplosion;
+    [SerializeField] private int _damage;
+    [SerializeField] private float _damageRadius;
 
     private void OnEnable()
     {
         Invoke(nameof(TurnOff), 0.5f);
     }
 
-    public void OnObjectSpawn(GameObject sender)
+    public void OnObjectSpawn()
     {
-        if(sender.TryGetComponent(out Bullet bullet))
-        {
-            ExplosonPlay(bullet.Damage, bullet.DamageRadius);
-        }
-
-        if(sender.TryGetComponent(out Ability ability))
-        {
-            ExplosonPlay(ability.Damage, ability.DamageRadius);
-        }
+        ExplosonPlay();
     }
 
-    private void ExplosonPlay(int damage, float damageRadius)
+    private void ExplosonPlay()
     {
         ParticleSystem.ShapeModule shapeModule = _explosionParticle.shape;
-        shapeModule.radius = damageRadius / 2;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, damageRadius);
+        shapeModule.radius = _damageRadius / 2;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _damageRadius);
         _explosionParticle.Play();
         foreach (var collider in colliders)
         {
             if (collider.gameObject.tag == "Enemy")
             {
                 Enemy enemyObj = collider.gameObject.GetComponent<Enemy>();
-                enemyObj.ApplayDamage(damage);
+                enemyObj.ApplayDamage(_damage);
             }
         }
         _audioExplosion.Play();

@@ -140,8 +140,8 @@ MonoBehaviour:
   _speed: 100
   Damage: 5
   Direction: {x: 0, y: 0}
-  Tower: {fileID: 0}
   StartPosition: {x: 0, y: 0, z: 0}
   distanceBullet: 0
   DamageRadius: 2
   IsExplosive: 1
+  BulletType: 4

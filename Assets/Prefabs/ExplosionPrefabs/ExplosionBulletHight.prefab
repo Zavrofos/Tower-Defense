@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1056067728627641860}
   - component: {fileID: 388779122175184692}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: ExplosionBulletHight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4886,6 +4886,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionParticle: {fileID: 7773842936797389140}
   _audioExplosion: {fileID: 388779122175184692}
+  _damage: 5
+  _damageRadius: 2
 --- !u!82 &388779122175184692
 AudioSource:
   m_ObjectHideFlags: 0

@@ -9,12 +9,13 @@ public class Ability : MonoBehaviour
     public float DamageRadius;
     [HideInInspector] public ButtonAbility ButtonAbility;
     public bool IsExplosive;
+    public AbilityType AbilityType;
 
     protected void Destroy()
     {
         if(IsExplosive)
         {
-            ObjectPooler.Instance.SpawnFromPool("Explosion", transform.position, Quaternion.identity, this.gameObject);
+            ObjectPooler.Instance.SpawnFromPool("Explosion" + AbilityType, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject);

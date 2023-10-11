@@ -129,6 +129,7 @@ MonoBehaviour:
   DamageRadius: 2
   ButtonAbility: {fileID: 0}
   IsExplosive: 1
+  AbilityType: 1
   Price: 10
 --- !u!95 &6232032564592555884
 Animator:

@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.ObjectPooler;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Bullet : MonoBehaviour
     public float distanceBullet;
     public float DamageRadius;
     public bool IsExplosive;
+    public BulletType BulletType;
 
     private void FixedUpdate()
     {
@@ -31,7 +33,6 @@ public class Bullet : MonoBehaviour
 
     private void Destroy()
     {
-
         Vector2 vectorBetweenObjects = StartPosition - transform.position;
         float distance = vectorBetweenObjects.magnitude;
         if(distance >= distanceBullet)
@@ -44,10 +45,9 @@ public class Bullet : MonoBehaviour
     {
         if(IsExplosive)
         {
-            ObjectPooler.Instance.SpawnFromPool("Explosion", 
+            ObjectPooler.Instance.SpawnFromPool("Explosion" + BulletType, 
                 transform.position, 
-                Quaternion.identity, 
-                this.gameObject); 
+                Quaternion.identity); 
         }
 
         Destroy(gameObject);

@@ -37,7 +37,7 @@ public class ObjectPooler : MonoBehaviour
     }
 
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, GameObject sender)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!_poolsMap.ContainsKey(tag))
         {
@@ -53,7 +53,7 @@ public class ObjectPooler : MonoBehaviour
 
         if(pooledObject != null)
         {
-            pooledObject.OnObjectSpawn(sender);
+            pooledObject.OnObjectSpawn();
         }
 
         _poolsMap[tag].Enqueue(objToSpawn);
