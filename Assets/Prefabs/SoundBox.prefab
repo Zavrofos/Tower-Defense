@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7256788026414437167}
   - component: {fileID: 5410975684059656498}
+  - component: {fileID: 8800703422680062529}
   m_Layer: 0
   m_Name: SoundBox
   m_TagString: Untagged
@@ -128,3 +129,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8800703422680062529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4107267832743880576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bc51b9f2a05e641bf87adbc5799014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: SoundBox
