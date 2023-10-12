@@ -1,5 +1,5 @@
 using Assets.Scripts;
-using Assets.Scripts.ObjectPooler;
+using Assets.Scripts.RepPoolObject;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,11 +45,13 @@ public class Bullet : MonoBehaviour
     {
         if(IsExplosive)
         {
-            ObjectPooler.Instance.SpawnFromPool("Explosion" + BulletType, 
+            PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + BulletType, 
                 transform.position, 
-                Quaternion.identity); 
-        }
+                Quaternion.identity);
 
+            Explosion explosion = (Explosion)pooledObj;
+            explosion.ExplosonPlay();
+        }
         Destroy(gameObject);
     }
 }

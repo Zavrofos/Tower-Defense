@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using System.Collections;
 using UnityEngine;
 
@@ -15,7 +16,12 @@ public class Ability : MonoBehaviour
     {
         if(IsExplosive)
         {
-            ObjectPooler.Instance.SpawnFromPool("Explosion" + AbilityType, transform.position, Quaternion.identity);
+            PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + AbilityType, 
+                transform.position, 
+                Quaternion.identity);
+
+            Explosion explosion = (Explosion)pooledObj;
+            explosion.ExplosonPlay();
         }
 
         Destroy(gameObject);
