@@ -16,14 +16,19 @@ public class Ability : MonoBehaviour
     {
         if(IsExplosive)
         {
-            PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + AbilityType, 
-                transform.position, 
-                Quaternion.identity);
-
-            Explosion explosion = (Explosion)pooledObj;
-            explosion.ExplosonPlay();
+            BlowUp();
         }
 
         Destroy(gameObject);
+    }
+
+    private void BlowUp()
+    {
+        PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + AbilityType,
+                transform.position,
+                Quaternion.identity);
+
+        Explosion explosion = (Explosion)pooledObj;
+        explosion.ExplosonPlay();
     }
 }
