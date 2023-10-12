@@ -4884,6 +4884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3977e1b6cd85f9046b14f1e95d3bf7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tag: ExplosionMine
   _explosionParticle: {fileID: 7773842936797389140}
   _audioExplosion: {fileID: 388779122175184692}
   _damage: 5

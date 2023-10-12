@@ -1135,6 +1135,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685746051}
   m_CullTransparentMesh: 1
+--- !u!1 &740885344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740885346}
+  - component: {fileID: 740885345}
+  m_Layer: 0
+  m_Name: GameAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &740885345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740885344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e79f0a78fcc8a47981f6051f4f6ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundAudioClips:
+  - Sound: 0
+    AudioClip: {fileID: 8300000, guid: b89a286bda0ad9e4395dd6d608d6407d, type: 3}
+    Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  - Sound: 1
+    AudioClip: {fileID: 8300000, guid: 9e6c9568dfe877447a6da5fbe3100702, type: 3}
+    Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  - Sound: 2
+    AudioClip: {fileID: 8300000, guid: d2ac9caae34b6d1479509cc783eff3c9, type: 3}
+    Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  - Sound: 3
+    AudioClip: {fileID: 8300000, guid: 5c160c9c0b8678b45b9c604ce001842d, type: 3}
+    Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  - Sound: 4
+    AudioClip: {fileID: 8300000, guid: 2f1672786c2d5c8408ca0e5654b0488d, type: 3}
+    Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  - Sound: 5
+    AudioClip: {fileID: 8300000, guid: dafb6c7b21e06c341afcad47815379d2, type: 3}
+    Output: {fileID: 405951902945317161, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+--- !u!4 &740885346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740885344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &766517300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,9 +1821,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pools:
-  - Tag: Explosion
-    Prefab: {fileID: 5190707175024210460, guid: f4af6182de463e44f88c8e4999919f33, type: 3}
-    Count: 10
+  - Tag: ExplosionHight
+    Prefab: {fileID: 1056067728627641860, guid: f4af6182de463e44f88c8e4999919f33, type: 3}
+    Count: 5
+  - Tag: ExplosionHightPlus
+    Prefab: {fileID: 1056067728627641860, guid: ac5e647a736847a4c8891c359b68a841, type: 3}
+    Count: 5
+  - Tag: ExplosionRocket
+    Prefab: {fileID: 1056067728627641860, guid: 5db00e10a47f98f4e90105eeb40c0e2b, type: 3}
+    Count: 5
+  - Tag: ExplosionMine
+    Prefab: {fileID: 1056067728627641860, guid: ae54d8d0669c5424fa74d55d72bf5e5b, type: 3}
+    Count: 5
 --- !u!4 &1063011278
 Transform:
   m_ObjectHideFlags: 0
