@@ -1,44 +1,48 @@
-using Assets.Scripts.ObjectPooler;
+using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
+using Assets.Scripts.Tower;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour, IPooledObject
+public class Explosion : PooledObject
 {
+    [SerializeField] private string _tag;
+    public override string Tag => _tag;
+
     [SerializeField] private ParticleSystem _explosionParticle;
     [SerializeField] private AudioSource _audioExplosion;
     [SerializeField] private int _damage;
     [SerializeField] private float _damageRadius;
 
-    private void OnEnable()
+    private IPlayableParticle _playParticleSystem;
+    private IGivingEffects _givingEffectsSystem;
+    private IFinderObjects _finderObjectsSystem;
+
+    private void Awake()
     {
-        Invoke(nameof(TurnOff), 0.5f);
+        _playParticleSystem = new ExplosionParticle(_explosionParticle, _damageRadius);
+        _givingEffectsSystem = new DamageEffect(_damage);
+        _finderObjectsSystem = new CircleFinderObjects("Enemy", _damageRadius);
     }
 
-    public void OnObjectSpawn()
+    public void ExplosonPlay()
     {
-        ExplosonPlay();
-    }
+        _playParticleSystem.Play();
 
-    private void ExplosonPlay()
-    {
-        ParticleSystem.ShapeModule shapeModule = _explosionParticle.shape;
-        shapeModule.radius = _damageRadius / 2;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _damageRadius);
-        _explosionParticle.Play();
-        foreach (var collider in colliders)
+        foreach(var target in _finderObjectsSystem.Find(transform.position))
         {
-            if (collider.gameObject.tag == "Enemy")
-            {
-                Enemy enemyObj = collider.gameObject.GetComponent<Enemy>();
-                enemyObj.ApplayDamage(_damage);
-            }
+            _givingEffectsSystem.SetEffect(target);
         }
+
         _audioExplosion.Play();
+        StartCoroutine(TurnOff(_audioExplosion.clip.length));
     }
 
-    private void TurnOff()
+    private IEnumerator TurnOff(float seconds)
     {
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(seconds);
+        ObjectPooler.Instance.ReturnToPool(this);
     }
 }
