@@ -1,6 +1,5 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
-using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -24,14 +23,15 @@ public class TowerOfCold : AbsTower
     {
         _coldEffectSystem = new ColdParticle(_coldEfect);
         _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
-        FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         _gameManager = FindObjectOfType<GameManagerInGame>();
     }
 
     public override void UpdateGame()
     {
-        if (FinderEnemyesSystem.TargetEnemy == null)
+        Transform targetEnemy = GetNearestEnemy(FinderNearestEnemies.Find("Enemy", transform.position));
+
+        if (targetEnemy == null)
         {
             _coldEffectSystem.Stop();
             if(_soundShoot != null)
@@ -52,7 +52,7 @@ public class TowerOfCold : AbsTower
             _soundShoot.PlaySound(SoundType.Cold);
         }
         
-        RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
+        RotationSystem.Rotate(targetEnemy);
 
         foreach(var target in _finderObjectsSystem.Find("Enemy",transform.position))
         {

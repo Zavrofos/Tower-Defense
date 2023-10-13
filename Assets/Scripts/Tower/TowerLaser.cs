@@ -1,8 +1,8 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
-using Assets.Scripts.Tower.FinderEnemyes;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 
@@ -27,7 +27,6 @@ public class TowerLaser : AbsTower
 
     public override void StartGame()
     {
-        FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _endPoint.localPosition = new Vector2(0, 0);
         Lazer.LineRenderer.SetPosition(0, _startPoint.localPosition);
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
@@ -39,7 +38,9 @@ public class TowerLaser : AbsTower
 
     public override void UpdateGame()
     {
-        if (FinderEnemyesSystem.TargetEnemy != null)
+        Transform targetEnemy = GetNearestEnemy(FinderNearestEnemies.Find("Enemy", transform.position));
+
+        if (targetEnemy != null)
         {
             WorkTower();
         }

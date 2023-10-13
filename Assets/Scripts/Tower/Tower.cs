@@ -1,6 +1,5 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
-using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -23,19 +22,20 @@ public class Tower : AbsTower
     public override void StartGame()
     {
         _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
-        FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         _currentBullet = _bulletPrefabs[0];
     }
 
     public override void UpdateGame()
     {
-        if(FinderEnemyesSystem.TargetEnemy == null)
+        Transform targetEnemy = GetNearestEnemy(FinderNearestEnemies.Find("Enemy", transform.position));
+
+        if (targetEnemy == null)
         {
             return;
         }
 
-        RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
+        RotationSystem.Rotate(targetEnemy);
 
         foreach (var target in _finderObjectsSystem.Find("Enemy", transform.position))
         {
@@ -45,7 +45,7 @@ public class Tower : AbsTower
                 foreach (var type in TargetsEnemyType)
                 {
                     if (enemy.Type == type &&
-                        enemy.gameObject == FinderEnemyesSystem.TargetEnemy.gameObject)
+                        enemy.gameObject == targetEnemy.gameObject)
                     {
                         Shoot();
                     }

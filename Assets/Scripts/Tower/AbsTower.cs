@@ -1,6 +1,5 @@
 using Assets.Scripts;
 using Assets.Scripts.Tower;
-using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +7,9 @@ using UnityEngine.UI;
 
 public abstract class AbsTower : MonoBehaviour
 {
-    public IFinderEnemyesSystem FinderEnemyesSystem;
     public IDamageSystem DamageSystem;
     public IRotation RotationSystem;
+    protected IFinderObjects FinderNearestEnemies;
 
     public Sprite _icon;
     public string _label;
@@ -32,8 +31,8 @@ public abstract class AbsTower : MonoBehaviour
     {
         DamageSystem = GetComponent<IDamageSystem>();
         RotationSystem = GetComponent<IRotation>();
+        FinderNearestEnemies = new CircleFinderObjects(FiringRadius);
         StartGame();
-        InvokeRepeating("Invoker", 0, 1);
     }
 
     private void Update()
@@ -53,8 +52,28 @@ public abstract class AbsTower : MonoBehaviour
         DamageSystem.ApplayDamage(damage);
     }
 
-    private void Invoker()
+    protected Transform GetNearestEnemy(IEnumerable<GameObject> enemies)
     {
-        FinderEnemyesSystem.FindNearbyEnemy();
+        float shortestDistance = Mathf.Infinity;
+        Transform nearestEnemy = null;
+
+        foreach(var type in TargetsEnemyType)
+        {
+            foreach (var enemy in enemies)
+            {
+                if(enemy.TryGetComponent(out Enemy en) && en.Type == type)
+                {
+                    float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+
+                    if (distanceToEnemy < shortestDistance)
+                    {
+                        shortestDistance = distanceToEnemy;
+                        nearestEnemy = enemy.transform;
+                    }
+                }
+            }
+        }
+
+        return nearestEnemy;
     }
 }

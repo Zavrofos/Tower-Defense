@@ -659,7 +659,6 @@ GameObject:
   - component: {fileID: -947922700031299267}
   - component: {fileID: 372127327293934796}
   - component: {fileID: 6755261774086210133}
-  - component: {fileID: -4062321404300520322}
   m_Layer: 11
   m_Name: Towerlaser
   m_TagString: Tower
@@ -747,7 +746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822ab03cf871fb5448cc3805ad0c79a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerInfo: {fileID: 0}
   _icon: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
   _label: TowerLaser
   _price: 30
@@ -846,37 +844,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partToRotate: {fileID: 825172555351694145}
   _speedRotation: 100
---- !u!114 &-4062321404300520322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7956219493098163114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2494a842b49439459b7244a1be7c87c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _label: 
-  _price: 0
-  _upgradePrice: 0
-  _firingRadius: 0
-  _description: 
-  _startPointLaser: {fileID: 0}
-  _endPointLaser: {fileID: 0}
-  _lazer: {fileID: 0}
-  _secondPartTower: {fileID: 0}
-  _secondPartTowerSpriteRenderer: {fileID: 0}
-  _lazerImprove: {fileID: 0}
-  _startPointLaserImprove: {fileID: 0}
-  _endPointLaserImprove: {fileID: 0}
-  _laserSpawnRate: 0
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  _damage: 0
 --- !u!1 &8468037333358978348
 GameObject:
   m_ObjectHideFlags: 0

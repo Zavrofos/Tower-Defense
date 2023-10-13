@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 5138396598073823374}
   - component: {fileID: 9045730217271300283}
   - component: {fileID: -7384244232556577362}
-  - component: {fileID: -8803770834026744674}
   m_Layer: 11
   m_Name: TowerLow
   m_TagString: Tower
@@ -345,7 +344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369a9468c73aad4480774b2ac758f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerInfo: {fileID: 0}
   _icon: {fileID: 21300000, guid: 40e8b999923f4fa409ff70637aa043d5, type: 3}
   _label: TowerLow
   _price: 10
@@ -364,23 +362,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 505433308ebeb044a96810daa9dafd69, type: 3}
   _fire: {fileID: 7705580741368652392}
   _currentBullet: {fileID: 0}
-  DirectionToShoot: {x: 0, y: 0}
   _timeToShoot: 0
-  AudioShoot: {fileID: 868011864579627075}
-  contactFilter:
-    useTriggers: 1
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 1536
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
+  SoundShoot: 0
 --- !u!114 &9045730217271300283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,32 +393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partToRotate: {fileID: 6789707796415871934}
   _speedRotation: 10
---- !u!114 &-8803770834026744674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789707795654957662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f34c62f15523949a0452a43f53f4c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _label: 
-  _price: 0
-  _upgradePrice: 0
-  _firingRadius: 0
-  _description: 
-  _shootPoint: {fileID: 0}
-  _bulletPrefabs: []
-  _delayTimeToShoot: 0
-  _spriteRendererTower: {fileID: 0}
-  _spritesTower: []
-  _currentBullet: {fileID: 0}
-  _audioShoot: {fileID: 0}
-  _shotEfect: {fileID: 0}
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0
