@@ -19,5 +19,10 @@ namespace Assets.Scripts
             shapeModule.radius = _radius / 2;
             _explosionParticle.Play();
         }
+
+        public void Stop()
+        {
+            _explosionParticle.Stop();
+        }
     }
 }

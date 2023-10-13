@@ -6,5 +6,6 @@ namespace Assets.Scripts
     public interface IPlayableParticle 
     {
         void Play();
+        void Stop();
     }
 }
