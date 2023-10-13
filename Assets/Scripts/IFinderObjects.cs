@@ -6,6 +6,6 @@ namespace Assets.Scripts
 {
     public interface IFinderObjects
     {
-        IEnumerable<GameObject> Find(string tag, Vector3 position);
+        IEnumerable<GameObject> Find(string layerMask, Vector3 position);
     }
 }

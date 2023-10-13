@@ -18,15 +18,14 @@ public class Tower : AbsTower
     public float _timeToShoot;
     [SerializeField] private SoundType SoundShoot;
 
-    private RaycastHit2D[] results;
-    [SerializeField] private ContactFilter2D contactFilter;
+    private IFinderObjects _finderObjectsSystem;
 
     public override void StartGame()
     {
+        _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
         FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         _currentBullet = _bulletPrefabs[0];
-        results = new RaycastHit2D[3];
     }
 
     public override void UpdateGame()
@@ -38,12 +37,10 @@ public class Tower : AbsTower
 
         RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
 
-        Physics2D.Raycast(transform.position, (_shootPoint.position - transform.position), contactFilter, results, _firingRadius);
-        
-        foreach (var result in results)
+        foreach (var target in _finderObjectsSystem.Find("Enemy", transform.position))
         {
-            if (result.collider != null &&
-                result.collider.gameObject.TryGetComponent(out Enemy enemy))
+            if (target != null &&
+                target.TryGetComponent(out Enemy enemy))
             {
                 foreach (var type in TargetsEnemyType)
                 {

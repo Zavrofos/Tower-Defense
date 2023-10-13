@@ -13,13 +13,13 @@ namespace Assets.Scripts
             _radius = radius;
         }
 
-        public IEnumerable<GameObject> Find(string tag, Vector3 position)
+        public IEnumerable<GameObject> Find(string layerMask, Vector3 position)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(position, _radius);
             
             foreach(var collider in colliders)
             {
-                if(collider.gameObject.tag == tag)
+                if(collider.gameObject.layer == LayerMask.NameToLayer(layerMask))
                 {
                     yield return collider.gameObject;
                 }

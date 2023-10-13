@@ -14,19 +14,18 @@ public class TowerOfCold : AbsTower
     public Sprite[] _spritesTower;
     public float _timeToShoot;
     public ParticleSystem _coldEfect;
-    private RaycastHit2D[] results;
-    [SerializeField] private ContactFilter2D contactFilter;
     private GameManagerInGame _gameManager;
     private IPlayableParticle _coldEffectSystem;
+    private IFinderObjects _finderObjectsSystem;
 
     private SoundBox _soundShoot;
 
     public override void StartGame()
     {
         _coldEffectSystem = new ColdParticle(_coldEfect);
+        _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
         FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
-        results = new RaycastHit2D[10];
         _gameManager = FindObjectOfType<GameManagerInGame>();
     }
 
@@ -55,16 +54,11 @@ public class TowerOfCold : AbsTower
         
         RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
 
-        Physics2D.Raycast(transform.position, (_shootPoint.position - transform.position), contactFilter, results, _firingRadius);
-
-        foreach (var result in results)
+        foreach(var target in _finderObjectsSystem.Find("Enemy",transform.position))
         {
-            if (result)
+            if (target.TryGetComponent(out IFrozen frozenObj))
             {
-                if(result.collider.gameObject.TryGetComponent(out IFrozen frozenObj))
-                {
-                    frozenObj.Freeze();
-                }
+                frozenObj.Freeze();
             }
         }
     }
