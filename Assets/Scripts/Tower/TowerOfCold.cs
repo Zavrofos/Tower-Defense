@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,8 +16,9 @@ public class TowerOfCold : AbsTower
     public ParticleSystem _coldEfect;
     private RaycastHit2D[] results;
     [SerializeField] private ContactFilter2D contactFilter;
-    [SerializeField] private AudioSource AudioCold;
     private GameManagerInGame _gameManager;
+
+    private SoundBox _soundShoot;
 
     public override void StartGame()
     {
@@ -30,12 +32,29 @@ public class TowerOfCold : AbsTower
     {
         if (FinderEnemyesSystem.TargetEnemy == null)
         {
-            if (_coldEfect.isPlaying) _coldEfect.Stop();
+            if (_coldEfect.isPlaying)
+            {
+                _coldEfect.Stop();
+            }
+                
+            if(_soundShoot != null)
+            {
+                ObjectPooler.Instance.ReturnToPool(_soundShoot);
+                _soundShoot = null;
+            }
             return;
         }
+
         _coldEfect.gameObject.SetActive(true);
         if (!_coldEfect.isPlaying) _coldEfect.Play();
-        if (!AudioCold.isPlaying && !_gameManager.IsPouse) AudioCold.Play();
+
+        if(_soundShoot == null)
+        {
+            _soundShoot = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            transform.position,
+            transform.rotation);
+            _soundShoot.PlaySound(SoundType.Cold);
+        }
         
         RotationSystem.Rotate(FinderEnemyesSystem.TargetEnemy);
 
@@ -56,5 +75,10 @@ public class TowerOfCold : AbsTower
     public override void Improve()
     {
         _spriteRendererTower.sprite = _spritesTower[1];
+    }
+
+    private void OnDisable()
+    {
+        ObjectPooler.Instance.ReturnToPool(_soundShoot);
     }
 }

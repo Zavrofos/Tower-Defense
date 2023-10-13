@@ -421,6 +421,7 @@ MonoBehaviour:
   _currentBullet: {fileID: 0}
   _timeToShoot: 0
   AudioShoot: {fileID: -2020818281240043316}
+  SoundShoot: 1
   contactFilter:
     useTriggers: 1
     useLayerMask: 1

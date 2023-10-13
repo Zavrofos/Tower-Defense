@@ -12,7 +12,6 @@ public class Explosion : PooledObject
     public override string Tag => _tag;
 
     [SerializeField] private ParticleSystem _explosionParticle;
-    [SerializeField] private AudioSource _audioExplosion;
     [SerializeField] private int _damage;
     [SerializeField] private float _damageRadius;
 
@@ -36,8 +35,16 @@ public class Explosion : PooledObject
             _givingEffectsSystem.SetEffect(target);
         }
 
-        _audioExplosion.Play();
-        StartCoroutine(TurnOff(_audioExplosion.clip.length));
+        PlaySound(SoundType.Explosion);
+        StartCoroutine(TurnOff(0.5f));
+    }
+
+    private void PlaySound(SoundType type)
+    {
+        SoundBox audio = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            transform.position,
+            transform.rotation);
+        audio.PlaySound(type);
     }
 
     private IEnumerator TurnOff(float seconds)

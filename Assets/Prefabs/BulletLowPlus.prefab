@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2321600036226989755}
   _speed: 300
-  Damage: 0
+  Damage: 5
   Direction: {x: 0, y: 0}
   StartPosition: {x: 0, y: 0, z: 0}
   distanceBullet: 0

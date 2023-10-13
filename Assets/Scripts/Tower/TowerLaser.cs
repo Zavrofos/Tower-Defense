@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.Tower.FinderEnemyes;
 using System;
 using System.Collections;
@@ -22,8 +23,7 @@ public class TowerLaser : AbsTower
     public int _damage;
 
     public bool IsImproved = false;
-
-    public AudioSource AudioLaser;
+    private SoundBox _soundLaser;
 
     public override void StartGame()
     {
@@ -78,7 +78,14 @@ public class TowerLaser : AbsTower
 
     public void OnLazer()
     {
-        if (!AudioLaser.isPlaying) AudioLaser.Play();
+        if(_soundLaser == null)
+        {
+            _soundLaser = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            transform.position,
+            transform.rotation);
+            _soundLaser.PlaySound(SoundType.Laser);
+        }
+
         float positionY = _endPoint.localPosition.y;
         positionY += LaserSpawnRate * Time.deltaTime;
         Vector2 newPosition = new Vector2(0, positionY);
@@ -97,6 +104,11 @@ public class TowerLaser : AbsTower
 
     public void OffLazer()
     {
+        if (_soundLaser != null)
+        {
+            _soundLaser = null;
+        }
+
         Lazer.BoxCollider.enabled = false;
         float positionY = _endPoint.localPosition.y;
         positionY -= LaserSpawnRate * Time.deltaTime;
@@ -122,6 +134,11 @@ public class TowerLaser : AbsTower
         Lazer.BoxCollider.enabled = false;
         _secondPartTowerImprove.SetActive(true);
         IsImproved = true;
+
+        if (_soundLaser != null)
+        {
+            _soundLaser = null;
+        }
     }
 
     public void GiveDamageEnemy(Enemy enemy)

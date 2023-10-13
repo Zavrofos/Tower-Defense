@@ -19,7 +19,12 @@ namespace Assets.Scripts.RepPoolObject
             DontDestroyOnLoad(this);
         }
 
-        private void Start()
+        //private void Start()
+        //{
+            
+        //}
+
+        public void Initialize()
         {
             _poolsMap = new Dictionary<string, MonoPool<PooledObject>>();
 

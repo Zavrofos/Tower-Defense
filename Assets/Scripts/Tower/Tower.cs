@@ -1,3 +1,5 @@
+using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.Tower.FinderEnemyes;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ public class Tower : AbsTower
     public Fire _fire;
     public Bullet _currentBullet;
     public float _timeToShoot;
-    public AudioSource AudioShoot;
+    [SerializeField] private SoundType SoundShoot;
 
     private RaycastHit2D[] results;
     [SerializeField] private ContactFilter2D contactFilter;
@@ -73,13 +75,22 @@ public class Tower : AbsTower
             if(_fire != null)
             {
                 _fire.gameObject.SetActive(true);
-                AudioShoot.Play();
+                PlaySound(SoundShoot);
                 _timeToShoot = 0;
                 return;
             }
 
             _timeToShoot = 0;
         }
+    }
+
+    private void PlaySound(SoundType type)
+    {
+        SoundBox sound = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            transform.position,
+            transform.rotation);
+
+        sound.PlaySound(type);
     }
 
     public override void Improve()

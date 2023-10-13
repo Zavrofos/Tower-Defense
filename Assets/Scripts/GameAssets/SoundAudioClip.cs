@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Enums;
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -6,6 +7,7 @@ using UnityEngine.Audio;
 public class SoundAudioClip
 {
     public SoundType Sound;
+    public SoundCategory SoundCategory;
     public AudioClip AudioClip;
     public AudioMixerGroup Output;
 }

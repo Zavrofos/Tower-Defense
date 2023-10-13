@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.RepPoolObject;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ namespace Assets.Scripts
 
         public int CurrentLevel;
 
+        [SerializeField] private ObjectPooler _objectPooler;
+        [SerializeField] private AudioManager _audioManager;
+
         private void Awake()
         {
             if(Instance == null)
@@ -31,6 +35,11 @@ namespace Assets.Scripts
             Destroy(gameObject);
         }
 
+        private void Start()
+        {
+            _objectPooler.Initialize();
+            _audioManager.Initialize();
+        }
 
         private void SetStartGameSettings()
         {
