@@ -23,14 +23,14 @@ public class Explosion : PooledObject
     {
         _playParticleSystem = new ExplosionParticle(_explosionParticle, _damageRadius);
         _givingEffectsSystem = new DamageEffect(_damage);
-        _finderObjectsSystem = new CircleFinderObjects("Enemy", _damageRadius);
+        _finderObjectsSystem = new CircleFinderObjects(_damageRadius);
     }
 
     public void ExplosonPlay()
     {
         _playParticleSystem.Play();
 
-        foreach(var target in _finderObjectsSystem.Find(transform.position))
+        foreach(var target in _finderObjectsSystem.Find("Enemy", transform.position))
         {
             _givingEffectsSystem.SetEffect(target);
         }
