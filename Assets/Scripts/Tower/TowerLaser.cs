@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
+using Assets.Scripts.Tower.RotationSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ public class TowerLaser : AbsTower
 
     public override void StartGame()
     {
+        RotationSystem = new Rotator(PartToRotate, SpeedRotation);
         _endPoint.localPosition = new Vector2(0, 0);
         Lazer.LineRenderer.SetPosition(0, _startPoint.localPosition);
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
@@ -66,8 +68,8 @@ public class TowerLaser : AbsTower
 
     public void StopTower()
     {
-        if (RotationSystem.PartToRotate.rotation.eulerAngles.z > 0.5f || 
-            RotationSystem.PartToRotate.rotation.eulerAngles.z < -0.5f)
+        if (PartToRotate.rotation.eulerAngles.z > 0.5f || 
+            PartToRotate.rotation.eulerAngles.z < -0.5f)
         {
             RotationSystem.Rotate();
         }

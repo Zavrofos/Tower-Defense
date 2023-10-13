@@ -658,7 +658,6 @@ GameObject:
   - component: {fileID: -696675950956576577}
   - component: {fileID: -947922700031299267}
   - component: {fileID: 372127327293934796}
-  - component: {fileID: 6755261774086210133}
   m_Layer: 11
   m_Name: Towerlaser
   m_TagString: Tower
@@ -752,6 +751,8 @@ MonoBehaviour:
   _upgradePrice: 20
   _firingRadius: 2.5
   _description: 'Targets: Ground'
+  PartToRotate: {fileID: 825172555351694145}
+  SpeedRotation: 100
   TargetsEnemyType: 00000000
   _startPoint: {fileID: 1986548969348663761}
   _endPoint: {fileID: 1986548969163610207}
@@ -830,20 +831,6 @@ MonoBehaviour:
   SpriteRender: {fileID: 2124735760161885360}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
   _secondPartTowerSpriteRenderer: {fileID: 5561687096201172710}
---- !u!114 &6755261774086210133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7956219493098163114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b8ae35f3a6b9043afb9eb9910755fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _partToRotate: {fileID: 825172555351694145}
-  _speedRotation: 100
 --- !u!1 &8468037333358978348
 GameObject:
   m_ObjectHideFlags: 0

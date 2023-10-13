@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 868011864579627075}
   - component: {fileID: 5138396598073823374}
   - component: {fileID: 9045730217271300283}
-  - component: {fileID: -7384244232556577362}
   m_Layer: 11
   m_Name: TowerLow
   m_TagString: Tower
@@ -350,6 +349,8 @@ MonoBehaviour:
   _upgradePrice: 15
   _firingRadius: 3
   _description: 'Targets: Ground, Air'
+  PartToRotate: {fileID: 6789707796415871934}
+  SpeedRotation: 10
   TargetsEnemyType: 0000000001000000
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
@@ -379,20 +380,6 @@ MonoBehaviour:
   _health: 200
   SpriteRender: {fileID: 6789707796415871935}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
---- !u!114 &-7384244232556577362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789707795654957662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022bfb1831a75c146b7abafecafacd74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _partToRotate: {fileID: 6789707796415871934}
-  _speedRotation: 10
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0

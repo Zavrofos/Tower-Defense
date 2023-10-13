@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
+using Assets.Scripts.Tower.RotationSystem;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
@@ -23,6 +24,7 @@ public class TowerOfCold : AbsTower
     {
         _coldEffectSystem = new ColdParticle(_coldEfect);
         _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
+        RotationSystem = new RotateTargeting(PartToRotate, SpeedRotation);
         _spriteRendererTower.sprite = _spritesTower[0];
         _gameManager = FindObjectOfType<GameManagerInGame>();
     }

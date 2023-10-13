@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IRotation
+public interface IRotateable
 {
-    public Transform PartToRotate { get; }
     void Rotate(Transform target = null);
 }

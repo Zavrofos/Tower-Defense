@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 374991481687455904}
   - component: {fileID: -2020818281240043316}
   - component: {fileID: -1707071543564513389}
-  - component: {fileID: -1659519302324027187}
   - component: {fileID: 5896877265377235719}
   m_Layer: 11
   m_Name: TowerMedium
@@ -347,20 +346,6 @@ MonoBehaviour:
   _health: 300
   SpriteRender: {fileID: 6789707796415871935}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
---- !u!114 &-1659519302324027187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789707795654957662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 022bfb1831a75c146b7abafecafacd74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _partToRotate: {fileID: 6789707796415871934}
-  _speedRotation: 10
 --- !u!114 &5896877265377235719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +364,8 @@ MonoBehaviour:
   _upgradePrice: 25
   _firingRadius: 3
   _description: 'Targets: Ground'
+  PartToRotate: {fileID: 6789707796415871934}
+  SpeedRotation: 10
   TargetsEnemyType: 00000000
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:

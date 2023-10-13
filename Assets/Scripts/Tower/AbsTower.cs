@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public abstract class AbsTower : MonoBehaviour
 {
     public IDamageSystem DamageSystem;
-    public IRotation RotationSystem;
+    public IRotateable RotationSystem;
     protected IFinderObjects FinderNearestEnemies;
 
     public Sprite _icon;
@@ -17,6 +17,8 @@ public abstract class AbsTower : MonoBehaviour
     public int _upgradePrice;
     public float _firingRadius;
     public string _description;
+    public Transform PartToRotate;
+    public float SpeedRotation;
 
     public Sprite Icon => _icon;
     public string Label => _label;
@@ -30,7 +32,6 @@ public abstract class AbsTower : MonoBehaviour
     private void Start()
     {
         DamageSystem = GetComponent<IDamageSystem>();
-        RotationSystem = GetComponent<IRotation>();
         FinderNearestEnemies = new CircleFinderObjects(FiringRadius);
         StartGame();
     }
