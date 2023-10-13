@@ -17,11 +17,13 @@ public class TowerOfCold : AbsTower
     private RaycastHit2D[] results;
     [SerializeField] private ContactFilter2D contactFilter;
     private GameManagerInGame _gameManager;
+    private IPlayableParticle _coldEffectSystem;
 
     private SoundBox _soundShoot;
 
     public override void StartGame()
     {
+        _coldEffectSystem = new ColdParticle(_coldEfect);
         FinderEnemyesSystem = new FinderEnemyes(this.gameObject);
         _spriteRendererTower.sprite = _spritesTower[0];
         results = new RaycastHit2D[10];
@@ -32,11 +34,7 @@ public class TowerOfCold : AbsTower
     {
         if (FinderEnemyesSystem.TargetEnemy == null)
         {
-            if (_coldEfect.isPlaying)
-            {
-                _coldEfect.Stop();
-            }
-                
+            _coldEffectSystem.Stop();
             if(_soundShoot != null)
             {
                 ObjectPooler.Instance.ReturnToPool(_soundShoot);
@@ -45,8 +43,7 @@ public class TowerOfCold : AbsTower
             return;
         }
 
-        _coldEfect.gameObject.SetActive(true);
-        if (!_coldEfect.isPlaying) _coldEfect.Play();
+        _coldEffectSystem.Play();
 
         if(_soundShoot == null)
         {
@@ -79,6 +76,9 @@ public class TowerOfCold : AbsTower
 
     private void OnDisable()
     {
-        ObjectPooler.Instance.ReturnToPool(_soundShoot);
+        if(_soundShoot != null)
+        {
+            ObjectPooler.Instance.ReturnToPool(_soundShoot);
+        }
     }
 }
