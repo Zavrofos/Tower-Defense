@@ -1166,21 +1166,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundAudioClips:
   - Sound: 0
+    SoundCategory: 0
     AudioClip: {fileID: 8300000, guid: b89a286bda0ad9e4395dd6d608d6407d, type: 3}
     Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
   - Sound: 1
+    SoundCategory: 0
     AudioClip: {fileID: 8300000, guid: 9e6c9568dfe877447a6da5fbe3100702, type: 3}
     Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
   - Sound: 2
+    SoundCategory: 0
     AudioClip: {fileID: 8300000, guid: d2ac9caae34b6d1479509cc783eff3c9, type: 3}
     Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
   - Sound: 3
+    SoundCategory: 0
     AudioClip: {fileID: 8300000, guid: 5c160c9c0b8678b45b9c604ce001842d, type: 3}
     Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
   - Sound: 4
+    SoundCategory: 0
     AudioClip: {fileID: 8300000, guid: 2f1672786c2d5c8408ca0e5654b0488d, type: 3}
     Output: {fileID: -5707899691156438487, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
   - Sound: 5
+    SoundCategory: 0
     AudioClip: {fileID: 8300000, guid: dafb6c7b21e06c341afcad47815379d2, type: 3}
     Output: {fileID: 405951902945317161, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
 --- !u!4 &740885346
@@ -1640,7 +1646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbe625ca743d244d8b411ab8774c638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSourceMelody: {fileID: 893468676}
 --- !u!4 &893468678
 Transform:
   m_ObjectHideFlags: 0
@@ -2803,6 +2808,8 @@ MonoBehaviour:
   ResolutionIndex: 0
   IsFullscreen: 1
   CurrentLevel: 0
+  _objectPooler: {fileID: 0}
+  _audioManager: {fileID: 0}
 --- !u!1 &2088571179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7386049538671989039, guid: 67086bfa2e3f1d44790c7f3d6b230beb, type: 3}
