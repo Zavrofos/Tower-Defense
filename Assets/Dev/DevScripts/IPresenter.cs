@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace Assets.DevScripts
+﻿namespace Assets.Dev.DevScripts
 {
     public interface IPresenter 
     {

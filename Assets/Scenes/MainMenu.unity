@@ -1145,6 +1145,8 @@ GameObject:
   m_Component:
   - component: {fileID: 692026556}
   - component: {fileID: 692026555}
+  - component: {fileID: 692026558}
+  - component: {fileID: 692026557}
   m_Layer: 0
   m_Name: StarterGame
   m_TagString: Untagged
@@ -1164,6 +1166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4ccfb0b138a7f4dac7188eb4bd5107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameModel: {fileID: 0}
+  GameView: {fileID: 692026558}
 --- !u!4 &692026556
 Transform:
   m_ObjectHideFlags: 0
@@ -1179,6 +1183,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &692026557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692026554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb9d0acabf117149b3db7c6cbe553cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameGameText: {fileID: 922337392}
+  PlayGameButton: {fileID: 685746053}
+  LevelsGameButton: {fileID: 834481803}
+  OptionsButton: {fileID: 1608171690}
+  QuitGameButton: {fileID: 1725208770}
+  RotationObjects: []
+--- !u!114 &692026558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692026554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d789d2e276f4e9c1b3154cc38619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuView: {fileID: 692026557}
 --- !u!1 &740885344
 GameObject:
   m_ObjectHideFlags: 0
