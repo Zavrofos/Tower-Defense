@@ -1,3 +1,4 @@
+using Assets.Dev.DevScripts.Main_Menu;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,5 +11,5 @@ public class MainMenuView : MonoBehaviour
     public Button LevelsGameButton;
     public Button OptionsButton;
     public Button QuitGameButton;
-    public List<GameObject> RotationObjects;
+    public List<RotationObjectView> RotationObjects;
 }

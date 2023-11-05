@@ -2,7 +2,7 @@
 
 namespace Assets.Dev.DevScripts
 {
-    public class GameModel : MonoBehaviour
+    public class GameModel 
     {
         
     }
