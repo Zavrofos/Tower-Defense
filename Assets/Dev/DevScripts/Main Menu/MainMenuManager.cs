@@ -17,7 +17,8 @@ namespace Assets.Dev.DevScripts.Main_Menu
         {
             Presenters = new()
             {
-                new PlayGamePresenter(View, Model)
+                new PlayGamePresenter(Model, View),
+                new QuitGamePresenter(Model, View)
             };
 
             Updaters = new()

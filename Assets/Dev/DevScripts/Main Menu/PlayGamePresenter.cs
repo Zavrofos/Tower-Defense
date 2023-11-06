@@ -8,13 +8,13 @@ namespace Assets.Dev.DevScripts.Main_Menu
 {
     public class PlayGamePresenter : IPresenter
     {
-        private MainMenuView _view;
         private GameModel _model;
+        private MainMenuView _view;
 
-        public PlayGamePresenter(MainMenuView view, GameModel model)
+        public PlayGamePresenter(GameModel model, MainMenuView view)
         {
-            _view = view;
             _model = model;
+            _view = view;
         }
 
         public void Subscribe()

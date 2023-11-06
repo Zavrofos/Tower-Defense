@@ -7,10 +7,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Button _playButton;
     [SerializeField] private Button _levelsButton;
     [SerializeField] private Button _optionsButton;
-    [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeOptionsButton;
     [SerializeField] private Button _closeLevelsMenuButton;
 
@@ -28,13 +26,6 @@ public class MainMenu : MonoBehaviour
         _optionsMenu.SetActive(true);
     }
 
-    private void OnQuit()
-    {
-        Debug.Log("Quit!!!");
-        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
-        Application.Quit();
-    }
-
     private void OnCloseLevelsMenu()
     {
         _levelsMenu.SetActive(false);
@@ -49,7 +40,6 @@ public class MainMenu : MonoBehaviour
     {
         _levelsButton.onClick.AddListener(OnOpenLevelsMenu);
         _optionsButton.onClick.AddListener(OnOpenOptions);
-        _quitButton.onClick.AddListener(OnQuit);
         _closeLevelsMenuButton.onClick.AddListener(OnCloseLevelsMenu);
         _closeOptionsButton.onClick.AddListener(OnCloseOptions);
     }
@@ -58,7 +48,6 @@ public class MainMenu : MonoBehaviour
     {
         _levelsButton.onClick.RemoveListener(OnOpenLevelsMenu);
         _optionsButton.onClick.RemoveListener(OnOpenOptions);
-        _quitButton.onClick.RemoveListener(OnQuit);
         _closeLevelsMenuButton.onClick.RemoveListener(OnCloseLevelsMenu);
         _closeOptionsButton.onClick.RemoveListener(OnCloseOptions);
     }
