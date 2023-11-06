@@ -905,7 +905,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _optionsButton: {fileID: 1608171690}
   _closeOptionsButton: {fileID: 2037078263}
-  _optionsMenu: {fileID: 2088571179}
 --- !u!1 &685746051
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2373,7 @@ MonoBehaviour:
   - {fileID: 102900000, guid: 246747ffc3ab95449baedfa6e7c06073, type: 3}
   - {fileID: 102900000, guid: 256a77c3e923fe94bad5e4efa0f64034, type: 3}
   LevelsMenuView: {fileID: 1380975185}
-  SettingsMenuView: {fileID: 0}
+  SettingsMenuView: {fileID: 1854468444724769894}
 --- !u!1 &1725208768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,11 +2952,6 @@ MonoBehaviour:
   CurrentLevel: 0
   _objectPooler: {fileID: 1063011277}
   _audioManager: {fileID: 893468677}
---- !u!1 &2088571179 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7386049538671989039, guid: 67086bfa2e3f1d44790c7f3d6b230beb, type: 3}
-  m_PrefabInstance: {fileID: 7386049539536732164}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2088571182 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7386049538671989034, guid: 67086bfa2e3f1d44790c7f3d6b230beb, type: 3}
@@ -4297,7 +4291,7 @@ GameObject:
   - component: {fileID: 1854468444724769890}
   - component: {fileID: 1854468444724769894}
   m_Layer: 5
-  m_Name: OptionsMenu
+  m_Name: SettingsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4318,9 +4312,10 @@ MonoBehaviour:
   DropDownGraphics: {fileID: 1854468444383513155}
   DropdownResolutions: {fileID: 1854468446183043825}
   ToggleFullscreen: {fileID: 1854468444939188571}
-  VolumeMusic: {fileID: 1854468444473114761}
-  VolumeGame: {fileID: 1717690251475408209}
+  VolumeMusicSlider: {fileID: 1854468444473114761}
+  VolumeGameSlider: {fileID: 1717690251475408209}
   CloseSettingsWindow: {fileID: 1854468444673277369}
+  AudioMixer: {fileID: 24100000, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
 --- !u!222 &1854468444737711884
 CanvasRenderer:
   m_ObjectHideFlags: 0

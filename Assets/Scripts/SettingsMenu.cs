@@ -15,25 +15,6 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Toggle _toggle;
     [SerializeField] private TMP_Dropdown _dropdownResolutions;
 
-    private void Start()
-    {
-
-        _dropdownResolutions.ClearOptions();
-        _dropdownResolutions.AddOptions(GameManager.Instance.Options);
-        _dropdownResolutions.value = GameManager.Instance.ResolutionIndex;
-        _dropdownResolutions.RefreshShownValue();
-        SetResolution(GameManager.Instance.ResolutionIndex);
-
-        _sliderVolumeMusic.value = GameManager.Instance.MusicVolumeValue;
-        SetVolumeMusic(GameManager.Instance.MusicVolumeValue);
-
-        _dropdownGraphics.value = GameManager.Instance.IndexQuality;
-        SetQuality(GameManager.Instance.IndexQuality);
-
-        _toggle.isOn = GameManager.Instance.IsFullscreen;
-        SetFullscreen(GameManager.Instance.IsFullscreen);
-    }
-
     private void SetVolumeMusic(float value)
     {
         _audioMixer.SetFloat("MusicVolume", value);
