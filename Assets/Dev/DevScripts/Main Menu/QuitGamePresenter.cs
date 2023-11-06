@@ -7,12 +7,10 @@ namespace Assets.Dev.DevScripts.Main_Menu
 {
     public class QuitGamePresenter : IPresenter
     {
-        private GameModel _model;
         private MainMenuView _view;
 
-        public QuitGamePresenter(GameModel model, MainMenuView view)
+        public QuitGamePresenter(MainMenuView view)
         {
-            _model = model;
             _view = view;
         }
 
