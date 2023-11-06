@@ -1,5 +1,6 @@
 ﻿using Assets.Dev.DevScripts.Game;
 using Assets.Dev.DevScripts.Game.LevelsMenu;
+using Assets.Dev.DevScripts.Game.OptionsMenu;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,7 +38,9 @@ namespace Assets.Dev.DevScripts
             Presenters = new()
             {
                 new InitializeLevelMenuPresenter(Model, View),
-                new CloseLevelsMenuPresenter(View.LevelsMenuView)
+                new CloseLevelsMenuPresenter(View.LevelsMenuView),
+                new InitializeSettingsMenuPresenter(View.SettingsMenuView, Model),
+                new CloseSettingsMenuPresenter(View.SettingsMenuView)
             };
 
             Updaters = new()
