@@ -11,7 +11,7 @@ public class LevelsManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -27,9 +27,9 @@ public class LevelsManager : MonoBehaviour
         Levels = new List<Level>();
         if (data != null)
         {
-            for(int i = 0; i < CountLevels; i++)
+            for (int i = 0; i < CountLevels; i++)
             {
-                Levels.Add(new Level(i + 1) { IsOpen = data.OpenLevels[i] } );
+                Levels.Add(new Level(i + 1) { IsOpen = data.OpenLevels[i] });
             }
             return;
         }

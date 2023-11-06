@@ -32,9 +32,9 @@ public class GameManagerInGame : MonoBehaviour
     private void Start()
     {
         _countCoins.text = _coins.ToString();
-        if(LevelsManager.Instance != null)
+        if (LevelsManager.Instance != null)
         {
-            for(int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
+            for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
             {
                 Level level = LevelsManager.Instance.Levels[i];
                 LevelView levelPref = Instantiate(_levelViewPrefab, _conteiner);
