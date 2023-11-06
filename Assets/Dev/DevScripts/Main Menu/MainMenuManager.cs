@@ -20,6 +20,7 @@ namespace Assets.Dev.DevScripts.Main_Menu
                 new PlayGamePresenter(View),
                 new QuitGamePresenter(View),
                 new OpenLevelsMenuPresenter(View),
+                new OpenOptionsMenuPresenter(View)
             };
 
             Updaters = new()
