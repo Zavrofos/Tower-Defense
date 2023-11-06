@@ -1,10 +1,4 @@
-﻿using Assets.Scripts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Audio;
-using static UnityEditor.Progress;
+﻿using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Game.OptionsMenu
 {
@@ -67,8 +61,8 @@ namespace Assets.Dev.DevScripts.Game.OptionsMenu
             }
 
             _view.DropdownResolutions.ClearOptions();
-            _view.DropdownResolutions.AddOptions(GameManager.Instance.Options);
-            _view.DropdownResolutions.value = GameManager.Instance.ResolutionIndex;
+            _view.DropdownResolutions.AddOptions(_model.SettingsModel.Options);
+            _view.DropdownResolutions.value = _model.SettingsModel.CurrentResolutionIndex;
             _view.DropdownResolutions.RefreshShownValue();
 
             (int, int) resolution = _model.SettingsModel.Resolutions[_model.SettingsModel.CurrentResolutionIndex];
