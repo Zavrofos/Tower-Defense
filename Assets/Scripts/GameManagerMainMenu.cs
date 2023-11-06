@@ -9,7 +9,7 @@ public class GameManagerMainMenu : MonoBehaviour
 
     private void Start()
     {
-        if(LevelsManager.Instance != null)
+        if (LevelsManager.Instance != null)
         {
             for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
             {

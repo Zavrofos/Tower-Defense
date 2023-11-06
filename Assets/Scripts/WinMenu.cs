@@ -38,7 +38,7 @@ public class WinMenu : MonoBehaviour
 
     public void OpenNextLevel()
     {
-        if(GameManager.Instance.CurrentLevel < LevelsManager.Instance.CountLevels)
+        if (GameManager.Instance.CurrentLevel < LevelsManager.Instance.CountLevels)
         {
             LevelsManager.Instance.Levels[GameManager.Instance.CurrentLevel].OpenLevel();
         }
