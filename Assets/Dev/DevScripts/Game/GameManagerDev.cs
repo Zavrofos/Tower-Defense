@@ -32,7 +32,6 @@ namespace Assets.Dev.DevScripts
                 Destroy(gameObject);
             }
 
-
             Model = new GameModel();
 
             Presenters = new()
@@ -40,7 +39,10 @@ namespace Assets.Dev.DevScripts
                 new InitializeLevelMenuPresenter(Model, View),
                 new CloseLevelsMenuPresenter(View.LevelsMenuView),
                 new InitializeSettingsMenuPresenter(View.SettingsMenuView, Model),
-                new CloseSettingsMenuPresenter(View.SettingsMenuView)
+                new CloseSettingsMenuPresenter(View.SettingsMenuView),
+                new SetQualityPresenter(View.SettingsMenuView, Model.SettingsModel),
+                new SetResolutionPresenter(View.SettingsMenuView, Model.SettingsModel),
+                new SetFullscreenPresenter(View.SettingsMenuView, Model.SettingsModel)
             };
 
             Updaters = new()
