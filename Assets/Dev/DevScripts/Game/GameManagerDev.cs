@@ -43,7 +43,8 @@ namespace Assets.Dev.DevScripts
                 new SetQualityPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetResolutionPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetFullscreenPresenter(View.SettingsMenuView, Model.SettingsModel),
-                new SetVolumeMusicPresenter(View.SettingsMenuView, Model.SettingsModel)
+                new SetVolumeMusicPresenter(View.SettingsMenuView, Model.SettingsModel),
+                new SetVolumeGamePresenter(View.SettingsMenuView, Model.SettingsModel),
             };
 
             Updaters = new()
