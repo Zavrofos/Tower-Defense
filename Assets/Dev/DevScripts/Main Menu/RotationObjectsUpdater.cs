@@ -5,21 +5,16 @@ namespace Assets.Dev.DevScripts.Main_Menu
 {
     public class RotationObjectsUpdater : IUpdatable
     {
-        private GameView _gameView;
+        private MainMenuView _view;
 
-        public RotationObjectsUpdater(GameView gameView)
+        public RotationObjectsUpdater(MainMenuView view)
         {
-            _gameView = gameView;
+            _view = view;
         }
 
         public void Update(float deltaTime)
         {
-            if (_gameView.MainMenuView == null) 
-            {
-                return;
-            }
-
-            foreach(var rotationObject in _gameView.MainMenuView.RotationObjects)
+            foreach(var rotationObject in _view.RotationObjects)
             {
                 rotationObject.transform.Rotate(rotationObject.transform.forward * rotationObject.SpeedRotation * deltaTime);
             }

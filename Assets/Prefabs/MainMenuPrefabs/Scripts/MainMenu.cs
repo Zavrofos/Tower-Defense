@@ -17,11 +17,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _levelsMenu;
     [SerializeField] private GameObject _optionsMenu;
 
-    private void OnPlay()
-    {
-        GameManager.Instance.CurrentLevel = 1;
-        SceneManager.LoadScene("GameLevel1");
-    }
 
     private void OnOpenLevelsMenu()
     {
@@ -52,7 +47,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _playButton.onClick.AddListener(OnPlay);
         _levelsButton.onClick.AddListener(OnOpenLevelsMenu);
         _optionsButton.onClick.AddListener(OnOpenOptions);
         _quitButton.onClick.AddListener(OnQuit);
@@ -62,7 +56,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        _playButton.onClick.RemoveListener(OnPlay);
         _levelsButton.onClick.RemoveListener(OnOpenLevelsMenu);
         _optionsButton.onClick.RemoveListener(OnOpenOptions);
         _quitButton.onClick.RemoveListener(OnQuit);
