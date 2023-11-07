@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PouseMenu : MonoBehaviour
 {
     [SerializeField] private GameManagerInGame _gameManager;
-    [SerializeField] private Button _selectALevelButton;
+    public Button SelectALevelButton;
     [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
@@ -16,9 +16,8 @@ public class PouseMenu : MonoBehaviour
     [SerializeField] private Button _closeLevelsMenuButton;
     [SerializeField] private Button _closeOptionsMenuButton;
     
-    [SerializeField] private GameObject _pouseMenu;
-    [SerializeField] private GameObject _levelsMenu;
-    [SerializeField] private GameObject _optionsMenu;
+    public GameObject PouseMenuWindow;
+    public GameObject OptionsMenu;
 
     public bool IsPouse;
     
@@ -30,16 +29,10 @@ public class PouseMenu : MonoBehaviour
         _gameManagerInGame = FindObjectOfType<GameManagerInGame>();
     }
 
-    private void OnOpenLevelsMenu()
-    {
-        _levelsMenu.SetActive(true);
-        _pouseMenu.SetActive(false);
-    }
-
     private void OnOpenOptionsMenu()
     {
-        _optionsMenu.SetActive(true);
-        _pouseMenu.SetActive(false);
+        OptionsMenu.SetActive(true);
+        PouseMenuWindow.SetActive(false);
     }
 
     private void OnBackToMainMenu()
@@ -63,42 +56,31 @@ public class PouseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void OnCloseLevelsMenu()
-    {
-        _levelsMenu.SetActive(false);
-        _pouseMenu.SetActive(true);
-    }
-
     private void OnCloseOptionsMenu()
     {
-        _optionsMenu.SetActive(false);
-        _pouseMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+        PouseMenuWindow.SetActive(true);
     }
 
 
     private void OnEnable()
     {
-        _selectALevelButton.onClick.AddListener(OnOpenLevelsMenu);
         _optionsButton.onClick.AddListener(OnOpenOptionsMenu);
         _mainMenuButton.onClick.AddListener(OnBackToMainMenu);
         _quitButton.onClick.AddListener(OnQuit);
         _closeWindowButton.onClick.AddListener(OnCloseWindow);
-        _closeLevelsMenuButton.onClick.AddListener(OnCloseLevelsMenu);
         _closeOptionsMenuButton.onClick.AddListener(OnCloseOptionsMenu);
         IsPouse = true;
-        _levelsMenu.SetActive(false);
-        _optionsMenu.SetActive(false);
-        _pouseMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+        PouseMenuWindow.SetActive(true);
     }
 
     private void OnDisable()
     {
-        _selectALevelButton.onClick.RemoveListener(OnOpenLevelsMenu);
         _optionsButton.onClick.RemoveListener(OnOpenOptionsMenu);
         _mainMenuButton.onClick.RemoveListener(OnBackToMainMenu);
         _quitButton.onClick.RemoveListener(OnQuit);
         _closeWindowButton.onClick.RemoveListener(OnCloseWindow);
-        _closeLevelsMenuButton.onClick.RemoveListener(OnCloseLevelsMenu);
         _closeOptionsMenuButton.onClick.RemoveListener(OnCloseOptionsMenu);
         IsPouse = false;
     }

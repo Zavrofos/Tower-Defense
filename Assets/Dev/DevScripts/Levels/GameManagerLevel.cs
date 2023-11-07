@@ -19,7 +19,7 @@ public class GameManagerLevel : MonoBehaviour
         Presenters = new()
         {
             new OpenLevelsMenuPresenterInGame(View),
-            new CloseLevelsMenuPresenter(GameManagerDev.Instance.View.LevelsMenuView),
+            new CloseLevelsMenuPresenterInGame(View)
         };
 
         Updaters = new()
