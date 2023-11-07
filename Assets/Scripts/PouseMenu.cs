@@ -9,15 +9,13 @@ public class PouseMenu : MonoBehaviour
 {
     [SerializeField] private GameManagerInGame _gameManager;
     public Button SelectALevelButton;
-    [SerializeField] private Button _optionsButton;
+    public Button OptionsButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeWindowButton;
-    [SerializeField] private Button _closeLevelsMenuButton;
     [SerializeField] private Button _closeOptionsMenuButton;
     
     public GameObject PouseMenuWindow;
-    public GameObject OptionsMenu;
 
     public bool IsPouse;
     
@@ -27,12 +25,6 @@ public class PouseMenu : MonoBehaviour
     private void Start()
     {
         _gameManagerInGame = FindObjectOfType<GameManagerInGame>();
-    }
-
-    private void OnOpenOptionsMenu()
-    {
-        OptionsMenu.SetActive(true);
-        PouseMenuWindow.SetActive(false);
     }
 
     private void OnBackToMainMenu()
@@ -56,32 +48,20 @@ public class PouseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void OnCloseOptionsMenu()
-    {
-        OptionsMenu.SetActive(false);
-        PouseMenuWindow.SetActive(true);
-    }
-
-
     private void OnEnable()
     {
-        _optionsButton.onClick.AddListener(OnOpenOptionsMenu);
         _mainMenuButton.onClick.AddListener(OnBackToMainMenu);
         _quitButton.onClick.AddListener(OnQuit);
         _closeWindowButton.onClick.AddListener(OnCloseWindow);
-        _closeOptionsMenuButton.onClick.AddListener(OnCloseOptionsMenu);
         IsPouse = true;
-        OptionsMenu.SetActive(false);
         PouseMenuWindow.SetActive(true);
     }
 
     private void OnDisable()
     {
-        _optionsButton.onClick.RemoveListener(OnOpenOptionsMenu);
         _mainMenuButton.onClick.RemoveListener(OnBackToMainMenu);
         _quitButton.onClick.RemoveListener(OnQuit);
         _closeWindowButton.onClick.RemoveListener(OnCloseWindow);
-        _closeOptionsMenuButton.onClick.RemoveListener(OnCloseOptionsMenu);
         IsPouse = false;
     }
 }
