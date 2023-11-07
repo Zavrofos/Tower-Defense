@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Levels
 {
-    public class LevelView : MonoBehaviour
+    public class LevelViewDev : MonoBehaviour
     {
-        
+        public PouseMenu PouseMenu;
     }
 }

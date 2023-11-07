@@ -1,4 +1,6 @@
 using Assets.Dev.DevScripts;
+using Assets.Dev.DevScripts.Game.LevelsMenu;
+using Assets.Dev.DevScripts.Levels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +8,7 @@ using UnityEngine;
 public class GameManagerLevel : MonoBehaviour
 {
     [HideInInspector] public GameModel Model;
-    public LevelView View;
+    public LevelViewDev View;
     public List<IPresenter> Presenters;
     public List<IUpdatable> Updaters;
 
@@ -16,7 +18,8 @@ public class GameManagerLevel : MonoBehaviour
 
         Presenters = new()
         {
-
+            new OpenLevelsMenuPresenterInGame(View),
+            new CloseLevelsMenuPresenter(GameManagerDev.Instance.View.LevelsMenuView),
         };
 
         Updaters = new()
