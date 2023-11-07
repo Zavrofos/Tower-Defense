@@ -13,7 +13,6 @@ public class PouseMenu : MonoBehaviour
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeWindowButton;
-    [SerializeField] private Button _closeOptionsMenuButton;
     
     public GameObject PouseMenuWindow;
 
