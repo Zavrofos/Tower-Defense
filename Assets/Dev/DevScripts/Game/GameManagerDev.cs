@@ -1,6 +1,9 @@
 ﻿using Assets.Dev.DevScripts.Game;
 using Assets.Dev.DevScripts.Game.LevelsMenu;
 using Assets.Dev.DevScripts.Game.OptionsMenu;
+using Assets.Dev.DevScripts.Game.Pause;
+using Assets.Dev.DevScripts.Game.PauseMenu;
+using Assets.Dev.DevScripts.Levels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,19 +40,25 @@ namespace Assets.Dev.DevScripts
             Presenters = new()
             {
                 new InitializeLevelMenuPresenter(Model, View),
-                new CloseLevelsMenuPresenter(View.LevelsMenuView),
+                new OpenLevelsMenuPresenterInPause(),
+                new CloseLevelsMenuPresenter(),
+                new OpenSettingsMenuPresenterInPause(),
+                new CloseSettingsMenuPresenter(),
                 new InitializeSettingsMenuPresenter(View.SettingsMenuView, Model),
-                new CloseSettingsMenuPresenter(View.SettingsMenuView),
                 new SetQualityPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetResolutionPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetFullscreenPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeMusicPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeGamePresenter(View.SettingsMenuView, Model.SettingsModel),
+                new TurningOnOffPausePresenter(View, Model),
+                new ReturnToMainMenuPresenterInPause(),
+                new QuitGamePresenterInPause(),
+                new ClosePauseMenuPresenter()
             };
 
             Updaters = new()
             {
-
+                new PressingPauseUpdater(Model)
             };
         }
 
