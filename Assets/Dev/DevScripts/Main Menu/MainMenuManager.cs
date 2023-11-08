@@ -15,6 +15,8 @@ namespace Assets.Dev.DevScripts.Main_Menu
 
         private void Awake()
         {
+            Model = GameManagerDev.Instance.Model;
+
             Presenters = new()
             {
                 new PlayGamePresenter(View),
