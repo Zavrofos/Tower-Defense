@@ -45,7 +45,7 @@ namespace Assets.Dev.DevScripts.Game.Pause
 
         private void TurnOnPause()
         {
-
+            
         }
 
         private void TurnOffPause()

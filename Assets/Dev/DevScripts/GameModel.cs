@@ -1,4 +1,5 @@
 ﻿using Assets.Dev.DevScripts.Game.OptionsMenu;
+using Assets.Dev.DevScripts.Game.PauseMenu;
 using Assets.Dev.DevScripts.Main_Menu.LevelsMenu;
 using System;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Assets.Dev.DevScripts
     {
         public LevelsManagerModel LevelsManager;
         public SettingsModel SettingsModel;
+        public PauseModel PauseModel;
 
         public StateGame CurrentStateGame;
 
@@ -19,6 +21,7 @@ namespace Assets.Dev.DevScripts
         {
             LevelsManager = new();
             SettingsModel = new();
+            PauseModel = new();
             CurrentStateGame = StateGame.InGame;
         }
 
