@@ -35,7 +35,7 @@ namespace Assets.Dev.DevScripts.Game.Pause
 
             if (_view.SettingsMenuView.gameObject.activeInHierarchy)
             {
-                _view.SettingsMenuView.gameObject.SetActive(false);
+                _model.SettingsModel.CloseSettingsMenu();
                 return;
             }
 
