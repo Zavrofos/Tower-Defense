@@ -1,6 +1,6 @@
 ﻿using Assets.Dev.DevScripts.Game;
 using Assets.Dev.DevScripts.Game.LevelsMenu;
-using Assets.Dev.DevScripts.Game.OptionsMenu;
+using Assets.Dev.DevScripts.Game.SettingsMenu;
 using Assets.Dev.DevScripts.Game.Pause;
 using Assets.Dev.DevScripts.Game.PauseMenu;
 using Assets.Dev.DevScripts.Levels;
@@ -11,6 +11,7 @@ using UnityEditor;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Dev.DevScripts.Game.OptionsMenu;
 
 namespace Assets.Dev.DevScripts
 {
@@ -42,10 +43,12 @@ namespace Assets.Dev.DevScripts
                 new InitializeLevelMenuPresenter(Model, View),
                 new ButtonLevelsMenuInPauseMenuPresenter(View, Model),
                 new ButtonCloseLevelsMenuPresenter(View, Model),
-                new CloseLevelsMenuPresenter(View, Model),
                 new OpenLevelsMenuPresenter(View, Model),
-                new OpenSettingsMenuPresenterInPause(),
-                new CloseSettingsMenuPresenter(),
+                new CloseLevelsMenuPresenter(View, Model),
+                new ButtonOpenSettingsMenuInPausePresenter(View, Model),
+                new ButtonCloseSettingsMenuPresenter(View, Model),
+                new OpenSettingsMenuPresenter(View, Model),
+                new CloseSettingsMenuPresenter(View, Model),
                 new InitializeSettingsMenuPresenter(View.SettingsMenuView, Model),
                 new SetQualityPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetResolutionPresenter(View.SettingsMenuView, Model.SettingsModel),
