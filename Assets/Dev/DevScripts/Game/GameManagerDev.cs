@@ -41,7 +41,9 @@ namespace Assets.Dev.DevScripts
             {
                 new InitializeLevelMenuPresenter(Model, View),
                 new ButtonLevelsMenuInPauseMenuPresenter(View, Model),
-                new CloseLevelsMenuPresenter(),
+                new ButtonCloseLevelsMenuPresenter(View, Model),
+                new CloseLevelsMenuPresenter(View, Model),
+                new OpenLevelsMenuPresenter(View, Model),
                 new OpenSettingsMenuPresenterInPause(),
                 new CloseSettingsMenuPresenter(),
                 new InitializeSettingsMenuPresenter(View.SettingsMenuView, Model),
