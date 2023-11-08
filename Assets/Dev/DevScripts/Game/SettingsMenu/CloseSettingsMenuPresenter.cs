@@ -4,15 +4,8 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Levels
 {
-    public class CloseSettingsMenuPresenterInGame : IPresenter
+    public class CloseSettingsMenuPresenter : IPresenter
     {
-        private LevelViewDev _view;
-
-        public CloseSettingsMenuPresenterInGame(LevelViewDev view)
-        {
-            _view = view;
-        }
-
         public void Subscribe()
         {
             GameManagerDev.Instance.View.SettingsMenuView.CloseSettingsWindow.onClick.AddListener(OnCloseWindow);
@@ -25,8 +18,11 @@ namespace Assets.Dev.DevScripts.Levels
 
         private void OnCloseWindow()
         {
+            if(GameManagerDev.Instance.Model.CurrentStateGame == StateGame.OnPause)
+            {
+                GameManagerDev.Instance.View.PauseMenuView.PouseWindow.SetActive(true);
+            }
             GameManagerDev.Instance.View.SettingsMenuView.gameObject.SetActive(false);
-            _view.PouseMenu.PouseMenuWindow.SetActive(true);
         }
     }
 }
