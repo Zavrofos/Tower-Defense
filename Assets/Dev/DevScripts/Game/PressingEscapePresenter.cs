@@ -29,7 +29,7 @@ namespace Assets.Dev.DevScripts.Game.Pause
         {
             if (_view.LevelsMenuView.gameObject.activeInHierarchy)
             {
-                _view.LevelsMenuView.gameObject.SetActive(false);
+                _model.LevelsManager.CloseLevelsMenu();
                 return;
             }
 
