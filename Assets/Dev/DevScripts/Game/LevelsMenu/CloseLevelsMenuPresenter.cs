@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Dev.DevScripts.Game;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,23 +7,33 @@ namespace Assets.Dev.DevScripts.Levels
 {
     public class CloseLevelsMenuPresenter : IPresenter
     {
+        private GameViewDev _view;
+        private GameModel _model;
+
+        public CloseLevelsMenuPresenter(GameViewDev view, GameModel model)
+        {
+            _view = view;
+            _model = model;
+        }
+
         public void Subscribe()
         {
-            GameManagerDev.Instance.View.LevelsMenuView.CloseWindowButton.onClick.AddListener(OnCloseWindow);
+            _model.LevelsManager.ClosedLevelsMenu += OnCloseWindow;
         }
 
         public void Unsubscribe()
         {
-            GameManagerDev.Instance.View.LevelsMenuView.CloseWindowButton.onClick.RemoveListener(OnCloseWindow);
+            _model.LevelsManager.ClosedLevelsMenu -= OnCloseWindow;
         }
 
         private void OnCloseWindow()
         {
-            if(GameManagerDev.Instance.Model.CurrentStateGame == StateGame.OnPause)
+            if(_model.CurrentStateGame == StateGame.OnPause)
             {
-                GameManagerDev.Instance.View.PauseMenuView.PouseWindow.SetActive(true);
+                _view.PauseMenuView.PouseWindow.SetActive(true);
             }
-            GameManagerDev.Instance.View.LevelsMenuView.gameObject.SetActive(false);
+
+            _view.LevelsMenuView.gameObject.SetActive(false);
         }
     }
 }
