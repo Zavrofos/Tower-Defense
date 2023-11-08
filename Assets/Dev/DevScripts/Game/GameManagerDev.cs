@@ -40,7 +40,7 @@ namespace Assets.Dev.DevScripts
             Presenters = new()
             {
                 new InitializeLevelMenuPresenter(Model, View),
-                new OpenLevelsMenuPresenterInPause(),
+                new ButtonLevelsMenuInPauseMenuPresenter(View, Model),
                 new CloseLevelsMenuPresenter(),
                 new OpenSettingsMenuPresenterInPause(),
                 new CloseSettingsMenuPresenter(),

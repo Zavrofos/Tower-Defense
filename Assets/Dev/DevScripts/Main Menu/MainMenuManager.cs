@@ -19,7 +19,7 @@ namespace Assets.Dev.DevScripts.Main_Menu
             {
                 new PlayGamePresenter(View),
                 new QuitGamePresenter(View),
-                new OpenLevelsMenuPresenterInMainMenu(View),
+                new ButtonLevelsMenuInMainMenuPresenter(View, Model),
                 new OpenSettingsMenuPresenterInMainMenu(View)
             };
 
