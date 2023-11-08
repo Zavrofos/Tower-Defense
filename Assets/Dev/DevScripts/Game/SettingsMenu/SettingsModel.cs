@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,5 +18,18 @@ namespace Assets.Dev.DevScripts.Game.OptionsMenu
         public float CurrentMusicVolumeValue;
 
         public float CurrentGameVolumeValue;
+
+        public event Action OpenedSettingMenu;
+        public event Action ClosedSettingsMenu;
+
+        public void OpenSettingsMenu()
+        {
+
+        }
+
+        public void CloseSettingsMenu()
+        {
+
+        }
     }
 }
