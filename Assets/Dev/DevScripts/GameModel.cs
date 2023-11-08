@@ -13,7 +13,7 @@ namespace Assets.Dev.DevScripts
         public StateGame CurrentStateGame;
 
         public event Action Initialized;
-        public event Action PressedPause;
+        public event Action PressedEscape;
         
         public GameModel()
         {
@@ -27,9 +27,9 @@ namespace Assets.Dev.DevScripts
             Initialized?.Invoke();
         }
 
-        public void PressPause()
+        public void PressEscape()
         {
-            PressedPause?.Invoke();
+            PressedEscape?.Invoke();
         }
     }
 }

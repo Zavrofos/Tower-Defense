@@ -50,7 +50,7 @@ namespace Assets.Dev.DevScripts
                 new SetFullscreenPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeMusicPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeGamePresenter(View.SettingsMenuView, Model.SettingsModel),
-                new TurningOnOffPausePresenter(View, Model),
+                new PauseSwitchPresenter(View, Model),
                 new ReturnToMainMenuPresenterInPause(),
                 new QuitGamePresenterInPause(),
                 new ClosePauseMenuPresenter()
@@ -58,7 +58,7 @@ namespace Assets.Dev.DevScripts
 
             Updaters = new()
             {
-                new PressingPauseUpdater(Model)
+                new PressingEscapeUpdater(Model)
             };
         }
 

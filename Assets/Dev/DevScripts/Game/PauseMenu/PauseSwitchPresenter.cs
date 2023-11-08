@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Game.Pause
 {
-    public class TurningOnOffPausePresenter : IPresenter
+    public class PauseSwitchPresenter : IPresenter
     {
         private GameViewDev _view;
         private GameModel _model;
 
-        public TurningOnOffPausePresenter(GameViewDev view, GameModel model)
+        public PauseSwitchPresenter(GameViewDev view, GameModel model)
         {
             _view = view;
             _model = model;
@@ -17,12 +17,12 @@ namespace Assets.Dev.DevScripts.Game.Pause
 
         public void Subscribe()
         {
-            _model.PressedPause += OnTurnPause;
+            _model.PressedEscape += OnTurnPause;
         }
 
         public void Unsubscribe()
         {
-            _model.PressedPause -= OnTurnPause;
+            _model.PressedEscape -= OnTurnPause;
         }
 
         private void OnTurnPause()
@@ -41,6 +41,16 @@ namespace Assets.Dev.DevScripts.Game.Pause
                 Time.timeScale = 1;
                 _model.CurrentStateGame = StateGame.InGame;
             }
+        }
+
+        private void TurnOnPause()
+        {
+
+        }
+
+        private void TurnOffPause()
+        {
+
         }
     }
 }

@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Game.Pause
 {
-    public class PressingPauseUpdater : IUpdatable
+    public class PressingEscapeUpdater : IUpdatable
     {
         private GameModel _model;
 
-        public PressingPauseUpdater(GameModel model)
+        public PressingEscapeUpdater(GameModel model)
         {
             _model = model;
         }
@@ -16,7 +16,7 @@ namespace Assets.Dev.DevScripts.Game.Pause
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                _model.PressPause();
+                _model.PressEscape();
             }
         }
     }
