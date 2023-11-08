@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Main_Menu
 {
-    public class OpenLevelsMenuPresenter : IPresenter
+    public class OpenLevelsMenuPresenterInMainMenu : IPresenter
     {
         private MainMenuView _view;
 
-        public OpenLevelsMenuPresenter(MainMenuView view)
+        public OpenLevelsMenuPresenterInMainMenu(MainMenuView view)
         {
             _view = view;
         }
