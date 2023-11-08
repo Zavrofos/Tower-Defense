@@ -50,7 +50,7 @@ namespace Assets.Dev.DevScripts
                 new SetFullscreenPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeMusicPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeGamePresenter(View.SettingsMenuView, Model.SettingsModel),
-                new PauseSwitchPresenter(View, Model),
+                new PressingEscapePresenter(View, Model),
                 new ReturnToMainMenuPresenterInPause(),
                 new QuitGamePresenterInPause(),
                 new ClosePauseMenuPresenter()
