@@ -9,16 +9,27 @@ namespace Assets.Dev.DevScripts
     {
         public LevelsManagerModel LevelsManager;
         public SettingsModel SettingsModel;
+
+        public StateGame CurrentStateGame;
+
         public event Action Initialized;
+        public event Action PressedPause;
+        
         public GameModel()
         {
             LevelsManager = new();
             SettingsModel = new();
+            CurrentStateGame = StateGame.InGame;
         }
 
         public void Initialize()
         {
             Initialized?.Invoke();
+        }
+
+        public void PressPause()
+        {
+            PressedPause?.Invoke();
         }
     }
 }
