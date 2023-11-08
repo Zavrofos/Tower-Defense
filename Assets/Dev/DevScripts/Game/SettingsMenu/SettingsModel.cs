@@ -24,12 +24,12 @@ namespace Assets.Dev.DevScripts.Game.OptionsMenu
 
         public void OpenSettingsMenu()
         {
-
+            OpenedSettingMenu?.Invoke();
         }
 
         public void CloseSettingsMenu()
         {
-
+            ClosedSettingsMenu?.Invoke();
         }
     }
 }
