@@ -22,7 +22,7 @@ namespace Assets.Dev.DevScripts.Main_Menu
                 new PlayGamePresenter(View),
                 new QuitGamePresenter(View),
                 new ButtonLevelsMenuInMainMenuPresenter(View, Model),
-                new OpenSettingsMenuPresenterInMainMenu(View)
+                new ButtonOpenSettingsMenuInMainMenuPresenter(View, Model)
             };
 
             Updaters = new()
