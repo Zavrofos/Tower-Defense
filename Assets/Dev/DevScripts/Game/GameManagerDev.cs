@@ -53,7 +53,8 @@ namespace Assets.Dev.DevScripts
                 new PressingEscapePresenter(View, Model),
                 new ReturnToMainMenuPresenterInPause(),
                 new QuitGamePresenterInPause(),
-                new ClosePauseMenuPresenter()
+                new TurnOnPausePresenter(View, Model),
+                new TurnOffPausePresenter(View, Model)
             };
 
             Updaters = new()
