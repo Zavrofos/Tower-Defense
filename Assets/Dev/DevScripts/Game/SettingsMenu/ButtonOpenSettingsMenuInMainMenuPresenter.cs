@@ -4,13 +4,15 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Main_Menu
 {
-    public class OpenSettingsMenuPresenterInMainMenu : IPresenter
+    public class ButtonOpenSettingsMenuInMainMenuPresenter : IPresenter
     {
         private MainMenuView _view;
+        private GameModel _model;
 
-        public OpenSettingsMenuPresenterInMainMenu(MainMenuView view)
+        public ButtonOpenSettingsMenuInMainMenuPresenter(MainMenuView view, GameModel model)
         {
             _view = view;
+            _model = model;
         }
 
         public void Subscribe()
@@ -25,7 +27,7 @@ namespace Assets.Dev.DevScripts.Main_Menu
 
         private void OnOpenSettionsWindow()
         {
-            GameManagerDev.Instance.View.SettingsMenuView.gameObject.SetActive(true);
+            _model.SettingsModel.OpenSettingsMenu();
         }
     }
 }
