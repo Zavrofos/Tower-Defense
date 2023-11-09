@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using Assets.Dev.DevScripts.Main_Menu.LevelsMenu;
 
-namespace Assets.Dev.DevScripts.Main_Menu.LevelsMenu
+namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class LevelsManagerModel 
     {
@@ -13,9 +12,9 @@ namespace Assets.Dev.DevScripts.Main_Menu.LevelsMenu
 
         public LevelsManagerModel()
         {
-            Levels = new();
+            Levels = new List<LevelDev>();
         }
-
+        
         public void OpenLevelsMenu()
         {
             OpenedLevelsMenu?.Invoke();

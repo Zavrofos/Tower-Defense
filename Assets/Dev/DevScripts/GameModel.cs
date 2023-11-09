@@ -2,6 +2,7 @@
 using Assets.Dev.DevScripts.Game.PauseMenu;
 using Assets.Dev.DevScripts.Main_Menu.LevelsMenu;
 using System;
+using Dev.DevScripts.Game.LevelsMenu;
 using UnityEngine;
 
 namespace Assets.Dev.DevScripts
