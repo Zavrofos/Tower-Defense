@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Dev.DevScripts.Game.LevelsMenu;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Dev.DevScripts.SaveSystem
 {
-    public static class SaveSystem 
+    public static class SaveManager 
     {
-        public static void SaveLevels(List<Level> levels)
+        public static void SaveLevels(List<LevelModel> levels)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/levels.sav";
+            string path = Application.persistentDataPath + "/game.sav";
             FileStream stream = new FileStream(path, FileMode.Create);
             LevelsData data = new LevelsData(levels);
             formatter.Serialize(stream, data);
@@ -20,7 +20,7 @@ namespace Assets.Scripts
 
         public static LevelsData LoadLevels()
         {
-            string path = Application.persistentDataPath + "/levels.sav";
+            string path = Application.persistentDataPath + "/game.sav";
 
             if(File.Exists(path))
             {

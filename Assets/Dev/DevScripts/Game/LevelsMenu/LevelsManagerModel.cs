@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Main_Menu.LevelsMenu
+namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class LevelsManagerModel 
     {
-        public List<LevelDev> Levels;
+        public readonly Dictionary<string, LevelModel> Levels = new();
         public event Action OpenedLevelsMenu;
         public event Action ClosedLevelsMenu;
-
-        public LevelsManagerModel()
-        {
-            Levels = new();
-        }
+        public event Action<LevelModel> AddedLevel;
 
         public void OpenLevelsMenu()
         {
@@ -24,6 +18,11 @@ namespace Assets.Dev.DevScripts.Main_Menu.LevelsMenu
         public void CloseLevelsMenu()
         {
             ClosedLevelsMenu?.Invoke();
+        }
+
+        public void AddLevel(LevelModel level)
+        {
+            AddedLevel?.Invoke(level);
         }
     }
 }

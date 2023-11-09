@@ -1,15 +1,16 @@
-using Assets.Dev.DevScripts.Game.LevelsMenu;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
+using Assets.Dev.DevScripts.Game.LevelsMenu;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelsMenuView : MonoBehaviour
+namespace Dev.DevScripts.Game.LevelsMenu
 {
-    [HideInInspector] public List<LevelBoxView> Levels;
+    public class LevelsMenuView : MonoBehaviour
+    {
+        [HideInInspector] public Dictionary<string, LevelBoxView> Levels = new();
 
-    public Button CloseWindowButton;
-    public LevelBoxView LevelBoxPrefab;
-    public Transform Conteiner;
+        public Button CloseWindowButton;
+        public LevelBoxView LevelBoxPrefab;
+        public Transform Conteiner;
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using Assets.Dev.DevScripts.Game.OptionsMenu;
 using Assets.Dev.DevScripts.Game.PauseMenu;
-using Assets.Dev.DevScripts.Main_Menu.LevelsMenu;
 using System;
+using Dev.DevScripts.Game.LevelsMenu;
 using UnityEngine;
 
 namespace Assets.Dev.DevScripts
@@ -13,6 +13,7 @@ namespace Assets.Dev.DevScripts
         public PauseModel PauseModel;
 
         public StateGame CurrentStateGame;
+        public int CurrentLevel;
 
         public event Action Initialized;
         public event Action PressedEscape;

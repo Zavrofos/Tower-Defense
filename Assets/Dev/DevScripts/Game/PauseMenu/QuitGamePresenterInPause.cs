@@ -1,9 +1,7 @@
-﻿using Assets.Scripts;
-using System;
-using System.Collections;
+﻿using Assets.Dev.DevScripts;
 using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.PauseMenu
+namespace Dev.DevScripts.Game.PauseMenu
 {
     public class QuitGamePresenterInPause : IPresenter
     {
@@ -19,7 +17,6 @@ namespace Assets.Dev.DevScripts.Game.PauseMenu
 
         private void OnQuitGame()
         {
-            SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
             Debug.Log("Quit!!!");
             Application.Quit();
         }

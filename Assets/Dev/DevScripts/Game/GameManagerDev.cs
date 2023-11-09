@@ -12,6 +12,8 @@ using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets.Dev.DevScripts.Game.OptionsMenu;
+using Dev.DevScripts.Game.LevelsMenu;
+using Dev.DevScripts.Game.PauseMenu;
 
 namespace Assets.Dev.DevScripts
 {
@@ -59,7 +61,8 @@ namespace Assets.Dev.DevScripts
                 new ReturnToMainMenuPresenterInPause(),
                 new QuitGamePresenterInPause(),
                 new TurnOnPausePresenter(View, Model),
-                new TurnOffPausePresenter(View, Model)
+                new TurnOffPausePresenter(View, Model),
+                new CreatingLevelButtonPresenter(View, Model)
             };
 
             Updaters = new()

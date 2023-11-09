@@ -1,14 +1,17 @@
-﻿using Assets.Dev.DevScripts.Main_Menu.LevelsMenu;
-using System;
-using System.Collections;
+﻿using System.Collections.Generic;
+using Assets.Dev.DevScripts;
+using Assets.Dev.DevScripts.Game;
+using Assets.Dev.DevScripts.Game.LevelsMenu;
+using Dev.DevScripts.SaveSystem;
 using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.LevelsMenu
+namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class InitializeLevelMenuPresenter : IPresenter
     {
         private GameModel _model;
         private GameViewDev _view;
+        private Dictionary<LevelModel, List<IPresenter>> _levelsPresenters = new();
 
         public InitializeLevelMenuPresenter(GameModel model, GameViewDev view)
         {
@@ -28,22 +31,29 @@ namespace Assets.Dev.DevScripts.Game.LevelsMenu
 
         private void OnInitializeLevelsMenu()
         {
-            bool isFirstLevel = true;
-            foreach(var levelScene in _view.LevelsScenes)
+            var data = SaveManager.LoadLevels();
+            for (int i = 0; i < _view.LevelsScenes.Count; i++)
             {
-                LevelDev level = new LevelDev(levelScene.name);
-                LevelBoxView levelBox = GameObject.Instantiate(_view.LevelsMenuView.LevelBoxPrefab, _view.LevelsMenuView.Conteiner);
-                levelBox.LevelNumberText.text = levelScene.name;
+                var level = new LevelModel((i + 1).ToString());
+                _model.LevelsManager.AddLevel(level);
 
-                if (isFirstLevel)
+                List<IPresenter> levelPresenters = new List<IPresenter>()
                 {
-                    level.IsBlock = false;
-                    levelBox.Block.gameObject.SetActive(false);
-                    isFirstLevel = false;
-                }
+                    new OpeningLevelPresenter(_view, level),
+                    new PlayLevelPresenter(level, _model)
+                };
 
-                _model.LevelsManager.Levels.Add(level);
-                _view.LevelsMenuView.Levels.Add(levelBox);
+                _levelsPresenters.Add(level, levelPresenters);
+
+                foreach (var presenter in levelPresenters)
+                {
+                    presenter.Subscribe();
+                }
+                
+                if (data != null && data.OpenLevels[i] || data == null && i == 0)
+                {
+                    level.OpenLevel();
+                }
             }
         }
     }
