@@ -13,6 +13,7 @@ namespace Assets.Dev.DevScripts
         public PauseModel PauseModel;
 
         public StateGame CurrentStateGame;
+        public int CurrentLevel;
 
         public event Action Initialized;
         public event Action PressedEscape;
