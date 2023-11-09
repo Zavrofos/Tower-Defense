@@ -34,7 +34,19 @@ namespace Dev.DevScripts.Game.LevelsMenu
                 Object.Instantiate(_view.LevelsMenuView.LevelBoxPrefab, _view.LevelsMenuView.Conteiner);
             levelBox.LevelNumberText.text = level.NumberLevel;
             _view.LevelsMenuView.Levels.Add(level.NumberLevel, levelBox);
+
+            List<IPresenter> presenters = new List<IPresenter>()
+            {
+                new ClickLevelButtonPresenter(levelBox, _model)
+            };
             
+            _levelBoxesPresenters.Add(levelBox, presenters);
+
+            foreach (var presenter in presenters)
+            {
+                presenter.Subscribe();
+            }
+
             _model.LevelsManager.Levels.Add(level.NumberLevel, level);
         }
     }
