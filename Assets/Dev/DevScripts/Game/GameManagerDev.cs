@@ -1,21 +1,10 @@
-﻿using Assets.Dev.DevScripts.Game;
-using Assets.Dev.DevScripts.Game.LevelsMenu;
-using Assets.Dev.DevScripts.Game.SettingsMenu;
-using Assets.Dev.DevScripts.Game.Pause;
-using Assets.Dev.DevScripts.Game.PauseMenu;
-using Assets.Dev.DevScripts.Levels;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.SearchService;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using Assets.Dev.DevScripts.Game.OptionsMenu;
+﻿using System.Collections.Generic;
 using Dev.DevScripts.Game.LevelsMenu;
 using Dev.DevScripts.Game.PauseMenu;
+using Dev.DevScripts.Game.SettingsMenu;
+using UnityEngine;
 
-namespace Assets.Dev.DevScripts
+namespace Dev.DevScripts.Game
 {
     public class GameManagerDev : MonoBehaviour
     {

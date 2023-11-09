@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.Pause
+namespace Dev.DevScripts.Game
 {
     public class PressingEscapeUpdater : IUpdatable
     {

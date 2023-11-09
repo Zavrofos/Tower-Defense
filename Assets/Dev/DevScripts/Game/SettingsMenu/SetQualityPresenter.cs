@@ -1,9 +1,6 @@
-﻿using Assets.Scripts;
-using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.OptionsMenu
+namespace Dev.DevScripts.Game.SettingsMenu
 {
     public class SetQualityPresenter : IPresenter
     {

@@ -1,10 +1,4 @@
-﻿using Assets.Scripts;
-using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.Audio;
-
-namespace Assets.Dev.DevScripts.Game.OptionsMenu
+﻿namespace Dev.DevScripts.Game.SettingsMenu
 {
     public class SetVolumeMusicPresenter : IPresenter
     {

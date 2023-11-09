@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Levels
+namespace Dev.DevScripts.Level
 {
     public class LevelViewDev : MonoBehaviour
     {

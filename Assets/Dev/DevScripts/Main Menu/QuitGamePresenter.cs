@@ -1,5 +1,4 @@
-﻿using Assets.Dev.DevScripts;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Dev.DevScripts.Main_Menu
 {

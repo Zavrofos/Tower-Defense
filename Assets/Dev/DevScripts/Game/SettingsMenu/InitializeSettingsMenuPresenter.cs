@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.OptionsMenu
+namespace Dev.DevScripts.Game.SettingsMenu
 {
     public class InitializeSettingsMenuPresenter : IPresenter
     {

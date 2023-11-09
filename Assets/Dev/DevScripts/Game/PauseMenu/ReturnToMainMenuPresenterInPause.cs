@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Dev.DevScripts.Game.PauseMenu
+namespace Dev.DevScripts.Game.PauseMenu
 {
     public class ReturnToMainMenuPresenterInPause : IPresenter
     {

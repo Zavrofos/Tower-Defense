@@ -1,4 +1,4 @@
-﻿namespace Assets.Dev.DevScripts
+﻿namespace Dev.DevScripts
 {
     public interface IUpdatable 
     {

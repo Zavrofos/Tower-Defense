@@ -1,7 +1,4 @@
-using System.Collections;
-using UnityEngine;
-
-namespace Assets.Dev.DevScripts
+namespace Dev.DevScripts
 {
     public enum StateGame 
     {

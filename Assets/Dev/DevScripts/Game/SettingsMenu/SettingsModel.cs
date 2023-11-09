@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.OptionsMenu
+namespace Dev.DevScripts.Game.SettingsMenu
 {
     public class SettingsModel 
     {

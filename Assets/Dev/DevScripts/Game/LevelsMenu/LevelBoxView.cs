@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Dev.DevScripts.Game.LevelsMenu
+namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class LevelBoxView : MonoBehaviour
     {

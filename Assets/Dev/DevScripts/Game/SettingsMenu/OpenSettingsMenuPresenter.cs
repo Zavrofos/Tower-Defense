@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿
 
-namespace Assets.Dev.DevScripts.Game.SettingsMenu
+namespace Dev.DevScripts.Game.SettingsMenu
 {
     public class OpenSettingsMenuPresenter : IPresenter
     {

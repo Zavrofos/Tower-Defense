@@ -1,9 +1,6 @@
-﻿using Assets.Dev.DevScripts.Game;
-using System;
-using System.Collections;
-using UnityEngine;
+﻿
 
-namespace Assets.Dev.DevScripts.Levels
+namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class CloseLevelsMenuPresenter : IPresenter
     {

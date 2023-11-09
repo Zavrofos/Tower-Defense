@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using Dev.DevScripts.Main_Menu;
 
-namespace Assets.Dev.DevScripts.Main_Menu
+namespace Dev.DevScripts.Game.SettingsMenu
 {
     public class ButtonOpenSettingsMenuInMainMenuPresenter : IPresenter
     {

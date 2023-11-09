@@ -1,10 +1,10 @@
-﻿using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
-using Dev.DevScripts.Main_Menu;
+﻿using System.Collections.Generic;
+using Dev.DevScripts.Game;
+using Dev.DevScripts.Game.LevelsMenu;
+using Dev.DevScripts.Game.SettingsMenu;
 using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Main_Menu
+namespace Dev.DevScripts.Main_Menu
 {
     public class MainMenuManager : MonoBehaviour
     {

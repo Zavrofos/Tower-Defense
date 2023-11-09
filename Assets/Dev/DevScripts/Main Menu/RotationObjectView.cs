@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Main_Menu
+namespace Dev.DevScripts.Main_Menu
 {
     public class RotationObjectView : MonoBehaviour
     {

@@ -1,5 +1,4 @@
-﻿using Assets.Dev.DevScripts;
-using Assets.Scripts;
+﻿using Assets.Scripts;
 using UnityEngine.SceneManagement;
 
 namespace Dev.DevScripts.Game.LevelsMenu

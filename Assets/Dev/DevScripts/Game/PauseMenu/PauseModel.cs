@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
-using UnityEngine;
 
-namespace Assets.Dev.DevScripts.Game.PauseMenu
+namespace Dev.DevScripts.Game.PauseMenu
 {
     public class PauseModel 
     {

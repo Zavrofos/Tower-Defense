@@ -1,10 +1,9 @@
-﻿using Assets.Dev.DevScripts.Game.OptionsMenu;
-using Assets.Dev.DevScripts.Game.PauseMenu;
-using System;
+﻿using System;
 using Dev.DevScripts.Game.LevelsMenu;
-using UnityEngine;
+using Dev.DevScripts.Game.PauseMenu;
+using Dev.DevScripts.Game.SettingsMenu;
 
-namespace Assets.Dev.DevScripts
+namespace Dev.DevScripts
 {
     public class GameModel 
     {

@@ -1,7 +1,4 @@
-﻿using Assets.Dev.DevScripts;
-using Assets.Dev.DevScripts.Game.LevelsMenu;
-
-namespace Dev.DevScripts.Game.LevelsMenu
+﻿namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class ClickLevelButtonPresenter : IPresenter
     {

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿
 
-namespace Assets.Dev.DevScripts.Game.LevelsMenu
+namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class OpenLevelsMenuPresenter : IPresenter
     {

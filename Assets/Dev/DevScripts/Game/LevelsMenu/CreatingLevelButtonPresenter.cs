@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using Assets.Dev.DevScripts;
-using Assets.Dev.DevScripts.Game;
-using Assets.Dev.DevScripts.Game.LevelsMenu;
 using UnityEngine;
 
 namespace Dev.DevScripts.Game.LevelsMenu

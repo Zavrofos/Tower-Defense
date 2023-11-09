@@ -1,53 +1,53 @@
-using Assets.Dev.DevScripts;
-using Assets.Dev.DevScripts.Game.LevelsMenu;
-using Assets.Dev.DevScripts.Levels;
-using System.Collections;
 using System.Collections.Generic;
+using Dev.DevScripts.Game;
 using UnityEngine;
 
-public class GameManagerLevel : MonoBehaviour
+namespace Dev.DevScripts.Level
 {
-    [HideInInspector] public GameModel Model;
-    public LevelViewDev View;
-    public List<IPresenter> Presenters;
-    public List<IUpdatable> Updaters;
-
-    private void Awake()
+    public class GameManagerLevel : MonoBehaviour
     {
-        Model = GameManagerDev.Instance.Model;
+        [HideInInspector] public GameModel Model;
+        public LevelViewDev View;
+        public List<IPresenter> Presenters;
+        public List<IUpdatable> Updaters;
 
-        Presenters = new()
+        private void Awake()
         {
+            Model = GameManagerDev.Instance.Model;
+
+            Presenters = new()
+            {
             
-        };
+            };
 
-        Updaters = new()
-        {
+            Updaters = new()
+            {
 
-        };
-    }
-
-    private void Update()
-    {
-        foreach(var updater in Updaters)
-        {
-            updater.Update(Time.deltaTime);
+            };
         }
-    }
 
-    private void OnEnable()
-    {
-        foreach(var presenter in Presenters)
+        private void Update()
         {
-            presenter.Subscribe();
+            foreach(var updater in Updaters)
+            {
+                updater.Update(Time.deltaTime);
+            }
         }
-    }
 
-    private void OnDisable()
-    {
-        foreach (var presenter in Presenters)
+        private void OnEnable()
         {
-            presenter.Unsubscribe();
+            foreach(var presenter in Presenters)
+            {
+                presenter.Subscribe();
+            }
+        }
+
+        private void OnDisable()
+        {
+            foreach (var presenter in Presenters)
+            {
+                presenter.Unsubscribe();
+            }
         }
     }
 }
