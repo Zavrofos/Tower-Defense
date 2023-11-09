@@ -1,6 +1,9 @@
 ﻿using Assets.Dev.DevScripts.Game;
 using Assets.Dev.DevScripts.Game.LevelsMenu;
-using Assets.Dev.DevScripts.Game.OptionsMenu;
+using Assets.Dev.DevScripts.Game.SettingsMenu;
+using Assets.Dev.DevScripts.Game.Pause;
+using Assets.Dev.DevScripts.Game.PauseMenu;
+using Assets.Dev.DevScripts.Levels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +11,7 @@ using UnityEditor;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Dev.DevScripts.Game.OptionsMenu;
 
 namespace Assets.Dev.DevScripts
 {
@@ -37,19 +41,30 @@ namespace Assets.Dev.DevScripts
             Presenters = new()
             {
                 new InitializeLevelMenuPresenter(Model, View),
-                new CloseLevelsMenuPresenter(View.LevelsMenuView),
+                new ButtonLevelsMenuInPauseMenuPresenter(View, Model),
+                new ButtonCloseLevelsMenuPresenter(View, Model),
+                new OpenLevelsMenuPresenter(View, Model),
+                new CloseLevelsMenuPresenter(View, Model),
+                new ButtonOpenSettingsMenuInPausePresenter(View, Model),
+                new ButtonCloseSettingsMenuPresenter(View, Model),
+                new OpenSettingsMenuPresenter(View, Model),
+                new CloseSettingsMenuPresenter(View, Model),
                 new InitializeSettingsMenuPresenter(View.SettingsMenuView, Model),
-                new CloseSettingsMenuPresenter(View.SettingsMenuView),
                 new SetQualityPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetResolutionPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetFullscreenPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeMusicPresenter(View.SettingsMenuView, Model.SettingsModel),
                 new SetVolumeGamePresenter(View.SettingsMenuView, Model.SettingsModel),
+                new PressingEscapePresenter(View, Model),
+                new ReturnToMainMenuPresenterInPause(),
+                new QuitGamePresenterInPause(),
+                new TurnOnPausePresenter(View, Model),
+                new TurnOffPausePresenter(View, Model)
             };
 
             Updaters = new()
             {
-
+                new PressingEscapeUpdater(Model)
             };
         }
 

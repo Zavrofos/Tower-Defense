@@ -4,13 +4,15 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Main_Menu
 {
-    public class OpenLevelsMenuPresenter : IPresenter
+    public class ButtonLevelsMenuInMainMenuPresenter : IPresenter
     {
         private MainMenuView _view;
+        private GameModel _model;
 
-        public OpenLevelsMenuPresenter(MainMenuView view)
+        public ButtonLevelsMenuInMainMenuPresenter(MainMenuView view, GameModel model)
         {
             _view = view;
+            _model = model;
         }
 
         public void Subscribe()
@@ -25,7 +27,7 @@ namespace Assets.Dev.DevScripts.Main_Menu
 
         private void OnOpenLevelsMenu()
         {
-            GameManagerDev.Instance.View.LevelsMenuView.gameObject.SetActive(true);
+            _model.LevelsManager.OpenLevelsMenu();
         }
     }
 }

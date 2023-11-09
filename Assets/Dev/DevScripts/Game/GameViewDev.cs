@@ -10,5 +10,6 @@ namespace Assets.Dev.DevScripts.Game
         public List<SceneAsset> LevelsScenes;
         public LevelsMenuView LevelsMenuView;
         public SettingsMenuView SettingsMenuView;
+        public PauseMenuView PauseMenuView;
     }
 }

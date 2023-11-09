@@ -8,7 +8,6 @@ using UnityEngine;
 public class GameManagerInGame : MonoBehaviour
 {
     [SerializeField] private Transform _conteiner;
-    [SerializeField] private PouseMenu _pouseMenu;
     [SerializeField] private TMP_Text _countCoins;
     [SerializeField] private GameObject GameOverWindow;
     [SerializeField] private Home _home;
@@ -49,24 +48,6 @@ public class GameManagerInGame : MonoBehaviour
     private void Update()
     {
         if (_spawner.IsWin || _isGameOver) return;
-        if(Input.GetKeyDown(KeyCode.Escape) && !_pouseMenu.IsPouse)
-        {
-            Time.timeScale = 0;
-            _pouseMenu.gameObject.SetActive(true);
-            IsDisableButtonColliders = true;
-            _pouseMenu.IsPouse = true;
-            IsPouse = true;
-            AudioManager.Instance.PauseAudio();
-        }
-        else if(Input.GetKeyDown(KeyCode.Escape) && _pouseMenu.IsPouse)
-        {
-            Time.timeScale = 1;
-            _pouseMenu.gameObject.SetActive(false);
-            IsDisableButtonColliders = false;
-            _pouseMenu.IsPouse = false;
-            IsPouse = false;
-            AudioManager.Instance.PlayAudio();
-        }
     }
      
     public void OpenShop(Shop shop)

@@ -15,12 +15,14 @@ namespace Assets.Dev.DevScripts.Main_Menu
 
         private void Awake()
         {
+            Model = GameManagerDev.Instance.Model;
+
             Presenters = new()
             {
                 new PlayGamePresenter(View),
                 new QuitGamePresenter(View),
-                new OpenLevelsMenuPresenter(View),
-                new OpenOptionsMenuPresenter(View)
+                new ButtonLevelsMenuInMainMenuPresenter(View, Model),
+                new ButtonOpenSettingsMenuInMainMenuPresenter(View, Model)
             };
 
             Updaters = new()

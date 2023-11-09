@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Assets.Dev.DevScripts.Levels
 {
-    public class CloseLevelsMenuPresenter : IPresenter
+    public class CloseSettingsMenuPresenter : IPresenter
     {
         private GameViewDev _view;
         private GameModel _model;
 
-        public CloseLevelsMenuPresenter(GameViewDev view, GameModel model)
+        public CloseSettingsMenuPresenter(GameViewDev view, GameModel model)
         {
             _view = view;
             _model = model;
@@ -18,22 +18,21 @@ namespace Assets.Dev.DevScripts.Levels
 
         public void Subscribe()
         {
-            _model.LevelsManager.ClosedLevelsMenu += OnCloseWindow;
+            _model.SettingsModel.ClosedSettingsMenu += CloseSettingsMenu;
         }
 
         public void Unsubscribe()
         {
-            _model.LevelsManager.ClosedLevelsMenu -= OnCloseWindow;
+            _model.SettingsModel.ClosedSettingsMenu -= CloseSettingsMenu;
         }
 
-        private void OnCloseWindow()
+        private void CloseSettingsMenu()
         {
             if(_model.CurrentStateGame == StateGame.OnPause)
             {
                 _view.PauseMenuView.PouseWindow.SetActive(true);
             }
-
-            _view.LevelsMenuView.gameObject.SetActive(false);
+            _view.SettingsMenuView.gameObject.SetActive(false);
         }
     }
 }
