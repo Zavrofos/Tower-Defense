@@ -1,4 +1,5 @@
-﻿using Assets.Dev.DevScripts;
+﻿using System.Collections.Generic;
+using Assets.Dev.DevScripts;
 using Assets.Dev.DevScripts.Game;
 using Assets.Dev.DevScripts.Game.LevelsMenu;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Dev.DevScripts.Game.LevelsMenu
     {
         private GameViewDev _view;
         private GameModel _model;
+        private Dictionary<LevelBoxView, List<IPresenter>> _levelBoxesPresenters = new();
 
         public CreatingLevelButtonPresenter(GameViewDev view, GameModel model)
         {
@@ -32,6 +34,8 @@ namespace Dev.DevScripts.Game.LevelsMenu
                 Object.Instantiate(_view.LevelsMenuView.LevelBoxPrefab, _view.LevelsMenuView.Conteiner);
             levelBox.LevelNumberText.text = level.NumberLevel;
             _view.LevelsMenuView.Levels.Add(level.NumberLevel, levelBox);
+            
+            _model.LevelsManager.Levels.Add(level.NumberLevel, level);
         }
     }
 }

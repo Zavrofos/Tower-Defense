@@ -5,7 +5,7 @@ namespace Dev.DevScripts.Game.LevelsMenu
 {
     public class LevelsManagerModel 
     {
-        public readonly List<LevelModel> Levels = new();
+        public readonly Dictionary<string, LevelModel> Levels = new();
         public event Action OpenedLevelsMenu;
         public event Action ClosedLevelsMenu;
         public event Action<LevelModel> AddedLevel;
