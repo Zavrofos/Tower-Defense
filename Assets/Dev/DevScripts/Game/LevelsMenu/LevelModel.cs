@@ -7,6 +7,7 @@ namespace Dev.DevScripts.Game.LevelsMenu
         public string NumberLevel;
         public bool IsBlock;
         public event Action OpenedLevel;
+        public event Action PlayedLevel;
 
         public LevelModel(string numberLevel)
         {
@@ -16,6 +17,11 @@ namespace Dev.DevScripts.Game.LevelsMenu
         public void OpenLevel()
         {
             OpenedLevel?.Invoke();
+        }
+
+        public void PlayLevel()
+        {
+            PlayedLevel?.Invoke();
         }
     }
 }
