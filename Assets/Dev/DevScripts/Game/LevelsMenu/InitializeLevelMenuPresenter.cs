@@ -39,7 +39,8 @@ namespace Dev.DevScripts.Game.LevelsMenu
 
                 List<IPresenter> levelPresenters = new List<IPresenter>()
                 {
-                    new OpeningLevelPresenter(_view, level)
+                    new OpeningLevelPresenter(_view, level),
+                    new PlayLevelPresenter(level, _model)
                 };
 
                 _levelsPresenters.Add(level, levelPresenters);
