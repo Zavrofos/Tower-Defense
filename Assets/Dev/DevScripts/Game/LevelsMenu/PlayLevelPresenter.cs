@@ -1,4 +1,5 @@
 ﻿using Assets.Dev.DevScripts;
+using Assets.Scripts;
 using UnityEngine.SceneManagement;
 
 namespace Dev.DevScripts.Game.LevelsMenu
@@ -28,6 +29,8 @@ namespace Dev.DevScripts.Game.LevelsMenu
         {
             if (_model.IsBlock) return;
             _gameModel.LevelsManager.CloseLevelsMenu();
+            _gameModel.CurrentLevel = int.Parse(_model.NumberLevel);
+            GameManager.Instance.CurrentLevel = int.Parse(_model.NumberLevel); // Временно
             SceneManager.LoadScene(int.Parse(_model.NumberLevel));
         }
     }
