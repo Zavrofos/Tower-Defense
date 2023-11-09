@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Dev.DevScripts.Game.LevelsMenu;
 
 namespace Dev.DevScripts.SaveSystem
 {
@@ -8,12 +9,12 @@ namespace Dev.DevScripts.SaveSystem
     {
         public bool[] OpenLevels;
     
-        public LevelsData(List<Level> levels)
+        public LevelsData(List<LevelModel> levels)
         {
             OpenLevels = new bool[levels.Count];
             for(int i = 0; i < levels.Count; i++)
             {
-                OpenLevels[i] = levels[i].IsOpen;
+                OpenLevels[i] = levels[i].IsBlock;
             }
         }
     }
