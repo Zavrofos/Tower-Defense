@@ -29,6 +29,7 @@ namespace Dev.DevScripts.Game.LevelsMenu
         {
             if (_model.IsBlock) return;
             _gameModel.LevelsManager.CloseLevelsMenu();
+            _gameModel.PauseModel.TurnOffPause();
             _gameModel.CurrentLevel = int.Parse(_model.NumberLevel);
             GameManager.Instance.CurrentLevel = int.Parse(_model.NumberLevel); // Временно
             SceneManager.LoadScene(int.Parse(_model.NumberLevel));
