@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Dev.DevScripts.Game.LevelsMenu
 {
-    public class AddingLevelPresenter : IPresenter
+    public class CreatingLevelButtonPresenter : IPresenter
     {
         private GameViewDev _view;
         private GameModel _model;
 
-        public AddingLevelPresenter(GameViewDev view, GameModel model)
+        public CreatingLevelButtonPresenter(GameViewDev view, GameModel model)
         {
             _view = view;
             _model = model;
