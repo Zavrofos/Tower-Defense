@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
                 {
                     continue;
                 }
-
+                
                 audio.Pause();
                 _currentAudioPlaying.Add(audio);
             }

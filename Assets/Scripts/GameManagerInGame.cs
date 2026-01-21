@@ -13,8 +13,8 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private GameObject GameOverWindow;
     [SerializeField] private Home _home;
     [SerializeField] private LevelView _levelViewPrefab;
+    [SerializeField] private int _coins = 20;
     private int _mineCost = 10;
-    private int _coins = 100;
     public bool IsPouse;
     private bool _isGameOver;
     public Shop[] Shops;

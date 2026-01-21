@@ -32,6 +32,7 @@ namespace Assets.Scripts
                 SetStartGameSettings();
                 return;
             }
+            
             Destroy(gameObject);
         }
 

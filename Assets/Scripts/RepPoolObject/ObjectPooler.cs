@@ -15,8 +15,14 @@ namespace Assets.Scripts.RepPoolObject
 
         private void Awake()
         {
-            Instance = this;
-            DontDestroyOnLoad(this);
+            if (!Instance)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this);
+                return;
+            }
+            
+            Destroy(gameObject);
         }
 
         public void Initialize()
