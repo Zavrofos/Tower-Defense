@@ -31,6 +31,7 @@ public class Shop : MonoBehaviour
         AbsTower tower = towerObject.GetComponent<AbsTower>();
         if (tower == null) return;
         product.ImageProduct.sprite = tower.Icon;
+        product.ImageRectTransform.rotation = Quaternion.Euler(tower.InitRotationImageInShop);
         product.ImageProduct.SetNativeSize();
 
         RectTransform transform = product.ImageProduct.gameObject.GetComponent<RectTransform>();

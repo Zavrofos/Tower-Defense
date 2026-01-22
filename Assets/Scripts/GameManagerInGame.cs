@@ -1,19 +1,22 @@
+using System;
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerInGame : MonoBehaviour
 {
+    [SerializeField] private Button PauseButton;
     [SerializeField] private Transform _conteiner;
     [SerializeField] private PouseMenu _pouseMenu;
     [SerializeField] private TMP_Text _countCoins;
     [SerializeField] private GameObject GameOverWindow;
     [SerializeField] private Home _home;
     [SerializeField] private LevelView _levelViewPrefab;
-    [SerializeField] private int _coins = 20;
+    [SerializeField] private int _coins = 100;
     private int _mineCost = 10;
     public bool IsPouse;
     private bool _isGameOver;
@@ -44,29 +47,32 @@ public class GameManagerInGame : MonoBehaviour
             }
         }
         _spawner = FindObjectOfType<Spawner>();
+        PauseButton.onClick.AddListener(() => PauseGame(true));
     }
 
     private void Update()
     {
-        if (_spawner.IsWin || _isGameOver) return;
+        if (_spawner.IsWin || _isGameOver) 
+            return;
+        
         if(Input.GetKeyDown(KeyCode.Escape) && !_pouseMenu.IsPouse)
-        {
-            Time.timeScale = 0;
-            _pouseMenu.gameObject.SetActive(true);
-            IsDisableButtonColliders = true;
-            _pouseMenu.IsPouse = true;
-            IsPouse = true;
-            AudioManager.Instance.PauseAudio();
-        }
+            PauseGame(true);
         else if(Input.GetKeyDown(KeyCode.Escape) && _pouseMenu.IsPouse)
-        {
-            Time.timeScale = 1;
-            _pouseMenu.gameObject.SetActive(false);
-            IsDisableButtonColliders = false;
-            _pouseMenu.IsPouse = false;
-            IsPouse = false;
+            PauseGame(false);
+    }
+
+    private void PauseGame(bool isPause)
+    {
+        Time.timeScale = isPause ? 0 : 1;
+        _pouseMenu.gameObject.SetActive(isPause);
+        IsDisableButtonColliders = isPause;
+        _pouseMenu.IsPouse = isPause;
+        IsPouse = isPause;
+        
+        if(isPause)
+            AudioManager.Instance.PauseAudio();
+        else
             AudioManager.Instance.PlayAudio();
-        }
     }
      
     public void OpenShop(Shop shop)
@@ -108,5 +114,10 @@ public class GameManagerInGame : MonoBehaviour
     private void OnDisable()
     {
         _home.Killed -= GameOver;
+    }
+
+    private void OnDestroy()
+    {
+        PauseButton.onClick.RemoveAllListeners();
     }
 }

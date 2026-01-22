@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ProductInShop : MonoBehaviour
 {
     public Image ImageProduct;
+    public RectTransform ImageRectTransform;
     public TMP_Text LabelProduct;
     public Button ButtonBuy;
     public TMP_Text ButtonText;
