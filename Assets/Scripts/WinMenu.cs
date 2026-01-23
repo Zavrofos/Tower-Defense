@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class WinMenu : MonoBehaviour
 {
     [SerializeField] private Button _nextLevelButton;
-    [SerializeField] private Button _selectALevelButton;
+    [SerializeField] private Button _shopButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeLevelsMenuWindow;
@@ -62,10 +63,10 @@ public class WinMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void SelectALevel()
+    public void OpenGlobalShop()
     {
-        _winMenu.SetActive(false);
-        _levelsMenu.SetActive(true);
+        // _winMenu.SetActive(false);
+        // _levelsMenu.SetActive(true);
     }
 
     public void MainMenu()
@@ -94,7 +95,7 @@ public class WinMenu : MonoBehaviour
         {
             _nextLevelButton.onClick.AddListener(NextLevel);
         }
-        _selectALevelButton.onClick.AddListener(SelectALevel);
+        _shopButton.onClick.AddListener(OpenGlobalShop);
         _mainMenuButton.onClick.AddListener(MainMenu);
         _quitButton.onClick.AddListener(Quit);
         _closeLevelsMenuWindow.onClick.AddListener(CloseWindowLevelsMenu);
@@ -106,7 +107,7 @@ public class WinMenu : MonoBehaviour
         {
             _nextLevelButton.onClick.RemoveListener(NextLevel);
         }
-        _selectALevelButton.onClick.RemoveListener(SelectALevel);
+        _shopButton.onClick.RemoveListener(OpenGlobalShop);
         _mainMenuButton.onClick.RemoveListener(MainMenu);
         _quitButton.onClick.RemoveListener(Quit);
         _closeLevelsMenuWindow.onClick.RemoveListener(CloseWindowLevelsMenu);

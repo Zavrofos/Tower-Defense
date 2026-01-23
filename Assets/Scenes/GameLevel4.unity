@@ -3103,64 +3103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  _waves:
-  - Templates:
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
-    Delay: 2
-    CurrentTemplateNumber: 0
-  - Templates:
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
-    Delay: 2
-    CurrentTemplateNumber: 0
-  - Templates:
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
-    Delay: 2
-    CurrentTemplateNumber: 0
-  - Templates:
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
-    Delay: 2
-    CurrentTemplateNumber: 0
-  - Templates:
-    - {fileID: 1845349280365932795, guid: bbad78e06e3c58349beb71e036729764, type: 3}
-    Delay: 2
-    CurrentTemplateNumber: 0
+  IsTest: 1
   _wavesConfig: {fileID: 11400000, guid: a4ed2c9d9afdb804c93f92f88f15e1b4, type: 2}
+  _wavesConfigTest: {fileID: 11400000, guid: 6f84ce5b85a4eef46ba837e4cf314b08, type: 2}
   _spawnPoint: {fileID: 840376051}
   CurrentCountOfEnemyesKilled: 0
   CurrentCountOfEnemyesKilledInCurrentWave: 0
@@ -17891,7 +17836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextLevelButton: {fileID: 0}
-  _selectALevelButton: {fileID: 3936345430698020358}
+  _shopButton: {fileID: 0}
   _mainMenuButton: {fileID: 3936345430862214233}
   _quitButton: {fileID: 3936345431465078549}
   _closeLevelsMenuWindow: {fileID: 3936345429969426430}

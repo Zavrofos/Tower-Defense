@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] private Button _resetGameButton;
     [SerializeField] private Button _resetLevelButton;
-    [SerializeField] private Button _selectALevelButton;
+    [SerializeField] private Button _buyContinueGame;
+    [SerializeField] private Button _globalShopButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeLevelsMenuWindow;
@@ -37,10 +40,15 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentLevel);
     }
 
-    private void SelectALevel()
+    private void ResetGame()
     {
-        _gameOverWindow.SetActive(false);
-        _levelsMenu.SetActive(true);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GameLevel1");
+    }
+
+    private void OpenGlobalShop()
+    {
+        
     }
 
     private void MainMenu()
@@ -69,7 +77,8 @@ public class GameOver : MonoBehaviour
     private void OnEnable()
     {
         _resetLevelButton.onClick.AddListener(ResetLevel);
-        _selectALevelButton.onClick.AddListener(SelectALevel);
+        _resetGameButton.onClick.AddListener(ResetGame);
+        _globalShopButton.onClick.AddListener(OpenGlobalShop);
         _mainMenuButton.onClick.AddListener(MainMenu);
         _quitButton.onClick.AddListener(Quit);
         _closeLevelsMenuWindow.onClick.AddListener(CloseWindowLevelsMenu);
@@ -78,7 +87,8 @@ public class GameOver : MonoBehaviour
     private void OnDisable()
     {
         _resetLevelButton.onClick.RemoveListener(ResetLevel);
-        _selectALevelButton.onClick.RemoveListener(SelectALevel);
+        _resetGameButton.onClick.RemoveListener(ResetGame);
+        _globalShopButton.onClick.RemoveListener(OpenGlobalShop);
         _mainMenuButton.onClick.RemoveListener(MainMenu);
         _quitButton.onClick.RemoveListener(Quit);
         _closeLevelsMenuWindow.onClick.RemoveListener(CloseWindowLevelsMenu);
