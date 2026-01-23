@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using Assets.Scripts.Enums;
+using UniRx;
 
 public class AudioManager : MonoBehaviour
 {
@@ -35,12 +36,13 @@ public class AudioManager : MonoBehaviour
 
     public void Initialize()
     {
-        AudioMelodyPlay();
+        Observable.NextFrame()
+            .Subscribe(_ => AudioMelodyPlay())
+            .AddTo(this);
     }
 
     public void AudioMelodyPlay()
     {
-        //AudioSourceMelody.Play();
         SoundBox soundBox = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox", 
             transform.position, 
             transform.rotation);

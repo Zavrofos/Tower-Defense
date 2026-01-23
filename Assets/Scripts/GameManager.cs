@@ -1,8 +1,10 @@
-﻿using Assets.Scripts.RepPoolObject;
+﻿using System;
+using Assets.Scripts.RepPoolObject;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SaveSystem;
+using UniRx;
 
 namespace Assets.Scripts
 {
@@ -62,8 +64,14 @@ namespace Assets.Scripts
             SetQualitySettings();
             SetResolutionSettings();
             SetFullScreenSettings();
-            SetVolumeGameSettings();
-            SetVolumeMusicSettings();
+            
+            Observable.NextFrame()
+                .Subscribe(_ =>
+                {
+                    SetVolumeGameSettings();
+                    SetVolumeMusicSettings();
+                })
+                .AddTo(this);
         }
 
         private void SetQualitySettings()

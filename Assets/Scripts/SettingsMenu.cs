@@ -26,6 +26,9 @@ public class SettingsMenu : MonoBehaviour
 
         _sliderVolumeMusic.value = GameManager.Instance.MusicVolumeValue;
         SetVolumeMusic(GameManager.Instance.MusicVolumeValue);
+        
+        _sliderVolumeGame.value = GameManager.Instance.GameVolumeValue;
+        SetVolumeMusic(GameManager.Instance.GameVolumeValue);
 
         _dropdownGraphics.value = GameManager.Instance.IndexQuality;
         SetQuality(GameManager.Instance.IndexQuality);
