@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class PouseMenu : MonoBehaviour
 {
     [SerializeField] private GameManagerInGame _gameManager;
-    [SerializeField] private Button _selectALevelButton;
     [SerializeField] private Button _optionsButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
@@ -78,7 +77,6 @@ public class PouseMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _selectALevelButton.onClick.AddListener(OnOpenLevelsMenu);
         _optionsButton.onClick.AddListener(OnOpenOptionsMenu);
         _mainMenuButton.onClick.AddListener(OnBackToMainMenu);
         _quitButton.onClick.AddListener(OnQuit);
@@ -93,7 +91,6 @@ public class PouseMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        _selectALevelButton.onClick.RemoveListener(OnOpenLevelsMenu);
         _optionsButton.onClick.RemoveListener(OnOpenOptionsMenu);
         _mainMenuButton.onClick.RemoveListener(OnBackToMainMenu);
         _quitButton.onClick.RemoveListener(OnQuit);

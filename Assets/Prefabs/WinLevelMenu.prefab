@@ -1906,7 +1906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextLevelButton: {fileID: 3721348036042467338}
-  _shopButton: {fileID: 0}
+  _shopButton: {fileID: 3936345430663941646}
   _mainMenuButton: {fileID: 3936345430762075217}
   _quitButton: {fileID: 3936345431499157277}
   _closeLevelsMenuWindow: {fileID: 3936345430002456566}
