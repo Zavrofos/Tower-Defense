@@ -3160,6 +3160,7 @@ MonoBehaviour:
     - {fileID: 1845349280365932795, guid: bbad78e06e3c58349beb71e036729764, type: 3}
     Delay: 2
     CurrentTemplateNumber: 0
+  _wavesConfig: {fileID: 11400000, guid: a4ed2c9d9afdb804c93f92f88f15e1b4, type: 2}
   _spawnPoint: {fileID: 840376051}
   CurrentCountOfEnemyesKilled: 0
   CurrentCountOfEnemyesKilledInCurrentWave: 0

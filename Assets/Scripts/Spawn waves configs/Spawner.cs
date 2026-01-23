@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Spawn_waves_configs;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float _timeToSpawnNextWave;
-    [SerializeField] private List<Wave> _waves;
+    [SerializeField] private WavesConfig _wavesConfig;
     [SerializeField] private Transform _spawnPoint;
 
     private Wave _currentWave;
@@ -28,7 +29,7 @@ public class Spawner : MonoBehaviour
         SetWave(_currentWaveNumber);
         _gameManager = FindObjectOfType<GameManagerInGame>();
 
-        foreach(var wave in _waves)
+        foreach(var wave in _wavesConfig.Waves)
         {
             _countEnemyesInLevel += wave.Templates.Length;
         }
@@ -68,7 +69,7 @@ public class Spawner : MonoBehaviour
             {
                 _isNextWaveActive = false;
                 CurrentCountOfEnemyesKilledInCurrentWave = 0;
-                if(_currentWaveNumber == _waves.Count - 1)
+                if(_currentWaveNumber == _wavesConfig.Waves.Count - 1)
                 {
                     _currentWave = null;
                 }
@@ -99,7 +100,7 @@ public class Spawner : MonoBehaviour
 
     private void SetWave(int index)
     {
-        _currentWave = _waves[index];
+        _currentWave = _wavesConfig.Waves[index];
     }
 
     private void InstantiateEnemy(int _numberEnemyInWave)

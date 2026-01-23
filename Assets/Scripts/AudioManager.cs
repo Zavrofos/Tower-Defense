@@ -74,7 +74,6 @@ public class AudioManager : MonoBehaviour
     
     public float FormatToDb(float value01)
     {
-        Debug.Log($"value - {value01}");
         value01 = Mathf.Clamp(value01, 0.0001f, 1f);
         return Mathf.Log10(value01) * 20f;
     }
