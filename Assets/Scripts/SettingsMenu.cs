@@ -25,10 +25,7 @@ public class SettingsMenu : MonoBehaviour
         SetResolution(GameManager.Instance.ResolutionIndex);
 
         _sliderVolumeMusic.value = GameManager.Instance.MusicVolumeValue;
-        SetVolumeMusic(GameManager.Instance.MusicVolumeValue);
-        
         _sliderVolumeGame.value = GameManager.Instance.GameVolumeValue;
-        SetVolumeMusic(GameManager.Instance.GameVolumeValue);
 
         _dropdownGraphics.value = GameManager.Instance.IndexQuality;
         SetQuality(GameManager.Instance.IndexQuality);
@@ -36,17 +33,17 @@ public class SettingsMenu : MonoBehaviour
         _toggle.isOn = GameManager.Instance.IsFullscreen;
         SetFullscreen(GameManager.Instance.IsFullscreen);
     }
-
+    
     private void SetVolumeMusic(float value)
     {
-        _audioMixer.SetFloat("MusicVolume", value);
+        _audioMixer.SetFloat("MusicVolume", AudioManager.Instance.FormatToDb(value));
         GameManager.Instance.MusicVolumeValue = value;
         SaveSystem.SaveSystem.SaveVolumeMusicScreen(value);
     }
 
     private void SetVolumeGame(float value)
     {
-        _audioMixer.SetFloat("GameVolume", value);
+        _audioMixer.SetFloat("GameVolume", AudioManager.Instance.FormatToDb(value));
         GameManager.Instance.GameVolumeValue = value;
         SaveSystem.SaveSystem.SaveVolumeGameScreen(value);
     }

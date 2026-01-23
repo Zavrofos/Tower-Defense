@@ -22,17 +22,11 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
-            //AudioMelodyPlay();
             _currentAudioPlaying = new List<AudioSource>();
             return;
         }
         Destroy(gameObject);
     }
-
-    //private void Start()
-    //{
-        
-    //}
 
     public void Initialize()
     {
@@ -76,6 +70,13 @@ public class AudioManager : MonoBehaviour
             audio.Play();
         }
         _currentAudioPlaying.Clear();
+    }
+    
+    public float FormatToDb(float value01)
+    {
+        Debug.Log($"value - {value01}");
+        value01 = Mathf.Clamp(value01, 0.0001f, 1f);
+        return Mathf.Log10(value01) * 20f;
     }
 }
 

@@ -99,7 +99,7 @@ namespace SaveSystem
 
         public static float GetVolumeGame()
         {
-            if (!PlayerPrefs.HasKey(SaveVolumeMusicPrefKey))
+            if (!PlayerPrefs.HasKey(SaveVolumeGamePrefKey))
                 return 0.5f;
             
             return PlayerPrefs.GetFloat(SaveVolumeGamePrefKey, 0);

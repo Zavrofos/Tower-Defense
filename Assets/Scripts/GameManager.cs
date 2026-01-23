@@ -100,19 +100,14 @@ namespace Assets.Scripts
         private void SetVolumeMusicSettings()
         {
             MusicVolumeValue = SaveSystem.SaveSystem.GetVolumeMusic();
-            _audioManager.AudioMixer.SetFloat("MusicVolume", MusicVolumeValue);
+            _audioManager.AudioMixer.SetFloat("MusicVolume", _audioManager.FormatToDb(MusicVolumeValue));
             SaveSystem.SaveSystem.SaveVolumeMusicScreen(MusicVolumeValue);
-        }
-
-        private void Test()
-        {
-            
         }
 
         private void SetVolumeGameSettings()
         {
             GameVolumeValue = SaveSystem.SaveSystem.GetVolumeGame();
-            _audioManager.AudioMixer.SetFloat("GameVolume", GameVolumeValue);
+            _audioManager.AudioMixer.SetFloat("GameVolume", _audioManager.FormatToDb(GameVolumeValue));
             SaveSystem.SaveSystem.SaveVolumeGameScreen(GameVolumeValue);
         }
         
