@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
     private void OnQuit()
     {
         Debug.Log("Quit!!!");
-        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
+        SaveSystem.SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 

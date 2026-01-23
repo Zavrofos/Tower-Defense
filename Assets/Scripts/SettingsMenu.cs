@@ -38,24 +38,28 @@ public class SettingsMenu : MonoBehaviour
     {
         _audioMixer.SetFloat("MusicVolume", value);
         GameManager.Instance.MusicVolumeValue = value;
+        SaveSystem.SaveSystem.SaveVolumeMusicScreen(value);
     }
 
     private void SetVolumeGame(float value)
     {
         _audioMixer.SetFloat("GameVolume", value);
         GameManager.Instance.GameVolumeValue = value;
+        SaveSystem.SaveSystem.SaveVolumeGameScreen(value);
     }
 
     private void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         GameManager.Instance.IndexQuality = qualityIndex;
+        SaveSystem.SaveSystem.SaveQuality(qualityIndex);
     }
 
     private void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
         GameManager.Instance.IsFullscreen = isFullscreen;
+        SaveSystem.SaveSystem.SaveFullScreen(isFullscreen);
     }
 
     public void SetResolution(int resolutionIndex)
@@ -63,6 +67,7 @@ public class SettingsMenu : MonoBehaviour
         (int, int) resolution = GameManager.Instance.Resolutions[resolutionIndex];
         Screen.SetResolution(resolution.Item1, resolution.Item2, Screen.fullScreen);
         GameManager.Instance.ResolutionIndex = resolutionIndex;
+        SaveSystem.SaveSystem.SaveResolutions(resolutionIndex);
     }
 
     private void OnEnable()

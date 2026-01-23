@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SaveSystem;
 
 namespace Assets.Scripts
 {
@@ -10,8 +11,22 @@ namespace Assets.Scripts
         public static GameManager Instance;
         public bool IsStartGame = true;
 
-        public List<(int, int)> Resolutions { get; private set; } 
-        public List<string> Options { get; private set; }
+        public List<(int, int)> Resolutions { get; private set; } = new()
+        {
+            (1280, 720),
+            (1920, 1080),
+            (2560, 1440),
+            (3840, 2160)
+        };
+
+        public List<string> Options { get; private set; } = new()
+        {
+            ("1280 x 720"),
+            ("1920 x 1080"),
+            ("2560 x 1440"),
+            ("3840 x 2160")
+        };
+            
         public float MusicVolumeValue = 0;
         public float GameVolumeValue = 0;
         public int IndexQuality = 0;
@@ -29,7 +44,7 @@ namespace Assets.Scripts
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
-                SetStartGameSettings();
+                SetSettingsValues();
                 return;
             }
             
@@ -42,28 +57,69 @@ namespace Assets.Scripts
             _audioManager.Initialize();
         }
 
-        private void SetStartGameSettings()
+        private void SetSettingsValues()
         {
-            Options = new List<string>();
-            Resolutions = new List<(int, int)>()
-            {
-                (1280, 720),
-                (1920, 1080),
-                (2560, 1440),
-                (3840, 2160)
-            };
+            SetQualitySettings();
+            SetResolutionSettings();
+            SetFullScreenSettings();
+            SetVolumeGameSettings();
+            SetVolumeMusicSettings();
+        }
 
+        private void SetQualitySettings()
+        {
+            IndexQuality = SaveSystem.SaveSystem.GetQuality();
+            QualitySettings.SetQualityLevel(IndexQuality);
+            SaveSystem.SaveSystem.SaveQuality(IndexQuality);
+        }
+
+        private void SetResolutionSettings()
+        {
+            ResolutionIndex = SaveSystem.SaveSystem.GetResolutions();
+            ResolutionIndex = ResolutionIndex == -1 ? GetCurrentScreenResolutions() : ResolutionIndex;
+            (int, int) resolution = Resolutions[ResolutionIndex];
+            Screen.SetResolution(resolution.Item1, resolution.Item2, Screen.fullScreen);
+            SaveSystem.SaveSystem.SaveResolutions(ResolutionIndex);
+        }
+
+        private void SetFullScreenSettings()
+        {
+            IsFullscreen = SaveSystem.SaveSystem.GetFullScreen();
+            Screen.fullScreen = IsFullscreen;
+            SaveSystem.SaveSystem.SaveFullScreen(IsFullscreen);
+        }
+
+        private void SetVolumeMusicSettings()
+        {
+            MusicVolumeValue = SaveSystem.SaveSystem.GetVolumeMusic();
+            _audioManager.AudioMixer.SetFloat("MusicVolume", MusicVolumeValue);
+            SaveSystem.SaveSystem.SaveVolumeMusicScreen(MusicVolumeValue);
+        }
+
+        private void Test()
+        {
+            
+        }
+
+        private void SetVolumeGameSettings()
+        {
+            GameVolumeValue = SaveSystem.SaveSystem.GetVolumeGame();
+            _audioManager.AudioMixer.SetFloat("GameVolume", GameVolumeValue);
+            SaveSystem.SaveSystem.SaveVolumeGameScreen(GameVolumeValue);
+        }
+        
+        private int GetCurrentScreenResolutions()
+        {
             for (int i = 0; i < Resolutions.Count; i++)
             {
-                string option = Resolutions[i].Item1 + " x " + Resolutions[i].Item2;
-                Options.Add(option);
-
                 if (Resolutions[i].Item1 == Screen.currentResolution.width &&
                     Resolutions[i].Item2 == Screen.currentResolution.height)
                 {
-                    ResolutionIndex = i;
+                    return i;
                 }
             }
+
+            return 1;
         }
     }
 }

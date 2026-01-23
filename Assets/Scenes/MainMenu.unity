@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbe625ca743d244d8b411ab8774c638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AudioMixer>k__BackingField: {fileID: 24100000, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
 --- !u!4 &893468678
 Transform:
   m_ObjectHideFlags: 0
@@ -3066,7 +3067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386049538316016656, guid: 67086bfa2e3f1d44790c7f3d6b230beb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 26.063965
+      value: 26.063972
       objectReference: {fileID: 0}
     - target: {fileID: 7386049538671989034, guid: 67086bfa2e3f1d44790c7f3d6b230beb, type: 3}
       propertyPath: m_Pivot.x

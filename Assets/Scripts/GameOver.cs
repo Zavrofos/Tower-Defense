@@ -51,7 +51,7 @@ public class GameOver : MonoBehaviour
 
     private void Quit()
     {
-        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
+        SaveSystem.SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 

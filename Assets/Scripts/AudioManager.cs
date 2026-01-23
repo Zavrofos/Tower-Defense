@@ -9,9 +9,9 @@ using Assets.Scripts.Enums;
 
 public class AudioManager : MonoBehaviour
 {
+    [field: SerializeField] public AudioMixer AudioMixer { get; private set; }
+    
     public static AudioManager Instance;
-
-    //[SerializeField] public AudioSource AudioSourceMelody;
     private List<AudioSource> _currentAudioPlaying;
 
     private void Awake()
