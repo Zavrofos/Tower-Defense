@@ -42,6 +42,9 @@ public class WinMenu : MonoBehaviour
         {
             LevelsManager.Instance.Levels[GameManager.Instance.CurrentLevel].OpenLevel();
         }
+        
+        SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
+        
         _winWindow.SetActive(true);
         _gameManagerInGame.IsDisableButtonColliders = true;
         Time.timeScale = 0;

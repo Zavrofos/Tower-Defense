@@ -23,7 +23,7 @@ public class LevelsManager : MonoBehaviour
 
     private void InitializeLevels()
     {
-        LevelsData data = SaveSystem.LoadLevels();
+        LevelsData data = SaveSystem.LoadLevels(CountLevels);
         Levels = new List<Level>();
         if (data != null)
         {

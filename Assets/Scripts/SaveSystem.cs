@@ -6,34 +6,36 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public static class SaveSystem 
+    public static class SaveSystem
     {
+        private const string LevelPrefKey = "SaveLevelPrefKey";
+        
         public static void SaveLevels(List<Level> levels)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/levels.sav";
-            FileStream stream = new FileStream(path, FileMode.Create);
-            LevelsData data = new LevelsData(levels);
-            formatter.Serialize(stream, data);
-            stream.Close();
+            foreach (Level level in levels)
+            {
+                if(level == null)
+                    return;
+                
+                PlayerPrefs.SetInt($"{LevelPrefKey}{level.Label}", level.IsOpen ? 1 : 0);
+            }
         }
 
-        public static LevelsData LoadLevels()
+        public static LevelsData LoadLevels(int countLevels)
         {
-            string path = Application.persistentDataPath + "/levels.sav";
+            List<Level> levels = new List<Level>();
 
-            if(File.Exists(path))
+            for (int i = 0; i < countLevels; i++)
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                FileStream stream = new FileStream(path, FileMode.Open);
-                LevelsData data = formatter.Deserialize(stream) as LevelsData;
-                stream.Close();
-                return data;
+                int levelNumber = i + 1;
+                bool isOpen = PlayerPrefs.GetInt($"{LevelPrefKey}{levelNumber.ToString()}") == 1;
+                isOpen = levelNumber == 1 || isOpen;
+                Level level = new Level(levelNumber);
+                level.IsOpen = isOpen;
+                levels.Add(level);
             }
-            else
-            {
-                return null;
-            }
+
+            return new LevelsData(levels);
         }
     }
 }
