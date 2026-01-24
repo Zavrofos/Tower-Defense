@@ -8,15 +8,10 @@ namespace Assets.Scripts.GlobalShop
     public enum GlobalShopItemType
     {
         TowerLow,
-        TowerLowUpgrade,
         TowerMedium,
-        TowerMediumUpgrade,
         TowerHigh,
-        TowerHighUpgrade,
         TowerCold,
-        TowerColdUpgrade,
         TowerLaser,
-        TowerLaserUpgrade,
         AbilityRocket,
         AbilityMine,
         ResetLevelCoin
@@ -52,6 +47,11 @@ namespace Assets.Scripts.GlobalShop
             }
             
             CloseButton.onClick.AddListener(CloseWindow);
+        }
+
+        private void SetSavedData()
+        {
+            
         }
 
         public void SetDescription(GlobalShopItemInfo info)
