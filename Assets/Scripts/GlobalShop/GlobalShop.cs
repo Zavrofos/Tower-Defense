@@ -56,9 +56,9 @@ namespace Assets.Scripts.GlobalShop
 
         public void SetDescription(GlobalShopItemInfo info)
         {
+            DescriptionItem.Icon.sprite = info.IconDescriptionItem;
             DescriptionItem.Description.text = info.DescriptionItem;
             DescriptionItem.Name.text = info.NameItem;
-            DescriptionItem.Description.text = info.NameItem;
         }
 
         public void BuyItem()
