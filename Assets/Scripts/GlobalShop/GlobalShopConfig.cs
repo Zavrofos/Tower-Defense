@@ -15,8 +15,8 @@ namespace Assets.Scripts.GlobalShop
         public GlobalShopItemType Type;
         
         public bool IsUpgradeType;
-
         public Sprite UpgradeIcon;
+        public Sprite UpgradeDescriptionIcon;
         public int UpgradePrice;
     }
     

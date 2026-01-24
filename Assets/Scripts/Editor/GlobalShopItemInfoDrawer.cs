@@ -12,7 +12,7 @@ namespace Editor
             int lines = 7; // базовые поля
             var isUpgrade = property.FindPropertyRelative("IsUpgradeType").boolValue;
 
-            if (isUpgrade) lines += 2; // UpgradeIcon + UpgradePrice
+            if (isUpgrade) lines += 3; // UpgradeIcon + UpgradePrice
 
             return (EditorGUIUtility.singleLineHeight + 2) * (lines + 1);
         }
@@ -50,6 +50,7 @@ namespace Editor
             if (isUpgrade)
             {
                 Draw("UpgradeIcon");
+                Draw("UpgradeDescriptionIcon");
                 Draw("UpgradePrice");
             }
 
