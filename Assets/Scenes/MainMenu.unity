@@ -417,51 +417,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212870289}
   m_CullTransparentMesh: 1
---- !u!1 &300026395
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 300026397}
-  - component: {fileID: 300026396}
-  m_Layer: 0
-  m_Name: LevelsManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &300026396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300026395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6bf180c1c52da248aaa495e8e5dd962, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CountLevels: 4
---- !u!4 &300026397
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300026395}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &380531920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2563,13 +2518,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c2e3d955eb3824ab9d11f39eb8a61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsStartGame: 1
+  CurrentGameData:
+    CurrentGlobalMoney: 0
+    CurrentLevel: 0
+    IsRocketAbilityBought: 0
+    CountMineBought: 0
+    CountResetLevelCoins: 0
+    LowTowerData:
+      TowerType: 0
+      IsBought: 0
+      IsUpgradedBought: 0
+    MediumTowerData:
+      TowerType: 0
+      IsBought: 0
+      IsUpgradedBought: 0
+    HeightTowerData:
+      TowerType: 0
+      IsBought: 0
+      IsUpgradedBought: 0
+    ColdTowerData:
+      TowerType: 0
+      IsBought: 0
+      IsUpgradedBought: 0
+    LaserTowerData:
+      TowerType: 0
+      IsBought: 0
+      IsUpgradedBought: 0
+  CountLevels: 0
   MusicVolumeValue: 0
   GameVolumeValue: 0
   IndexQuality: 0
   ResolutionIndex: 0
   IsFullscreen: 1
-  CurrentLevel: 0
   _objectPooler: {fileID: 1063011277}
   _audioManager: {fileID: 893468677}
 --- !u!1 &2088571179 stripped
@@ -3066,6 +3046,5 @@ SceneRoots:
   - {fileID: 582387593}
   - {fileID: 54064904}
   - {fileID: 1527695992}
-  - {fileID: 300026397}
   - {fileID: 2051662787}
   - {fileID: 893468678}

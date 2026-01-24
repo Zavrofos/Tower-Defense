@@ -44,17 +44,6 @@ public class Spawner : MonoBehaviour
         if (IsWin) return;
         if (CurrentCountOfEnemyesKilled >= _countEnemyesInLevel) 
         {
-            var winMenu = FindObjectOfType<WinMenu>();
-            winMenu.OpenNextLevel();
-            LevelsManager levelManager = FindObjectOfType<LevelsManager>();
-            for (int i = 0; i < levelManager.Levels.Count; i++)
-            {
-                Level level = levelManager.Levels[i];
-                if (level.IsOpen)
-                {
-                    winMenu.LevelsViews[level.Label].OpenLevel();
-                }
-            }
             IsWin = true;
             _gameManager.IsPouse = true;
             AudioManager.Instance.PauseAudio();

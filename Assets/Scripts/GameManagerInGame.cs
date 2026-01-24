@@ -14,8 +14,8 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private PouseMenu _pouseMenu;
     [SerializeField] private TMP_Text _countCoins;
     [SerializeField] private GameObject GameOverWindow;
+    [SerializeField] private GameObject WinWindow;
     [SerializeField] private Home _home;
-    [SerializeField] private LevelView _levelViewPrefab;
     [SerializeField] private int _coins = 100;
     private int _mineCost = 10;
     public bool IsPouse;
@@ -35,23 +35,15 @@ public class GameManagerInGame : MonoBehaviour
     private void Start()
     {
         _countCoins.text = _coins.ToString();
-        if(LevelsManager.Instance != null)
-        {
-            for(int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
-            {
-                Level level = LevelsManager.Instance.Levels[i];
-                LevelView levelPref = Instantiate(_levelViewPrefab, _conteiner);
-                levelPref.Level = level;
-                levelPref.LabelText.text = level.Label;
-                if (level.IsOpen) levelPref.OpenLevel();
-            }
-        }
         _spawner = FindObjectOfType<Spawner>();
         PauseButton.onClick.AddListener(() => PauseGame(true));
     }
 
     private void Update()
     {
+        if (_spawner.IsWin && !WinWindow.gameObject.activeSelf)
+            WinWindow.SetActive(true);
+        
         if (_spawner.IsWin || _isGameOver) 
             return;
         

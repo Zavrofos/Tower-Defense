@@ -18,8 +18,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnPlay()
     {
-        GameManager.Instance.CurrentLevel = 1;
-        SceneManager.LoadScene("GameLevel1");
+        SceneManager.LoadScene($"GameLevel{GameManager.Instance.CurrentGameData.CurrentLevel}");
     }
 
     private void OnOpenOptions()
@@ -29,8 +28,6 @@ public class MainMenu : MonoBehaviour
 
     private void OnQuit()
     {
-        Debug.Log("Quit!!!");
-        SaveSystem.SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 

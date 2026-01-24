@@ -15789,8 +15789,8 @@ MonoBehaviour:
   _pouseMenu: {fileID: 1914853346}
   _countCoins: {fileID: 123794574}
   GameOverWindow: {fileID: 173732789}
+  WinWindow: {fileID: 777146219}
   _home: {fileID: 1457342057}
-  _levelViewPrefab: {fileID: 7892136377757858622, guid: 2a216b234fde8d744ae5df531e108222, type: 3}
   _coins: 20
   IsPouse: 0
   Shops:
@@ -17839,12 +17839,10 @@ MonoBehaviour:
   _shopButton: {fileID: 0}
   _mainMenuButton: {fileID: 3936345430862214233}
   _quitButton: {fileID: 3936345431465078549}
-  _closeLevelsMenuWindow: {fileID: 3936345429969426430}
   _winWindow: {fileID: 777146219}
   _winMenu: {fileID: 3936345431460144367}
-  _levelsMenu: {fileID: 3936345429846115397}
   _levelsConteiner: {fileID: 3936345429720852309}
-  _levelViewPrefab: {fileID: 7892136377757858622, guid: 2a216b234fde8d744ae5df531e108222, type: 3}
+  _globalShop: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

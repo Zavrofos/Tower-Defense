@@ -49,7 +49,6 @@ public class PouseMenu : MonoBehaviour
 
     private void OnQuit()
     {
-        SaveSystem.SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 

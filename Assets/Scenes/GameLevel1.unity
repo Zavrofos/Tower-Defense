@@ -2052,6 +2052,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+--- !u!1 &744960907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4771287225220372138, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+  m_PrefabInstance: {fileID: 744960906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &778099969
 GameObject:
   m_ObjectHideFlags: 0
@@ -12884,8 +12889,8 @@ MonoBehaviour:
   _pouseMenu: {fileID: 1914853346}
   _countCoins: {fileID: 123794574}
   GameOverWindow: {fileID: 1521318815}
+  WinWindow: {fileID: 744960907}
   _home: {fileID: 1457342057}
-  _levelViewPrefab: {fileID: 7892136377757858622, guid: 2a216b234fde8d744ae5df531e108222, type: 3}
   _coins: 100
   IsPouse: 0
   Shops:

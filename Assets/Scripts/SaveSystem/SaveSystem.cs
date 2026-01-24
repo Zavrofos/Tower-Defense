@@ -1,43 +1,64 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using UnityEngine;
 
 namespace SaveSystem
 {
     public static class SaveSystem
     {
-        private const string LevelPrefKey = "SaveLevelPrefKey";
         private const string SaveQualityPrefKey = "SaveQualityPrefKey";
         private const string SaveResolutionsPrefKey = "SaveResolutionsPrefKey";
         private const string SaveFullScreenPrefKey = "SaveFullScreenPrefKey";
         private const string SaveVolumeMusicPrefKey = "SaveVolumeMusicPrefKey";
         private const string SaveVolumeGamePrefKey = "SaveVolumeGamePrefKey";
         
-        public static void SaveLevels(List<Level> levels)
+        private static string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
+        
+        public static void SaveGame()
         {
-            foreach (Level level in levels)
+            CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+            
+            try
             {
-                if(level == null)
-                    return;
-                
-                PlayerPrefs.SetInt($"{LevelPrefKey}{level.Label}", level.IsOpen ? 1 : 0);
+                string json = JsonUtility.ToJson(currentGameData, true);
+                File.WriteAllText(SavePath, json);
+                Debug.Log($"[SaveSystem] Saved: {SavePath}");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[SaveSystem] Save error: {e}");
             }
         }
 
-        public static LevelsData LoadLevels(int countLevels)
+        public static CurrentGameData LoadSaveGameData()
         {
-            List<Level> levels = new List<Level>();
-
-            for (int i = 0; i < countLevels; i++)
+            try
             {
-                int levelNumber = i + 1;
-                bool isOpen = PlayerPrefs.GetInt($"{LevelPrefKey}{levelNumber.ToString()}") == 1;
-                isOpen = levelNumber == 1 || isOpen;
-                Level level = new Level(levelNumber);
-                level.IsOpen = isOpen;
-                levels.Add(level);
-            }
+                if (!File.Exists(SavePath))
+                {
+                    Debug.Log("[SaveSystem] No save file, creating default data");
+                    return new CurrentGameData();
+                }
 
-            return new LevelsData(levels);
+                string json = File.ReadAllText(SavePath);
+                var data = JsonUtility.FromJson<CurrentGameData>(json);
+
+                if (data == null)
+                {
+                    Debug.LogWarning("[SaveSystem] Save file broken, creating default data");
+                    return new CurrentGameData();
+                }
+
+                Debug.Log($"[SaveSystem] Loaded: {SavePath}");
+                return data;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[SaveSystem] Load error: {e}");
+                return new CurrentGameData();
+            }
         }
 
         public static void SaveQuality(int quality)

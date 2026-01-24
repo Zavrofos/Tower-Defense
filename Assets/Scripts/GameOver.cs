@@ -20,26 +20,12 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject _gameOverWindow;
     [SerializeField] private GameObject _levelsMenu;
     [SerializeField] private Transform _levelsConteiner;
-    [SerializeField] private LevelView _levelViewPrefab;
     [SerializeField] private GlobalShop _globalShop;
-
-    private List<LevelView> levels = new List<LevelView>();
-
-    private void Start()
-    {
-        for (int i = 0; i < LevelsManager.Instance.Levels.Count; i++)
-        {
-            Level level = LevelsManager.Instance.Levels[i];
-            LevelView levelPref = Instantiate(_levelViewPrefab, _levelsConteiner);
-            levelPref.Level = level;
-            levelPref.LabelText.text = level.Label;
-            if (level.IsOpen) levelPref.OpenLevel();
-        }
-    }
+    
     private void ResetLevel()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentLevel);
+        SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentGameData.CurrentLevel);
     }
 
     private void ResetGame()
@@ -63,7 +49,6 @@ public class GameOver : MonoBehaviour
 
     private void Quit()
     {
-        SaveSystem.SaveSystem.SaveLevels(LevelsManager.Instance.Levels);
         Application.Quit();
     }
 
@@ -72,11 +57,6 @@ public class GameOver : MonoBehaviour
         ShowGameOverMenu();
         _gameOverWindow.SetActive(true);
         _levelsMenu.SetActive(false);
-        foreach(var level in levels)
-        {
-            Destroy(level.gameObject);
-        }
-        levels.Clear();
     }
 
     public void ShowGameOverMenu()

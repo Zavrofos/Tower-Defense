@@ -1,17 +1,16 @@
-﻿using System;
-using Assets.Scripts.RepPoolObject;
-using System.Collections;
+﻿using Assets.Scripts.RepPoolObject;
 using System.Collections.Generic;
+using Assets.Scripts.GlobalShop;
 using UnityEngine;
-using SaveSystem;
 using UniRx;
 
 namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
+        public CurrentGameData CurrentGameData;
         public static GameManager Instance;
-        public bool IsStartGame = true;
+        public int CountLevels;
 
         public List<(int, int)> Resolutions { get; private set; } = new()
         {
@@ -35,8 +34,6 @@ namespace Assets.Scripts
         public int ResolutionIndex = 0;
         public bool IsFullscreen = true;
 
-        public int CurrentLevel;
-
         [SerializeField] private ObjectPooler _objectPooler;
         [SerializeField] private AudioManager _audioManager;
 
@@ -57,6 +54,7 @@ namespace Assets.Scripts
         {
             _objectPooler.Initialize();
             _audioManager.Initialize();
+            CurrentGameData = SaveSystem.SaveSystem.LoadSaveGameData();
         }
 
         private void SetSettingsValues()
