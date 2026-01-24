@@ -72,6 +72,8 @@ namespace Assets.Scripts.GlobalShop
 
         public void SetTowerSaveData(GlobalShopItemType type, CurrentGameData currentGameData)
         {
+            Debug.Log($"SetTowerSaveData, items - {Items != null}, currentData - {currentGameData != null}");
+            
             if (Items.ContainsKey(type) && currentGameData.TowersData[type].IsBought)
             {
                 if (currentGameData.TowersData[type].IsBought)

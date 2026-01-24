@@ -1,17 +1,14 @@
 using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.GlobalShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private Button _resetGameButton;
     [SerializeField] private Button _resetLevelButton;
-    [SerializeField] private Button _buyContinueGame;
+    [SerializeField] private BuyContinueGameButton _buyContinueGameButton;
     [SerializeField] private Button _globalShopButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
@@ -24,6 +21,8 @@ public class GameOver : MonoBehaviour
     private void ResetLevel()
     {
         Time.timeScale = 1;
+        GameManager.Instance.CurrentGameData.ResetLevelBought = false;
+        SaveSystem.SaveSystem.SaveGame();
         SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentGameData.CurrentLevel);
     }
 
@@ -54,11 +53,39 @@ public class GameOver : MonoBehaviour
     public void ShowGameOverMenu()
     {
         _gameOverWindow.SetActive(true);
-        _globalShop.CloseButton.onClick.RemoveAllListeners();
+        TrySetBuyContinueButtonInteractable();
+        _globalShop.CloseButton.onClick.RemoveListener(ShowGameOverMenu);
+    }
+
+    private void TrySetBuyContinueButtonInteractable()
+    {
+        _buyContinueGameButton.SetInteractable(GameManager.Instance.CurrentGameData.CountResetLevelCoins > 0);
+        _buyContinueGameButton.CountText.text =
+            GameManager.Instance.CurrentGameData.CountResetLevelCoins.ToString();
+
+        _resetLevelButton.interactable = GameManager.Instance.CurrentGameData.ResetLevelBought;
+    }
+
+    public void BuyResetLevel()
+    {
+        if(_resetLevelButton.interactable)
+            return;
+
+        _resetLevelButton.interactable = true;
+        GameManager.Instance.CurrentGameData.ResetLevelBought = true;
+        GameManager.Instance.CurrentGameData.CountResetLevelCoins--;
+        _buyContinueGameButton.CountText.text = 
+            GameManager.Instance.CurrentGameData.CountResetLevelCoins.ToString();
+        
+        if(GameManager.Instance.CurrentGameData.CountResetLevelCoins == 0)
+            _buyContinueGameButton.SetInteractable(false);
+        SaveSystem.SaveSystem.SaveGame();
     }
 
     private void OnEnable()
     {
+        TrySetBuyContinueButtonInteractable();
+        _buyContinueGameButton.Button.onClick.AddListener(BuyResetLevel);
         _resetLevelButton.onClick.AddListener(ResetLevel);
         _resetGameButton.onClick.AddListener(ResetGame);
         _globalShopButton.onClick.AddListener(OpenGlobalShop);
@@ -68,6 +95,7 @@ public class GameOver : MonoBehaviour
 
     private void OnDisable()
     {
+        _buyContinueGameButton.Button.onClick.RemoveListener(BuyResetLevel);
         _resetLevelButton.onClick.RemoveListener(ResetLevel);
         _resetGameButton.onClick.RemoveListener(ResetGame);
         _globalShopButton.onClick.RemoveListener(OpenGlobalShop);

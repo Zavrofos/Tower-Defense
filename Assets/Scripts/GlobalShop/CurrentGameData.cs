@@ -6,10 +6,11 @@ namespace Assets.Scripts.GlobalShop
     [Serializable]
     public class CurrentGameData
     {
+        public bool ResetLevelBought;
         public bool IsWinGame;
         public bool IsWinLevel;
         public bool IsGameOverLevel;
-        public int CurrentGlobalMoney = 1000;
+        public int CurrentGlobalMoney = 100000;
         public int CurrentLevel = 1;
         public bool IsRocketAbilityBought;
         public int CountMineBought;
