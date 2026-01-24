@@ -1,6 +1,8 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.GlobalShop;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -19,6 +21,7 @@ public class WinMenu : MonoBehaviour
     [SerializeField] private GameObject _levelsMenu;
     [SerializeField] private Transform _levelsConteiner;
     [SerializeField] private LevelView _levelViewPrefab;
+    [SerializeField] private GlobalShop _globalShop;
 
     [HideInInspector] public Dictionary<string, LevelView> LevelsViews = new Dictionary<string, LevelView>();
     private GameManagerInGame _gameManagerInGame;
@@ -65,8 +68,9 @@ public class WinMenu : MonoBehaviour
 
     public void OpenGlobalShop()
     {
-        // _winMenu.SetActive(false);
-        // _levelsMenu.SetActive(true);
+        _winMenu.SetActive(false);
+        _globalShop.gameObject.SetActive(true);
+        _globalShop.CloseButton.onClick.AddListener(ShowWinMenu);
     }
 
     public void MainMenu()
@@ -83,11 +87,16 @@ public class WinMenu : MonoBehaviour
 
     public void CloseWindowLevelsMenu()
     {
-        _winMenu.SetActive(true);
+        ShowWinMenu();
         _levelsMenu.SetActive(false);
     }
 
-
+    public void ShowWinMenu()
+    {
+        _globalShop.CloseButton.onClick.RemoveAllListeners();
+        _globalShop.gameObject.SetActive(false);
+        _winMenu.SetActive(true);
+    }
 
     private void OnEnable()
     {

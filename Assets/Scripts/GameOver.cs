@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.GlobalShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -20,6 +21,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject _levelsMenu;
     [SerializeField] private Transform _levelsConteiner;
     [SerializeField] private LevelView _levelViewPrefab;
+    [SerializeField] private GlobalShop _globalShop;
 
     private List<LevelView> levels = new List<LevelView>();
 
@@ -48,7 +50,9 @@ public class GameOver : MonoBehaviour
 
     private void OpenGlobalShop()
     {
-        
+        _gameOverWindow.SetActive(false);
+        _globalShop.gameObject.SetActive(true);
+        _globalShop.CloseButton.onClick.AddListener(ShowGameOverMenu);
     }
 
     private void MainMenu()
@@ -65,6 +69,7 @@ public class GameOver : MonoBehaviour
 
     private void CloseWindowLevelsMenu()
     {
+        ShowGameOverMenu();
         _gameOverWindow.SetActive(true);
         _levelsMenu.SetActive(false);
         foreach(var level in levels)
@@ -72,6 +77,12 @@ public class GameOver : MonoBehaviour
             Destroy(level.gameObject);
         }
         levels.Clear();
+    }
+
+    public void ShowGameOverMenu()
+    {
+        _gameOverWindow.SetActive(true);
+        _globalShop.CloseButton.onClick.RemoveAllListeners();
     }
 
     private void OnEnable()

@@ -828,6 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822ab03cf871fb5448cc3805ad0c79a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitRotationImageInShop: {x: 0, y: 0, z: 0}
   _icon: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
   _label: TowerLaser
   _price: 30
