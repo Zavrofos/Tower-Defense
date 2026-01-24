@@ -659,7 +659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.GlobalShop.GridUpdater
   Content: {fileID: 3936345429753882461}
   GridLayoutGroup: {fileID: 3936345429753882463}
-  MaxCellSize: {x: 300, y: 0}
+  MaxCellSize: 0
 --- !u!1 &3936345429880194125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,14 +1530,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.8037735, g: 0.36245638, b: 0.49881202, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ef27dc0f6d5f8b840b7adca8a091e1c5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
