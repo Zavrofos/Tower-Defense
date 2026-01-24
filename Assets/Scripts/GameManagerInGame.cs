@@ -3,6 +3,7 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.GlobalShop;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private TMP_Text _countCoins;
     [SerializeField] private GameObject GameOverWindow;
     [SerializeField] private GameObject WinWindow;
+    [SerializeField] private GameObject WinGameWindow;
     [SerializeField] private Home _home;
     [SerializeField] private int _coins = 100;
     private int _mineCost = 10;
@@ -41,8 +43,10 @@ public class GameManagerInGame : MonoBehaviour
 
     private void Update()
     {
-        if (_spawner.IsWin && !WinWindow.gameObject.activeSelf)
-            WinWindow.SetActive(true);
+        bool winWindowOpened = WinWindow && WinWindow.gameObject.activeSelf || WinGameWindow && WinGameWindow.activeSelf;
+        
+        if (_spawner.IsWin && !winWindowOpened)
+            ShowWinWindow();
         
         if (_spawner.IsWin || _isGameOver) 
             return;
@@ -51,6 +55,26 @@ public class GameManagerInGame : MonoBehaviour
             PauseGame(true);
         else if(Input.GetKeyDown(KeyCode.Escape) && _pouseMenu.IsPouse)
             PauseGame(false);
+    }
+
+    private void ShowWinWindow()
+    {
+        CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+        
+        if (currentGameData.CurrentLevel == GameManager.Instance.CountLevels)
+        {
+            currentGameData.IsWinGame = true;
+            currentGameData.IsWinLevel = false;
+            WinGameWindow.SetActive(true);
+        }
+        else
+        {
+            currentGameData.IsWinLevel = true;
+            currentGameData.CurrentLevel++;
+            WinWindow.SetActive(true);
+        }
+        
+        SaveSystem.SaveSystem.SaveGame();
     }
 
     private void PauseGame(bool isPause)
@@ -88,8 +112,11 @@ public class GameManagerInGame : MonoBehaviour
         _countCoins.text = _coins.ToString();
     }
 
-    public void GameOver()
+    public void GameOverLevel()
     {
+        GameManager.Instance.CurrentGameData.IsGameOverLevel = true;
+        GameManager.Instance.CurrentGameData.IsWinLevel = false;
+        SaveSystem.SaveSystem.SaveGame();
         GameOverWindow.SetActive(true);
         AudioManager.Instance.PauseAudio();
         IsPouse = true;
@@ -100,12 +127,12 @@ public class GameManagerInGame : MonoBehaviour
 
     private void OnEnable()
     {
-        _home.Killed += GameOver;
+        _home.Killed += GameOverLevel;
     }
 
     private void OnDisable()
     {
-        _home.Killed -= GameOver;
+        _home.Killed -= GameOverLevel;
     }
 
     private void OnDestroy()

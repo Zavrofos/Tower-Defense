@@ -20,13 +20,6 @@ public class WinMenu : MonoBehaviour
     
     public void NextLevel()
     {
-        if (GameManager.Instance.CurrentGameData.CurrentLevel >= GameManager.Instance.CountLevels)
-        {
-            _winWindow.SetActive(true);
-            return;
-        }
-        
-        GameManager.Instance.CurrentGameData.CurrentLevel++;
         SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentGameData.CurrentLevel);
         Time.timeScale = 1;
     }
@@ -58,7 +51,7 @@ public class WinMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if(GameManager.Instance.CurrentGameData.CurrentLevel < GameManager.Instance.CountLevels)
+        if(GameManager.Instance.CurrentGameData.CurrentLevel <= GameManager.Instance.CountLevels)
         {
             _nextLevelButton.onClick.AddListener(NextLevel);
         }

@@ -15,7 +15,6 @@ public class GameOver : MonoBehaviour
     [SerializeField] private Button _globalShopButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
-    [SerializeField] private Button _closeLevelsMenuWindow;
 
     [SerializeField] private GameObject _gameOverWindow;
     [SerializeField] private GameObject _levelsMenu;
@@ -52,13 +51,6 @@ public class GameOver : MonoBehaviour
         Application.Quit();
     }
 
-    private void CloseWindowLevelsMenu()
-    {
-        ShowGameOverMenu();
-        _gameOverWindow.SetActive(true);
-        _levelsMenu.SetActive(false);
-    }
-
     public void ShowGameOverMenu()
     {
         _gameOverWindow.SetActive(true);
@@ -72,7 +64,6 @@ public class GameOver : MonoBehaviour
         _globalShopButton.onClick.AddListener(OpenGlobalShop);
         _mainMenuButton.onClick.AddListener(MainMenu);
         _quitButton.onClick.AddListener(Quit);
-        _closeLevelsMenuWindow.onClick.AddListener(CloseWindowLevelsMenu);
     }
 
     private void OnDisable()
@@ -82,7 +73,6 @@ public class GameOver : MonoBehaviour
         _globalShopButton.onClick.RemoveListener(OpenGlobalShop);
         _mainMenuButton.onClick.RemoveListener(MainMenu);
         _quitButton.onClick.RemoveListener(Quit);
-        _closeLevelsMenuWindow.onClick.RemoveListener(CloseWindowLevelsMenu);
     }
 
 }

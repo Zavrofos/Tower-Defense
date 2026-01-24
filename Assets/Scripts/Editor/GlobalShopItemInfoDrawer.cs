@@ -9,7 +9,7 @@ namespace Editor
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            int lines = 7; // базовые поля
+            int lines = 10; // базовые поля
             var isUpgrade = property.FindPropertyRelative("IsUpgradeType").boolValue;
 
             if (isUpgrade) lines += 5; // UpgradeIcon + UpgradePrice

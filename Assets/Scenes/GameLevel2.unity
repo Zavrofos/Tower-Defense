@@ -14392,7 +14392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adee7bd0a44c13945a9019aabd61b0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 1
   _maxHealth: 100
 --- !u!1 &1525116414
 GameObject:
@@ -17602,6 +17602,7 @@ MonoBehaviour:
   _countCoins: {fileID: 123794574}
   GameOverWindow: {fileID: 2035312988}
   WinWindow: {fileID: 2041523490}
+  WinGameWindow: {fileID: 0}
   _home: {fileID: 1457342057}
   _coins: 100
   IsPouse: 0

@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.GlobalShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,6 +19,14 @@ public class MainMenu : MonoBehaviour
 
     private void OnPlay()
     {
+        CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+
+        if (currentGameData.IsWinGame || currentGameData.IsWinLevel || currentGameData.IsGameOverLevel)
+        {
+            SceneManager.LoadScene("StartGameScene");
+            return;
+        }
+        
         SceneManager.LoadScene($"GameLevel{GameManager.Instance.CurrentGameData.CurrentLevel}");
     }
 
