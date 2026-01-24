@@ -55,6 +55,7 @@ namespace Assets.Scripts
             _objectPooler.Initialize();
             _audioManager.Initialize();
             CurrentGameData = SaveSystem.SaveSystem.LoadSaveGameData();
+            CurrentGameData.Init();
         }
 
         private void SetSettingsValues()

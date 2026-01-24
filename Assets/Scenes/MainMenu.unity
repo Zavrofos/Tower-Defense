@@ -1726,8 +1726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fc73369339bbd4f9ae396172a35279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conteiner: {fileID: 94870244}
-  _levelViewPref: {fileID: 7892136377757858622, guid: 2a216b234fde8d744ae5df531e108222, type: 3}
 --- !u!4 &1527695992
 Transform:
   m_ObjectHideFlags: 0
@@ -2544,7 +2542,7 @@ MonoBehaviour:
       TowerType: 0
       IsBought: 0
       IsUpgradedBought: 0
-  CountLevels: 0
+  CountLevels: 4
   MusicVolumeValue: 0
   GameVolumeValue: 0
   IndexQuality: 0

@@ -19,6 +19,7 @@ namespace Assets.Scripts.GlobalShop
             Toggle.group = toggleGroup;
             ItemIcon.sprite = globalShopItemInfo.IconShopItem;
             PriceText.text = globalShopItemInfo.Price.ToString();
+            GlobalShopItemInfo = globalShopItemInfo;
         }
     }
 }

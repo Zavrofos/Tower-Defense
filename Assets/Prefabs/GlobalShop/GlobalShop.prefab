@@ -370,10 +370,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 39.25
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 4
@@ -1289,6 +1289,7 @@ MonoBehaviour:
   <Content>k__BackingField: {fileID: 3936345429753882461}
   <DescriptionItem>k__BackingField: {fileID: 3549135172944597109}
   <GlobalShopConfig>k__BackingField: {fileID: 11400000, guid: fad2dabd0828b4149821e9d2b6965adc, type: 2}
+  <GlobalCoinCount>k__BackingField: {fileID: 1654722028862200718}
 --- !u!114 &8061063771870554812
 MonoBehaviour:
   m_ObjectHideFlags: 0

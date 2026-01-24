@@ -18,6 +18,8 @@ namespace Assets.Scripts.GlobalShop
         public Sprite UpgradeIcon;
         public Sprite UpgradeDescriptionIcon;
         public int UpgradePrice;
+        public string UpgradedName;
+        public string UpgradedDescription;
     }
     
     
