@@ -10,7 +10,7 @@ namespace Assets.Scripts.GlobalShop
         public bool IsWinGame;
         public bool IsWinLevel;
         public bool IsGameOverLevel;
-        public int CurrentGlobalMoney = 100000;
+        public int CurrentGlobalMoney = 0;
         public int CurrentLevel = 1;
         public bool IsRocketAbilityBought;
         public bool IsMineAbilityBought;

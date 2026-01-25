@@ -161,6 +161,7 @@ namespace Assets.Scripts.GlobalShop
             SaveSystem.SaveSystem.SaveGame();
 
             item.Toggle.isOn = true;
+            EventSystem.current.SetSelectedGameObject(item.Toggle.gameObject);
         }
 
         private void BuyOrBuyUpgradeTower(ItemInGlobalShop item, CurrentGameData currentGameData)
