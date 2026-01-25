@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.GlobalShop
@@ -51,6 +52,9 @@ namespace Assets.Scripts.GlobalShop
             
             CloseButton.onClick.AddListener(CloseWindow);
             SetSavedData();
+            
+            Items[GlobalShopItemType.TowerLow].Toggle.isOn = true;
+            EventSystem.current.SetSelectedGameObject(Items[GlobalShopItemType.TowerLow].Toggle.gameObject);
         }
 
         private void SetSavedData()
@@ -155,6 +159,8 @@ namespace Assets.Scripts.GlobalShop
             currentGameData.CurrentGlobalMoney -= price;
             GlobalCoinCount.text = currentGameData.CurrentGlobalMoney.ToString();
             SaveSystem.SaveSystem.SaveGame();
+
+            item.Toggle.isOn = true;
         }
 
         private void BuyOrBuyUpgradeTower(ItemInGlobalShop item, CurrentGameData currentGameData)
