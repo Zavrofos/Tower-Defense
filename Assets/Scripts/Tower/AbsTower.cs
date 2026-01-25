@@ -2,6 +2,7 @@ using Assets.Scripts;
 using Assets.Scripts.Tower;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.GlobalShop;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,7 @@ public abstract class AbsTower : MonoBehaviour
     public string _description;
     public Transform PartToRotate;
     public float SpeedRotation;
+    public GlobalShopItemType Type;
 
     public Sprite Icon => _icon;
     public string Label => _label;

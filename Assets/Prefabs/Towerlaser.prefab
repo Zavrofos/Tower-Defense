@@ -837,6 +837,7 @@ MonoBehaviour:
   _description: 'Targets: Ground'
   PartToRotate: {fileID: 825172555351694145}
   SpeedRotation: 100
+  Type: 4
   TargetsEnemyType: 00000000
   _startPoint: {fileID: 1986548969348663761}
   _endPoint: {fileID: 1986548969163610207}

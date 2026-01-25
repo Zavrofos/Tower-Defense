@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BuildingPoint : MonoBehaviour
 {
@@ -19,8 +17,12 @@ public class BuildingPoint : MonoBehaviour
         {
             Destroy(CurrentTower);
             CurrentTower = Instantiate(tower, gameObject.transform);
-            ButtonImprovement.UpgradePriceText.text = tower.GetComponent<AbsTower>().UpgradePrice.ToString();
+            
         }
-        ButtonImprovement.gameObject.SetActive(true);
+        
+        AbsTower absTower = CurrentTower.GetComponent<AbsTower>();
+        ButtonImprovement.UpgradePriceText.text = absTower.UpgradePrice.ToString();
+        bool isUpgradedBought = GameManager.Instance.CurrentGameData.TowersData[absTower.Type].IsUpgradedBought;
+        ButtonImprovement.gameObject.SetActive(isUpgradedBought);
     }
 }

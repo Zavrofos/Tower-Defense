@@ -499,6 +499,7 @@ MonoBehaviour:
   _description: 'Targets: Ground'
   PartToRotate: {fileID: 6789707796415871934}
   SpeedRotation: 10
+  Type: 1
   TargetsEnemyType: 00000000
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
