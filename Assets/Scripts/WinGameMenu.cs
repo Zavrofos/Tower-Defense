@@ -13,6 +13,7 @@ public class WinGameMenu : MonoBehaviour
     private void StartNewGame()
     {
         GameManager.Instance.CurrentGameData = new CurrentGameData();
+        GameManager.Instance.CurrentGameData.Init();
         SaveSystem.SaveSystem.SaveGame();
         SceneManager.LoadScene("GameLevel1");
     }

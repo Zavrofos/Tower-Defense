@@ -138,6 +138,7 @@ namespace Assets.Scripts.GlobalShop
             {
                 currentGameData.IsMineAbilityBought = true;
                 currentGameData.CountMineBought++;
+                item.CountText.text = $"x{currentGameData.CountMineBought.ToString()}";
             }
             else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityRocket)
             {
@@ -148,6 +149,7 @@ namespace Assets.Scripts.GlobalShop
             else if (item.GlobalShopItemInfo.Type == GlobalShopItemType.ResetLevelCoin)
             {
                 currentGameData.CountResetLevelCoins++;
+                item.CountText.text = $"x{currentGameData.CountResetLevelCoins.ToString()}";
             }
 
             currentGameData.CurrentGlobalMoney -= price;
