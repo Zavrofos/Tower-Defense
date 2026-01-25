@@ -851,7 +851,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  _damage: 6
+  _damage: 5
   IsImproved: 0
 --- !u!61 &-696675950956576577
 BoxCollider2D:

@@ -493,8 +493,8 @@ MonoBehaviour:
   InitRotationImageInShop: {x: 0, y: 0, z: 90}
   _icon: {fileID: 21300000, guid: 9e03a753945d31e44bb7e6f4c9628315, type: 3}
   _label: TowerMedium
-  _price: 20
-  _upgradePrice: 25
+  _price: 30
+  _upgradePrice: 20
   _firingRadius: 3
   _description: 'Targets: Ground'
   PartToRotate: {fileID: 6789707796415871934}

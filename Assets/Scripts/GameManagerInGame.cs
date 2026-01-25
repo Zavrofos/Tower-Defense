@@ -18,8 +18,9 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private GameObject WinWindow;
     [SerializeField] private GameObject WinGameWindow;
     [SerializeField] private Home _home;
-    [SerializeField] private int _coins = 100;
+    [SerializeField] private int _coins = 20;
     [SerializeField] private int RevardForWinLevel = 100;
+    [SerializeField] private int RevardGameOverLevel = 50;
     private int _mineCost = 10;
     public bool IsPouse;
     private bool _isGameOver;
@@ -131,6 +132,7 @@ public class GameManagerInGame : MonoBehaviour
     {
         GameManager.Instance.CurrentGameData.IsGameOverLevel = true;
         GameManager.Instance.CurrentGameData.IsWinLevel = false;
+        GameManager.Instance.CurrentGameData.CurrentGlobalMoney += RevardGameOverLevel;
         SaveSystem.SaveSystem.SaveGame();
         GameOverWindow.SetActive(true);
         AudioManager.Instance.PauseAudio();

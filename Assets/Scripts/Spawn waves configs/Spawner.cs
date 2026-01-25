@@ -25,6 +25,8 @@ public class Spawner : MonoBehaviour
 
     private GameManagerInGame _gameManager;
 
+    private int _currentTemplateNumber;
+
     private void Start()
     {
         _waves = IsTest ? _wavesConfigTest : _wavesConfig;
@@ -58,14 +60,17 @@ public class Spawner : MonoBehaviour
             _timeAfterPreviousWave += Time.deltaTime;
             if(_timeAfterPreviousWave >= _timeToSpawnNextWave || CurrentCountOfEnemyesKilledInCurrentWave == _currentWave.Templates.Length)
             {
+                Debug.Log("(test) 1");
                 _isNextWaveActive = false;
                 CurrentCountOfEnemyesKilledInCurrentWave = 0;
                 if(_currentWaveNumber == _waves.Waves.Count - 1)
                 {
+                    Debug.Log("(test) 2");
                     _currentWave = null;
                 }
                 else
                 {
+                    Debug.Log("(test) 3");
                     _currentWaveNumber++;
                     SetWave(_currentWaveNumber);
                 }
@@ -79,18 +84,21 @@ public class Spawner : MonoBehaviour
         if(_timeAfterLastSpawn >= _currentWave.Delay)
         {
             _timeAfterLastSpawn = 0;
-            if(_currentWave.CurrentTemplateNumber > _currentWave.Templates.Length - 1)
+            if(_currentTemplateNumber > _currentWave.Templates.Length - 1)
             {
                 _isNextWaveActive = true;
+                Debug.Log("(test) instantiated 1");
                 return;
             }
-            InstantiateEnemy(_currentWave.CurrentTemplateNumber);
-            _currentWave.CurrentTemplateNumber++;
+            Debug.Log("(test) instantiated 2");
+            InstantiateEnemy(_currentTemplateNumber);
+            _currentTemplateNumber++;
         }
     }
 
     private void SetWave(int index)
     {
+        _currentTemplateNumber = 0;
         _currentWave = _waves.Waves[index];
     }
 
@@ -105,5 +113,4 @@ public class Wave
 {
     public GameObject[] Templates;
     public float Delay;
-    public int CurrentTemplateNumber;
 }

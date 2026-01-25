@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  IsTest: 1
+  IsTest: 0
   _wavesConfig: {fileID: 11400000, guid: b272a9c479d1efe4193472ab73afab90, type: 2}
   _wavesConfigTest: {fileID: 11400000, guid: 18dc1135cb0a9c04089814dcddff31da, type: 2}
   _spawnPoint: {fileID: 840376051}
@@ -9905,7 +9905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adee7bd0a44c13945a9019aabd61b0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  _health: 100
   _maxHealth: 100
 --- !u!1001 &1521318813
 PrefabInstance:
@@ -11922,7 +11922,9 @@ MonoBehaviour:
   WinWindow: {fileID: 744960907}
   WinGameWindow: {fileID: 0}
   _home: {fileID: 1457342057}
-  _coins: 100
+  _coins: 30
+  RevardForWinLevel: 300
+  RevardGameOverLevel: 150
   IsPouse: 0
   Shops:
   - {fileID: 2110210549}

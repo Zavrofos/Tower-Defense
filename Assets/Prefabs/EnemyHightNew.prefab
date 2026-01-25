@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
-  _damage: 30
-  _reward: 6
+  _health: 80
+  _damage: 10
+  _reward: 4
   _speed: 1
   PointsOfWayForEnemy:
   - {fileID: 2270387858708668837, guid: 7d5bbfd20f4a54844bee7313da50e852, type: 3}

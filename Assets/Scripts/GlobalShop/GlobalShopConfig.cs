@@ -10,6 +10,7 @@ namespace Assets.Scripts.GlobalShop
         public Sprite IconShopItem;
         public Sprite IconDescriptionItem;
         public int Price;
+        [TextArea(10, 10)] 
         public string DescriptionItem;
         public string NameItem;
         public GlobalShopItemType Type;
@@ -19,6 +20,7 @@ namespace Assets.Scripts.GlobalShop
         public Sprite UpgradeDescriptionIcon;
         public int UpgradePrice;
         public string UpgradedName;
+        [TextArea(10, 10)] 
         public string UpgradedDescription;
     }
     

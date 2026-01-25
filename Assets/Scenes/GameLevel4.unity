@@ -2942,7 +2942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  IsTest: 1
+  IsTest: 0
   _wavesConfig: {fileID: 11400000, guid: a4ed2c9d9afdb804c93f92f88f15e1b4, type: 2}
   _wavesConfigTest: {fileID: 11400000, guid: 6f84ce5b85a4eef46ba837e4cf314b08, type: 2}
   _spawnPoint: {fileID: 840376051}
@@ -15075,7 +15075,9 @@ MonoBehaviour:
   WinWindow: {fileID: 0}
   WinGameWindow: {fileID: 1817793002}
   _home: {fileID: 1457342057}
-  _coins: 20
+  _coins: 45
+  RevardForWinLevel: 300
+  RevardGameOverLevel: 150
   IsPouse: 0
   Shops:
   - {fileID: 458445995537748801}
