@@ -114,14 +114,12 @@ namespace Assets.Scripts.GlobalShop
 
         private void BuyItem(ItemInGlobalShop item)
         {
-            Debug.Log("BuyItem 1");
             CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
             int money = currentGameData.CurrentGlobalMoney;
             int price = int.Parse(item.PriceText.text);
 
             if (money < price)
             {
-                Debug.Log("BuyItem 2");
                 Debug.Log("Dont have money!!!");
                 return;
             }
@@ -134,24 +132,21 @@ namespace Assets.Scripts.GlobalShop
 
             if (isTower)
             {
-                Debug.Log("BuyItem 3");
                 BuyOrBuyUpgradeTower(item, currentGameData);
             }
             else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityMine)
             {
-                Debug.Log("BuyItem 4");
+                currentGameData.IsMineAbilityBought = true;
                 currentGameData.CountMineBought++;
             }
             else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityRocket)
             {
-                Debug.Log("BuyItem 5");
                 currentGameData.IsRocketAbilityBought = true;
                 item.BuyButton.interactable = false;
                 item.BuyButtonText.text = "Bought";
             }
             else if (item.GlobalShopItemInfo.Type == GlobalShopItemType.ResetLevelCoin)
             {
-                Debug.Log("BuyItem 6");
                 currentGameData.CountResetLevelCoins++;
             }
 
@@ -162,19 +157,16 @@ namespace Assets.Scripts.GlobalShop
 
         private void BuyOrBuyUpgradeTower(ItemInGlobalShop item, CurrentGameData currentGameData)
         {
-            Debug.Log($"BuyOrBuyUpgradeTower 1, type - {item.GlobalShopItemInfo.Type}");
             TowerData towerData = currentGameData.TowersData[item.GlobalShopItemInfo.Type];
 
             if (towerData.IsBought)
             {
-                Debug.Log("BuyOrBuyUpgradeTower 2");
                 towerData.IsUpgradedBought = true;
                 item.BuyButton.interactable = false;
                 item.BuyButtonText.text = "Bought";
             }
             else
             {
-                Debug.Log("BuyOrBuyUpgradeTower 3");
                 towerData.IsBought = true;
                 item.ItemIcon.sprite = item.GlobalShopItemInfo.UpgradeIcon;
                 item.PriceText.text = item.GlobalShopItemInfo.Price.ToString();

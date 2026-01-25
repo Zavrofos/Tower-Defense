@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,18 +13,33 @@ namespace Assets.Scripts
         [SerializeField] private RadiusAbility _radiusAbility;
         [SerializeField] private Ability _abilityPrefab;
         [SerializeField] private GameManagerInGame _gameManager;
+        [SerializeField] private TMP_Text _countText;
 
         [SerializeField] public Image ImageTime;
         [SerializeField] private float _timeToUsing;
         private float _runningTime;
         public bool IsReady = true;
         public AudioSource AudioExplosion;
-
+        
         private void Start()
         {
             _gameManager = FindObjectOfType<GameManagerInGame>();
             if(ImageTime != null) ImageTime.fillAmount = 0;
         }
+
+        public void SetInteractableButton(bool value)
+        {
+            _abilityButton.interactable = value;
+        }
+
+        public void SetCountMine(int count)
+        {
+            if(_abilityPrefab is AbilityRocket)
+                return;
+
+            _countText.text = count.ToString();
+        }
+        
 
         private void Update()
         {
@@ -55,10 +72,13 @@ namespace Assets.Scripts
 
             if(_abilityPrefab is AbilityMine)
             {
-                if(_gameManager.Coins < _gameManager.MineCost)
-                {
+                if(GameManager.Instance.CurrentGameData.CountMineBought == 0)
                     return;
-                }
+
+                GameManager.Instance.CurrentGameData.CountMineBought--;
+                _countText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
+                _abilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;
+                SaveSystem.SaveSystem.SaveGame();
             }
             GameManagerInGame gameManager = FindObjectOfType<GameManagerInGame>();
             gameManager.IsDisableButtonColliders = true;

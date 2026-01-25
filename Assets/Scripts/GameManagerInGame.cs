@@ -34,6 +34,11 @@ public class GameManagerInGame : MonoBehaviour
     public int Coins => _coins;
     public int MineCost => _mineCost;
 
+    private void Awake()
+    {
+        CheckBoughtAbilityAndTrySetActive();
+    }
+
     private void Start()
     {
         _countCoins.text = _coins.ToString();
@@ -55,6 +60,14 @@ public class GameManagerInGame : MonoBehaviour
             PauseGame(true);
         else if(Input.GetKeyDown(KeyCode.Escape) && _pouseMenu.IsPouse)
             PauseGame(false);
+    }
+    
+    private void CheckBoughtAbilityAndTrySetActive()
+    {
+        RokketButtonAbility.gameObject.SetActive(GameManager.Instance.CurrentGameData.IsRocketAbilityBought);
+        MineButtonAbility.gameObject.SetActive(GameManager.Instance.CurrentGameData.IsMineAbilityBought);
+        MineButtonAbility.SetInteractableButton(GameManager.Instance.CurrentGameData.CountMineBought > 0);
+        MineButtonAbility.SetCountMine(GameManager.Instance.CurrentGameData.CountMineBought);
     }
 
     private void ShowWinWindow()

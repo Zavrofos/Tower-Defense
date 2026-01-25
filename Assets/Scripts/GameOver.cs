@@ -29,6 +29,8 @@ public class GameOver : MonoBehaviour
     private void ResetGame()
     {
         Time.timeScale = 1;
+        GameManager.Instance.CurrentGameData.CurrentLevel = 1;
+        SaveSystem.SaveSystem.SaveGame();
         SceneManager.LoadScene("GameLevel1");
     }
 
