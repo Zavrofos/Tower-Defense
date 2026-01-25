@@ -26,8 +26,8 @@ namespace Assets.Scripts.GlobalShop
 
         public void Init()
         {
-            LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow };
-            MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium };
+            LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true};
+            MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true};
             HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh };
             ColdTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerCold };
             LaserTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaser };

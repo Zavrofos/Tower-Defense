@@ -1141,6 +1141,17 @@ MonoBehaviour:
     SoundCategory: 2
     AudioClip: {fileID: 8300000, guid: dafb6c7b21e06c341afcad47815379d2, type: 3}
     Output: {fileID: 405951902945317161, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  TowersInfos:
+  - Type: 0
+    TowerPrefab: {fileID: 6789707795654957662, guid: a6c35a5935a62e941823120bed241062, type: 3}
+  - Type: 1
+    TowerPrefab: {fileID: 6789707795654957662, guid: ae204e45ff9361847bfafb5574782f7b, type: 3}
+  - Type: 2
+    TowerPrefab: {fileID: 6789707795654957662, guid: 850536fc5ca598248b070bc195888df0, type: 3}
+  - Type: 3
+    TowerPrefab: {fileID: 6789707795654957662, guid: 49986e2e3881f124ca236a2d3ec1472f, type: 3}
+  - Type: 4
+    TowerPrefab: {fileID: 7956219493098163114, guid: 2136cc1547a15d645a2b18e5977adaca, type: 3}
 --- !u!4 &740885346
 Transform:
   m_ObjectHideFlags: 0
@@ -2473,12 +2484,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentGameData:
+    ResetLevelBought: 0
     IsWinGame: 0
     IsWinLevel: 0
     IsGameOverLevel: 0
     CurrentGlobalMoney: 0
     CurrentLevel: 0
     IsRocketAbilityBought: 0
+    IsMineAbilityBought: 0
     CountMineBought: 0
     CountResetLevelCoins: 0
     LowTowerData:
