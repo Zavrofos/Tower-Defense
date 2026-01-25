@@ -15075,7 +15075,7 @@ MonoBehaviour:
   WinWindow: {fileID: 0}
   WinGameWindow: {fileID: 1817793002}
   _home: {fileID: 1457342057}
-  _coins: 45
+  _coins: 60
   RevardForWinLevel: 300
   RevardGameOverLevel: 150
   IsPouse: 0
