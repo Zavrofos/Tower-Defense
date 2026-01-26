@@ -36,6 +36,7 @@ public class AbilityMine : Ability
         if(Input.GetMouseButtonDown(0))
         {
             transform.position = transform.position;
+            GetComponent<Animator>().speed = 1;
             _installed = true;
         }
     }

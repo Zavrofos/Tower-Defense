@@ -83,7 +83,8 @@ namespace Assets.Scripts
                 if(GameManager.Instance.CurrentGameData.CountMineBought == 0)
                     return;
 
-                Instantiate(_abilityPrefab);
+                AbilityMine mine = (AbilityMine) Instantiate(_abilityPrefab);
+                mine.GetComponent<Animator>().speed = 0;
                 GameManager.Instance.CurrentGameData.CountMineBought--;
                 CountText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
                 AbilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;

@@ -1,10 +1,8 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
-using Assets.Scripts.Tower;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Explosion : PooledObject
 {
@@ -12,8 +10,8 @@ public class Explosion : PooledObject
     public override string Tag => _tag;
 
     [SerializeField] private ParticleSystem _explosionParticle;
-    [SerializeField] private int _damage;
-    [SerializeField] private float _damageRadius;
+    public int Damage;
+    public float DamageRadius;
 
     private IPlayableParticle _playParticleSystem;
     private IGivingEffects _givingEffectsSystem;
@@ -21,9 +19,9 @@ public class Explosion : PooledObject
 
     private void Awake()
     {
-        _playParticleSystem = new ExplosionParticle(_explosionParticle, _damageRadius);
-        _givingEffectsSystem = new DamageEffect(_damage);
-        _finderObjectsSystem = new CircleFinderObjects(_damageRadius);
+        _playParticleSystem = new ExplosionParticle(_explosionParticle, DamageRadius);
+        _givingEffectsSystem = new DamageEffect(Damage);
+        _finderObjectsSystem = new CircleFinderObjects(DamageRadius);
     }
 
     public void ExplosonPlay()
