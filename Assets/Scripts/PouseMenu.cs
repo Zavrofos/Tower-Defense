@@ -16,7 +16,6 @@ public class PouseMenu : MonoBehaviour
     [SerializeField] private Button _closeOptionsMenuButton;
     
     [SerializeField] private GameObject _pouseMenu;
-    [SerializeField] private GameObject _levelsMenu;
     [SerializeField] private GameObject _optionsMenu;
 
     public bool IsPouse;
@@ -27,12 +26,6 @@ public class PouseMenu : MonoBehaviour
     private void Start()
     {
         _gameManagerInGame = GameManager.Instance.CurrentGameManagerLevel;
-    }
-
-    private void OnOpenLevelsMenu()
-    {
-        _levelsMenu.SetActive(true);
-        _pouseMenu.SetActive(false);
     }
 
     private void OnOpenOptionsMenu()
