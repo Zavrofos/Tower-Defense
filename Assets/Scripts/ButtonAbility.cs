@@ -3,17 +3,19 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     public class ButtonAbility : MonoBehaviour
     {
-        [SerializeField] private Button _abilityButton;
         [SerializeField] private RadiusAbility _radiusAbility;
         [SerializeField] private Ability _abilityPrefab;
         [SerializeField] private GameManagerInGame _gameManager;
-        [SerializeField] private TMP_Text _countText;
+        
+        public Button AbilityButton;
+        public TMP_Text CountText;
 
         [SerializeField] public Image ImageTime;
         [SerializeField] private float _timeToUsing;
@@ -29,7 +31,7 @@ namespace Assets.Scripts
 
         public void SetInteractableButton(bool value)
         {
-            _abilityButton.interactable = value;
+            AbilityButton.interactable = value;
         }
 
         public void SetCountMine(int count)
@@ -37,7 +39,7 @@ namespace Assets.Scripts
             if(_abilityPrefab is AbilityRocket)
                 return;
 
-            _countText.text = count.ToString();
+            CountText.text = count.ToString();
         }
         
 
@@ -61,13 +63,22 @@ namespace Assets.Scripts
 
         private void TakeAbility()
         {
+            GameManagerInGame gameManager = FindObjectOfType<GameManagerInGame>();
+            
             if(_abilityPrefab is AbilityRocket)
             {
                 if(!IsReady)
                 {
                     return;
                 }
+                
                 ImageTime.fillAmount = 1;
+                
+                gameManager.IsDisableButtonColliders = true;
+                RadiusAbility radiusAbility = Instantiate(_radiusAbility);
+                radiusAbility.Ability = _abilityPrefab;
+                radiusAbility.Transform.localScale = new Vector2(_abilityPrefab.DamageRadius * 2, _abilityPrefab.DamageRadius * 2);
+                radiusAbility.ButtonAbility = this;
             }
 
             if(_abilityPrefab is AbilityMine)
@@ -75,27 +86,22 @@ namespace Assets.Scripts
                 if(GameManager.Instance.CurrentGameData.CountMineBought == 0)
                     return;
 
+                Instantiate(_abilityPrefab);
                 GameManager.Instance.CurrentGameData.CountMineBought--;
-                _countText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
-                _abilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;
+                CountText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
+                AbilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;
                 SaveSystem.SaveSystem.SaveGame();
             }
-            GameManagerInGame gameManager = FindObjectOfType<GameManagerInGame>();
-            gameManager.IsDisableButtonColliders = true;
-            RadiusAbility radiusAbility = Instantiate(_radiusAbility);
-            radiusAbility.Ability = _abilityPrefab;
-            radiusAbility.Transform.localScale = new Vector2(_abilityPrefab.DamageRadius * 2, _abilityPrefab.DamageRadius * 2);
-            radiusAbility.ButtonAbility = this;
         }
 
         private void OnEnable()
         {
-            _abilityButton.onClick.AddListener(TakeAbility);
+            AbilityButton.onClick.AddListener(TakeAbility);
         }
 
         private void OnDisable()
         {
-            _abilityButton.onClick.RemoveListener(TakeAbility);
+            AbilityButton.onClick.RemoveListener(TakeAbility);
         }
     }
 }

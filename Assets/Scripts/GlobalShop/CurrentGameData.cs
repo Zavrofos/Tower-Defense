@@ -13,8 +13,8 @@ namespace Assets.Scripts.GlobalShop
         public int CurrentGlobalMoney = 0;
         public int CurrentLevel = 1;
         public bool IsRocketAbilityBought;
-        public bool IsMineAbilityBought;
-        public int CountMineBought;
+        public bool IsMineAbilityBought = true;
+        public int CountMineBought = 10;
         public int CountResetLevelCoins;
         public TowerData LowTowerData;
         public TowerData MediumTowerData;

@@ -5,7 +5,6 @@ namespace Assets.Scripts
 {
     public class RadiusAbility : MonoBehaviour
     {
-
         public Transform Transform;
         public Ability Ability;
         public GameManagerInGame gameManagerInGame;
@@ -24,7 +23,9 @@ namespace Assets.Scripts
 
             if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButtonDown(1))
             {
-                if (Ability is AbilityRocket) gameManagerInGame.RokketButtonAbility.ImageTime.fillAmount = 0;
+                if (Ability is AbilityRocket) 
+                    gameManagerInGame.RokketButtonAbility.ImageTime.fillAmount = 0;
+                
                 gameManagerInGame.IsDisableButtonColliders = false;
                 Destroy(gameObject);
             }

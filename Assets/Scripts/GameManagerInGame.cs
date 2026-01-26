@@ -39,6 +39,7 @@ public class GameManagerInGame : MonoBehaviour
     private void Awake()
     {
         CheckBoughtAbilityAndTrySetActive();
+        GameManager.Instance.CurrentGameManagerLevel = this;
     }
 
     private void Start()

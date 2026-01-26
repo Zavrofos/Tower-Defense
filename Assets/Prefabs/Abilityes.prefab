@@ -136,11 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59daf738e18dcd24db0718a703585c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abilityButton: {fileID: 420231177165488521}
   _radiusAbility: {fileID: 3327513554582619004, guid: 90d8df83bf58efb4fbfff2a6d6c0ced0, type: 3}
   _abilityPrefab: {fileID: 1336678594888281770, guid: abacc2c470490ee468a6859a0ee0cf78, type: 3}
   _gameManager: {fileID: 0}
-  _countText: {fileID: 0}
+  AbilityButton: {fileID: 420231177165488521}
+  CountText: {fileID: 0}
   ImageTime: {fileID: 6687299232319877665}
   _timeToUsing: 20
   IsReady: 1
@@ -529,11 +529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59daf738e18dcd24db0718a703585c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _abilityButton: {fileID: 2577748922825660661}
   _radiusAbility: {fileID: 3327513554582619004, guid: 90d8df83bf58efb4fbfff2a6d6c0ced0, type: 3}
   _abilityPrefab: {fileID: 5544701862462024252, guid: 769cbcb9cd8d41f4f877b3246278b079, type: 3}
   _gameManager: {fileID: 0}
-  _countText: {fileID: 7926835905059058328}
+  AbilityButton: {fileID: 2577748922825660661}
+  CountText: {fileID: 7926835905059058328}
   ImageTime: {fileID: 0}
   _timeToUsing: 0
   IsReady: 1
