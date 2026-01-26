@@ -12,6 +12,7 @@ namespace Assets.Scripts
         public static GameManager Instance;
         public int CountLevels;
         public GameManagerInGame CurrentGameManagerLevel { get; set; }
+        public Spawner CurrentSpawner { get; set; }
 
         public List<(int, int)> Resolutions { get; private set; } = new()
         {

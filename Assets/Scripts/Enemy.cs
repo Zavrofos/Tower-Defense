@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         {
             if(_currentPointOfWay >= _pointsOfWay.Length - 1)
             {
-                FindObjectOfType<Spawner>().CurrentCountOfEnemyesKilled++;
+                GameManager.Instance.CurrentSpawner.CurrentCountOfEnemyesKilled++;
                 Destroy(gameObject);
             }
             
@@ -68,9 +68,9 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         StartCoroutine(ChangeColorForHit());
         if (_health <= 0)
         {
-            GameManagerInGame gameManager = FindObjectOfType<GameManagerInGame>();
+            GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
             gameManager.AddCoins(_reward);
-            Spawner spawner = FindObjectOfType<Spawner>();
+            Spawner spawner = GameManager.Instance.CurrentSpawner;
             spawner.CurrentCountOfEnemyesKilled++;
             spawner.CurrentCountOfEnemyesKilledInCurrentWave++;
             Destroy(gameObject);

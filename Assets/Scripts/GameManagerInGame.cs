@@ -45,7 +45,7 @@ public class GameManagerInGame : MonoBehaviour
     private void Start()
     {
         _countCoins.text = _coins.ToString();
-        _spawner = FindObjectOfType<Spawner>();
+        _spawner = GameManager.Instance.CurrentSpawner;
         PauseButton.onClick.AddListener(() => PauseGame(true));
     }
 

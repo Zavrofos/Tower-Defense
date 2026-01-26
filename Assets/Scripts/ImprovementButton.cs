@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ public class ImprovementButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameManagerInGame gameManager = FindObjectOfType<GameManagerInGame>();
+        GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
         if (gameManager.IsDisableButtonColliders) return;
         if(gameManager.Coins < int.Parse(UpgradePriceText.text))
         {

@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using Assets.Scripts.Spawn_waves_configs;
 using UnityEngine;
 
@@ -23,15 +24,13 @@ public class Spawner : MonoBehaviour
 
     public bool IsWin;
 
-    private GameManagerInGame _gameManager;
-
     private int _currentTemplateNumber;
 
     private void Start()
     {
         _waves = IsTest ? _wavesConfigTest : _wavesConfig;
         SetWave(_currentWaveNumber);
-        _gameManager = FindObjectOfType<GameManagerInGame>();
+        GameManager.Instance.CurrentSpawner = this;
 
         foreach(var wave in _waves.Waves)
         {
@@ -45,7 +44,7 @@ public class Spawner : MonoBehaviour
         if (CurrentCountOfEnemyesKilled >= _countEnemyesInLevel) 
         {
             IsWin = true;
-            _gameManager.IsPouse = true;
+            GameManager.Instance.CurrentGameManagerLevel.IsPouse = true;
             AudioManager.Instance.PauseAudio();
             return;
         }
@@ -60,17 +59,14 @@ public class Spawner : MonoBehaviour
             _timeAfterPreviousWave += Time.deltaTime;
             if(_timeAfterPreviousWave >= _timeToSpawnNextWave || CurrentCountOfEnemyesKilledInCurrentWave == _currentWave.Templates.Length)
             {
-                Debug.Log("(test) 1");
                 _isNextWaveActive = false;
                 CurrentCountOfEnemyesKilledInCurrentWave = 0;
                 if(_currentWaveNumber == _waves.Waves.Count - 1)
                 {
-                    Debug.Log("(test) 2");
                     _currentWave = null;
                 }
                 else
                 {
-                    Debug.Log("(test) 3");
                     _currentWaveNumber++;
                     SetWave(_currentWaveNumber);
                 }
@@ -87,10 +83,9 @@ public class Spawner : MonoBehaviour
             if(_currentTemplateNumber > _currentWave.Templates.Length - 1)
             {
                 _isNextWaveActive = true;
-                Debug.Log("(test) instantiated 1");
                 return;
             }
-            Debug.Log("(test) instantiated 2");
+            
             InstantiateEnemy(_currentTemplateNumber);
             _currentTemplateNumber++;
         }

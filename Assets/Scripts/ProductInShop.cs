@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ public class ProductInShop : MonoBehaviour
     private void Start()
     {
         BuildingPoint = GetComponentInParent<Shop>().BuildingPoint;
-        _gameManager = FindObjectOfType<GameManagerInGame>();
+        _gameManager = GameManager.Instance.CurrentGameManagerLevel;
     }
     private void OnEnable()
     {

@@ -12,7 +12,6 @@ namespace Assets.Scripts
     {
         [SerializeField] private RadiusAbility _radiusAbility;
         [SerializeField] private Ability _abilityPrefab;
-        [SerializeField] private GameManagerInGame _gameManager;
         
         public Button AbilityButton;
         public TMP_Text CountText;
@@ -25,8 +24,8 @@ namespace Assets.Scripts
         
         private void Start()
         {
-            _gameManager = FindObjectOfType<GameManagerInGame>();
-            if(ImageTime != null) ImageTime.fillAmount = 0;
+            if(ImageTime != null) 
+                ImageTime.fillAmount = 0;
         }
 
         public void SetInteractableButton(bool value)
@@ -63,8 +62,6 @@ namespace Assets.Scripts
 
         private void TakeAbility()
         {
-            GameManagerInGame gameManager = FindObjectOfType<GameManagerInGame>();
-            
             if(_abilityPrefab is AbilityRocket)
             {
                 if(!IsReady)
@@ -74,7 +71,7 @@ namespace Assets.Scripts
                 
                 ImageTime.fillAmount = 1;
                 
-                gameManager.IsDisableButtonColliders = true;
+                GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = true;
                 RadiusAbility radiusAbility = Instantiate(_radiusAbility);
                 radiusAbility.Ability = _abilityPrefab;
                 radiusAbility.Transform.localScale = new Vector2(_abilityPrefab.DamageRadius * 2, _abilityPrefab.DamageRadius * 2);

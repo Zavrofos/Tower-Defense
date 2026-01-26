@@ -26,7 +26,7 @@ public class TowerOfCold : AbsTower
         _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
         RotationSystem = new RotateTargeting(PartToRotate, SpeedRotation);
         _spriteRendererTower.sprite = _spritesTower[0];
-        _gameManager = FindObjectOfType<GameManagerInGame>();
+        _gameManager = GameManager.Instance.CurrentGameManagerLevel;
     }
 
     public override void UpdateGame()

@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
         AudioSource[] audios = FindObjectsOfType<AudioSource>();
         foreach(var audio in audios)
         {
-            if(audio.isPlaying /*&& audio != AudioSourceMelody*/)
+            if(audio.isPlaying)
             {
                 SoundBox soundBox = audio.gameObject.GetComponent<SoundBox>();
                 if(soundBox.CurrentAudioClip.SoundCategory == SoundCategory.BackgrounMelody)

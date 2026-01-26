@@ -26,7 +26,7 @@ public class PouseMenu : MonoBehaviour
 
     private void Start()
     {
-        _gameManagerInGame = FindObjectOfType<GameManagerInGame>();
+        _gameManagerInGame = GameManager.Instance.CurrentGameManagerLevel;
     }
 
     private void OnOpenLevelsMenu()

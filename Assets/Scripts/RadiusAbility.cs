@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            gameManagerInGame = FindObjectOfType<GameManagerInGame>();
+            gameManagerInGame = GameManager.Instance.CurrentGameManagerLevel;
         }
 
         private void Update()
