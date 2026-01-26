@@ -54,6 +54,7 @@ public class GameOver : MonoBehaviour
 
     public void ShowGameOverMenu()
     {
+        GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = true;
         _gameOverWindow.SetActive(true);
         TrySetBuyContinueButtonInteractable();
         _globalShop.CloseButton.onClick.RemoveListener(ShowGameOverMenu);

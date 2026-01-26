@@ -12,7 +12,6 @@ public class PouseMenu : MonoBehaviour
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeWindowButton;
-    [SerializeField] private Button _closeLevelsMenuButton;
     [SerializeField] private Button _closeOptionsMenuButton;
     
     [SerializeField] private GameObject _pouseMenu;
@@ -54,12 +53,6 @@ public class PouseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void OnCloseLevelsMenu()
-    {
-        _levelsMenu.SetActive(false);
-        _pouseMenu.SetActive(true);
-    }
-
     private void OnCloseOptionsMenu()
     {
         _optionsMenu.SetActive(false);
@@ -73,10 +66,8 @@ public class PouseMenu : MonoBehaviour
         _mainMenuButton.onClick.AddListener(OnBackToMainMenu);
         _quitButton.onClick.AddListener(OnQuit);
         _closeWindowButton.onClick.AddListener(OnCloseWindow);
-        _closeLevelsMenuButton.onClick.AddListener(OnCloseLevelsMenu);
         _closeOptionsMenuButton.onClick.AddListener(OnCloseOptionsMenu);
         IsPouse = true;
-        _levelsMenu.SetActive(false);
         _optionsMenu.SetActive(false);
         _pouseMenu.SetActive(true);
     }
@@ -87,7 +78,6 @@ public class PouseMenu : MonoBehaviour
         _mainMenuButton.onClick.RemoveListener(OnBackToMainMenu);
         _quitButton.onClick.RemoveListener(OnQuit);
         _closeWindowButton.onClick.RemoveListener(OnCloseWindow);
-        _closeLevelsMenuButton.onClick.RemoveListener(OnCloseLevelsMenu);
         _closeOptionsMenuButton.onClick.RemoveListener(OnCloseOptionsMenu);
         IsPouse = false;
     }

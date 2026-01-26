@@ -90,6 +90,8 @@ public class GameManagerInGame : MonoBehaviour
             currentGameData.CurrentGlobalMoney += RevardForWinLevel;
             WinWindow.SetActive(true);
         }
+
+        IsDisableButtonColliders = true;
         
         SaveSystem.SaveSystem.SaveGame();
     }

@@ -16,8 +16,6 @@ public class WinMenu : MonoBehaviour
     [SerializeField] private Transform _levelsConteiner;
     [SerializeField] private GlobalShop _globalShop;
     
-    private GameManagerInGame _gameManagerInGame;
-    
     public void NextLevel()
     {
         SceneManager.LoadScene("GameLevel" + GameManager.Instance.CurrentGameData.CurrentLevel);
@@ -44,6 +42,8 @@ public class WinMenu : MonoBehaviour
 
     public void ShowWinMenu()
     {
+        if(GameManager.Instance.CurrentGameManagerLevel)
+            GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = true;
         _globalShop.CloseButton.onClick.RemoveAllListeners();
         _globalShop.gameObject.SetActive(false);
         _winMenu.SetActive(true);
