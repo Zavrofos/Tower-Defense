@@ -85,6 +85,7 @@ namespace Assets.Scripts
 
                 AbilityMine mine = (AbilityMine) Instantiate(_abilityPrefab);
                 mine.GetComponent<Animator>().speed = 0;
+                mine.GetComponent<BoxCollider2D>().enabled = false;
                 GameManager.Instance.CurrentGameData.CountMineBought--;
                 CountText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
                 AbilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;

@@ -37,6 +37,7 @@ public class AbilityMine : Ability
         {
             transform.position = transform.position;
             GetComponent<Animator>().speed = 1;
+            GetComponent<BoxCollider2D>().enabled = true;
             _installed = true;
         }
     }
