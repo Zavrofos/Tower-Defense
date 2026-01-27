@@ -21,6 +21,8 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private int _coins = 20;
     [SerializeField] private int RevardForWinLevel = 100;
     [SerializeField] private int RevardGameOverLevel = 50;
+    public Button SetNextWaveButton;
+    public Button SetGameFasterButton;
     private int _mineCost = 10;
     public bool IsPouse;
     private bool _isGameOver;
@@ -35,6 +37,8 @@ public class GameManagerInGame : MonoBehaviour
 
     public int Coins => _coins;
     public int MineCost => _mineCost;
+    
+    public bool FastGameEnabled { get; private set; } 
 
     private void Awake()
     {
@@ -47,6 +51,9 @@ public class GameManagerInGame : MonoBehaviour
         _countCoins.text = _coins.ToString();
         _spawner = GameManager.Instance.CurrentSpawner;
         PauseButton.onClick.AddListener(() => PauseGame(true));
+        SetNextWaveButton.onClick.AddListener(SetNextWave);
+        SetGameFasterButton.onClick.AddListener(SwitchGameFaster);
+        GameManager.Instance.CurrentSpawner.OnSetNextWave += SetInteractableNextWaveButton;
     }
 
     private void Update()
@@ -64,6 +71,24 @@ public class GameManagerInGame : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Escape) && _pouseMenu.IsPouse)
             PauseGame(false);
     }
+
+    private void SetNextWave()
+    {
+        Spawner currenSpawner = GameManager.Instance.CurrentSpawner;
+        currenSpawner.SetNextWave();
+    }
+    
+    private void SwitchGameFaster()
+    {
+        FastGameEnabled = !FastGameEnabled;
+        Time.timeScale = FastGameEnabled ? 2f : 1f;
+        GameManager.Instance.CurrentSpeedGame = Time.timeScale;
+    }
+
+    private void SetInteractableNextWaveButton(bool value)
+    {
+        SetNextWaveButton.interactable = value;
+    }
     
     private void CheckBoughtAbilityAndTrySetActive()
     {
@@ -75,6 +100,8 @@ public class GameManagerInGame : MonoBehaviour
 
     private void ShowWinWindow()
     {
+        GameManager.Instance.SetNormalSpeedGame();
+        
         CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
         
         if (currentGameData.CurrentLevel == GameManager.Instance.CountLevels)
@@ -98,7 +125,7 @@ public class GameManagerInGame : MonoBehaviour
 
     private void PauseGame(bool isPause)
     {
-        Time.timeScale = isPause ? 0 : 1;
+        Time.timeScale = isPause ? 0 : GameManager.Instance.CurrentSpeedGame;
         _pouseMenu.gameObject.SetActive(isPause);
         IsDisableButtonColliders = isPause;
         _pouseMenu.IsPouse = isPause;
@@ -136,6 +163,7 @@ public class GameManagerInGame : MonoBehaviour
         GameManager.Instance.CurrentGameData.IsGameOverLevel = true;
         GameManager.Instance.CurrentGameData.IsWinLevel = false;
         GameManager.Instance.CurrentGameData.CurrentGlobalMoney += RevardGameOverLevel;
+        GameManager.Instance.SetNormalSpeedGame();
         SaveSystem.SaveSystem.SaveGame();
         GameOverWindow.SetActive(true);
         AudioManager.Instance.PauseAudio();
@@ -158,5 +186,7 @@ public class GameManagerInGame : MonoBehaviour
     private void OnDestroy()
     {
         PauseButton.onClick.RemoveAllListeners();
+        SetNextWaveButton.onClick.RemoveAllListeners();
+        SetGameFasterButton.onClick.RemoveAllListeners();
     }
 }

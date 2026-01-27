@@ -13,6 +13,8 @@ namespace Assets.Scripts
         public int CountLevels;
         public GameManagerInGame CurrentGameManagerLevel { get; set; }
         public Spawner CurrentSpawner { get; set; }
+        
+        public float CurrentSpeedGame { get; set; }
 
         public List<(int, int)> Resolutions { get; private set; } = new()
         {
@@ -58,6 +60,12 @@ namespace Assets.Scripts
             _audioManager.Initialize();
             CurrentGameData = SaveSystem.SaveSystem.LoadSaveGameData();
             CurrentGameData.Init();
+        }
+        
+        public void SetNormalSpeedGame()
+        {
+            Time.timeScale = 1f;
+            CurrentSpeedGame = 1;
         }
 
         private void SetSettingsValues()

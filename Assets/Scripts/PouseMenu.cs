@@ -50,7 +50,7 @@ public class PouseMenu : MonoBehaviour
         _gameManagerInGame.IsDisableButtonColliders = false;
         _gameManagerInGame.IsPouse = false;
         AudioManager.Instance.PlayAudio();
-        Time.timeScale = 1;
+        Time.timeScale = GameManager.Instance.CurrentSpeedGame;
     }
 
     private void OnCloseOptionsMenu()

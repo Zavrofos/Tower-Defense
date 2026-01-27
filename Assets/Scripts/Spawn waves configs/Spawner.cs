@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts;
 using Assets.Scripts.Spawn_waves_configs;
 using UnityEngine;
@@ -26,16 +27,27 @@ public class Spawner : MonoBehaviour
 
     private int _currentTemplateNumber;
 
+    public event Action<bool> OnSetNextWave;
+
+    private void Awake()
+    {
+        GameManager.Instance.CurrentSpawner = this;
+    }
+
     private void Start()
     {
         _waves = IsTest ? _wavesConfigTest : _wavesConfig;
         SetWave(_currentWaveNumber);
-        GameManager.Instance.CurrentSpawner = this;
-
+        
         foreach(var wave in _waves.Waves)
         {
             _countEnemyesInLevel += wave.Templates.Length;
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnSetNextWave = null;
     }
 
     private void Update()
@@ -60,6 +72,7 @@ public class Spawner : MonoBehaviour
             if(_timeAfterPreviousWave >= _timeToSpawnNextWave || CurrentCountOfEnemyesKilledInCurrentWave == _currentWave.Templates.Length)
             {
                 _isNextWaveActive = false;
+                OnSetNextWave?.Invoke(false);
                 CurrentCountOfEnemyesKilledInCurrentWave = 0;
                 if(_currentWaveNumber == _waves.Waves.Count - 1)
                 {
@@ -83,12 +96,18 @@ public class Spawner : MonoBehaviour
             if(_currentTemplateNumber > _currentWave.Templates.Length - 1)
             {
                 _isNextWaveActive = true;
+                OnSetNextWave?.Invoke(_currentWave != _waves.Waves[^1]);
                 return;
             }
             
             InstantiateEnemy(_currentTemplateNumber);
             _currentTemplateNumber++;
         }
+    }
+
+    public void SetNextWave()
+    {
+        _timeAfterPreviousWave = _timeToSpawnNextWave;
     }
 
     private void SetWave(int index)

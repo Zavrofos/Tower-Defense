@@ -13099,6 +13099,130 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
   m_PrefabInstance: {fileID: 519675383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1111416790
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2128986816}
+    m_Modifications:
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 384.33997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 138.77002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939719798100172307, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+      propertyPath: m_Name
+      value: WavesButtons
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+--- !u!224 &1111416791 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4136054125862440679, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+  m_PrefabInstance: {fileID: 1111416790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1111416792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7356451785502699257, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+  m_PrefabInstance: {fileID: 1111416790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1111416793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 484345362587694933, guid: 83d680d7e6b53d540a3b2c7aae4cdd55, type: 3}
+  m_PrefabInstance: {fileID: 1111416790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1124507225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16991,6 +17115,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1111416791}
   - {fileID: 1329970595}
   - {fileID: 1448273544}
   - {fileID: 712831726}
@@ -17164,6 +17289,8 @@ MonoBehaviour:
   _coins: 45
   RevardForWinLevel: 300
   RevardGameOverLevel: 150
+  SetNextWaveButton: {fileID: 1111416793}
+  SetGameFasterButton: {fileID: 1111416792}
   IsPouse: 0
   Shops:
   - {fileID: 458445995537748801}
