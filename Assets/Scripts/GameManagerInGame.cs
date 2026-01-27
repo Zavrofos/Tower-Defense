@@ -23,10 +23,10 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private int RevardGameOverLevel = 50;
     public Button SetNextWaveButton;
     public Button SetGameFasterButton;
-    private int _mineCost = 10;
     public bool IsPouse;
     private bool _isGameOver;
     public Shop[] Shops;
+    public Transform[] PointsOfWayForEnemy;
 
     public ButtonAbility RokketButtonAbility;
     public ButtonAbility MineButtonAbility;
@@ -36,7 +36,6 @@ public class GameManagerInGame : MonoBehaviour
     public bool IsDisableButtonColliders = false;
 
     public int Coins => _coins;
-    public int MineCost => _mineCost;
     
     public bool FastGameEnabled { get; private set; } 
 

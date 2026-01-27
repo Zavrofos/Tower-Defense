@@ -2514,7 +2514,7 @@ MonoBehaviour:
       TowerType: 0
       IsBought: 0
       IsUpgradedBought: 0
-  CountLevels: 4
+  CountLevels: 5
   MusicVolumeValue: 0
   GameVolumeValue: 0
   IndexQuality: 0

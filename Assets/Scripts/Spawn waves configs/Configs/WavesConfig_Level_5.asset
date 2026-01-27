@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b106f8a00246fa8487477a560d89af, type: 3}
+  m_Name: WavesConfig_Level_5
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Spawn_waves_configs.WavesConfig
+  Waves:
+  - Templates:
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    Delay: 2
+    CurrentTemplateNumber: 0
+  - Templates:
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
+    Delay: 2
+    CurrentTemplateNumber: 0
+  - Templates:
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    - {fileID: 4076020992478401941, guid: 4883df44366748d4886af2c21607d2bd, type: 3}
+    Delay: 2
+    CurrentTemplateNumber: 0
+  - Templates:
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
+    Delay: 2
+    CurrentTemplateNumber: 0
+  - Templates:
+    - {fileID: 1845349280365932795, guid: bbad78e06e3c58349beb71e036729764, type: 3}
+    Delay: 2
+    CurrentTemplateNumber: 0

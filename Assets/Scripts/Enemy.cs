@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
     public int _damage;
     public int _reward;
     public float _speed;
-    public GameObject[] PointsOfWayForEnemy;
     public SpriteRenderer _spriteRenderer;
     public Animator Animator;
     public Color _applayDamageColor;
@@ -23,11 +22,7 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 
     private void Start()
     {
-        _pointsOfWay = new Transform[PointsOfWayForEnemy[GameManager.Instance.CurrentGameData.CurrentLevel - 1].transform.childCount];
-        for(int i = 0; i < _pointsOfWay.Length; i++)
-        {
-            _pointsOfWay[i] = PointsOfWayForEnemy[GameManager.Instance.CurrentGameData.CurrentLevel - 1].transform.GetChild(i);
-        }
+        _pointsOfWay = GameManager.Instance.CurrentGameManagerLevel.PointsOfWayForEnemy;
         _initialColor = _spriteRenderer.color;
         _currentColor = _initialColor;
     }

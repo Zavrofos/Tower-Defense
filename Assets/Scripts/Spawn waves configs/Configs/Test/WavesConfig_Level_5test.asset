@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57b106f8a00246fa8487477a560d89af, type: 3}
-  m_Name: WavesConfig_Level_4test
+  m_Name: WavesConfig_Level_5test
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Spawn_waves_configs.WavesConfig
   Waves:
   - Templates:
-    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
-    Delay: 1.5
+    - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
+    Delay: 2
     CurrentTemplateNumber: 0
