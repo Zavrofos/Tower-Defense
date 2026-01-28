@@ -1551,7 +1551,7 @@ PrefabInstance:
     - target: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: UpgradePriceText
       value: 
-      objectReference: {fileID: 778252447}
+      objectReference: {fileID: 1164690109}
     - target: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: _upgradePriceText
       value: 
@@ -1559,7 +1559,7 @@ PrefabInstance:
     - target: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: _improvementPriceObj
       value: 
-      objectReference: {fileID: 1544232661}
+      objectReference: {fileID: 737305739}
     - target: {fileID: 1506964826992884664, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.148
@@ -1663,7 +1663,7 @@ PrefabInstance:
     - target: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: UpgradePriceText
       value: 
-      objectReference: {fileID: 778252447}
+      objectReference: {fileID: 1987642002}
     - target: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: _upgradePriceText
       value: 
@@ -1671,7 +1671,7 @@ PrefabInstance:
     - target: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: _improvementPriceObj
       value: 
-      objectReference: {fileID: 1544232661}
+      objectReference: {fileID: 12948964}
     - target: {fileID: 1506964826992884664, guid: 5506111edac46c143afad2c319296c65, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.092
