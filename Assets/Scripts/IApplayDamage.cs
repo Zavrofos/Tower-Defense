@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public interface IApplayDamage
+    public interface IApplayDamage 
     {
         void ApplayDamage(int damage);
     }

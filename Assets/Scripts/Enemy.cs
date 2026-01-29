@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Enemyes.AttackBehaviours;
+using Assets.Scripts.Enemyes.MoveBehaviours;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
@@ -8,53 +9,33 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
     public int _health;
     public int _damage;
     public int _reward;
-    public float _speed;
     public SpriteRenderer _spriteRenderer;
     public Animator Animator;
     public Color _applayDamageColor;
     public Color _freezeColor;
     public Color _initialColor;
     public Color _currentColor;
-    public Transform[] _pointsOfWay;
-    public int _currentPointOfWay;
     public bool _isFrozen;
     public EnemyType Type;
 
+    public IMoveBehaviour MoveBehaviour;
+    public IAttackBehaviour AttackBehaviour;
+
+    private void Awake()
+    {
+        MoveBehaviour = GetComponent<IMoveBehaviour>();
+        AttackBehaviour = GetComponent<IAttackBehaviour>();
+    }
+
     private void Start()
     {
-        _pointsOfWay = GameManager.Instance.CurrentGameManagerLevel.PointsOfWayForEnemy;
         _initialColor = _spriteRenderer.color;
         _currentColor = _initialColor;
     }
 
     private void Update()
     {
-        Move();
-    }
-
-    public void Move()
-    {
-        var point = _pointsOfWay[_currentPointOfWay].position;
-        if(transform.position != point)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, point, _speed * Time.deltaTime);
-        }
-        else
-        {
-            if(_currentPointOfWay >= _pointsOfWay.Length - 1)
-            {
-                GameManager.Instance.CurrentSpawner.CurrentCountOfEnemyesKilled++;
-                Destroy(gameObject);
-            }
-            
-            if(_currentPointOfWay < _pointsOfWay.Length - 1)
-            {
-                Vector2 direction = _pointsOfWay[_currentPointOfWay + 1].position - transform.position;
-                Animator.SetFloat("X", direction.x);
-                Animator.SetFloat("Y", direction.y);
-            }
-            _currentPointOfWay++;
-        }
+        MoveBehaviour?.Move();
     }
 
     public virtual void ApplayDamage(int damage)
@@ -81,12 +62,12 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 
     public virtual IEnumerator FreezeCoroutine()
     {
-        _speed = 0.5f;
+        MoveBehaviour.Speed = 0.5f;
         _currentColor = _freezeColor;
         _spriteRenderer.color = _currentColor;
         _isFrozen = true;
         yield return new WaitForSeconds(5);
-        _speed = 1;
+        MoveBehaviour.Speed = 1;
         _currentColor = _initialColor;
         _spriteRenderer.color = _currentColor;
         _isFrozen = false;
@@ -100,16 +81,16 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         }
     }
 
+    public void Attack(IDamageSystem target)
+    {
+        AttackBehaviour?.Attack(target);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent<Home>(out Home home))
         {
             home.ApplayDamage(_damage);
         }
-    }
-
-    public void ChangeSpeed(float speed)
-    {
-        _speed = speed;
     }
 }

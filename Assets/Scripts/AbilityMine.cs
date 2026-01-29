@@ -46,10 +46,10 @@ public class AbilityMine : Ability
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            IApplayDamage enemy = collision.gameObject.GetComponent<IApplayDamage>();
 
-            if (!enemy.name.Contains("EnemyBoss"))
-                enemy.ApplayDamage(enemy._health);
+            if (!collision.name.Contains("EnemyBoss"))
+                enemy.ApplayDamage(1000);
             else
                 enemy.ApplayDamage(10);
             

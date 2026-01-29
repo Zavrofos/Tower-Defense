@@ -38,7 +38,7 @@ public class Shield : MonoBehaviour, IApplayDamage
         if (Health <= 0)
         {
             Enemy parent = GetComponentInParent<Enemy>();
-            parent.ChangeSpeed(SpeedAfterShilBroken);
+            parent.MoveBehaviour.Speed = SpeedAfterShilBroken;
             Destroy(this.gameObject);
         }
     }
