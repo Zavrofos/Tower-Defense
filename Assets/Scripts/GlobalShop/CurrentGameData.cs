@@ -28,9 +28,9 @@ namespace Assets.Scripts.GlobalShop
         {
             LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true};
             MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true};
-            HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh };
-            ColdTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerCold };
-            LaserTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaser };
+            HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh, IsBought = true };
+            ColdTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerCold, IsBought = true };
+            LaserTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaser, IsBought = true };
             
             TowersData = new Dictionary<GlobalShopItemType, TowerData>()
             {

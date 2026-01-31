@@ -119,6 +119,8 @@ MonoBehaviour:
   SpeedRotation: 10
   Type: 3
   TargetsEnemyType: 00000000
+  InitialColor: {r: 1, g: 1, b: 1, a: 1}
+  DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
   _shootPoint: {fileID: 2050538020351171557}
   _delayTimeToShoot: 1
   _spriteRendererTower: {fileID: 6789707796415871935}
@@ -297,7 +299,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

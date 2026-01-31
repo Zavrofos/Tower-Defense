@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
     private void Awake()
     {
         MoveBehaviour = GetComponent<IMoveBehaviour>();
+        MoveBehaviour.CurrentSpeed = MoveBehaviour.Speed;
         AttackBehaviour = GetComponent<IAttackBehaviour>();
     }
 
@@ -62,12 +63,12 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 
     public virtual IEnumerator FreezeCoroutine()
     {
-        MoveBehaviour.Speed = 0.5f;
+        MoveBehaviour.CurrentSpeed = MoveBehaviour.Speed / 2;
         _currentColor = _freezeColor;
         _spriteRenderer.color = _currentColor;
         _isFrozen = true;
         yield return new WaitForSeconds(5);
-        MoveBehaviour.Speed = 1;
+        MoveBehaviour.CurrentSpeed = MoveBehaviour.Speed;
         _currentColor = _initialColor;
         _spriteRenderer.color = _currentColor;
         _isFrozen = false;

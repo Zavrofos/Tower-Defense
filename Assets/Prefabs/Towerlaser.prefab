@@ -348,7 +348,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -442,7 +442,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -839,10 +839,13 @@ MonoBehaviour:
   SpeedRotation: 100
   Type: 4
   TargetsEnemyType: 00000000
+  InitialColor: {r: 1, g: 1, b: 1, a: 1}
+  DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
   _startPoint: {fileID: 1986548969348663761}
   _endPoint: {fileID: 1986548969163610207}
   Lazer: {fileID: 2452748731239334243}
   _secondPartTowerImprove: {fileID: 3229257956280969233}
+  FirstPartTowerSpriteRenderer: {fileID: 2124735760161885360}
   _secondPartTowerSpriteRenderer: {fileID: 5561687096201172710}
   _startPointImprove: {fileID: 7088653429026806007}
   _endPointImprove: {fileID: 3547749273237646618}
@@ -853,6 +856,67 @@ MonoBehaviour:
     m_Bits: 512
   _damage: 5
   IsImproved: 0
+  SpeedLaserOnOff: 1
+  InitialLaserColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.912394, b: 0, a: 1}
+    key1: {r: 1, g: 0.9137255, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  DecelerateLaserColor:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.7724929, b: 1, a: 1}
+    key1: {r: 0, g: 0.77254903, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!61 &-696675950956576577
 BoxCollider2D:
   m_ObjectHideFlags: 0

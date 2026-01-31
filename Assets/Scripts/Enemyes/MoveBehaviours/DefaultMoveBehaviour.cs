@@ -6,7 +6,8 @@ namespace Assets.Scripts.Enemyes.MoveBehaviours
     public class DefaultMoveBehaviour : MonoBehaviour, IMoveBehaviour
     {
         [field: SerializeField] public float Speed { get; set; }
-        
+        public float CurrentSpeed { get; set; }
+
         private Transform[] _pointsOfWay;
         private int _currentPointOfWay;
         private Enemy _enemy;

@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using Towers.DecelerationSystems;
 using UnityEngine;
 
 public class TowerLaser : AbsTower
@@ -14,6 +15,7 @@ public class TowerLaser : AbsTower
     public Laser Lazer;
 
     public GameObject _secondPartTowerImprove;
+    public SpriteRenderer FirstPartTowerSpriteRenderer;
     public SpriteRenderer _secondPartTowerSpriteRenderer;
     public Transform _startPointImprove;
     public Transform _endPointImprove;
@@ -26,9 +28,16 @@ public class TowerLaser : AbsTower
     public bool IsImproved = false;
     private SoundBox _soundLaser;
 
+    public float SpeedLaserOnOff = 1;
+    public float CurrentSpeedLaserOnOff { get; set; }
+
+    public Gradient InitialLaserColor;
+    public Gradient DecelerateLaserColor;
+
     public override void StartGame()
     {
-        RotationSystem = new Rotator(PartToRotate, SpeedRotation);
+        RotationSystem = new Rotator(this);
+        DecelerationSystem = new DecelerationForLaserTower(this);
         _endPoint.localPosition = new Vector2(0, 0);
         Lazer.LineRenderer.SetPosition(0, _startPoint.localPosition);
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
@@ -36,6 +45,7 @@ public class TowerLaser : AbsTower
         _endPointImprove.localPosition = new Vector2(0, 0);
         LazerImprove.LineRenderer.SetPosition(0, _startPointImprove.localPosition);
         LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
+        CurrentSpeedLaserOnOff = SpeedLaserOnOff;
     }
 
     public override void UpdateGame()
@@ -90,7 +100,7 @@ public class TowerLaser : AbsTower
         }
 
         float positionY = _endPoint.localPosition.y;
-        positionY += LaserSpawnRate * Time.deltaTime;
+        positionY += LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
         Vector2 newPosition = new Vector2(0, positionY);
         _endPoint.localPosition = newPosition;
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
@@ -98,7 +108,7 @@ public class TowerLaser : AbsTower
         if(IsImproved)
         {
             float positionY1 = _endPointImprove.localPosition.y;
-            positionY += LaserSpawnRate * Time.deltaTime;
+            positionY += LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
             Vector2 newPosition1 = new Vector2(0, positionY);
             _endPointImprove.localPosition = newPosition;
             LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
@@ -114,7 +124,7 @@ public class TowerLaser : AbsTower
 
         Lazer.BoxCollider.enabled = false;
         float positionY = _endPoint.localPosition.y;
-        positionY -= LaserSpawnRate * Time.deltaTime;
+        positionY -= LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
         Vector2 newPosition = new Vector2(0, positionY);
         _endPoint.localPosition = newPosition;
         Lazer.LineRenderer.SetPosition(1, _endPoint.localPosition);
@@ -123,9 +133,9 @@ public class TowerLaser : AbsTower
         {
             LazerImprove.BoxCollider.enabled = false;
             float positionY1 = _endPointImprove.localPosition.y;
-            positionY -= LaserSpawnRate * Time.deltaTime;
-            Vector2 newPosition1 = new Vector2(0, positionY);
-            _endPointImprove.localPosition = newPosition;
+            positionY1 -= LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
+            Vector2 newPosition1 = new Vector2(0, positionY1);
+            _endPointImprove.localPosition = newPosition1;
             LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
         }
     }

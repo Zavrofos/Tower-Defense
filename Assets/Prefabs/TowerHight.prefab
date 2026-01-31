@@ -305,6 +305,8 @@ MonoBehaviour:
   SpeedRotation: 10
   Type: 2
   TargetsEnemyType: 00000000
+  InitialColor: {r: 1, g: 1, b: 1, a: 1}
+  DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
   - {fileID: 7791614356265837965, guid: 9a0366dbe6668ef4cb27bdce67d7121c, type: 3}
@@ -429,7 +431,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a5350621791e92f4c82c67de23597ad2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
