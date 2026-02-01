@@ -42,6 +42,8 @@ public abstract class AbsTower : MonoBehaviour
     public Color InitialColor;
     public Color DecelerateColor;
     private IDisposable _findNearestEnemiesWithForceFields;
+    
+    public Animator DestructAnimator;
 
     private void Start()
     {

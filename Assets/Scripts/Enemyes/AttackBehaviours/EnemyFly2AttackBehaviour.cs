@@ -20,26 +20,35 @@ namespace Assets.Scripts.Enemyes.AttackBehaviours
         {
             Attacking = true;
             await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            Attacking = target != null;
+            Attacking = target != null && !target.IsStartDestroyAnimation;
+            if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
             AttackParticleSystem.Play();
             await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            Attacking = target != null;
+            Attacking = target != null && !target.IsStartDestroyAnimation;
+            if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
             target.ApplayDamage(1);
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            Attacking = target != null;
+            Attacking = target != null && !target.IsStartDestroyAnimation;
+            if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
             target.ApplayDamage(1);
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            Attacking = target != null;
+            Attacking = target != null && !target.IsStartDestroyAnimation;
+            if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
             target.ApplayDamage(1);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
-            Attacking = target != null;
+            Attacking = target != null && !target.IsStartDestroyAnimation;
             if(_isDestroyed || !Attacking) return;
             AttackParticleSystem.Stop();
             Attacking = false;
+        }
+
+        private void StopAttackParticle()
+        {
+            AttackParticleSystem.Stop();
         }
 
         private void OnDestroy()

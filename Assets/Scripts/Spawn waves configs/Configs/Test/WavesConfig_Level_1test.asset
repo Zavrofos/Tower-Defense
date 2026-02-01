@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: WavesConfig_Level_1test
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Spawn_waves_configs.WavesConfig
   Waves:
-  - Templates: []
-    Delay: 0
   - Templates:
-    - {fileID: 4344546557281716026, guid: 74618ad655b595940b22e43753b39b6f, type: 3}
-    - {fileID: 4344546557281716026, guid: 74618ad655b595940b22e43753b39b6f, type: 3}
-    - {fileID: 4344546557281716026, guid: 74618ad655b595940b22e43753b39b6f, type: 3}
+    - {fileID: 4934421654313914877, guid: ed2fb3e9793606f46b86ef04837cbf7c, type: 3}
+    Delay: 0
+  - Templates: []
     Delay: 2

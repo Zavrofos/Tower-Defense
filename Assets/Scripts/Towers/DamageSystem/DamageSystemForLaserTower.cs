@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Tower.DamageSystem
@@ -13,6 +15,31 @@ namespace Assets.Scripts.Tower.DamageSystem
             yield return new WaitForSeconds(0.2f);
             SpriteRender.color = CurrentColor;
             if (_secondPartTowerSpriteRenderer.enabled) _secondPartTowerSpriteRenderer.color = CurrentColor;
+        }
+        
+        protected override async UniTask DestroyTower()
+        {
+            await base.DestroyTower();
+            
+            AbsTower.enabled = false;
+            DestructorAnimator.SetTrigger("Destruct");
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            
+            if(IsDestroyed)
+                return;
+            
+            if (_secondPartTowerSpriteRenderer.enabled)
+                _secondPartTowerSpriteRenderer.enabled = false;
+            
+            SpriteRender.enabled = false;
+            
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            
+            if(IsDestroyed)
+                return;
+            
+            Destroy(gameObject);
         }
     }
 }
