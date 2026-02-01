@@ -16,7 +16,7 @@ MonoBehaviour:
   - Templates: []
     Delay: 0
   - Templates:
-    - {fileID: 5840811301553217760, guid: 500a802e8319c9a4e82cb7eaeb97d4b3, type: 3}
-    - {fileID: 1845349280365932795, guid: 5611f2de288f750439c92976af1731c9, type: 3}
-    - {fileID: 5840811301553217760, guid: 500a802e8319c9a4e82cb7eaeb97d4b3, type: 3}
+    - {fileID: 4344546557281716026, guid: 74618ad655b595940b22e43753b39b6f, type: 3}
+    - {fileID: 4344546557281716026, guid: 74618ad655b595940b22e43753b39b6f, type: 3}
+    - {fileID: 4344546557281716026, guid: 74618ad655b595940b22e43753b39b6f, type: 3}
     Delay: 2
