@@ -2392,6 +2392,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3541b0eb922b9f34abac2756dc8e742f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &812007788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6981303131753409333, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 296024470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987985c70272a4e4baaa4f73d9971111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+--- !u!114 &812007789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670595733055843829, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 296024470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
+--- !u!114 &812007790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1938683321301184607, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 296024470}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
 --- !u!1 &840376049
 GameObject:
   m_ObjectHideFlags: 0
@@ -13535,8 +13568,11 @@ MonoBehaviour:
   - {fileID: 1533336841631326545}
   - {fileID: 3268115474563798336}
   - {fileID: 4240782542021824168}
+  HealthBar: {fileID: 812007788}
   RokketButtonAbility: {fileID: 1805205137}
   MineButtonAbility: {fileID: 1805205136}
+  FoodAbility: {fileID: 812007789}
+  PocketMoneyAbility: {fileID: 812007790}
   IsDisableButtonColliders: 0
 --- !u!1001 &458445995537748800
 PrefabInstance:

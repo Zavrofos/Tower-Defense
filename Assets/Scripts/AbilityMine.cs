@@ -29,7 +29,6 @@ public class AbilityMine : Ability
             GameManager.Instance.CurrentGameData.CountMineBought++;
             _buttonAbility.CountText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
             _buttonAbility.AbilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;
-            SaveSystem.SaveSystem.SaveGame();
             Destroy(gameObject);
         }
 

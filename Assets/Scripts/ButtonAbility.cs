@@ -89,7 +89,6 @@ namespace Assets.Scripts
                 GameManager.Instance.CurrentGameData.CountMineBought--;
                 CountText.text = GameManager.Instance.CurrentGameData.CountMineBought.ToString();
                 AbilityButton.interactable = GameManager.Instance.CurrentGameData.CountMineBought > 0;
-                SaveSystem.SaveSystem.SaveGame();
             }
         }
 

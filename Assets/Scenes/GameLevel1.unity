@@ -13860,8 +13860,11 @@ MonoBehaviour:
   - {fileID: 2202830168023392271}
   - {fileID: 2202830166446440236}
   - {fileID: 2202830166936033841}
+  HealthBar: {fileID: 6720412456204567011}
   RokketButtonAbility: {fileID: 1313866427}
   MineButtonAbility: {fileID: 1404460708}
+  FoodAbility: {fileID: 6720412456204567012}
+  PocketMoneyAbility: {fileID: 6720412456204567013}
   IsDisableButtonColliders: 0
 --- !u!1 &2137253015
 GameObject:
@@ -14908,6 +14911,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+--- !u!114 &6720412456204567011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6981303131753409333, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 6720412456204567010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987985c70272a4e4baaa4f73d9971111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+--- !u!114 &6720412456204567012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670595733055843829, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 6720412456204567010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
+--- !u!114 &6720412456204567013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1938683321301184607, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 6720412456204567010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
 --- !u!114 &7982556962921514729 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8466207892477996242, guid: 229b6c07512d99344927838c5170fb18, type: 3}

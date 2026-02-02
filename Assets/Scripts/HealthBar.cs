@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Home _home;
+    public Home Home => _home;
     [SerializeField] private Slider _slider;
 
     private void OnValueChanged(float health, float maxHealth)

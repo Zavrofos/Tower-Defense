@@ -16,6 +16,11 @@ namespace Assets.Scripts.GlobalShop
         public bool IsMineAbilityBought = true;
         public int CountMineBought = 10;
         public int CountResetLevelCoins;
+        public bool FoodAbilityBought = true;
+        public int CountFoodBought = 10;
+        public bool MoneyPocketAbilityBought = true;
+        public int CountMoneyPocketsBought = 10;
+        
         public TowerData LowTowerData;
         public TowerData MediumTowerData;
         public TowerData HeightTowerData;

@@ -17,7 +17,9 @@ namespace Assets.Scripts.GlobalShop
         TowerLaser,
         AbilityRocket,
         AbilityMine,
-        ResetLevelCoin
+        ResetLevelCoin,
+        FoodAbility,
+        MoneyPocketAbility
     }
     
     public class GlobalShop : MonoBehaviour
@@ -154,6 +156,18 @@ namespace Assets.Scripts.GlobalShop
             {
                 currentGameData.CountResetLevelCoins++;
                 item.CountText.text = $"x{currentGameData.CountResetLevelCoins.ToString()}";
+            }
+            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.FoodAbility)
+            {
+                currentGameData.FoodAbilityBought = true;
+                currentGameData.CountFoodBought++;
+                item.CountText.text = $"x{currentGameData.CountFoodBought.ToString()}";
+            }
+            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.MoneyPocketAbility)
+            {
+                currentGameData.MoneyPocketAbilityBought = true;
+                currentGameData.CountMoneyPocketsBought++;
+                item.CountText.text = $"x{currentGameData.CountMoneyPocketsBought.ToString()}";
             }
 
             currentGameData.CurrentGlobalMoney -= price;

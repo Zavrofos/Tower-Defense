@@ -15744,6 +15744,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 610849209471373026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1944474730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6981303131753409333, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 43491098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987985c70272a4e4baaa4f73d9971111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+--- !u!114 &1944474731 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670595733055843829, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 43491098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
+--- !u!114 &1944474732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1938683321301184607, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 43491098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
 --- !u!114 &1963285944 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1071493843252659840, guid: 5506111edac46c143afad2c319296c65, type: 3}
@@ -16748,8 +16781,11 @@ MonoBehaviour:
   - {fileID: 1870388369}
   - {fileID: 1501917179}
   - {fileID: 958507534}
+  HealthBar: {fileID: 1944474730}
   RokketButtonAbility: {fileID: 1838402930}
   MineButtonAbility: {fileID: 1838402929}
+  FoodAbility: {fileID: 1944474731}
+  PocketMoneyAbility: {fileID: 1944474732}
   IsDisableButtonColliders: 0
 --- !u!1 &2140139614
 GameObject:

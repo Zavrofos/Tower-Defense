@@ -28,8 +28,11 @@ public class GameManagerInGame : MonoBehaviour
     public Shop[] Shops;
     public Transform[] PointsOfWayForEnemy;
 
+    public HealthBar HealthBar;
     public ButtonAbility RokketButtonAbility;
     public ButtonAbility MineButtonAbility;
+    public ButtonAbilityUI FoodAbility;
+    public ButtonAbilityUI PocketMoneyAbility;
 
     private Spawner _spawner;
 
@@ -42,6 +45,7 @@ public class GameManagerInGame : MonoBehaviour
     private void Awake()
     {
         CheckBoughtAbilityAndTrySetActive();
+        InitButtonAbilityUI();
         GameManager.Instance.CurrentGameManagerLevel = this;
     }
 
@@ -95,6 +99,38 @@ public class GameManagerInGame : MonoBehaviour
         MineButtonAbility.gameObject.SetActive(GameManager.Instance.CurrentGameData.IsMineAbilityBought);
         MineButtonAbility.SetInteractableButton(GameManager.Instance.CurrentGameData.CountMineBought > 0);
         MineButtonAbility.SetCountMine(GameManager.Instance.CurrentGameData.CountMineBought);
+        
+        FoodAbility.gameObject.SetActive(GameManager.Instance.CurrentGameData.FoodAbilityBought);
+        FoodAbility.SetInteractableButton(GameManager.Instance.CurrentGameData.CountFoodBought > 0);
+        FoodAbility.SetCount(GameManager.Instance.CurrentGameData.CountFoodBought);
+        
+        PocketMoneyAbility.gameObject.SetActive(GameManager.Instance.CurrentGameData.MoneyPocketAbilityBought);
+        PocketMoneyAbility.SetInteractableButton(GameManager.Instance.CurrentGameData.CountMoneyPocketsBought > 0);
+        PocketMoneyAbility.SetCount(GameManager.Instance.CurrentGameData.CountMoneyPocketsBought);
+    }
+
+    private void InitButtonAbilityUI()
+    {
+        FoodAbility.Button.onClick.AddListener(() =>
+        {
+            CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+            HealthBar.Home.AddHealth(20);
+            currentGameData.CountFoodBought--;
+            FoodAbility.Count.text = currentGameData.CountFoodBought.ToString();
+            if(currentGameData.CountFoodBought == 0)
+                FoodAbility.SetInteractableButton(false);
+        });
+        
+        PocketMoneyAbility.Button.onClick.AddListener(() =>
+        {
+            CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+            _coins += 10;
+            _countCoins.text = _coins.ToString();
+            currentGameData.CountMoneyPocketsBought--;
+            PocketMoneyAbility.Count.text = currentGameData.CountMoneyPocketsBought.ToString();
+            if(currentGameData.CountMoneyPocketsBought == 0)
+                PocketMoneyAbility.SetInteractableButton(false);
+        });
     }
 
     private void ShowWinWindow()
@@ -187,5 +223,7 @@ public class GameManagerInGame : MonoBehaviour
         PauseButton.onClick.RemoveAllListeners();
         SetNextWaveButton.onClick.RemoveAllListeners();
         SetGameFasterButton.onClick.RemoveAllListeners();
+        FoodAbility.Button.onClick.RemoveAllListeners();
+        PocketMoneyAbility.Button.onClick.RemoveAllListeners();
     }
 }

@@ -21,11 +21,23 @@ namespace Assets.Scripts.GlobalShop
             PriceText.text = globalShopItemInfo.Price.ToString();
             GlobalShopItemInfo = globalShopItemInfo;
 
-            if (globalShopItemInfo.Type is GlobalShopItemType.AbilityMine or GlobalShopItemType.ResetLevelCoin)
+            if (globalShopItemInfo.Type is 
+                GlobalShopItemType.AbilityMine or 
+                GlobalShopItemType.ResetLevelCoin or
+                GlobalShopItemType.MoneyPocketAbility or 
+                GlobalShopItemType.FoodAbility)
             {
                 int count = globalShopItemInfo.Type == GlobalShopItemType.AbilityMine
                     ? GameManager.Instance.CurrentGameData.CountMineBought
                     : GameManager.Instance.CurrentGameData.CountResetLevelCoins;
+
+                count = globalShopItemInfo.Type == GlobalShopItemType.FoodAbility
+                    ? GameManager.Instance.CurrentGameData.CountFoodBought
+                    : count;
+
+                count = globalShopItemInfo.Type == GlobalShopItemType.MoneyPocketAbility
+                    ? GameManager.Instance.CurrentGameData.CountMoneyPocketsBought
+                    : count;
 
                 CountText.text = $"x{count}";
                 CountText.gameObject.SetActive(true);

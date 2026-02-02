@@ -170,3 +170,31 @@ MonoBehaviour:
     UpgradePrice: 0
     UpgradedName: 
     UpgradedDescription: 
+  - IconShopItem: {fileID: 21300000, guid: ef27dc0f6d5f8b840b7adca8a091e1c5, type: 3}
+    IconDescriptionItem: {fileID: 21300000, guid: ef27dc0f6d5f8b840b7adca8a091e1c5, type: 3}
+    Price: 50
+    DescriptionItem: "\u0414\u043E\u0431\u0430\u0432\u043B\u044F\u0435\u0442 10 \u043C\u043E\u043D\u0435\u0442
+      \u0434\u043B\u044F \u043F\u043E\u043A\u0443\u043F\u043A\u0438 \u0438 \u0430\u043F\u0433\u0440\u0435\u0439\u0434\u0430
+      \u0431\u0430\u0448\u0435\u043D"
+    NameItem: "\u041A\u043E\u0448\u0435\u043B\u0435\u043A"
+    Type: 9
+    IsUpgradeType: 0
+    UpgradeIcon: {fileID: 0}
+    UpgradeDescriptionIcon: {fileID: 0}
+    UpgradePrice: 0
+    UpgradedName: 
+    UpgradedDescription: 
+  - IconShopItem: {fileID: 21300000, guid: d91ae8668c1d81443837e7fa955f6dc6, type: 3}
+    IconDescriptionItem: {fileID: 21300000, guid: d91ae8668c1d81443837e7fa955f6dc6, type: 3}
+    Price: 50
+    DescriptionItem: "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
+      \u0447\u0430\u0441\u0442\u044C \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F
+      \u043A\u0440\u0435\u043F\u043E\u0441\u0442\u0438"
+    NameItem: "\u0425\u0438\u043B\u043A\u0430"
+    Type: 8
+    IsUpgradeType: 0
+    UpgradeIcon: {fileID: 0}
+    UpgradeDescriptionIcon: {fileID: 0}
+    UpgradePrice: 0
+    UpgradedName: 
+    UpgradedDescription: 

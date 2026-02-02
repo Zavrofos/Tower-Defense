@@ -19,4 +19,11 @@ public class Home : MonoBehaviour
         }
         Wounded?.Invoke(_health, _maxHealth);
     }
+
+    public void AddHealth(int count)
+    {
+        _health += count;
+        _health = _health > _maxHealth ? _maxHealth : _health;
+        Wounded?.Invoke(_health, _maxHealth);
+    }
 }

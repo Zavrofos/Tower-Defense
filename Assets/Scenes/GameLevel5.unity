@@ -369,6 +369,39 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3936345429753882461, guid: 05c67cc10d098ed4cbe884948c807f6d, type: 3}
   m_PrefabInstance: {fileID: 3936345429717382620}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &108832199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6981303131753409333, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 1336419551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987985c70272a4e4baaa4f73d9971111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+--- !u!114 &117051935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670595733055843829, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 1336419551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
+--- !u!114 &117051936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1938683321301184607, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+  m_PrefabInstance: {fileID: 1336419551}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc852639abe640ce8ad52080dcd97613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.ButtonAbilityUI
 --- !u!1 &139081085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2039,7 +2072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 45.06
+      value: 45.059998
       objectReference: {fileID: 0}
     - target: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2734,6 +2767,10 @@ PrefabInstance:
     - target: {fileID: 2587402372132212671, guid: b0e98ee9eb428d648ac7715bded42a99, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801049626585657997, guid: b0e98ee9eb428d648ac7715bded42a99, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.28813362
       objectReference: {fileID: 0}
     - target: {fileID: 3936345429753882461, guid: b0e98ee9eb428d648ac7715bded42a99, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12871,7 +12908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.12
+      value: 44.119995
       objectReference: {fileID: 0}
     - target: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13770,6 +13807,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2779234019842609647, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779234019842609647, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779234019842609647, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 354.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779234019842609647, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 3319066127645142241, guid: 229b6c07512d99344927838c5170fb18, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13805,6 +13858,22 @@ PrefabInstance:
     - target: {fileID: 5487042757524197185, guid: 229b6c07512d99344927838c5170fb18, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693884189316684871, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693884189316684871, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693884189316684871, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693884189316684871, guid: 229b6c07512d99344927838c5170fb18, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 5725992142836966570, guid: 229b6c07512d99344927838c5170fb18, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16629,8 +16698,11 @@ MonoBehaviour:
   - {fileID: 1533336841631326545}
   - {fileID: 3268115474563798336}
   - {fileID: 4240782542021824168}
+  HealthBar: {fileID: 108832199}
   RokketButtonAbility: {fileID: 1805205137}
   MineButtonAbility: {fileID: 1805205136}
+  FoodAbility: {fileID: 117051935}
+  PocketMoneyAbility: {fileID: 117051936}
   IsDisableButtonColliders: 0
 --- !u!1 &2137807554
 GameObject:
@@ -16857,7 +16929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 62.555
+      value: 62.554993
       objectReference: {fileID: 0}
     - target: {fileID: 458445995751838388, guid: d4e85ca0d571c8c468e61c7e17061820, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
