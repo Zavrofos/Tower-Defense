@@ -52,6 +52,7 @@ public abstract class AbsTower : MonoBehaviour
         FinderNearestEnemies = new CircleFinderObjects(FiringRadius);
         StartCheckNearestEnemiesWithForceField();
         StartGame();
+        GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Add(this);
     }
 
     private void Update()
@@ -119,5 +120,10 @@ public abstract class AbsTower : MonoBehaviour
     {
         IsDecelerated = value;
         DecelerationSystem?.SetDeceleration(value);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Remove(this);
     }
 }

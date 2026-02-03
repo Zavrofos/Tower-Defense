@@ -19,7 +19,8 @@ namespace Assets.Scripts.GlobalShop
         AbilityMine,
         ResetLevelCoin,
         FoodAbility,
-        MoneyPocketAbility
+        MoneyPocketAbility,
+        MeteorShowerAbility
     }
     
     public class GlobalShop : MonoBehaviour
@@ -168,6 +169,12 @@ namespace Assets.Scripts.GlobalShop
                 currentGameData.MoneyPocketAbilityBought = true;
                 currentGameData.CountMoneyPocketsBought++;
                 item.CountText.text = $"x{currentGameData.CountMoneyPocketsBought.ToString()}";
+            }
+            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.MeteorShowerAbility)
+            {
+                currentGameData.MeteorShowerBought = true;
+                currentGameData.CountMeteorShowerBought++;
+                item.CountText.text = $"x{currentGameData.CountMeteorShowerBought.ToString()}";
             }
 
             currentGameData.CurrentGlobalMoney -= price;

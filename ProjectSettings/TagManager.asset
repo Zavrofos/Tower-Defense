@@ -53,6 +53,9 @@ TagManager:
   - name: Enemyes
     uniqueID: 4022330707
     locked: 0
+  - name: Abilitis
+    uniqueID: 1178746319
+    locked: 0
   - name: UI
     uniqueID: 2610551263
     locked: 0

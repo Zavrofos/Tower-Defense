@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts;
 using System.Collections;
 using Assets.Scripts.Enemyes.AttackBehaviours;
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         MoveBehaviour = GetComponent<IMoveBehaviour>();
         MoveBehaviour.CurrentSpeed = MoveBehaviour.Speed;
         AttackBehaviour = GetComponent<IAttackBehaviour>();
+        GameManager.Instance.CurrentGameManagerLevel.CurrentEnemies.Add(this);
     }
 
     private void Start()
@@ -93,5 +95,10 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         {
             home.ApplayDamage(_damage);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.CurrentGameManagerLevel.CurrentEnemies.Remove(this);
     }
 }

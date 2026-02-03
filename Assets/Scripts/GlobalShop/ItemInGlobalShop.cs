@@ -38,6 +38,10 @@ namespace Assets.Scripts.GlobalShop
                 count = globalShopItemInfo.Type == GlobalShopItemType.MoneyPocketAbility
                     ? GameManager.Instance.CurrentGameData.CountMoneyPocketsBought
                     : count;
+                
+                count = globalShopItemInfo.Type == GlobalShopItemType.MeteorShowerAbility
+                    ? GameManager.Instance.CurrentGameData.CountMeteorShowerBought
+                    : count;
 
                 CountText.text = $"x{count}";
                 CountText.gameObject.SetActive(true);

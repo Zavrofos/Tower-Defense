@@ -20,6 +20,8 @@ namespace Assets.Scripts.GlobalShop
         public int CountFoodBought = 10;
         public bool MoneyPocketAbilityBought = true;
         public int CountMoneyPocketsBought = 10;
+        public bool MeteorShowerBought = true;
+        public int CountMeteorShowerBought = 10;
         
         public TowerData LowTowerData;
         public TowerData MediumTowerData;

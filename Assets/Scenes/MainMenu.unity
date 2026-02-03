@@ -1693,6 +1693,8 @@ MonoBehaviour:
     Count: 5
   - Prefab: {fileID: 8800703422680062529, guid: c59c633d4e953754393ccf09adae4bc0, type: 3}
     Count: 10
+  - Prefab: {fileID: 5970691258402234579, guid: 5e2ebed087599cb4ab99e89da53faf57, type: 3}
+    Count: 30
 --- !u!4 &1063011278
 Transform:
   m_ObjectHideFlags: 0
@@ -2494,6 +2496,12 @@ MonoBehaviour:
     IsMineAbilityBought: 0
     CountMineBought: 0
     CountResetLevelCoins: 0
+    FoodAbilityBought: 1
+    CountFoodBought: 10
+    MoneyPocketAbilityBought: 1
+    CountMoneyPocketsBought: 10
+    MeteorShowerBought: 1
+    CountMeteorShowerBought: 10
     LowTowerData:
       TowerType: 0
       IsBought: 0

@@ -3,10 +3,15 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Assets.Scripts.GlobalShop;
+using Assets.Scripts.MeteorsAbility;
+using Assets.Scripts.RepPoolObject;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameManagerInGame : MonoBehaviour
 {
@@ -27,12 +32,14 @@ public class GameManagerInGame : MonoBehaviour
     private bool _isGameOver;
     public Shop[] Shops;
     public Transform[] PointsOfWayForEnemy;
+    public Transform[] PointsForMeteors;
 
     public HealthBar HealthBar;
     public ButtonAbility RokketButtonAbility;
     public ButtonAbility MineButtonAbility;
     public ButtonAbilityUI FoodAbility;
     public ButtonAbilityUI PocketMoneyAbility;
+    public ButtonAbilityUI MeteorShowerAbilityButton;
 
     private Spawner _spawner;
 
@@ -40,7 +47,12 @@ public class GameManagerInGame : MonoBehaviour
 
     public int Coins => _coins;
     
-    public bool FastGameEnabled { get; private set; } 
+    public bool FastGameEnabled { get; private set; }
+
+    public List<Enemy> CurrentEnemies { get; private set; } = new();
+    public List<AbsTower> CurrentTowers { get; private set; } = new();
+
+    private CancellationTokenSource _cancellationTokenSourceMeteors = new();
 
     private void Awake()
     {
@@ -107,6 +119,10 @@ public class GameManagerInGame : MonoBehaviour
         PocketMoneyAbility.gameObject.SetActive(GameManager.Instance.CurrentGameData.MoneyPocketAbilityBought);
         PocketMoneyAbility.SetInteractableButton(GameManager.Instance.CurrentGameData.CountMoneyPocketsBought > 0);
         PocketMoneyAbility.SetCount(GameManager.Instance.CurrentGameData.CountMoneyPocketsBought);
+        
+        MeteorShowerAbilityButton.gameObject.SetActive(GameManager.Instance.CurrentGameData.MeteorShowerBought);
+        MeteorShowerAbilityButton.SetInteractableButton(GameManager.Instance.CurrentGameData.CountMeteorShowerBought > 0);
+        MeteorShowerAbilityButton.SetCount(GameManager.Instance.CurrentGameData.CountMeteorShowerBought);
     }
 
     private void InitButtonAbilityUI()
@@ -131,6 +147,61 @@ public class GameManagerInGame : MonoBehaviour
             if(currentGameData.CountMoneyPocketsBought == 0)
                 PocketMoneyAbility.SetInteractableButton(false);
         });
+        
+        MeteorShowerAbilityButton.Button.onClick.AddListener(() =>
+        {
+            CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+            currentGameData.CountMeteorShowerBought--;
+            MeteorShowerAbilityButton.Count.text = currentGameData.CountMeteorShowerBought.ToString();
+            if(currentGameData.CountMeteorShowerBought == 0)
+                MeteorShowerAbilityButton.SetInteractableButton(false);
+            
+            PlayMeteorShower().Forget();
+        });
+    }
+    
+    private async UniTask PlayMeteorShower()
+    {
+        _cancellationTokenSourceMeteors?.Cancel();
+        _cancellationTokenSourceMeteors?.Dispose();
+        _cancellationTokenSourceMeteors = new CancellationTokenSource();
+        
+        CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+        MeteorShowerAbilityButton.SetInteractableButton(false);
+
+        var tasks = new UniTask[PointsForMeteors.Length];
+
+        for (int i = 0; i < PointsForMeteors.Length; i++)
+        {
+            Vector3 pos = PointsForMeteors[i].position;
+            tasks[i] = SpawnMeteorsAtPoint(pos, _cancellationTokenSourceMeteors.Token);
+        }
+
+        await UniTask.WhenAll(tasks);
+        
+        if(_cancellationTokenSourceMeteors.Token.IsCancellationRequested)
+            return;
+        
+        MeteorShowerAbilityButton.SetInteractableButton(currentGameData.CountMeteorShowerBought > 0);
+    }
+    
+    private async UniTask SpawnMeteorsAtPoint(Vector3 position, CancellationToken token)
+    {
+        const int meteorsCount = 3;
+
+        for (int i = 0; i < meteorsCount; i++)
+        {
+            float delay = Random.Range(1f, 3f);
+            await UniTask.Delay(TimeSpan.FromSeconds(delay));
+            
+            if(token.IsCancellationRequested)
+                return;
+
+            Meteor meteor = (Meteor)ObjectPooler.Instance
+                .SpawnFromPool("Meteor", position, Quaternion.identity);
+
+            meteor.PlayMeteorsShower(token).Forget();
+        }
     }
 
     private void ShowWinWindow()
@@ -225,5 +296,8 @@ public class GameManagerInGame : MonoBehaviour
         SetGameFasterButton.onClick.RemoveAllListeners();
         FoodAbility.Button.onClick.RemoveAllListeners();
         PocketMoneyAbility.Button.onClick.RemoveAllListeners();
+        MeteorShowerAbilityButton.Button.onClick.RemoveAllListeners();
+        _cancellationTokenSourceMeteors?.Cancel();
+        _cancellationTokenSourceMeteors?.Dispose();
     }
 }
