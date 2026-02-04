@@ -25,7 +25,8 @@ namespace Assets.Scripts.GlobalShop
                 GlobalShopItemType.AbilityMine or 
                 GlobalShopItemType.ResetLevelCoin or
                 GlobalShopItemType.MoneyPocketAbility or 
-                GlobalShopItemType.FoodAbility)
+                GlobalShopItemType.FoodAbility or 
+                GlobalShopItemType.MeteorShowerAbility)
             {
                 int count = globalShopItemInfo.Type == GlobalShopItemType.AbilityMine
                     ? GameManager.Instance.CurrentGameData.CountMineBought
