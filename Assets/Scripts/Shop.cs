@@ -37,6 +37,7 @@ public class Shop : MonoBehaviour
         AbsTower tower = towerObject.GetComponent<AbsTower>();
         if (tower == null) return;
         product.ImageProduct.sprite = tower.Icon;
+        product.ImageProduct.preserveAspect = true;
         product.ImageRectTransform.rotation = Quaternion.Euler(tower.InitRotationImageInShop);
         product.ImageProduct.SetNativeSize();
 
@@ -44,7 +45,6 @@ public class Shop : MonoBehaviour
         Vector2 size = transform.sizeDelta;
         Vector2 newSize = new Vector2(size.x * 1.5f, size.y * 1.5f);
         transform.sizeDelta = newSize;
-        
 
         product.LabelProduct.text = tower.Label;
         product.Tower = towerObject;

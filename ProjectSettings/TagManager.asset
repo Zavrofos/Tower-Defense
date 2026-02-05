@@ -47,11 +47,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Towers
-    uniqueID: 3700653351
-    locked: 0
   - name: Enemyes
     uniqueID: 4022330707
+    locked: 0
+  - name: Towers
+    uniqueID: 3700653351
     locked: 0
   - name: Abilitis
     uniqueID: 1178746319

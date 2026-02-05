@@ -1152,6 +1152,8 @@ MonoBehaviour:
     TowerPrefab: {fileID: 6789707795654957662, guid: 49986e2e3881f124ca236a2d3ec1472f, type: 3}
   - Type: 4
     TowerPrefab: {fileID: 7956219493098163114, guid: 2136cc1547a15d645a2b18e5977adaca, type: 3}
+  - Type: 11
+    TowerPrefab: {fileID: 6789707795654957662, guid: 7948ad5503d141049b4eb4d6ce0b9eb5, type: 3}
 --- !u!4 &740885346
 Transform:
   m_ObjectHideFlags: 0
@@ -2519,6 +2521,10 @@ MonoBehaviour:
       IsBought: 0
       IsUpgradedBought: 0
     LaserTowerData:
+      TowerType: 0
+      IsBought: 0
+      IsUpgradedBought: 0
+    LaserTowerNewData:
       TowerType: 0
       IsBought: 0
       IsUpgradedBought: 0

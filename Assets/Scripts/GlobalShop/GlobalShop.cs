@@ -20,7 +20,8 @@ namespace Assets.Scripts.GlobalShop
         ResetLevelCoin,
         FoodAbility,
         MoneyPocketAbility,
-        MeteorShowerAbility
+        MeteorShowerAbility,
+        TowerLaserNew
     }
     
     public class GlobalShop : MonoBehaviour

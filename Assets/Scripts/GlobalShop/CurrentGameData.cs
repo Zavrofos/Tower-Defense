@@ -28,6 +28,7 @@ namespace Assets.Scripts.GlobalShop
         public TowerData HeightTowerData;
         public TowerData ColdTowerData;
         public TowerData LaserTowerData;
+        public TowerData LaserTowerNewData;
 
         public Dictionary<GlobalShopItemType, TowerData> TowersData;
 
@@ -38,6 +39,7 @@ namespace Assets.Scripts.GlobalShop
             HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh, IsBought = true };
             ColdTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerCold, IsBought = true };
             LaserTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaser, IsBought = true };
+            LaserTowerNewData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaserNew, IsBought = true, IsUpgradedBought = true};
             
             TowersData = new Dictionary<GlobalShopItemType, TowerData>()
             {
@@ -46,6 +48,7 @@ namespace Assets.Scripts.GlobalShop
                 {GlobalShopItemType.TowerHigh, HeightTowerData},
                 {GlobalShopItemType.TowerCold, ColdTowerData},
                 {GlobalShopItemType.TowerLaser, LaserTowerData},
+                {GlobalShopItemType.TowerLaserNew, LaserTowerNewData}
             };
         }
     }
