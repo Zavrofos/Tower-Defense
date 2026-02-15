@@ -6,16 +6,13 @@ namespace Assets.Scripts.GlobalShop
     [Serializable]
     public class CurrentGameData
     {
-        public bool ResetLevelBought;
-        public bool IsWinGame;
-        public bool IsWinLevel;
-        public bool IsGameOverLevel;
+        public int[] Worlds;
+        public int[,] Levels;
+        
         public int CurrentGlobalMoney = 0;
-        public int CurrentLevel = 1;
         public bool IsRocketAbilityBought;
         public bool IsMineAbilityBought = true;
         public int CountMineBought = 10;
-        public int CountResetLevelCoins;
         public bool FoodAbilityBought = true;
         public int CountFoodBought = 10;
         public bool MoneyPocketAbilityBought = true;
@@ -34,6 +31,24 @@ namespace Assets.Scripts.GlobalShop
 
         public void Init()
         {
+            Worlds ??= new int [3];
+            Worlds[0] = 1;
+            Worlds[1] = 1;
+            Worlds[2] = 1;
+            Levels ??= new int[3, 4];
+            Levels[0, 0] = 1;
+            Levels[0, 1] = 1;
+            Levels[0, 2] = 1;
+            Levels[0, 3] = 1;
+            Levels[1, 0] = 1;
+            Levels[1, 1] = 1;
+            Levels[1, 2] = 1;
+            Levels[1, 3] = 1;
+            Levels[2, 0] = 1;
+            Levels[2, 1] = 1;
+            Levels[2, 2] = 1;
+            Levels[2, 3] = 1;
+            
             LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true};
             MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true};
             HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh, IsBought = true };

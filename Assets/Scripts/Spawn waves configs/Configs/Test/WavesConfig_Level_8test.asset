@@ -15,5 +15,13 @@ MonoBehaviour:
   Waves:
   - Templates:
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
+    - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
     Delay: 1.5
-    CurrentTemplateNumber: 0

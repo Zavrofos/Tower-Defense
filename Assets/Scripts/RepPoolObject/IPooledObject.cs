@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-
-namespace Assets.Scripts.RepPoolObject
+﻿namespace Assets.Scripts.RepPoolObject
 {
     public interface IPooledObject 
     {
-        public string Tag { get; }
+        public PolledObjectType Type { get; }
     }
 }

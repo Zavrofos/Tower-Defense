@@ -26,7 +26,6 @@ public class TowerLaser : AbsTower
     public int _damage;
 
     public bool IsImproved = false;
-    private SoundBox _soundLaser;
 
     public float SpeedLaserOnOff = 1;
     public float CurrentSpeedLaserOnOff { get; set; }
@@ -91,13 +90,13 @@ public class TowerLaser : AbsTower
 
     public void OnLazer()
     {
-        if(_soundLaser == null)
-        {
-            _soundLaser = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-            transform.position,
-            transform.rotation);
-            _soundLaser.PlaySound(SoundType.Laser);
-        }
+        // if(_soundLaser == null)
+        // {
+            // _soundLaser = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            // transform.position,
+            // transform.rotation);
+            // _soundLaser.PlaySound(SoundType.Laser);
+        // }
 
         float positionY = _endPoint.localPosition.y;
         positionY += LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
@@ -117,11 +116,6 @@ public class TowerLaser : AbsTower
 
     public void OffLazer()
     {
-        if (_soundLaser != null)
-        {
-            _soundLaser = null;
-        }
-
         Lazer.BoxCollider.enabled = false;
         float positionY = _endPoint.localPosition.y;
         positionY -= LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
@@ -147,11 +141,6 @@ public class TowerLaser : AbsTower
         Lazer.BoxCollider.enabled = false;
         _secondPartTowerImprove.SetActive(true);
         IsImproved = true;
-
-        if (_soundLaser != null)
-        {
-            _soundLaser = null;
-        }
     }
 
     public void GiveDamageEnemy(Enemy enemy)

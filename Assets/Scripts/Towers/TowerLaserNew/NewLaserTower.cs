@@ -141,11 +141,11 @@ namespace Assets.Scripts.Tower.TowerLaserNew
 
         private void PlaySound(SoundType type)
         {
-            SoundBox sound = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-                transform.position,
-                transform.rotation);
-
-            sound.PlaySound(type);
+            // SoundBox sound = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            //     transform.position,
+            //     transform.rotation);
+            //
+            // sound.PlaySound(type);
         }
 
         public override void Improve()

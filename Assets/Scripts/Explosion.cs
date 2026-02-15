@@ -1,13 +1,15 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class Explosion : PooledObject
 {
-    [SerializeField] private string _tag;
-    public override string Tag => _tag;
+    [SerializeField] private PolledObjectType _type;
+    public override PolledObjectType Type => _type;
 
     [SerializeField] private ParticleSystem _explosionParticle;
     public int Damage;
@@ -39,15 +41,15 @@ public class Explosion : PooledObject
 
     private void PlaySound(SoundType type)
     {
-        SoundBox audio = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-            transform.position,
-            transform.rotation);
-        audio.PlaySound(type);
+        // SoundBox audio = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+        //     transform.position,
+        //     transform.rotation);
+        // audio.PlaySound(type);
     }
 
     private IEnumerator TurnOff(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        ObjectPooler.Instance.ReturnToPool(this);
+        GameManager.Instance.ObjectPooler.ReturnToPool(this);
     }
 }

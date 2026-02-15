@@ -34,35 +34,22 @@ namespace Towers.ShootTowers
 
         public override void UpdateGame()
         {
-            Debug.Log("UpdateGame 1");
             Transform targetEnemy = GetNearestEnemy(FinderNearestEnemies.Find("Enemy", transform.position));
 
             if (targetEnemy == null)
-            {
-                Debug.Log("UpdateGame 2");
                 return;
-            }
 
             RotationSystem.Rotate(targetEnemy);
 
             foreach (var target in _finderObjectsSystem.Find("Enemy", transform.position))
             {
-                Debug.Log($"UpdateGame 3, target name - {target.name}");
                 if (target != null &&
                     target.TryGetComponent(out Enemy enemy))
                 {
-                    
-                    Debug.Log("UpdateGame 4");
                     foreach (var type in TargetsEnemyType)
                     {
-                        
-                        Debug.Log("UpdateGame 5"); 
-                        if (enemy.Type == type &&
-                            enemy.gameObject == targetEnemy.gameObject)
-                        {
-                            Debug.Log("UpdateGame 6");
+                        if (enemy.Type == type && enemy.gameObject == targetEnemy.gameObject)
                             Shoot();
-                        }
                     }
                     break;
                 }
@@ -71,24 +58,20 @@ namespace Towers.ShootTowers
 
         public override void Shoot()
         {
-            Debug.Log("Shoot 1");
             _timeToShoot += Time.deltaTime;
             if (_timeToShoot >= CurrentDelayTimeToShoot)
             {
-                Debug.Log("Shoot 2");
                 Vector2 direction = GetDirectionToShoot();
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
                 Bullet bullet = Instantiate(_currentBullet, _shootPoint.position, rotation);
-                Debug.Log("(test) bullet");
                 bullet.Direction = direction;
                 bullet.StartPosition = PartToRotate.position;
                 bullet.distanceBullet = _firingRadius;
             
                 if(_fire != null)
                 {
-                    Debug.Log("Shoot 3");
                     _fire.gameObject.SetActive(true);
                     PlaySound(SoundShoot);
                     _timeToShoot = 0;
@@ -101,11 +84,11 @@ namespace Towers.ShootTowers
 
         private void PlaySound(SoundType type)
         {
-            SoundBox sound = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-                transform.position,
-                transform.rotation);
+            // SoundBox sound = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            //     transform.position,
+            //     transform.rotation);
 
-            sound.PlaySound(type);
+            // sound.PlaySound(type);
         }
 
         public override void Improve()

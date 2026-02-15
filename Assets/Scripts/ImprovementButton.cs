@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using GameOverlayWindow;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,13 +26,15 @@ public class ImprovementButton : MonoBehaviour
     private void OnMouseDown()
     {
         GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
+        GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
+        
         if (gameManager.IsDisableButtonColliders) return;
-        if(gameManager.Coins < int.Parse(UpgradePriceText.text))
-        {
+        
+        if(int.Parse(gameOverlay.CoinsText.text) < int.Parse(UpgradePriceText.text))
             return;
-        }
+        
         AbsTower tower = _buildingPoint.CurrentTower.GetComponent<AbsTower>();
-        gameManager.SpendCoins(tower.UpgradePrice);
+        gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) - tower.UpgradePrice).ToString();
         tower.Improve();
         _improvementPriceObj.SetActive(false);
         gameObject.SetActive(false);

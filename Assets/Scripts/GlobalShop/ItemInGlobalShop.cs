@@ -1,3 +1,4 @@
+using SaveSystemDir;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,25 +24,22 @@ namespace Assets.Scripts.GlobalShop
 
             if (globalShopItemInfo.Type is 
                 GlobalShopItemType.AbilityMine or 
-                GlobalShopItemType.ResetLevelCoin or
                 GlobalShopItemType.MoneyPocketAbility or 
                 GlobalShopItemType.FoodAbility or 
                 GlobalShopItemType.MeteorShowerAbility)
             {
-                int count = globalShopItemInfo.Type == GlobalShopItemType.AbilityMine
-                    ? GameManager.Instance.CurrentGameData.CountMineBought
-                    : GameManager.Instance.CurrentGameData.CountResetLevelCoins;
+                int count = globalShopItemInfo.Type == GlobalShopItemType.AbilityMine ? SaveSystem.CurrentGameData.CountMineBought : 0;
 
                 count = globalShopItemInfo.Type == GlobalShopItemType.FoodAbility
-                    ? GameManager.Instance.CurrentGameData.CountFoodBought
+                    ? SaveSystem.CurrentGameData.CountFoodBought
                     : count;
 
                 count = globalShopItemInfo.Type == GlobalShopItemType.MoneyPocketAbility
-                    ? GameManager.Instance.CurrentGameData.CountMoneyPocketsBought
+                    ? SaveSystem.CurrentGameData.CountMoneyPocketsBought
                     : count;
                 
                 count = globalShopItemInfo.Type == GlobalShopItemType.MeteorShowerAbility
-                    ? GameManager.Instance.CurrentGameData.CountMeteorShowerBought
+                    ? SaveSystem.CurrentGameData.CountMeteorShowerBought
                     : count;
 
                 CountText.text = $"x{count}";

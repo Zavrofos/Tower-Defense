@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
+using SaveSystemDir;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,16 +9,14 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private GameObject _conteiner;
     [SerializeField] private ProductInShop _productPrefab;
-    [SerializeField] private ScrollRect _scrollRect;
-    [SerializeField] private Slider _slider;
     public BuildingPoint BuildingPoint;
 
     private void Start()
     {
         List<GameObject> towers = new List<GameObject>();
-        CurrentGameData currentGameData = GameManager.Instance.CurrentGameData;
+        CurrentGameData currentGameData = SaveSystem.CurrentGameData;
 
-        foreach (TowerInfo towerInfo in GameAssets.Instance.TowersInfos)
+        foreach (TowerInfo towerInfo in GameManager.Instance.GameAssets.TowersInfos)
             if (currentGameData.TowersData[towerInfo.Type].IsBought)
                 towers.Add(towerInfo.TowerPrefab);
             

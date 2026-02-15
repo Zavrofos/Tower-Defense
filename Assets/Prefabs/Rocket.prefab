@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336678594888281765}
-  - component: {fileID: 1336678594888281770}
+  - component: {fileID: 3429367365003089478}
   m_Layer: 8
   m_Name: Rocket
   m_TagString: Untagged
@@ -24,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336678594888281769}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,9 +32,8 @@ Transform:
   m_Children:
   - {fileID: 1336678595652331472}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1336678594888281770
+--- !u!114 &3429367365003089478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1336678594888281769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3656b33555debeb4695cff22c67f6245, type: 3}
+  m_Script: {fileID: 11500000, guid: 194dcd2985ce46a085c2c1e53a4bc8f9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 5
-  DamageRadius: 2
-  ButtonAbility: {fileID: 0}
-  IsExplosive: 1
-  _rocketTransform: {fileID: 1336678595652331472}
-  _speed: 1
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverlayWindow.RocketAbility
+  _speed: 10
 --- !u!1 &1336678595652331477
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +69,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336678595652331477}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 38.31, y: -20.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -81,7 +77,6 @@ Transform:
   m_Children:
   - {fileID: 1336678596294966934}
   m_Father: {fileID: 1336678594888281765}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336678596294966933
 GameObject:
@@ -107,16 +102,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336678596294966933}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.49892852, w: 0.86664313}
   m_LocalPosition: {x: -0.006, y: -0.138, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1336678595652331472}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 59.858}
 --- !u!212 &1336678596294966935
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -132,6 +128,11 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -153,9 +154,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 179cb66872fe67b40873b8449879df42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -165,5 +168,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0

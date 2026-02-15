@@ -1,5 +1,3 @@
-using Assets.Scripts.RepPoolObject;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,42 +6,39 @@ namespace Assets.Scripts.RepPoolObject
 {
     public class ObjectPooler : MonoBehaviour
     {
-        private Dictionary<string, MonoPool<PooledObject>> _poolsMap;
+        private Dictionary<PolledObjectType, MonoPool<PooledObject>> _poolsMap;
         [SerializeField] private List<PoolInfo> _pools;
-
-        public static ObjectPooler Instance;
-
-        private void Awake()
+        
+        public void CreatePool()
         {
-            if (!Instance)
-            {
-                Instance = this;
-                DontDestroyOnLoad(this);
-                return;
-            }
-            
-            Destroy(gameObject);
-        }
-
-        public void Initialize()
-        {
-            _poolsMap = new Dictionary<string, MonoPool<PooledObject>>();
+            _poolsMap = new Dictionary<PolledObjectType, MonoPool<PooledObject>>();
 
             foreach (var pool in _pools)
             {
                 MonoPool<PooledObject> newPool = new MonoPool<PooledObject>(pool.Prefab, pool.Count, transform);
-                _poolsMap.Add(pool.Prefab.Tag, newPool);
+                _poolsMap.Add(pool.Prefab.Type, newPool);
             }
         }
 
-        public PooledObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+        public void ClearPool()
         {
-            if (!_poolsMap.ContainsKey(tag))
+            if(_poolsMap == null)
+                return;
+
+            foreach (var mono in _poolsMap.Values)
+                mono.ClearPool();
+            
+            _poolsMap.Clear();
+        }
+
+        public PooledObject SpawnFromPool(PolledObjectType type, Vector3 position, Quaternion rotation)
+        {
+            if (!_poolsMap.ContainsKey(type))
             {
-                throw new System.Exception($"This tag: {tag} is not exist");
+                throw new System.Exception($"This tag: {type} is not exist");
             }
 
-            PooledObject objFromPool = _poolsMap[tag].GetFreeElement();
+            PooledObject objFromPool = _poolsMap[type].GetFreeElement();
             objFromPool.transform.position = position;
             objFromPool.transform.rotation = rotation;
             return objFromPool;
@@ -51,12 +46,10 @@ namespace Assets.Scripts.RepPoolObject
 
         public void ReturnToPool(PooledObject returnedObject)
         {
-            if (!_poolsMap.ContainsKey(returnedObject.Tag))
-            {
+            if (!_poolsMap.ContainsKey(returnedObject.Type))
                 throw new System.Exception($"This tag: {tag} is not exist");
-            }
 
-            _poolsMap[returnedObject.Tag].ReturnToPool(returnedObject);
+            _poolsMap[returnedObject.Type].ReturnToPool(returnedObject);
         }
     }
 }

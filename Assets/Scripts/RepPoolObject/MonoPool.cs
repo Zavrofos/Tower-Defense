@@ -22,9 +22,7 @@ namespace Assets.Scripts.RepPoolObject
             _pool = new List<T>();
 
             for(int i =0; i < count; i++)
-            {
                 CreateObject();
-            }
         }
 
         private T CreateObject(bool isActiveByDefault = false)
@@ -54,9 +52,7 @@ namespace Assets.Scripts.RepPoolObject
         public T GetFreeElement()
         {
             if(HasFreeElement(out T element))
-            {
                 return element;
-            }
 
             return CreateObject(true);
         }
@@ -64,6 +60,12 @@ namespace Assets.Scripts.RepPoolObject
         public void ReturnToPool(PooledObject returnedObject)
         {
             returnedObject.gameObject.SetActive(false);
+        }
+
+        public void ClearPool()
+        {
+            foreach (var mono in _pool)
+                GameObject.Destroy(mono);
         }
     }
 }

@@ -1,9 +1,10 @@
 using Assets.Scripts;
+using SaveSystemDir;
 using UnityEngine;
 
 public class BuildingPoint : MonoBehaviour
 {
-    public GameObject CurrentTower;
+    public GameObject CurrentTower { get; private set; }
     public ImprovementButton ButtonImprovement;
 
     public void BuildingTower(GameObject tower)
@@ -22,7 +23,7 @@ public class BuildingPoint : MonoBehaviour
         
         AbsTower absTower = CurrentTower.GetComponent<AbsTower>();
         ButtonImprovement.UpgradePriceText.text = absTower.UpgradePrice.ToString();
-        bool isUpgradedBought = GameManager.Instance.CurrentGameData.TowersData[absTower.Type].IsUpgradedBought;
+        bool isUpgradedBought = SaveSystem.CurrentGameData.TowersData[absTower.Type].IsUpgradedBought;
         ButtonImprovement.gameObject.SetActive(isUpgradedBought);
     }
 }

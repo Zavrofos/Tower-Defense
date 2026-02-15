@@ -3,6 +3,7 @@ using Assets.Scripts;
 using System.Collections;
 using Assets.Scripts.Enemyes.AttackBehaviours;
 using Assets.Scripts.Enemyes.MoveBehaviours;
+using GameOverlayWindow;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
@@ -45,10 +46,11 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
     {
         _health -= damage;
         StartCoroutine(ChangeColorForHit());
+        
         if (_health <= 0)
         {
-            GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
-            gameManager.AddCoins(_reward);
+            GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
+            gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) + _reward).ToString();
             Spawner spawner = GameManager.Instance.CurrentSpawner;
             spawner.CurrentCountOfEnemyesKilled++;
             spawner.CurrentCountOfEnemyesKilledInCurrentWave++;

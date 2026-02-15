@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using GameOverlayWindow;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,8 +38,12 @@ public class ProductInShop : MonoBehaviour
     {
         if(ButtonText.text != "Buyed")
         {
-            if (int.Parse(PriceText.text) > _gameManager.Coins) return;
-            _gameManager.SpendCoins(int.Parse(PriceText.text));
+            GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
+            
+            if (int.Parse(PriceText.text) > int.Parse(gameOverlay.CoinsText.text)) 
+                return;
+            
+            gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) - int.Parse(PriceText.text)).ToString();
             BuildingPoint.BuildingTower(Tower);
             ButtonText.text = "Buyed";
         }

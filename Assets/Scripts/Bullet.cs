@@ -52,11 +52,11 @@ public class Bullet : MonoBehaviour
 
     private void BlowUp()
     {
-        PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + BulletType,
-                transform.position,
-                Quaternion.identity);
-
-        Explosion explosion = (Explosion)pooledObj;
-        explosion.ExplosonPlay();
+        // PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + BulletType,
+        //         transform.position,
+        //         Quaternion.identity);
+        //
+        // Explosion explosion = (Explosion)pooledObj;
+        // explosion.ExplosonPlay();
     }
 }

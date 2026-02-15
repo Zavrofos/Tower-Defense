@@ -9,43 +9,43 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: be0634c67425829428fb05000713aeb6
   - enabled: 1
-    path: Assets/Scenes/GameLevel1.unity
+    path: Assets/Scenes/GameHub.unity
+    guid: 49bf9ebff66ef5045b746a4dae6ed112
+  - enabled: 1
+    path: Assets/Scenes/GameLevel_1_1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/GameLevel2.unity
+    path: Assets/Scenes/GameLevel_1_2.unity
     guid: b43e6d74ae412344ca05c51fa5a186bd
   - enabled: 1
-    path: Assets/Scenes/GameLevel3.unity
+    path: Assets/Scenes/GameLevel_1_3.unity
     guid: e809dbea0f9f4a048a9cda4998a36a1d
   - enabled: 1
-    path: Assets/Scenes/GameLevel4.unity
-    guid: 246747ffc3ab95449baedfa6e7c06073
+    path: Assets/Scenes/GameLevel_1_4.unity
+    guid: 74bebf7d99dd91b4c8f13c42becb1d7b
   - enabled: 1
-    path: Assets/Scenes/GameLevel5.unity
+    path: Assets/Scenes/GameLevel_2_1.unity
     guid: 256a77c3e923fe94bad5e4efa0f64034
   - enabled: 1
-    path: Assets/Scenes/GameLevel6.unity
+    path: Assets/Scenes/GameLevel_2_2.unity
     guid: 1fc64ebff454a154f9246c9bf592f552
   - enabled: 1
-    path: Assets/Scenes/GameLevel7.unity
+    path: Assets/Scenes/GameLevel_2_3.unity
     guid: e5ffcd3be6cadd9499630623ddd6c2d2
   - enabled: 1
-    path: Assets/Scenes/GameLevel8.unity
+    path: Assets/Scenes/GameLevel_2_4.unity
     guid: 286657ed88b0dca4db3e3483234ad882
   - enabled: 1
-    path: Assets/Scenes/GameLevel9.unity
+    path: Assets/Scenes/GameLevel_3_1.unity
     guid: 5021bb8d855cf9248bf6170497888ed7
   - enabled: 1
-    path: Assets/Scenes/GameLevel10.unity
+    path: Assets/Scenes/GameLevel_3_2.unity
     guid: 3b073994d17c5834bb85c8bf825c3f3c
   - enabled: 1
-    path: Assets/Scenes/GameLevel11.unity
+    path: Assets/Scenes/GameLevel_3_3.unity
     guid: 6fe626bd13993fa40ba281c70984ed02
   - enabled: 1
-    path: Assets/Scenes/GameLevel12.unity
+    path: Assets/Scenes/GameLevel_3_4.unity
     guid: 9e45631a6f53ac44ebedc92dbc2150ee
-  - enabled: 1
-    path: Assets/Scenes/StartGameScene.unity
-    guid: a3313ca08ea22b74ab4738ddb10f3e0e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

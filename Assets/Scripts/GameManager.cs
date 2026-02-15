@@ -1,65 +1,35 @@
 ﻿using Assets.Scripts.RepPoolObject;
-using System.Collections.Generic;
-using Assets.Scripts.GlobalShop;
+using GameHubDir;
+using GameOverlayWindow;
 using UnityEngine;
-using UniRx;
 
 namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public CurrentGameData CurrentGameData;
         public static GameManager Instance;
-        public int CountLevels;
+        [field: SerializeField] public ObjectPooler ObjectPooler { get; set; }
+        [field: SerializeField] public GameAssets GameAssets { get; set; }
+        [field: SerializeField] public GameHub GameHub { get; set; }
+        [field: SerializeField] public SettingsMenu SettingsMenu { get; set; }
+        [field: SerializeField] public WinMenu WinMenu { get; set; }
+        [field: SerializeField] public GameOver GameOverMenu { get; set; }
+        [field: SerializeField] public GameOverlay GameOverlay { get; set; }
+        [field: SerializeField] public LoadingWindow LoadingWindow { get; set; }
+        [field: SerializeField] public PauseMenu PauseMenu { get; set; }
+        
+        public int CurrentWorld { get; set; }
+        public int CurrentLevel { get; set; }
         public GameManagerInGame CurrentGameManagerLevel { get; set; }
         public Spawner CurrentSpawner { get; set; }
-        
         public float CurrentSpeedGame { get; set; }
-
-        public List<(int, int)> Resolutions { get; private set; } = new()
-        {
-            (1280, 720),
-            (1920, 1080),
-            (2560, 1440),
-            (3840, 2160)
-        };
-
-        public List<string> Options { get; private set; } = new()
-        {
-            ("1280 x 720"),
-            ("1920 x 1080"),
-            ("2560 x 1440"),
-            ("3840 x 2160")
-        };
-            
-        public float MusicVolumeValue = 0;
-        public float GameVolumeValue = 0;
-        public int IndexQuality = 0;
-        public int ResolutionIndex = 0;
-        public bool IsFullscreen = true;
-
-        [SerializeField] private ObjectPooler _objectPooler;
-        [SerializeField] private AudioManager _audioManager;
-
+        public bool FastGameEnabled { get; private set; }
+        
         private void Awake()
         {
-            if(Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(this);
-                SetSettingsValues();
-                return;
-            }
-            
-            Destroy(gameObject);
-        }
-
-        private void Start()
-        {
-            _objectPooler.Initialize();
-            _audioManager.Initialize();
-            CurrentGameData = SaveSystem.SaveSystem.LoadSaveGameData();
-            CurrentGameData.Init();
+            Instance = this;
+            GameOverlay.PauseGameButton.onClick.AddListener(() => PauseGame(true));
+            GameOverlay.SetGameFasterButton.onClick.AddListener(SwitchGameFaster);
         }
         
         public void SetNormalSpeedGame()
@@ -67,71 +37,40 @@ namespace Assets.Scripts
             Time.timeScale = 1f;
             CurrentSpeedGame = 1;
         }
-
-        private void SetSettingsValues()
+        
+        public void PauseGame(bool isPause)
         {
-            SetQualitySettings();
-            SetResolutionSettings();
-            SetFullScreenSettings();
-            
-            Observable.NextFrame()
-                .Subscribe(_ =>
-                {
-                    SetVolumeGameSettings();
-                    SetVolumeMusicSettings();
-                })
-                .AddTo(this);
-        }
-
-        private void SetQualitySettings()
-        {
-            IndexQuality = SaveSystem.SaveSystem.GetQuality();
-            QualitySettings.SetQualityLevel(IndexQuality);
-            SaveSystem.SaveSystem.SaveQuality(IndexQuality);
-        }
-
-        private void SetResolutionSettings()
-        {
-            ResolutionIndex = SaveSystem.SaveSystem.GetResolutions();
-            ResolutionIndex = ResolutionIndex == -1 ? GetCurrentScreenResolutions() : ResolutionIndex;
-            (int, int) resolution = Resolutions[ResolutionIndex];
-            Screen.SetResolution(resolution.Item1, resolution.Item2, Screen.fullScreen);
-            SaveSystem.SaveSystem.SaveResolutions(ResolutionIndex);
-        }
-
-        private void SetFullScreenSettings()
-        {
-            IsFullscreen = SaveSystem.SaveSystem.GetFullScreen();
-            Screen.fullScreen = IsFullscreen;
-            SaveSystem.SaveSystem.SaveFullScreen(IsFullscreen);
-        }
-
-        private void SetVolumeMusicSettings()
-        {
-            MusicVolumeValue = SaveSystem.SaveSystem.GetVolumeMusic();
-            _audioManager.AudioMixer.SetFloat("MusicVolume", _audioManager.FormatToDb(MusicVolumeValue));
-            SaveSystem.SaveSystem.SaveVolumeMusicScreen(MusicVolumeValue);
-        }
-
-        private void SetVolumeGameSettings()
-        {
-            GameVolumeValue = SaveSystem.SaveSystem.GetVolumeGame();
-            _audioManager.AudioMixer.SetFloat("GameVolume", _audioManager.FormatToDb(GameVolumeValue));
-            SaveSystem.SaveSystem.SaveVolumeGameScreen(GameVolumeValue);
+            Time.timeScale = isPause ? 0 : CurrentSpeedGame;
+            PauseMenu.gameObject.SetActive(isPause);
+            CurrentGameManagerLevel.IsDisableButtonColliders = isPause;
+            PauseMenu.IsPause = isPause;
         }
         
-        private int GetCurrentScreenResolutions()
+        private void Update()
         {
-            for (int i = 0; i < Resolutions.Count; i++)
+            if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenu.IsPause)
             {
-                if (Resolutions[i].Item1 == Screen.currentResolution.width &&
-                    Resolutions[i].Item2 == Screen.currentResolution.height)
-                {
-                    return i;
-                }
+                PauseGame(true);
+                PauseMenu.IsPause = true;
             }
+            else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.IsPause)
+            {
+                PauseGame(false);
+                PauseMenu.IsPause = false;
+            }
+        }
+        
+        private void SwitchGameFaster()
+        {
+            FastGameEnabled = !FastGameEnabled;
+            Time.timeScale = FastGameEnabled ? 2f : 1f;
+            CurrentSpeedGame = Time.timeScale;
+        }
 
-            return 1;
+        private void OnDestroy()
+        {
+            GameOverlay.PauseGameButton.onClick.RemoveAllListeners();
+            GameOverlay.SetGameFasterButton.onClick.RemoveAllListeners();
         }
     }
 }

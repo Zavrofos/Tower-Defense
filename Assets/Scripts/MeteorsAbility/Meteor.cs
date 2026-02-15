@@ -7,8 +7,8 @@ namespace Assets.Scripts.MeteorsAbility
 {
     public class Meteor : PooledObject
     {
-        [SerializeField] private string _tag;
-        public override string Tag => _tag;
+        [SerializeField] private PolledObjectType _type;
+        public override PolledObjectType Type => _type;
         
         public Animator Animator;
         public SpriteRenderer MeteorSpriteRenderer;
@@ -25,7 +25,7 @@ namespace Assets.Scripts.MeteorsAbility
             await PlayDestruction(token);
             
             Animator.gameObject.SetActive(false);
-            ObjectPooler.Instance.ReturnToPool(this);
+            GameManager.Instance.ObjectPooler.ReturnToPool(this);
         }
         
         private void SetupInitialState()

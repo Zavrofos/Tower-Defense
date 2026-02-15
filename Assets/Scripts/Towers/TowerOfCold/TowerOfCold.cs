@@ -19,8 +19,6 @@ public class TowerOfCold : AbsTower
     private IPlayableParticle _coldEffectSystem;
     private IFinderObjects _finderObjectsSystem;
 
-    private SoundBox _soundShoot;
-
     public override void StartGame()
     {
         _coldEffectSystem = new ColdParticle(_coldEfect);
@@ -38,23 +36,18 @@ public class TowerOfCold : AbsTower
         if (targetEnemy == null)
         {
             _coldEffectSystem.Stop();
-            if(_soundShoot != null)
-            {
-                ObjectPooler.Instance.ReturnToPool(_soundShoot);
-                _soundShoot = null;
-            }
             return;
         }
 
         _coldEffectSystem.Play();
 
-        if(_soundShoot == null)
-        {
-            _soundShoot = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-            transform.position,
-            transform.rotation);
-            _soundShoot.PlaySound(SoundType.Cold);
-        }
+        // if(_soundShoot == null)
+        // {
+            // _soundShoot = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
+            // transform.position,
+            // transform.rotation);
+            // _soundShoot.PlaySound(SoundType.Cold);
+        // }
         
         RotationSystem.Rotate(targetEnemy);
 
@@ -70,13 +63,5 @@ public class TowerOfCold : AbsTower
     public override void Improve()
     {
         _spriteRendererTower.sprite = _spritesTower[1];
-    }
-
-    private void OnDisable()
-    {
-        if(_soundShoot != null)
-        {
-            ObjectPooler.Instance.ReturnToPool(_soundShoot);
-        }
     }
 }

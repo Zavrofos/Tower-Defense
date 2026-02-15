@@ -2,6 +2,7 @@ using System;
 using Assets.Scripts;
 using Assets.Scripts.Spawn_waves_configs;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -20,15 +21,13 @@ public class Spawner : MonoBehaviour
     private bool _isNextWaveActive;
 
     private int _countEnemyesInLevel;
-    public int CurrentCountOfEnemyesKilled;
-    public int CurrentCountOfEnemyesKilledInCurrentWave;
-
-    public bool IsWin;
-
+    public int CurrentCountOfEnemyesKilled { get; set; }
+    public int CurrentCountOfEnemyesKilledInCurrentWave { get; set; }
+    
+    public event Action OnWinLevel;
+    
     private int _currentTemplateNumber;
-
-    public event Action<bool> OnSetNextWave;
-
+    
     private void Awake()
     {
         GameManager.Instance.CurrentSpawner = this;
@@ -36,6 +35,8 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.GameOverlay.SetNextWaveButton.onClick.AddListener(SetNextWave);
+        
         _waves = IsTest ? _wavesConfigTest : _wavesConfig;
         SetWave(_currentWaveNumber);
         
@@ -45,46 +46,40 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        OnSetNextWave = null;
-    }
-
     private void Update()
     {
-        if (IsWin) return;
         if (CurrentCountOfEnemyesKilled >= _countEnemyesInLevel) 
         {
-            IsWin = true;
-            GameManager.Instance.CurrentGameManagerLevel.IsPouse = true;
-            AudioManager.Instance.PauseAudio();
+            OnWinLevel?.Invoke();
             return;
         }
 
         if (_currentWave == null)
-        {
             return;
-        }
 
         if(_isNextWaveActive)
         {
             _timeAfterPreviousWave += Time.deltaTime;
-            if(_timeAfterPreviousWave >= _timeToSpawnNextWave || CurrentCountOfEnemyesKilledInCurrentWave == _currentWave.Templates.Length)
+            
+            if (!(_timeAfterPreviousWave >= _timeToSpawnNextWave) &&
+                CurrentCountOfEnemyesKilledInCurrentWave != _currentWave.Templates.Length) 
+                return;
+            
+            _isNextWaveActive = false;
+            SetInteractableNextWaveButton(false);
+            CurrentCountOfEnemyesKilledInCurrentWave = 0;
+            
+            if(_currentWaveNumber == _waves.Waves.Count - 1)
             {
-                _isNextWaveActive = false;
-                OnSetNextWave?.Invoke(false);
-                CurrentCountOfEnemyesKilledInCurrentWave = 0;
-                if(_currentWaveNumber == _waves.Waves.Count - 1)
-                {
-                    _currentWave = null;
-                }
-                else
-                {
-                    _currentWaveNumber++;
-                    SetWave(_currentWaveNumber);
-                }
-                _timeAfterPreviousWave = 0;
+                _currentWave = null;
             }
+            else
+            {
+                _currentWaveNumber++;
+                SetWave(_currentWaveNumber);
+            }
+            
+            _timeAfterPreviousWave = 0;
             return;
         }
 
@@ -96,7 +91,7 @@ public class Spawner : MonoBehaviour
             if(_currentTemplateNumber > _currentWave.Templates.Length - 1)
             {
                 _isNextWaveActive = true;
-                OnSetNextWave?.Invoke(_currentWave != _waves.Waves[^1]);
+                SetInteractableNextWaveButton(_currentWave != _waves.Waves[^1]);
                 return;
             }
             
@@ -105,7 +100,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void SetNextWave()
+    private void SetNextWave()
     {
         _timeAfterPreviousWave = _timeToSpawnNextWave;
     }
@@ -119,6 +114,11 @@ public class Spawner : MonoBehaviour
     private void InstantiateEnemy(int _numberEnemyInWave)
     {
         Instantiate(_currentWave.Templates[_numberEnemyInWave], _spawnPoint.position, _spawnPoint.rotation, _spawnPoint);
+    }
+    
+    private void SetInteractableNextWaveButton(bool value)
+    {
+        GameManager.Instance.GameOverlay.SetNextWaveButton.interactable = value;
     }
 }
 

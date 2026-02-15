@@ -1,6 +1,8 @@
+using System;
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using SaveSystemDir;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -10,81 +12,45 @@ public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private Slider _sliderVolumeMusic;
     [SerializeField] private Slider _sliderVolumeGame;
+    [SerializeField] private Button _closeButton;
     [SerializeField] private AudioMixer _audioMixer;
-    [SerializeField] private TMP_Dropdown _dropdownGraphics;
-    [SerializeField] private Toggle _toggle;
-    [SerializeField] private TMP_Dropdown _dropdownResolutions;
 
-    private void Start()
+    private void Awake()
     {
-
-        _dropdownResolutions.ClearOptions();
-        _dropdownResolutions.AddOptions(GameManager.Instance.Options);
-        _dropdownResolutions.value = GameManager.Instance.ResolutionIndex;
-        _dropdownResolutions.RefreshShownValue();
-        SetResolution(GameManager.Instance.ResolutionIndex);
-
-        _sliderVolumeMusic.value = GameManager.Instance.MusicVolumeValue;
-        _sliderVolumeGame.value = GameManager.Instance.GameVolumeValue;
-
-        _dropdownGraphics.value = GameManager.Instance.IndexQuality;
-        SetQuality(GameManager.Instance.IndexQuality);
-
-        _toggle.isOn = GameManager.Instance.IsFullscreen;
-        SetFullscreen(GameManager.Instance.IsFullscreen);
+        _sliderVolumeMusic.value = SaveSystem.GetVolumeMusic();
+        _sliderVolumeGame.value = SaveSystem.GetVolumeGame();
+        _sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
+        _sliderVolumeGame.onValueChanged.AddListener(SetVolumeGame);
+        _closeButton.onClick.AddListener(Close);
     }
     
     private void SetVolumeMusic(float value)
     {
-        _audioMixer.SetFloat("MusicVolume", AudioManager.Instance.FormatToDb(value));
-        GameManager.Instance.MusicVolumeValue = value;
-        SaveSystem.SaveSystem.SaveVolumeMusicScreen(value);
+        _audioMixer.SetFloat("MusicVolume", FormatToDb(value));
+        SaveSystem.SaveVolumeMusicScreen(value);
     }
 
     private void SetVolumeGame(float value)
     {
-        _audioMixer.SetFloat("GameVolume", AudioManager.Instance.FormatToDb(value));
-        GameManager.Instance.GameVolumeValue = value;
-        SaveSystem.SaveSystem.SaveVolumeGameScreen(value);
+        _audioMixer.SetFloat("GameVolume", FormatToDb(value));
+        SaveSystem.SaveVolumeGameScreen(value);
     }
 
-    private void SetQuality(int qualityIndex)
+    private float FormatToDb(float value01)
     {
-        QualitySettings.SetQualityLevel(qualityIndex);
-        GameManager.Instance.IndexQuality = qualityIndex;
-        SaveSystem.SaveSystem.SaveQuality(qualityIndex);
+        value01 = Mathf.Clamp(value01, 0.0001f, 1f);
+        return Mathf.Log10(value01) * 20f;
     }
 
-    private void SetFullscreen(bool isFullscreen)
+    private void Close()
     {
-        Screen.fullScreen = isFullscreen;
-        GameManager.Instance.IsFullscreen = isFullscreen;
-        SaveSystem.SaveSystem.SaveFullScreen(isFullscreen);
+        gameObject.SetActive(false);
     }
 
-    public void SetResolution(int resolutionIndex)
+    private void OnDestroy()
     {
-        (int, int) resolution = GameManager.Instance.Resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.Item1, resolution.Item2, Screen.fullScreen);
-        GameManager.Instance.ResolutionIndex = resolutionIndex;
-        SaveSystem.SaveSystem.SaveResolutions(resolutionIndex);
-    }
-
-    private void OnEnable()
-    {
-        _sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
-        _sliderVolumeGame.onValueChanged.AddListener(SetVolumeGame);
-        _dropdownGraphics.onValueChanged.AddListener(SetQuality);
-        _toggle.onValueChanged.AddListener(SetFullscreen);
-        _dropdownResolutions.onValueChanged.AddListener(SetResolution);
-    }
-
-    private void OnDisable()
-    {
-        _sliderVolumeMusic.onValueChanged.RemoveListener(SetVolumeMusic);
-        _sliderVolumeGame.onValueChanged.RemoveListener(SetVolumeGame);
-        _dropdownGraphics.onValueChanged.RemoveListener(SetQuality);
-        _toggle.onValueChanged.RemoveListener(SetFullscreen);
-        _dropdownResolutions.onValueChanged.RemoveListener(SetResolution);
+        _sliderVolumeMusic.onValueChanged.RemoveAllListeners();
+        _sliderVolumeGame.onValueChanged.RemoveAllListeners();
+        _closeButton.onClick.RemoveAllListeners();
     }
 }
