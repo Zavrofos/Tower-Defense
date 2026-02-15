@@ -31,12 +31,13 @@ public class GameManagerInGame : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.CurrentSpawner.OnWinLevel += ShowWinWindow;
-        GameManager.Instance.CurrentSpawner.OnWinLevel += () => GameManager.Instance.PauseGame(true);
+        GameManager.Instance.CurrentSpawner.OnWinLevel += () => GameManager.Instance.PauseGame(true, false);
         GameManager.Instance.GameOverlay.CoinsText.text = "100";
     }
     
     private void ShowWinWindow()
     {
+        Debug.Log("(test) ShowWinWindow");
         GameManager.Instance.SetNormalSpeedGame();
         CurrentGameData currentGameData = SaveSystem.CurrentGameData;
         GameManager.Instance.WinMenu.gameObject.SetActive(true);

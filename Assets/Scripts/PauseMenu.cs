@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
     {
         gameObject.SetActive(false);
         GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = false;
-        GameManager.Instance.SetNormalSpeedGame();
+        Time.timeScale = GameManager.Instance.CurrentSpeedGame;
     }
 
     private void OnDestroy()

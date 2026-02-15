@@ -38,10 +38,10 @@ namespace Assets.Scripts
             CurrentSpeedGame = 1;
         }
         
-        public void PauseGame(bool isPause)
+        public void PauseGame(bool isPause, bool showPauseWindow = true)
         {
             Time.timeScale = isPause ? 0 : CurrentSpeedGame;
-            PauseMenu.gameObject.SetActive(isPause);
+            PauseMenu.gameObject.SetActive(isPause && showPauseWindow);
             CurrentGameManagerLevel.IsDisableButtonColliders = isPause;
             PauseMenu.IsPause = isPause;
         }
@@ -55,7 +55,7 @@ namespace Assets.Scripts
             }
             else if (Input.GetKeyDown(KeyCode.Escape) && PauseMenu.IsPause)
             {
-                PauseGame(false);
+                PauseGame(false, false);
                 PauseMenu.IsPause = false;
             }
         }

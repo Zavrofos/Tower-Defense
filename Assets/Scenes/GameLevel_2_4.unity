@@ -33815,6 +33815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CameraSize>k__BackingField: 9
   <CameraPos>k__BackingField: {x: 2.58, y: 0, z: -10}
+  <Canvas>k__BackingField: {fileID: 2128986815}
   <Home>k__BackingField: {fileID: 1457342057}
   RevardForWinLevel: 300
   RevardGameOverLevel: 150

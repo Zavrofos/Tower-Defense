@@ -1,6 +1,7 @@
 using System;
 using Assets.Scripts;
 using Assets.Scripts.Spawn_waves_configs;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,8 @@ public class Spawner : MonoBehaviour
     public event Action OnWinLevel;
     
     private int _currentTemplateNumber;
+
+    private IDisposable _startSpawnerDisposable;
     
     private void Awake()
     {
@@ -41,19 +44,26 @@ public class Spawner : MonoBehaviour
         SetWave(_currentWaveNumber);
         
         foreach(var wave in _waves.Waves)
-        {
             _countEnemyesInLevel += wave.Templates.Length;
-        }
+        
+        _startSpawnerDisposable = Observable.EveryUpdate()
+            .Subscribe((_) => StartSpawner())
+            .AddTo(this);
+        
+        Observable.EveryUpdate()
+            .Where((_) => CurrentCountOfEnemyesKilled >= _countEnemyesInLevel)
+            .First()
+            .Subscribe((_) =>
+            {
+                OnWinLevel?.Invoke();
+                _startSpawnerDisposable?.Dispose();
+                _startSpawnerDisposable = null;
+            })
+            .AddTo(this);
     }
 
-    private void Update()
+    private void StartSpawner()
     {
-        if (CurrentCountOfEnemyesKilled >= _countEnemyesInLevel) 
-        {
-            OnWinLevel?.Invoke();
-            return;
-        }
-
         if (_currentWave == null)
             return;
 
