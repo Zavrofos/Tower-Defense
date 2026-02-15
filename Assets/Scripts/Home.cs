@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Home : MonoBehaviour
 {
-    private float _maxHealth  = 100;
-    private float _health = 100;
+    private float _maxHealth  = 10;
+    private float _health = 10;
     public event Action Killed;
 
     public void ApplayDamage(int damage)

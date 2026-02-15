@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
 using TMPro;
 using UnityEngine;
@@ -18,9 +19,9 @@ namespace GameOverlayWindow
 
         private void Awake()
         {
-            gameObject.SetActive(SaveSystem.CurrentGameData.FoodAbilityBought);
-            SetInteractableButton(SaveSystem.CurrentGameData.CountFoodBought > 0);
-            _count.text = SaveSystem.CurrentGameData.CountFoodBought.ToString();
+            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].IsBought);
+            SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count > 0);
+            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count.ToString();
             _button.onClick.AddListener(UseFood);
         }
 
@@ -34,10 +35,10 @@ namespace GameOverlayWindow
         private void UseFood()
         {
             GameManager.Instance.CurrentGameManagerLevel.Home.AddHealth(20);
-            SaveSystem.CurrentGameData.CountFoodBought--;
-            _count.text = SaveSystem.CurrentGameData.CountFoodBought.ToString();
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count--;
+            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count.ToString();
             
-            if(SaveSystem.CurrentGameData.CountFoodBought == 0) 
+            if(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count == 0) 
                 SetInteractableButton(false);
         }
 

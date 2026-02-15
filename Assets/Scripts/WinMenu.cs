@@ -31,7 +31,6 @@ public class WinMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("(test) OnEnable");
         _continueButton.onClick.AddListener(Continue);
         _mainMenuButton.onClick.AddListener(MainMenu);
         _quitButton.onClick.AddListener(Quit);
@@ -39,7 +38,6 @@ public class WinMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("(test) OnDisable");
         _continueButton.onClick.RemoveListener(Continue);
         _mainMenuButton.onClick.RemoveListener(MainMenu);
         _quitButton.onClick.RemoveListener(Quit);

@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ namespace GameOverlayWindow
 
         private void Awake()
         {
-            gameObject.SetActive(SaveSystem.CurrentGameData.IsRocketAbilityBought);
+            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityRocket].IsBought);
             _button.onClick.AddListener(TakeAbility);
         }
 

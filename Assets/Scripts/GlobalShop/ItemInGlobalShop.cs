@@ -28,20 +28,7 @@ namespace Assets.Scripts.GlobalShop
                 GlobalShopItemType.FoodAbility or 
                 GlobalShopItemType.MeteorShowerAbility)
             {
-                int count = globalShopItemInfo.Type == GlobalShopItemType.AbilityMine ? SaveSystem.CurrentGameData.CountMineBought : 0;
-
-                count = globalShopItemInfo.Type == GlobalShopItemType.FoodAbility
-                    ? SaveSystem.CurrentGameData.CountFoodBought
-                    : count;
-
-                count = globalShopItemInfo.Type == GlobalShopItemType.MoneyPocketAbility
-                    ? SaveSystem.CurrentGameData.CountMoneyPocketsBought
-                    : count;
-                
-                count = globalShopItemInfo.Type == GlobalShopItemType.MeteorShowerAbility
-                    ? SaveSystem.CurrentGameData.CountMeteorShowerBought
-                    : count;
-
+                int count = SaveSystem.CurrentGameData.AbilityData[globalShopItemInfo.Type].Count;
                 CountText.text = $"x{count}";
                 CountText.gameObject.SetActive(true);
             }

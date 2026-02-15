@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using Assets.Scripts.MeteorsAbility;
 using Assets.Scripts.RepPoolObject;
 using Cysharp.Threading.Tasks;
@@ -28,17 +29,17 @@ namespace GameOverlayWindow
         private void Awake()
         {
             _button.onClick.AddListener(PlayMeteors);
-            gameObject.SetActive(SaveSystem.CurrentGameData.IsMineAbilityBought);
-            _count.text = SaveSystem.CurrentGameData.CountMineBought.ToString();
-            _button.interactable = SaveSystem.CurrentGameData.CountMineBought > 0;
+            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].IsBought);
+            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count.ToString();
+            _button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count > 0;
         }
 
         private void PlayMeteors()
         {
-            SaveSystem.CurrentGameData.CountMeteorShowerBought--;
-            _count.text = SaveSystem.CurrentGameData.CountMeteorShowerBought.ToString();
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count--;
+            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count.ToString();
             
-            if (SaveSystem.CurrentGameData.CountMeteorShowerBought == 0)
+            if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count == 0)
                 SetInteractableButton(false);
 
             PlayMeteorShower().Forget();
@@ -72,7 +73,7 @@ namespace GameOverlayWindow
             if(_cancellationTokenSourceMeteors.Token.IsCancellationRequested)
                 return;
         
-            SetInteractableButton(SaveSystem.CurrentGameData.CountMineBought > 0);
+            SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count > 0);
         }
         
         private async UniTask SpawnMeteorsAtPoint(Vector3 position, CancellationToken token)

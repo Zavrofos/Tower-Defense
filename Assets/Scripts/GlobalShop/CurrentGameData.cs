@@ -10,15 +10,6 @@ namespace Assets.Scripts.GlobalShop
         public int[,] Levels;
         
         public int CurrentGlobalMoney = 0;
-        public bool IsRocketAbilityBought;
-        public bool IsMineAbilityBought = true;
-        public int CountMineBought = 10;
-        public bool FoodAbilityBought = true;
-        public int CountFoodBought = 10;
-        public bool MoneyPocketAbilityBought = true;
-        public int CountMoneyPocketsBought = 10;
-        public bool MeteorShowerBought = true;
-        public int CountMeteorShowerBought = 10;
         
         public TowerData LowTowerData;
         public TowerData MediumTowerData;
@@ -27,34 +18,28 @@ namespace Assets.Scripts.GlobalShop
         public TowerData LaserTowerData;
         public TowerData LaserTowerNewData;
 
+        public AbilityData RocketAbility;
+        public AbilityData MineAbility;
+        public AbilityData MeteorsShowerAbility;
+        public AbilityData FoodAbility;
+        public AbilityData PocketMoneyAbility;
+
         public Dictionary<GlobalShopItemType, TowerData> TowersData;
+        public Dictionary<GlobalShopItemType, AbilityData> AbilityData;
 
         public void Init()
         {
             Worlds ??= new int [3];
             Worlds[0] = 1;
-            Worlds[1] = 1;
-            Worlds[2] = 1;
             Levels ??= new int[3, 4];
             Levels[0, 0] = 1;
-            Levels[0, 1] = 1;
-            Levels[0, 2] = 1;
-            Levels[0, 3] = 1;
-            Levels[1, 0] = 1;
-            Levels[1, 1] = 1;
-            Levels[1, 2] = 1;
-            Levels[1, 3] = 1;
-            Levels[2, 0] = 1;
-            Levels[2, 1] = 1;
-            Levels[2, 2] = 1;
-            Levels[2, 3] = 1;
             
-            LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true};
-            MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true};
-            HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh, IsBought = true };
-            ColdTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerCold, IsBought = true };
-            LaserTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaser, IsBought = true };
-            LaserTowerNewData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaserNew, IsBought = true, IsUpgradedBought = true};
+            LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true, IsOpenToBuy = true};
+            MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true, IsOpenToBuy = true};
+            HeightTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerHigh};
+            ColdTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerCold};
+            LaserTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaser};
+            LaserTowerNewData ??= new TowerData () { TowerType = GlobalShopItemType.TowerLaserNew};
             
             TowersData = new Dictionary<GlobalShopItemType, TowerData>()
             {
@@ -65,9 +50,23 @@ namespace Assets.Scripts.GlobalShop
                 {GlobalShopItemType.TowerLaser, LaserTowerData},
                 {GlobalShopItemType.TowerLaserNew, LaserTowerNewData}
             };
+            
+            RocketAbility ??= new AbilityData()  { AbilityType = GlobalShopItemType.AbilityRocket};
+            MineAbility ??= new AbilityData()  { AbilityType = GlobalShopItemType.AbilityMine};
+            MeteorsShowerAbility ??= new AbilityData()  { AbilityType = GlobalShopItemType.MeteorShowerAbility};
+            FoodAbility ??= new AbilityData()  { AbilityType = GlobalShopItemType.FoodAbility};
+            PocketMoneyAbility ??= new AbilityData()  { AbilityType = GlobalShopItemType.MoneyPocketAbility};
+            
+            AbilityData = new Dictionary<GlobalShopItemType, AbilityData>()
+            {
+                {GlobalShopItemType.AbilityRocket, RocketAbility},
+                {GlobalShopItemType.AbilityMine, MineAbility},
+                {GlobalShopItemType.MeteorShowerAbility, MeteorsShowerAbility},
+                {GlobalShopItemType.FoodAbility, FoodAbility},
+                {GlobalShopItemType.MoneyPocketAbility, PocketMoneyAbility},
+            };
         }
     }
-
     
     [Serializable]
     public class TowerData
@@ -75,5 +74,15 @@ namespace Assets.Scripts.GlobalShop
         public GlobalShopItemType TowerType;
         public bool IsBought;
         public bool IsUpgradedBought;
+        public bool IsOpenToBuy;
+    }
+    
+    [Serializable]
+    public class AbilityData
+    {
+        public GlobalShopItemType AbilityType;
+        public bool IsBought;
+        public int Count;
+        public bool IsOpenToBuy;
     }
 }

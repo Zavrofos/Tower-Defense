@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
 using TMPro;
 using UnityEngine;
@@ -16,9 +17,9 @@ namespace GameOverlayWindow
         private void Awake()
         {
             Button.onClick.AddListener(TakeAbility);
-            gameObject.SetActive(SaveSystem.CurrentGameData.IsMineAbilityBought);
-            CountText.text = SaveSystem.CurrentGameData.CountMineBought.ToString();
-            Button.interactable = SaveSystem.CurrentGameData.CountMineBought > 0;
+            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].IsBought);
+            CountText.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count.ToString();
+            Button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0;
         }
         
         private void TakeAbility()
@@ -27,9 +28,9 @@ namespace GameOverlayWindow
             mine.GetComponent<Animator>().speed = 0;
             mine.GetComponent<BoxCollider2D>().enabled = false;
             mine.AbilityMineButton = this;
-            SaveSystem.CurrentGameData.CountMineBought--;
-            CountText.text = SaveSystem.CurrentGameData.CountMineBought.ToString();
-            Button.interactable = SaveSystem.CurrentGameData.CountMineBought > 0;
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count--;
+            CountText.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count.ToString();
+            Button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0;
         }
 
         private void OnDestroy()

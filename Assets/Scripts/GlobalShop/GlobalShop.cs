@@ -103,8 +103,7 @@ namespace Assets.Scripts.GlobalShop
         
         private void BuyItem(ItemInGlobalShop item)
         {
-            CurrentGameData currentGameData = SaveSystem.CurrentGameData;
-            int money = currentGameData.CurrentGlobalMoney;
+            int money = SaveSystem.CurrentGameData.CurrentGlobalMoney;
             int price = int.Parse(item.PriceText.text);
         
             if (money < price)
@@ -120,51 +119,21 @@ namespace Assets.Scripts.GlobalShop
                            item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerLaser;
         
             if (isTower)
-            {
-                BuyOrBuyUpgradeTower(item, currentGameData);
-            }
-            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityMine)
-            {
-                currentGameData.IsMineAbilityBought = true;
-                currentGameData.CountMineBought++;
-                item.CountText.text = $"x{currentGameData.CountMineBought.ToString()}";
-            }
-            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityRocket)
-            {
-                currentGameData.IsRocketAbilityBought = true;
-                item.BuyButton.interactable = false;
-                item.BuyButtonText.text = "Bought";
-            }
-            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.FoodAbility)
-            {
-                currentGameData.FoodAbilityBought = true;
-                currentGameData.CountFoodBought++;
-                item.CountText.text = $"x{currentGameData.CountFoodBought.ToString()}";
-            }
-            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.MoneyPocketAbility)
-            {
-                currentGameData.MoneyPocketAbilityBought = true;
-                currentGameData.CountMoneyPocketsBought++;
-                item.CountText.text = $"x{currentGameData.CountMoneyPocketsBought.ToString()}";
-            }
-            else if(item.GlobalShopItemInfo.Type == GlobalShopItemType.MeteorShowerAbility)
-            {
-                currentGameData.MeteorShowerBought = true;
-                currentGameData.CountMeteorShowerBought++;
-                item.CountText.text = $"x{currentGameData.CountMeteorShowerBought.ToString()}";
-            }
+                BuyOrBuyUpgradeTower(item);
+            else
+                BuyAbility(item);
         
-            currentGameData.CurrentGlobalMoney -= price;
-            GlobalCoinCount.text = currentGameData.CurrentGlobalMoney.ToString();
+            SaveSystem.CurrentGameData.CurrentGlobalMoney -= price;
+            GlobalCoinCount.text = SaveSystem.CurrentGameData.CurrentGlobalMoney.ToString();
             SaveSystem.SaveGame();
         
             item.Toggle.isOn = true;
             EventSystem.current.SetSelectedGameObject(item.Toggle.gameObject);
         }
         
-        private void BuyOrBuyUpgradeTower(ItemInGlobalShop item, CurrentGameData currentGameData)
+        private void BuyOrBuyUpgradeTower(ItemInGlobalShop item)
         {
-            TowerData towerData = currentGameData.TowersData[item.GlobalShopItemInfo.Type];
+            TowerData towerData = SaveSystem.CurrentGameData.TowersData[item.GlobalShopItemInfo.Type];
         
             if (towerData.IsBought)
             {
@@ -180,6 +149,19 @@ namespace Assets.Scripts.GlobalShop
             }
         }
 
+        private void BuyAbility(ItemInGlobalShop item)
+        {
+            SaveSystem.CurrentGameData.AbilityData[item.GlobalShopItemInfo.Type].IsBought = true;
+            SaveSystem.CurrentGameData.AbilityData[item.GlobalShopItemInfo.Type].Count++;
+            item.CountText.text = $"x{SaveSystem.CurrentGameData.AbilityData[item.GlobalShopItemInfo.Type].Count.ToString()}";
+
+            if (item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityRocket)
+            {
+                item.BuyButton.interactable = false;
+                item.BuyButtonText.text = "Bought";
+            }
+        }
+
         private void CloseWindow()
         {
             gameObject.SetActive(false);
@@ -187,37 +169,33 @@ namespace Assets.Scripts.GlobalShop
         
         private void SetSavedData()
         {
-            CurrentGameData currentGameData = SaveSystem.CurrentGameData;
-            GlobalCoinCount.text = currentGameData.CurrentGlobalMoney.ToString();
-            SetTowerSaveData(GlobalShopItemType.TowerLow, currentGameData);
-            SetTowerSaveData(GlobalShopItemType.TowerMedium, currentGameData);
-            SetTowerSaveData(GlobalShopItemType.TowerHigh, currentGameData);
-            SetTowerSaveData(GlobalShopItemType.TowerCold, currentGameData);
-            SetTowerSaveData(GlobalShopItemType.TowerLaser, currentGameData);
+            GlobalCoinCount.text = SaveSystem.CurrentGameData.CurrentGlobalMoney.ToString();
+            SetTowerSaveData(GlobalShopItemType.TowerLow);
+            SetTowerSaveData(GlobalShopItemType.TowerMedium);
+            SetTowerSaveData(GlobalShopItemType.TowerHigh);
+            SetTowerSaveData(GlobalShopItemType.TowerCold);
+            SetTowerSaveData(GlobalShopItemType.TowerLaser);
         
-            if (currentGameData.IsRocketAbilityBought)
+            if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityRocket].IsBought)
             {
                 Items[GlobalShopItemType.AbilityRocket].BuyButton.interactable = false;
                 Items[GlobalShopItemType.AbilityRocket].BuyButtonText.text = "Bought";
             }
         }
 
-        private void SetTowerSaveData(GlobalShopItemType type, CurrentGameData currentGameData)
+        private void SetTowerSaveData(GlobalShopItemType type)
         {
-            if (Items.ContainsKey(type) && currentGameData.TowersData[type].IsBought)
+            if (Items.ContainsKey(type) && SaveSystem.CurrentGameData.TowersData[type].IsBought)
             {
-                if (currentGameData.TowersData[type].IsBought)
+                ItemInGlobalShop item = Items[type];
+                GlobalShopItemInfo info = item.GlobalShopItemInfo;
+                item.ItemIcon.sprite = info.UpgradeIcon;
+                item.PriceText.text = info.UpgradePrice.ToString();
+
+                if (SaveSystem.CurrentGameData.TowersData[type].IsUpgradedBought)
                 {
-                    ItemInGlobalShop item = Items[type];
-                    GlobalShopItemInfo info = item.GlobalShopItemInfo;
-                    item.ItemIcon.sprite = info.UpgradeIcon;
-                    item.PriceText.text = info.UpgradePrice.ToString();
-        
-                    if (currentGameData.TowersData[type].IsUpgradedBought)
-                    {
-                        item.BuyButton.interactable = false;
-                        item.BuyButtonText.text = "Bought";
-                    }
+                    item.BuyButton.interactable = false;
+                    item.BuyButtonText.text = "Bought";
                 }
             }
         }

@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using Assets.Scripts.RepPoolObject;
 using GameOverlayWindow;
 using SaveSystemDir;
@@ -20,8 +21,8 @@ public class MineAbility : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Escape) || Input.GetMouseButtonDown(1))
         {
-            SaveSystem.CurrentGameData.CountMineBought++;
-            AbilityMineButton.CountText.text = SaveSystem.CurrentGameData.CountMineBought.ToString();
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count++;
+            AbilityMineButton.CountText.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count.ToString();
             AbilityMineButton.Button.interactable = true;
             Destroy(gameObject);
         }

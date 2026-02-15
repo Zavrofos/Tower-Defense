@@ -1,3 +1,4 @@
+using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
 using TMPro;
 using UnityEngine;
@@ -17,9 +18,9 @@ namespace GameOverlayWindow
 
         private void Awake()
         {
-            gameObject.SetActive(SaveSystem.CurrentGameData.MoneyPocketAbilityBought);
-            SetInteractableButton(SaveSystem.CurrentGameData.CountMoneyPocketsBought > 0);
-            _count.text = SaveSystem.CurrentGameData.CountMoneyPocketsBought.ToString();
+            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].IsBought);
+            SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count > 0);
+            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count.ToString();
             _button.onClick.AddListener(AddMoney);
         }
 
@@ -33,9 +34,9 @@ namespace GameOverlayWindow
         private void AddMoney()
         {
             _count.text = (int.Parse(_count.text) + 10).ToString();
-            SaveSystem.CurrentGameData.CountMoneyPocketsBought--;
-            _count.text = SaveSystem.CurrentGameData.CountMoneyPocketsBought.ToString();
-            if (SaveSystem.CurrentGameData.CountMoneyPocketsBought == 0)
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count--;
+            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count.ToString();
+            if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count == 0)
                 SetInteractableButton(false);
         }
 
