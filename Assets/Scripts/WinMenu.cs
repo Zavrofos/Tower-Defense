@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +10,8 @@ public class WinMenu : MonoBehaviour
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
+
+    private List<GlobalShopItemType> _rewardItemsToShow = new ();
 
     private void Continue()
     {
@@ -27,6 +31,11 @@ public class WinMenu : MonoBehaviour
     private void Quit()
     {
         Application.Quit();
+    }
+
+    public void SetRewardItemsToShow(List<GlobalShopItemType> rewards)
+    {
+        _rewardItemsToShow = new List<GlobalShopItemType>(rewards);
     }
 
     private void OnEnable()

@@ -10,8 +10,10 @@ public class GameManagerInGame : MonoBehaviour
     [field: SerializeField] public Vector3 CameraPos { get; private set; }
     [field: SerializeField] public Canvas Canvas { get; private set; }
     [field: SerializeField] public Home Home { get; private set; }
+    
     [SerializeField] private int RevardForWinLevel = 100;
     [SerializeField] private int RevardGameOverLevel = 50;
+    [SerializeField] private List<GlobalShopItemType> RewardItems = new ();
 
     public Shop[] Shops;
     public Transform[] PointsOfWayForEnemy;
@@ -37,15 +39,25 @@ public class GameManagerInGame : MonoBehaviour
     
     private void ShowWinWindow()
     {
-        Debug.Log("(test) ShowWinWindow");
+        SaveSystem.CurrentGameData.Worlds[GameManager.Instance.CurrentWorld - 1] = 1;
+        SaveSystem.CurrentGameData.Levels[GameManager.Instance.CurrentWorld - 1, GameManager.Instance.CurrentLevel - 1] = 1;
+        SaveSystem.CurrentGameData.CurrentGlobalMoney += RevardForWinLevel;
+
+        foreach (var rewardItem in RewardItems)
+        {
+            if (SaveSystem.CurrentGameData.TowersData.TryGetValue(rewardItem, out var value))
+                value.IsOpenToBuy = true;
+            
+            if (SaveSystem.CurrentGameData.AbilityData.TryGetValue(rewardItem, out var value1))
+                value1.IsOpenToBuy = true;
+        }
+        
+        SaveSystem.SaveGame();
+        
         GameManager.Instance.SetNormalSpeedGame();
-        CurrentGameData currentGameData = SaveSystem.CurrentGameData;
+        GameManager.Instance.WinMenu.SetRewardItemsToShow(RewardItems);
         GameManager.Instance.WinMenu.gameObject.SetActive(true);
         IsDisableButtonColliders = true;
-        currentGameData.Worlds[GameManager.Instance.CurrentWorld - 1] = 1;
-        currentGameData.Levels[GameManager.Instance.CurrentWorld - 1, GameManager.Instance.CurrentLevel - 1] = 1;
-        currentGameData.CurrentGlobalMoney += RevardForWinLevel;
-        SaveSystem.SaveGame();
     }
      
     public void OpenShop(Shop shop)

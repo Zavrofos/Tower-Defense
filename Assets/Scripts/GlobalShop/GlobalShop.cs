@@ -42,6 +42,10 @@ namespace Assets.Scripts.GlobalShop
             
             foreach (GlobalShopItemInfo info in GlobalShopConfig.GlobalShopItemsInfos)
             {
+                if(SaveSystem.CurrentGameData.TowersData.ContainsKey(info.Type) && !SaveSystem.CurrentGameData.TowersData[info.Type].IsOpenToBuy ||
+                   SaveSystem.CurrentGameData.AbilityData.ContainsKey(info.Type) && !SaveSystem.CurrentGameData.AbilityData[info.Type].IsOpenToBuy)
+                    continue;
+                
                 ItemInGlobalShop item = Instantiate(ItemInGlobalShopPrefab, Content);
                 item.Init(info, ToggleGroup);
                 Items.TryAdd(info.Type, item);
