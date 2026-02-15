@@ -39,8 +39,7 @@ public class GameManagerInGame : MonoBehaviour
     
     private void ShowWinWindow()
     {
-        SaveSystem.CurrentGameData.Worlds[GameManager.Instance.CurrentWorld - 1] = 1;
-        SaveSystem.CurrentGameData.Levels[GameManager.Instance.CurrentWorld - 1, GameManager.Instance.CurrentLevel - 1] = 1;
+        OpenNextLevel();
         SaveSystem.CurrentGameData.CurrentGlobalMoney += RevardForWinLevel;
 
         foreach (var rewardItem in RewardItems)
@@ -58,6 +57,23 @@ public class GameManagerInGame : MonoBehaviour
         GameManager.Instance.WinMenu.SetRewardItemsToShow(RewardItems);
         GameManager.Instance.WinMenu.gameObject.SetActive(true);
         IsDisableButtonColliders = true;
+    }
+
+    private void OpenNextLevel()
+    {
+        if(GameManager.Instance.CurrentWorld == 3 && GameManager.Instance.CurrentLevel == 4)
+            return;
+
+        int nextLevel = GameManager.Instance.CurrentLevel < 4
+            ? GameManager.Instance.CurrentLevel + 1
+            : 1;
+        
+        int nextWorld = GameManager.Instance.CurrentWorld < 3 && nextLevel == 1
+            ? GameManager.Instance.CurrentWorld + 1
+            : GameManager.Instance.CurrentWorld;
+
+        SaveSystem.CurrentGameData.Worlds[nextWorld - 1] = 1;
+        SaveSystem.CurrentGameData.Levels[nextWorld - 1].Cols[nextLevel - 1] = 1;
     }
      
     public void OpenShop(Shop shop)

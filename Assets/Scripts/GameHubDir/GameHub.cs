@@ -13,7 +13,7 @@ namespace GameHubDir
         [field: SerializeField] public Button PlayButton { get; private set; }
         [field: SerializeField] public Button MenuButton { get; private set; }
         [field: SerializeField] public Button ShopButton { get; private set; }
-        [field: SerializeField] public GameObject ShopWindow { get; private set; }
+        [field: SerializeField] public GlobalShop ShopWindow { get; private set; }
         [field: SerializeField] public List<WorldPanel> WorldsPanels { get; private set; }
 
         private void UpdateHub()
@@ -25,7 +25,7 @@ namespace GameHubDir
                 WorldsPanels[i].SetInteractable(currentGameData.Worlds[i] == 1);
                 
                 for (int j = 0; j < WorldsPanels[i].LevelsButtons.Count; j++)
-                    WorldsPanels[i].LevelsButtons[j].SetInteractable(currentGameData.Levels[i, j] == 1);
+                    WorldsPanels[i].LevelsButtons[j].SetInteractable(currentGameData.Levels[i].Cols[j] == 1);
             }
         }
 
@@ -78,7 +78,7 @@ namespace GameHubDir
             {
                 for (int j = lengthColumn - 1; j >= 0; j--)
                 {
-                    bool completed = currentGameData.Levels[i, j] == 1;
+                    bool completed = currentGameData.Levels[i].Cols[j] == 1;
 
                     if (!completed) 
                         continue;
@@ -96,7 +96,7 @@ namespace GameHubDir
 
         private void OpenShop()
         {
-            ShopWindow.SetActive(true);
+            ShopWindow.gameObject.SetActive(true);
         }
     }
 }

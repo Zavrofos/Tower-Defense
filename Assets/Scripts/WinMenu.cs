@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
+using GameOverlayWindow;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +13,10 @@ public class WinMenu : MonoBehaviour
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
 
+    [SerializeField] private GameObject ItemsParent;
+    [SerializeField] private WinMenuNewItem _winMenuNewItem1;
+    [SerializeField] private WinMenuNewItem _winMenuNewItem2;
+    
     private List<GlobalShopItemType> _rewardItemsToShow = new ();
 
     private void Continue()
@@ -18,8 +24,15 @@ public class WinMenu : MonoBehaviour
         SceneManager.UnloadSceneAsync($"GameLevel_{GameManager.Instance.CurrentWorld}_{GameManager.Instance.CurrentLevel}");
         GameManager.Instance.GameHub.gameObject.SetActive(true);
         GameManager.Instance.GameOverlay.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        GameManager.Instance.SetNormalSpeedGame();
         gameObject.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        _continueButton.onClick.AddListener(Continue);
+        _mainMenuButton.onClick.AddListener(MainMenu);
+        _quitButton.onClick.AddListener(Quit);
     }
 
     private void MainMenu()
@@ -40,15 +53,25 @@ public class WinMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _continueButton.onClick.AddListener(Continue);
-        _mainMenuButton.onClick.AddListener(MainMenu);
-        _quitButton.onClick.AddListener(Quit);
+        if(_rewardItemsToShow.Count == 0)
+            return;
+        
+        _winMenuNewItem1.Setup(_rewardItemsToShow[0]);
+        _winMenuNewItem1.gameObject.SetActive(true);
+
+        if (_rewardItemsToShow.Count > 1)
+        {
+            _winMenuNewItem2.Setup(_rewardItemsToShow[1]);
+            _winMenuNewItem2.gameObject.SetActive(true);
+        }
+        
+        ItemsParent.SetActive(true);
     }
 
     private void OnDisable()
     {
-        _continueButton.onClick.RemoveListener(Continue);
-        _mainMenuButton.onClick.RemoveListener(MainMenu);
-        _quitButton.onClick.RemoveListener(Quit);
+        _continueButton.onClick.RemoveAllListeners();
+        _mainMenuButton.onClick.RemoveAllListeners();
+        _quitButton.onClick.RemoveAllListeners();
     }
 }

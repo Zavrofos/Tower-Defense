@@ -33819,6 +33819,7 @@ MonoBehaviour:
   <Home>k__BackingField: {fileID: 1457342057}
   RevardForWinLevel: 300
   RevardGameOverLevel: 150
+  RewardItems: 0400000009000000
   Shops:
   - {fileID: 458445995537748801}
   - {fileID: 1860734070}

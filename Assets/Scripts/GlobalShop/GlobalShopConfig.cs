@@ -29,5 +29,13 @@ namespace Assets.Scripts.GlobalShop
     public class GlobalShopConfig : ScriptableObject
     {
         public List<GlobalShopItemInfo> GlobalShopItemsInfos;
+
+        public Dictionary<GlobalShopItemType, GlobalShopItemInfo> InfosDic = new Dictionary<GlobalShopItemType, GlobalShopItemInfo>();
+
+        public void Init()
+        {
+            foreach (var info in GlobalShopItemsInfos)
+                InfosDic.TryAdd(info.Type, info);
+        }
     }
 }

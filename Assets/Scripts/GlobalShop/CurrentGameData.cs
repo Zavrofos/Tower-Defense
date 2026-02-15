@@ -7,7 +7,7 @@ namespace Assets.Scripts.GlobalShop
     public class CurrentGameData
     {
         public int[] Worlds;
-        public int[,] Levels;
+        public LevelRow[] Levels;
         
         public int CurrentGlobalMoney = 0;
         
@@ -29,10 +29,20 @@ namespace Assets.Scripts.GlobalShop
 
         public void Init()
         {
-            Worlds ??= new int [3];
+            Worlds ??= new int[3];
             Worlds[0] = 1;
-            Levels ??= new int[3, 4];
-            Levels[0, 0] = 1;
+
+            Levels ??= new LevelRow[3];
+
+            for (int i = 0; i < Levels.Length; i++)
+            {
+                if (Levels[i] == null)
+                    Levels[i] = new LevelRow();
+
+                Levels[i].Cols ??= new int[4];
+            }
+
+            Levels[0].Cols[0] = 1;
             
             LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true, IsOpenToBuy = true};
             MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true, IsOpenToBuy = true};
@@ -84,5 +94,11 @@ namespace Assets.Scripts.GlobalShop
         public bool IsBought;
         public int Count;
         public bool IsOpenToBuy;
+    }
+
+    [Serializable]
+    public class LevelRow
+    {
+        public int[] Cols;
     }
 }

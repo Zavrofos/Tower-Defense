@@ -35,7 +35,7 @@ namespace Assets.Scripts.GlobalShop
         [field: SerializeField] public TMP_Text GlobalCoinCount { get; private set; }
 
         public Dictionary<GlobalShopItemType, ItemInGlobalShop> Items;
-
+        
         private void OnEnable()
         {
             Items = new Dictionary<GlobalShopItemType, ItemInGlobalShop>();

@@ -1665,7 +1665,7 @@ MonoBehaviour:
   _timeToSpawnNextWave: 20
   IsTest: 1
   _wavesConfig: {fileID: 11400000, guid: 9d53e6e792abe6e479b9aba7edac773f, type: 2}
-  _wavesConfigTest: {fileID: 11400000, guid: b1a9156e7f0d2bd42aa6228bbe5885cd, type: 2}
+  _wavesConfigTest: {fileID: 11400000, guid: 92112cee5c55ef7478076971a6a9699b, type: 2}
   _spawnPoint: {fileID: 840376051}
 --- !u!4 &840376051
 Transform:
@@ -14139,6 +14139,7 @@ MonoBehaviour:
   <Home>k__BackingField: {fileID: 1457342057}
   RevardForWinLevel: 300
   RevardGameOverLevel: 150
+  RewardItems: 
   Shops:
   - {fileID: 458445995537748801}
   - {fileID: 1860734070}

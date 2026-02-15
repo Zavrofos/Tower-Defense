@@ -30,6 +30,7 @@ namespace Assets.Scripts
             Instance = this;
             GameOverlay.PauseGameButton.onClick.AddListener(() => PauseGame(true));
             GameOverlay.SetGameFasterButton.onClick.AddListener(SwitchGameFaster);
+            GameHub.ShopWindow.GlobalShopConfig.Init();
         }
         
         public void SetNormalSpeedGame()
