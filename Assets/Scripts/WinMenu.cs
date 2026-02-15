@@ -21,6 +21,7 @@ public class WinMenu : MonoBehaviour
 
     private void Continue()
     {
+        GameManager.Instance.ObjectPooler.ClearPool();
         SceneManager.UnloadSceneAsync($"GameLevel_{GameManager.Instance.CurrentWorld}_{GameManager.Instance.CurrentLevel}");
         GameManager.Instance.GameHub.gameObject.SetActive(true);
         GameManager.Instance.GameOverlay.gameObject.SetActive(false);

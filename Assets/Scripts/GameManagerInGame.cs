@@ -24,6 +24,7 @@ public class GameManagerInGame : MonoBehaviour
     
     private void Awake()
     {
+        GameManager.Instance.ObjectPooler.CreatePool();
         GameManager.Instance.CurrentGameManagerLevel = this;
         Camera.main.gameObject.transform.position = CameraPos;
         Camera.main.orthographicSize = CameraSize;

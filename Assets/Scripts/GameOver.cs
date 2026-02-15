@@ -1,5 +1,4 @@
 using Assets.Scripts;
-using Assets.Scripts.GlobalShop;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,8 +18,11 @@ public class GameOver : MonoBehaviour
 
     private void Continue()
     {
-        SceneManager.LoadScene("GameHub");
-        Time.timeScale = 1;
+        GameManager.Instance.ObjectPooler.ClearPool();
+        SceneManager.UnloadSceneAsync($"GameLevel_{GameManager.Instance.CurrentWorld}_{GameManager.Instance.CurrentLevel}");
+        GameManager.Instance.GameHub.gameObject.SetActive(true);
+        GameManager.Instance.GameOverlay.gameObject.SetActive(false);
+        GameManager.Instance.SetNormalSpeedGame();
     }
 
     private void MainMenu()
