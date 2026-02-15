@@ -6,9 +6,23 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] private Button _continueButton;
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
-    
+
+    private void Awake()
+    {
+        _continueButton.onClick.AddListener(Continue);
+        _mainMenuButton.onClick.AddListener(MainMenu);
+        _quitButton.onClick.AddListener(Quit);
+    }
+
+    private void Continue()
+    {
+        SceneManager.LoadScene("GameHub");
+        Time.timeScale = 1;
+    }
+
     private void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -20,16 +34,11 @@ public class GameOver : MonoBehaviour
         Application.Quit();
     }
 
-    private void OnEnable()
+    private void OnDestroy()
     {
-        _mainMenuButton.onClick.AddListener(MainMenu);
-        _quitButton.onClick.AddListener(Quit);
-    }
-
-    private void OnDisable()
-    {
-        _mainMenuButton.onClick.RemoveListener(MainMenu);
-        _quitButton.onClick.RemoveListener(Quit);
+        _continueButton.onClick.RemoveAllListeners();
+        _mainMenuButton.onClick.RemoveAllListeners();
+        _quitButton.onClick.RemoveAllListeners();
     }
 
 }

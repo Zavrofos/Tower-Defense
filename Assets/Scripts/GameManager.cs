@@ -22,7 +22,7 @@ namespace Assets.Scripts
         public int CurrentLevel { get; set; }
         public GameManagerInGame CurrentGameManagerLevel { get; set; }
         public Spawner CurrentSpawner { get; set; }
-        public float CurrentSpeedGame { get; set; }
+        public float CurrentSpeedGame { get; set; } = 1;
         public bool FastGameEnabled { get; private set; }
         
         private void Awake()
