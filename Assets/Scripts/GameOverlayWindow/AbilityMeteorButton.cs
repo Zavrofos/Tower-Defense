@@ -29,9 +29,6 @@ namespace GameOverlayWindow
         private void Awake()
         {
             _button.onClick.AddListener(PlayMeteors);
-            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].IsBought);
-            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count.ToString();
-            _button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count > 0;
         }
 
         private void PlayMeteors()
@@ -45,11 +42,16 @@ namespace GameOverlayWindow
             PlayMeteorShower().Forget();
         }
 
-        private void SetInteractableButton(bool value)
+        public void SetInteractableButton(bool value)
         {
             _button.interactable = value;
             _icon.color = value ? _enableColor : _disableColor;
             _backgroundCount.color = value ? _enableColor : _disableColor;
+        }
+
+        public void SetCountText(string count)
+        {
+            _count.text = count;
         }
         
         private async UniTask PlayMeteorShower()

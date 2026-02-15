@@ -71,8 +71,8 @@ namespace GameHubDir
         {
             CurrentGameData currentGameData = SaveSystem.CurrentGameData;
 
-            int lengthRow = currentGameData.Levels.GetLength(0);
-            int lengthColumn = currentGameData.Levels.GetLength(1);
+            int lengthRow = currentGameData.Levels.Length;
+            int lengthColumn = 4;
             
             for (int i = lengthRow - 1; i >= 0; i--)
             {

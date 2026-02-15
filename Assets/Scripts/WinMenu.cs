@@ -68,7 +68,7 @@ public class WinMenu : MonoBehaviour
         ItemsParent.SetActive(true);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         _continueButton.onClick.RemoveAllListeners();
         _mainMenuButton.onClick.RemoveAllListeners();

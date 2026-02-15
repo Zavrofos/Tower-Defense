@@ -19,7 +19,6 @@ namespace GameOverlayWindow
 
         private void Awake()
         {
-            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityRocket].IsBought);
             _button.onClick.AddListener(TakeAbility);
         }
 

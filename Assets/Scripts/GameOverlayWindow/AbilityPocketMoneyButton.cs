@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
 using TMPro;
@@ -18,17 +19,19 @@ namespace GameOverlayWindow
 
         private void Awake()
         {
-            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].IsBought);
-            SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count > 0);
-            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count.ToString();
             _button.onClick.AddListener(AddMoney);
         }
 
-        private void SetInteractableButton(bool value)
+        public void SetInteractableButton(bool value)
         {
             _button.interactable = value;
             _icon.color = value ? _enableColor : _disableColor;
             _backgroundCount.color = value ? _enableColor : _disableColor;
+        }
+        
+        public void SetCountText(string count)
+        {
+            _count.text = count;
         }
 
         private void AddMoney()

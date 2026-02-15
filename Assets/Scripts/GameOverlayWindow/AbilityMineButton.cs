@@ -17,11 +17,8 @@ namespace GameOverlayWindow
         private void Awake()
         {
             Button.onClick.AddListener(TakeAbility);
-            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].IsBought);
-            CountText.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count.ToString();
-            Button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0;
         }
-        
+
         private void TakeAbility()
         {
             MineAbility mine = Instantiate(_mineAbilityPrefab);

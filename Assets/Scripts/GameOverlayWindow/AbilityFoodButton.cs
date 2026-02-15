@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
@@ -19,17 +20,19 @@ namespace GameOverlayWindow
 
         private void Awake()
         {
-            gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].IsBought);
-            SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count > 0);
-            _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count.ToString();
             _button.onClick.AddListener(UseFood);
         }
 
-        private void SetInteractableButton(bool value)
+        public void SetInteractableButton(bool value)
         {
             _button.interactable = value;
             _icon.color = value ? _enableColor : _disableColor;
             _backgroundCount.color = value ? _enableColor : _disableColor;
+        }
+
+        public void SetCountText(string count)
+        {
+            _count.text = count;
         }
 
         private void UseFood()
