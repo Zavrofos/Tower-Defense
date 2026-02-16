@@ -6,22 +6,23 @@ namespace GameOverlayWindow
 {
     public class RocketAbility : MonoBehaviour
     {
+        [SerializeField] private Transform _rocket;
         [SerializeField] private float _speed;
         private Vector2 _direction;
 
         private void Start()
         {
-            _direction = (transform.position - transform.position).normalized;
+            _direction = (transform.position - _rocket.position).normalized;
         }
 
         private void Update()
         {
-            float distance = (transform.position - transform.position).magnitude;
+            float distance = (_rocket.position - transform.position).magnitude;
             
             if(distance < 0.2f)
                 Destroy();
             
-            transform.Translate(_direction * _speed * Time.deltaTime);
+            _rocket.Translate(_direction * _speed * Time.deltaTime);
         }
 
         private void Destroy()

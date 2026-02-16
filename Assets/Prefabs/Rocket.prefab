@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194dcd2985ce46a085c2c1e53a4bc8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverlayWindow.RocketAbility
-  _speed: 10
+  _rocket: {fileID: 1336678595652331472}
+  _speed: 50
 --- !u!1 &1336678595652331477
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1178746319
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 179cb66872fe67b40873b8449879df42, type: 3}
