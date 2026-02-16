@@ -26,7 +26,6 @@ namespace Assets.Scripts.GlobalShop
             float cof = newWidthCell / initWidth;
             float newHighCell = initHigh * cof;
             GridLayoutGroup.cellSize = new Vector2(newWidthCell, newHighCell);
-            Destroy(this);
         }
 
         private float GetCellWidth()

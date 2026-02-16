@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
 using SaveSystemDir;
 using TMPro;
@@ -36,7 +37,7 @@ namespace GameOverlayWindow
 
         private void AddMoney()
         {
-            _count.text = (int.Parse(_count.text) + 10).ToString();
+            GameManager.Instance.GameOverlay.CoinsText.text = (int.Parse(GameManager.Instance.GameOverlay.CoinsText.text) + 10).ToString();
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count--;
             _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count.ToString();
             if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count == 0)

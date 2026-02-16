@@ -120,7 +120,8 @@ namespace Assets.Scripts.GlobalShop
                            item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerMedium ||
                            item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerHigh ||
                            item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerCold ||
-                           item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerLaser;
+                           item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerLaser ||
+                           item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerLaserNew;
         
             if (isTower)
                 BuyOrBuyUpgradeTower(item);
