@@ -11,7 +11,7 @@ namespace GameOverlayWindow
 
         private void Start()
         {
-            _direction = transform.position - transform.position;
+            _direction = (transform.position - transform.position).normalized;
         }
 
         private void Update()
