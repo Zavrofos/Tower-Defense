@@ -37,6 +37,7 @@ namespace Assets.Scripts
         {
             Time.timeScale = 1f;
             CurrentSpeedGame = 1;
+            FastGameEnabled = false;
         }
         
         public void PauseGame(bool isPause, bool showPauseWindow = true)
