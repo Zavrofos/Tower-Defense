@@ -19,7 +19,7 @@ namespace GameOverlayWindow
         {
             float distance = (_rocket.position - transform.position).magnitude;
             
-            if(distance < 0.2f)
+            if(distance < 0.5f)
                 Destroy();
             
             _rocket.Translate(_direction * _speed * Time.deltaTime);
