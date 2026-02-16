@@ -163,7 +163,7 @@ MonoBehaviour:
     UpgradePrice: 0
     UpgradedName: 
     UpgradedDescription: 
-  - IconShopItem: {fileID: 21300000, guid: 70b332e625ce79a4d965d4388bbcbd35, type: 3}
+  - IconShopItem: {fileID: -2613247888821195678, guid: c55608ad933e8ff4989e5663ffbfbcf4, type: 3}
     IconDescriptionItem: {fileID: -1700265437884048986, guid: a1c465919ff9ddb42891448803233491, type: 3}
     Price: 50
     DescriptionItem: "\u041F\u0440\u0438 \u0441\u043E\u043F\u0440\u0438\u043A\u043E\u0441\u043D\u043E\u0432\u0435\u043D\u0438\u0438
