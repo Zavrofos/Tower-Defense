@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -594313945
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6171584013732223684, guid: 2c838567254349c429b7199366dc1b86, type: 3}
@@ -171,7 +171,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -594313945
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Positions:
@@ -407,7 +407,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -594313945
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 8de0acdc034cb1646a7d5e3dd9ab9f42, type: 3}
@@ -601,7 +601,7 @@ MonoBehaviour:
   _description: 'Targets: All'
   PartToRotate: {fileID: 6789707796415871934}
   SpeedRotation: 10
-  Type: 11
+  Type: 10
   TargetsEnemyType: 0000000001000000
   InitialColor: {r: 1, g: 1, b: 1, a: 1}
   DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
@@ -819,7 +819,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -594313945
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5881014280415313062, guid: 3f9a3582697b14e48abaa18d9e964e41, type: 3}
