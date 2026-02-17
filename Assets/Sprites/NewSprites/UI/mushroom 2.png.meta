@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c55608ad933e8ff4989e5663ffbfbcf4
+guid: ea7cbffd8cab31c4aa597497fe3e4e81
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2613247888821195678
-    second: bomb_0
-  - first:
-      213: -8469204400738329757
-    second: bomb_1
+      213: 8204026490861039774
+    second: mushroom 2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1200
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bomb_0
+      name: mushroom 2_0
       rect:
         serializedVersion: 2
-        x: 324
-        y: 285
-        width: 449
-        height: 550
-      alignment: 9
-      pivot: {x: 0.35614944, y: 0.3003616}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 26ce5c404e0ebbbd0800000000000000
-      internalID: -2613247888821195678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bomb_1
-      rect:
-        serializedVersion: 2
-        x: 796
-        y: 627
-        width: 6
-        height: 7
+        x: 260
+        y: 252
+        width: 528
+        height: 537
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 36b11d32877577a80800000000000000
-      internalID: -8469204400738329757
+      spriteID: e90baab60ae8ad170800000000000000
+      internalID: 8204026490861039774
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5d7aee2682a7e1d4ba7f73d9a8c052ab
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bomb_0: -2613247888821195678
-      bomb_1: -8469204400738329757
+      mushroom 2_0: 8204026490861039774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
