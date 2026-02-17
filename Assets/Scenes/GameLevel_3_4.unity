@@ -12684,6 +12684,63 @@ RectTransform:
   m_AnchoredPosition: {x: -0.4000244, y: 0.5}
   m_SizeDelta: {x: -0.29000854, y: -1.0800171}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &973902597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1736452863588806714, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_Name
+      value: SoundAmbStone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685633397674304741, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02db1ba2b3462dd45981907cc21a30bc, type: 3}
 --- !u!1 &1012580668
 GameObject:
   m_ObjectHideFlags: 0
@@ -15275,6 +15332,7 @@ MonoBehaviour:
   <Home>k__BackingField: {fileID: 1457342057}
   RevardForWinLevel: 300
   RevardGameOverLevel: 150
+  RewardItems: 
   Shops:
   - {fileID: 458445995537748801}
   - {fileID: 1860734070}
@@ -15955,3 +16013,4 @@ SceneRoots:
   - {fileID: 1457342056}
   - {fileID: 757379303}
   - {fileID: 2002932905}
+  - {fileID: 973902597}
