@@ -13,6 +13,7 @@ namespace GameOverlayWindow
         [SerializeField] private Button _button;
         [SerializeField] public Image ImageTime;
         [SerializeField] private float _timeToUsing;
+        [SerializeField] private AudioSource _clickAudio;
 
         public bool IsReady { get; set; } = true;
         private float _runningTime;
@@ -50,6 +51,7 @@ namespace GameOverlayWindow
             if (!IsReady)
                 return;
 
+            _clickAudio.Play();
             ImageTime.fillAmount = 1;
             GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = true;
             RadiusAbility radiusAbility = Instantiate(_radiusAbility);

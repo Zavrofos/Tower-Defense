@@ -1,7 +1,10 @@
+using System;
+using System.Collections.Generic;
 using System.Threading;
 using Assets.Scripts.RepPoolObject;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.MeteorsAbility
 {
@@ -16,15 +19,24 @@ namespace Assets.Scripts.MeteorsAbility
         public float MeteorSetScaleSpeed;
         private Vector2 FinishMeteorScale = Vector2.zero;
         private Vector2 FromDirection = new Vector2(2, 1);
+
+        [SerializeField] private List<AudioClip> _explosionAudioClips;
+        [SerializeField] private AudioSource _explisionAudioSource;
         
         public async UniTask PlayMeteorsShower(CancellationToken token)
         {
             SetupInitialState();
 
             await FlyToTarget(token);
-            await PlayDestruction(token);
+
+            int randomAudio = Random.Range(0, _explosionAudioClips.Count - 1);
+            _explisionAudioSource.clip = _explosionAudioClips[randomAudio];
+            _explisionAudioSource.Play();
             
-            Animator.gameObject.SetActive(false);
+            PlayDestruction(token).Forget();
+
+            await UniTask.Delay(TimeSpan.FromSeconds(_explosionAudioClips[randomAudio].length), cancellationToken: token);
+            
             GameManager.Instance.ObjectPooler.ReturnToPool(this);
         }
         
@@ -68,6 +80,8 @@ namespace Assets.Scripts.MeteorsAbility
 
                 await UniTask.Yield();
             }
+            
+            Animator.gameObject.SetActive(false);
         }
     }
 }

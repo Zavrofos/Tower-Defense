@@ -18,6 +18,8 @@ namespace GameOverlayWindow
         [SerializeField] private Color _enableColor;
         [SerializeField] private Color _disableColor;
 
+        [SerializeField] private AudioSource _clickAudioSource;
+
         private void Awake()
         {
             _button.onClick.AddListener(AddMoney);
@@ -37,6 +39,7 @@ namespace GameOverlayWindow
 
         private void AddMoney()
         {
+            _clickAudioSource.Play();
             GameManager.Instance.GameOverlay.CoinsText.text = (int.Parse(GameManager.Instance.GameOverlay.CoinsText.text) + 10).ToString();
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count--;
             _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count.ToString();

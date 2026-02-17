@@ -17,6 +17,7 @@ namespace GameOverlayWindow
 
         [SerializeField] private Color _enableColor;
         [SerializeField] private Color _disableColor;
+        [SerializeField] private AudioSource _clickAudio;
 
         private void Awake()
         {
@@ -37,6 +38,7 @@ namespace GameOverlayWindow
 
         private void UseFood()
         {
+            _clickAudio.Play();
             GameManager.Instance.CurrentGameManagerLevel.Home.AddHealth(20);
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count--;
             _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count.ToString();

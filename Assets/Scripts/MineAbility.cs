@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class MineAbility : MonoBehaviour
 {
+    [SerializeField] private AudioSource _setMineAudio;
+    
     public AbilityMineButton AbilityMineButton { get; set; }
     private bool _installed;
     
@@ -29,6 +31,7 @@ public class MineAbility : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
+            _setMineAudio.Play();
             transform.position = transform.position;
             GetComponent<Animator>().speed = 1;
             GetComponent<BoxCollider2D>().enabled = true;

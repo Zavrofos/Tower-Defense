@@ -23,6 +23,7 @@ namespace GameOverlayWindow
 
         [SerializeField] private Color _enableColor;
         [SerializeField] private Color _disableColor;
+        [SerializeField] private AudioSource _startMeteorShowerAudio;
         
         private CancellationTokenSource _cancellationTokenSourceMeteors = new();
         
@@ -70,7 +71,9 @@ namespace GameOverlayWindow
                 tasks[i] = SpawnMeteorsAtPoint(pos, _cancellationTokenSourceMeteors.Token);
             }
 
+            _startMeteorShowerAudio.Play();
             await UniTask.WhenAll(tasks);
+            _startMeteorShowerAudio.Stop();
         
             if(_cancellationTokenSourceMeteors.Token.IsCancellationRequested)
                 return;
