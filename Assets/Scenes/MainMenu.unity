@@ -673,6 +673,7 @@ MonoBehaviour:
   _settingsButton: {fileID: 1608171690}
   _quitButton: {fileID: 1725208770}
   _settingsMenu: {fileID: 650275336}
+  _audioMixer: {fileID: 24100000, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
 --- !u!224 &650275333 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7618403131544517919, guid: 67086bfa2e3f1d44790c7f3d6b230beb, type: 3}
