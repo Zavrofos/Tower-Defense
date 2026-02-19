@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using UnityEngine;
 
 public class Home : MonoBehaviour
@@ -11,6 +12,9 @@ public class Home : MonoBehaviour
     public void ApplayDamage(int damage)
     {
         _health -= damage;
+        
+        SoundBox  soundBox= (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+        soundBox.Play(GameManager.Instance.GameAssets.LifeDamageAudio, true);
         
         if(_health <= 0)
             Killed?.Invoke();

@@ -14,7 +14,10 @@ namespace Assets.Scripts.RepPoolObject
         Mine,
         Meteor,
         ExplosionRocket,
-        ExplosionMine
+        ExplosionMine,
+        SoundBox,
+        ExplosionBulletHigh,
+        ExplosionBulletHighPlus,
     }
     
     public abstract class PooledObject : MonoBehaviour, IPooledObject

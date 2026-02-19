@@ -4488,6 +4488,8 @@ MonoBehaviour:
     Count: 5
   - Prefab: {fileID: 5970691258402234579, guid: 5e2ebed087599cb4ab99e89da53faf57, type: 3}
     Count: 30
+  - Prefab: {fileID: 8232845775692620280, guid: 6d6e39e65590f354896f4d621a3141ef, type: 3}
+    Count: 10
 --- !u!4 &1063011278
 Transform:
   m_ObjectHideFlags: 0
@@ -7745,6 +7747,13 @@ MonoBehaviour:
   <GameOverlay>k__BackingField: {fileID: 1259861052}
   <LoadingWindow>k__BackingField: {fileID: 0}
   <PauseMenu>k__BackingField: {fileID: 9185484822286362644}
+  <DieEnemyAudios>k__BackingField:
+  - {fileID: 8300000, guid: f29152fc1586e7447b2ef167dacdaf6b, type: 3}
+  - {fileID: 8300000, guid: f95c5d8713c6a6c42a3f4b60e432fac8, type: 3}
+  - {fileID: 8300000, guid: a8ad758b33629a34aa82660479b39bb3, type: 3}
+  - {fileID: 8300000, guid: 0d363b4bb5ad989418bd2f654e724bef, type: 3}
+  <DamageTowerAudio>k__BackingField: {fileID: 8300000, guid: b47cda997433fb04cbe28dbdc8bb2e72, type: 3}
+  <DestrouTowerAudio>k__BackingField: {fileID: 8300000, guid: bfdb636afbdf72f4b83defdbc29ecfbf, type: 3}
 --- !u!1 &2059666935
 GameObject:
   m_ObjectHideFlags: 0

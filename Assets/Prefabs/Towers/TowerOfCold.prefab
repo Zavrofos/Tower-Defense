@@ -236,7 +236,6 @@ MonoBehaviour:
   TargetsEnemyType: 00000000
   InitialColor: {r: 1, g: 1, b: 1, a: 1}
   DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
-  DestructAnimator: {fileID: 0}
   _shootPoint: {fileID: 2050538020351171557}
   _delayTimeToShoot: 1
   _spriteRendererTower: {fileID: 6789707796415871935}
@@ -245,6 +244,7 @@ MonoBehaviour:
   - {fileID: -31879317, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
   _timeToShoot: 0
   _coldEfect: {fileID: 5839133723329101923}
+  _shootAudio: {fileID: 8300000, guid: 8ef7e153a4973f34b9bd0aea73ac88f5, type: 3}
 --- !u!61 &-3823160039081987071
 BoxCollider2D:
   m_ObjectHideFlags: 0

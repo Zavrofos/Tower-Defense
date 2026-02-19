@@ -1,6 +1,7 @@
 using System;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
+using Assets.Scripts.RepPoolObject;
 using SaveSystemDir;
 using TMPro;
 using UnityEngine;
@@ -17,7 +18,9 @@ namespace GameOverlayWindow
 
         [SerializeField] private Color _enableColor;
         [SerializeField] private Color _disableColor;
-        [SerializeField] private AudioSource _clickAudio;
+        [SerializeField] private AudioClip _clickAudio;
+
+        private SoundBox _soundBox;
 
         private void Awake()
         {
@@ -38,13 +41,31 @@ namespace GameOverlayWindow
 
         private void UseFood()
         {
-            _clickAudio.Play();
+            if (_soundBox)
+            {
+                _soundBox.Stop();
+                _soundBox = null;
+            }
+
+            _soundBox = (SoundBox)GameManager.Instance.ObjectPooler
+                .SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+
+            _soundBox.OnFinished += HandleSoundFinished;
+
+            _soundBox.Play(_clickAudio, false);
+
             GameManager.Instance.CurrentGameManagerLevel.Home.AddHealth(20);
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count--;
             _count.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count.ToString();
-            
-            if(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count == 0) 
+
+            if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count == 0)
                 SetInteractableButton(false);
+        }
+        
+        private void HandleSoundFinished(SoundBox box)
+        {
+            if (_soundBox == box)
+                _soundBox = null;
         }
 
         private void OnDestroy()

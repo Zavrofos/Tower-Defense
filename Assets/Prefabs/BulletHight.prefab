@@ -174,7 +174,7 @@ MonoBehaviour:
   Damage: 1
   Direction: {x: 0, y: 0}
   StartPosition: {x: 0, y: 0, z: 0}
-  distanceBullet: 0
+  distanceBullet: 3
   DamageRadius: 2
   IsExplosive: 1
   BulletType: 4

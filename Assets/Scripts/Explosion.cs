@@ -11,6 +11,7 @@ public class Explosion : PooledObject
     [SerializeField] private ParticleSystem _explosionParticle;
     public int Damage;
     public float DamageRadius;
+    [SerializeField] private AudioClip _explosionAudio;
 
     private IPlayableParticle _playParticleSystem;
     private IGivingEffects _givingEffectsSystem;
@@ -25,23 +26,17 @@ public class Explosion : PooledObject
 
     public void ExplosonPlay()
     {
+        SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+        soundBox.Play(_explosionAudio, false);
+        
         _playParticleSystem.Play();
 
         foreach(var target in _finderObjectsSystem.Find("Enemy", transform.position))
         {
             _givingEffectsSystem.SetEffect(target);
         }
-
-        PlaySound(SoundType.Explosion);
+        
         StartCoroutine(TurnOff(0.5f));
-    }
-
-    private void PlaySound(SoundType type)
-    {
-        // SoundBox audio = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-        //     transform.position,
-        //     transform.rotation);
-        // audio.PlaySound(type);
     }
 
     private IEnumerator TurnOff(float seconds)

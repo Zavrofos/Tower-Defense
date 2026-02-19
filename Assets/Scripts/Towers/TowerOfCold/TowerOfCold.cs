@@ -1,10 +1,7 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.Tower.RotationSystem;
-using System.Collections;
-using System.Collections.Generic;
 using Towers.DecelerationSystems;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class TowerOfCold : AbsTower
@@ -15,9 +12,12 @@ public class TowerOfCold : AbsTower
     public Sprite[] _spritesTower;
     public float _timeToShoot;
     public ParticleSystem _coldEfect;
-    private GameManagerInGame _gameManager;
     private IPlayableParticle _coldEffectSystem;
     private IFinderObjects _finderObjectsSystem;
+
+    [SerializeField] private AudioClip _shootAudio;
+    private bool _isAudioPlaying;
+    private SoundBox _soundBox;
 
     public override void StartGame()
     {
@@ -26,7 +26,6 @@ public class TowerOfCold : AbsTower
         DecelerationSystem = new DecelerationForTowerOfCold(this);
         RotationSystem = new RotateTargeting(this);
         _spriteRendererTower.sprite = _spritesTower[0];
-        _gameManager = GameManager.Instance.CurrentGameManagerLevel;
     }
 
     public override void UpdateGame()
@@ -35,19 +34,14 @@ public class TowerOfCold : AbsTower
 
         if (targetEnemy == null)
         {
+            SwitchAudio(false);
             _coldEffectSystem.Stop();
             return;
         }
 
         _coldEffectSystem.Play();
 
-        // if(_soundShoot == null)
-        // {
-            // _soundShoot = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-            // transform.position,
-            // transform.rotation);
-            // _soundShoot.PlaySound(SoundType.Cold);
-        // }
+        SwitchAudio(true);
         
         RotationSystem.Rotate(targetEnemy);
 
@@ -58,6 +52,25 @@ public class TowerOfCold : AbsTower
                 frozenObj.Freeze();
             }
         }
+    }
+
+    private void SwitchAudio(bool value)
+    {
+        if(_isAudioPlaying == value)
+            return;
+
+        if (value)
+        {
+            _soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
+            _soundBox.Play(_shootAudio, true);
+        }
+        else if(_soundBox)
+        {
+            _soundBox.Stop();
+            _soundBox = null;
+        }
+
+        _isAudioPlaying = value;
     }
     
     public override void Improve()

@@ -23,9 +23,10 @@ namespace GameOverlayWindow
 
         [SerializeField] private Color _enableColor;
         [SerializeField] private Color _disableColor;
-        [SerializeField] private AudioSource _startMeteorShowerAudio;
+        [SerializeField] private AudioClip _startMeteorShowerAudio;
         
         private CancellationTokenSource _cancellationTokenSourceMeteors = new();
+        private SoundBox _soundBox;
         
         private void Awake()
         {
@@ -71,14 +72,22 @@ namespace GameOverlayWindow
                 tasks[i] = SpawnMeteorsAtPoint(pos, _cancellationTokenSourceMeteors.Token);
             }
 
-            _startMeteorShowerAudio.Play();
+            _soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+            _soundBox.OnFinished += HandleSoundFinished;
+            _soundBox.Play(_startMeteorShowerAudio, true);
             await UniTask.WhenAll(tasks);
-            _startMeteorShowerAudio.Stop();
+            _soundBox.Stop();
         
             if(_cancellationTokenSourceMeteors.Token.IsCancellationRequested)
                 return;
         
             SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count > 0);
+        }
+        
+        private void HandleSoundFinished(SoundBox box)
+        {
+            if (_soundBox == box)
+                _soundBox = null;
         }
         
         private async UniTask SpawnMeteorsAtPoint(Vector3 position, CancellationToken token)
@@ -88,7 +97,12 @@ namespace GameOverlayWindow
             for (int i = 0; i < meteorsCount; i++)
             {
                 float delay = Random.Range(1f, 3f);
-                await UniTask.Delay(TimeSpan.FromSeconds(delay));
+                
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(delay),
+                    DelayType.DeltaTime,
+                    PlayerLoopTiming.Update,
+                    token);
             
                 if(token.IsCancellationRequested)
                     return;

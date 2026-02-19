@@ -177,4 +177,4 @@ MonoBehaviour:
   distanceBullet: 0
   DamageRadius: 3
   IsExplosive: 1
-  BulletType: 5
+  IsImproved: 1

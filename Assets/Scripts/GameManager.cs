@@ -18,6 +18,10 @@ namespace Assets.Scripts
         [field: SerializeField] public LoadingWindow LoadingWindow { get; set; }
         [field: SerializeField] public PauseMenu PauseMenu { get; set; }
         
+        [field: SerializeField] public AudioClip[] DieEnemyAudios  { get; private set; }
+        [field: SerializeField] public AudioClip DamageTowerAudio  { get; private set; }
+        [field: SerializeField] public AudioClip DestrouTowerAudio  { get; private set; }
+        
         public int CurrentWorld { get; set; }
         public int CurrentLevel { get; set; }
         public GameManagerInGame CurrentGameManagerLevel { get; set; }

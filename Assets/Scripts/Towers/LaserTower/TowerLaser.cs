@@ -32,6 +32,10 @@ public class TowerLaser : AbsTower
 
     public Gradient InitialLaserColor;
     public Gradient DecelerateLaserColor;
+    
+    [SerializeField] private AudioClip _shootAudio;
+    private bool _isAudioPlaying;
+    private SoundBox _soundBox;
 
     public override void StartGame()
     {
@@ -72,6 +76,7 @@ public class TowerLaser : AbsTower
             Lazer.BoxCollider.enabled = true;
             if (IsImproved) LazerImprove.BoxCollider.enabled = true;
             RotationSystem.Rotate();
+            SwitchAudio(true);
         }
     }
 
@@ -85,19 +90,12 @@ public class TowerLaser : AbsTower
         else if (_endPoint.localPosition.y > 0)
         {
             OffLazer();
+            SwitchAudio(false);
         }
     }
 
     public void OnLazer()
     {
-        // if(_soundLaser == null)
-        // {
-            // _soundLaser = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-            // transform.position,
-            // transform.rotation);
-            // _soundLaser.PlaySound(SoundType.Laser);
-        // }
-
         float positionY = _endPoint.localPosition.y;
         positionY += LaserSpawnRate * CurrentSpeedLaserOnOff * Time.deltaTime;
         Vector2 newPosition = new Vector2(0, positionY);
@@ -132,6 +130,25 @@ public class TowerLaser : AbsTower
             _endPointImprove.localPosition = newPosition1;
             LazerImprove.LineRenderer.SetPosition(1, _endPointImprove.localPosition);
         }
+    }
+    
+    private void SwitchAudio(bool value)
+    {
+        if(_isAudioPlaying == value)
+            return;
+
+        if (value)
+        {
+            _soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
+            _soundBox.Play(_shootAudio, true);
+        }
+        else if(_soundBox)
+        {
+            _soundBox.Stop();
+            _soundBox = null;
+        }
+
+        _isAudioPlaying = value;
     }
 
     public override void Improve()

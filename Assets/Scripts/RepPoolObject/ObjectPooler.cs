@@ -47,7 +47,10 @@ namespace Assets.Scripts.RepPoolObject
         public void ReturnToPool(PooledObject returnedObject)
         {
             if (!_poolsMap.ContainsKey(returnedObject.Type))
-                throw new System.Exception($"This tag: {tag} is not exist");
+            {
+                Debug.Log("$This tag: {tag} is not exis");
+                return;
+            }
 
             _poolsMap[returnedObject.Type].ReturnToPool(returnedObject);
         }

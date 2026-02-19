@@ -310,7 +310,6 @@ MonoBehaviour:
   TargetsEnemyType: 00000000
   InitialColor: {r: 1, g: 1, b: 1, a: 1}
   DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
-  DestructAnimator: {fileID: 0}
   _shootPoint: {fileID: 6789707795951662982}
   _bulletPrefabs:
   - {fileID: 7791614356265837965, guid: 9a0366dbe6668ef4cb27bdce67d7121c, type: 3}
@@ -323,7 +322,7 @@ MonoBehaviour:
   _fire: {fileID: 0}
   _currentBullet: {fileID: 0}
   _timeToShoot: 0
-  SoundShoot: 0
+  _shootAudio: {fileID: 8300000, guid: 8e15f2c34fc276e438c377e988fbb3bc, type: 3}
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0

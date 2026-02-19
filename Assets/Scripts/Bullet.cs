@@ -1,7 +1,5 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -14,7 +12,7 @@ public class Bullet : MonoBehaviour
     public float distanceBullet;
     public float DamageRadius;
     public bool IsExplosive;
-    public BulletType BulletType;
+    public bool IsImproved;
 
     private void FixedUpdate()
     {
@@ -52,11 +50,9 @@ public class Bullet : MonoBehaviour
 
     private void BlowUp()
     {
-        // PooledObject pooledObj = ObjectPooler.Instance.SpawnFromPool("Explosion" + BulletType,
-        //         transform.position,
-        //         Quaternion.identity);
-        //
-        // Explosion explosion = (Explosion)pooledObj;
-        // explosion.ExplosonPlay();
+        PolledObjectType type = IsImproved ? PolledObjectType.ExplosionBulletHighPlus : PolledObjectType.ExplosionBulletHigh;
+        PooledObject pooledObj = GameManager.Instance.ObjectPooler.SpawnFromPool(type, transform.position, Quaternion.identity);
+        Explosion explosion = (Explosion)pooledObj;
+        explosion.ExplosonPlay();
     }
 }

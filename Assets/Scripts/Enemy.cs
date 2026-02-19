@@ -3,8 +3,10 @@ using Assets.Scripts;
 using System.Collections;
 using Assets.Scripts.Enemyes.AttackBehaviours;
 using Assets.Scripts.Enemyes.MoveBehaviours;
+using Assets.Scripts.RepPoolObject;
 using GameOverlayWindow;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 {
@@ -49,6 +51,10 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         
         if (_health <= 0)
         {
+            int dieAudioIndex = Random.Range(0, GameManager.Instance.DieEnemyAudios.Length - 1);
+            AudioClip dieAudio = GameManager.Instance.DieEnemyAudios[dieAudioIndex];
+            SoundBox dieSoundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+            dieSoundBox.Play(dieAudio, false);
             GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
             gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) + _reward).ToString();
             Spawner spawner = GameManager.Instance.CurrentSpawner;

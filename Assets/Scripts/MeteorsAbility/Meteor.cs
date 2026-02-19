@@ -21,21 +21,25 @@ namespace Assets.Scripts.MeteorsAbility
         private Vector2 FromDirection = new Vector2(2, 1);
 
         [SerializeField] private List<AudioClip> _explosionAudioClips;
-        [SerializeField] private AudioSource _explisionAudioSource;
         
         public async UniTask PlayMeteorsShower(CancellationToken token)
         {
             SetupInitialState();
 
             await FlyToTarget(token);
-
-            int randomAudio = Random.Range(0, _explosionAudioClips.Count - 1);
-            _explisionAudioSource.clip = _explosionAudioClips[randomAudio];
-            _explisionAudioSource.Play();
             
-            PlayDestruction(token).Forget();
-
-            await UniTask.Delay(TimeSpan.FromSeconds(_explosionAudioClips[randomAudio].length), cancellationToken: token);
+            if(token.IsCancellationRequested)
+                return;
+            
+            int randomAudio = Random.Range(0, _explosionAudioClips.Count - 1);
+            
+            SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+            soundBox.Play(_explosionAudioClips[randomAudio], false);
+            
+            await PlayDestruction(token);
+            
+            if(token.IsCancellationRequested)
+                return;
             
             GameManager.Instance.ObjectPooler.ReturnToPool(this);
         }
@@ -72,13 +76,13 @@ namespace Assets.Scripts.MeteorsAbility
 
             while (MeteorSpriteRenderer.transform.localScale.x > 0.05f)
             {
-                if(token.IsCancellationRequested)
-                    return;
-                
                 MeteorSpriteRenderer.transform.localScale = Vector2.Lerp(MeteorSpriteRenderer.transform.localScale,
                         FinishMeteorScale, MeteorSetScaleSpeed * Time.deltaTime);
 
                 await UniTask.Yield();
+                
+                if(token.IsCancellationRequested)
+                    return;
             }
             
             Animator.gameObject.SetActive(false);

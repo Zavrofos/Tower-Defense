@@ -8,11 +8,18 @@ namespace GameOverlayWindow
     {
         [SerializeField] private Transform _rocket;
         [SerializeField] private float _speed;
+        [SerializeField] private AudioClip _startAudioClip;
+        [SerializeField] private AudioClip _endAudioClip;
         private Vector2 _direction;
+
+        private SoundBox _startSoundBox;
+        private SoundBox _stopSoundBox;
 
         private void Start()
         {
             _direction = (transform.position - _rocket.position).normalized;
+            _startSoundBox = (SoundBox) GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+            _startSoundBox.Play(_startAudioClip, false);
         }
 
         private void Update()
@@ -35,6 +42,9 @@ namespace GameOverlayWindow
         {
             PooledObject pooledObj = GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.ExplosionRocket, transform.position, Quaternion.identity);
             Explosion explosion = (Explosion)pooledObj;
+            _startSoundBox.Stop();
+            _stopSoundBox = (SoundBox) GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+            _stopSoundBox.Play(_endAudioClip, false);
             explosion.ExplosonPlay();
         }
     }

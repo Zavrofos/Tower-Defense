@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonImprovement: {fileID: 1071493843252659840}
+  _buildTowerAudio: {fileID: 8300000, guid: e85b34fda712349469050ff805805705, type: 3}
 --- !u!1 &7015843385205550251
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +252,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.35, y: 4.75}
+    oldSize: {x: 0.8466667, y: 0.6333333}
     newSize: {x: 6.35, y: 4.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

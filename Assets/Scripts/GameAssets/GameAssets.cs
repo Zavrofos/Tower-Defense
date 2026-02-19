@@ -12,4 +12,13 @@ public class TowerInfo
 public class GameAssets : MonoBehaviour
 {
     public TowerInfo[] TowersInfos;
+
+    public AudioClip AcceptAudioUI;
+    public AudioClip BackAudioUI;
+    public AudioClip CLickAudioUI;
+    public AudioClip LifeDamageAudio;
+    public AudioClip LoseAudio;
+    public AudioClip MoneyAudio;
+    public AudioClip PopupShopAudio;
+    public AudioClip WinAudio;
 }

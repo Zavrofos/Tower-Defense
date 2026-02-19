@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -23,11 +25,19 @@ public abstract class AbsDamageSystem : MonoBehaviour, IDamageSystem
     public void ApplayDamage(int damage)
     {
         _health -= damage;
-        
-        if(_health > 0) 
+
+        if (_health > 0)
+        {
+            SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
+            soundBox.Play(GameManager.Instance.DamageTowerAudio, false);
             StartCoroutine(ChangeColorForHit());
-        else if(!IsStartDestroyAnimation)
+        }
+        else if (!IsStartDestroyAnimation)
+        {
+            SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
+            soundBox.Play(GameManager.Instance.DestrouTowerAudio, false);
             DestroyTower().Forget();
+        }
     }
 
     protected abstract IEnumerator ChangeColorForHit();
