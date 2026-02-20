@@ -1128,6 +1128,7 @@ MonoBehaviour:
   _sliderVolumeGame: {fileID: 3430091902958501735}
   _closeButton: {fileID: 6573501997113351539}
   _audioMixer: {fileID: 24100000, guid: 799c43577f238c04a823abaa919f7be4, type: 2}
+  _clickAudio: {fileID: 8300000, guid: 68df29bb63b835c45bf1b87756ab427c, type: 3}
 --- !u!1 &6637132795168827122
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
+using Assets.Scripts.UIScripts;
 using SaveSystemDir;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,6 +60,7 @@ namespace GameHubDir
 
         private void LoadLevel(int world, int level)
         {
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
             string levelName = $"GameLevel_{world}_{level}";
             SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
             GameManager.Instance.CurrentWorld = world;
@@ -69,6 +71,7 @@ namespace GameHubDir
 
         private void PlayGame()
         {
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
             CurrentGameData currentGameData = SaveSystem.CurrentGameData;
 
             int lengthRow = currentGameData.Levels.Length;
@@ -91,11 +94,13 @@ namespace GameHubDir
 
         private void MainMenu()
         {
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
             SceneManager.LoadScene("MainMenu");
         }
 
         private void OpenShop()
         {
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.PopupShopAudio);
             ShopWindow.gameObject.SetActive(true);
         }
     }

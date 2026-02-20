@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.UIScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,22 +24,26 @@ public class PauseMenu : MonoBehaviour
 
     private void OnOpenSettingsMenu()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         GameManager.Instance.SettingsMenu.gameObject.SetActive(true);
     }
 
     private void OnBackToMainMenu()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
 
     private void OnQuit()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         Application.Quit();
     }
 
     private void OnCloseWindow()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.BackAudioUI);
         gameObject.SetActive(false);
         GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = false;
         Time.timeScale = GameManager.Instance.CurrentSpeedGame;

@@ -2,6 +2,7 @@ using System;
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.UIScripts;
 using SaveSystemDir;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private Slider _sliderVolumeGame;
     [SerializeField] private Button _closeButton;
     [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private AudioClip _clickAudio;
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void Close()
     {
+        ClickSoundPlayGlobal.Instance.Play(_clickAudio);
         gameObject.SetActive(false);
     }
 

@@ -95,6 +95,8 @@ namespace Assets.Scripts.RepPoolObject
                 StopCoroutine(_turnOffCoroutine);
                 _turnOffCoroutine = null;
             }
+            
+            AudioSource.Stop();
         }
     }
 }

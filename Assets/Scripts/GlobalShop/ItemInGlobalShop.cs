@@ -1,3 +1,4 @@
+using System;
 using SaveSystemDir;
 using TMPro;
 using UnityEngine;
@@ -32,6 +33,12 @@ namespace Assets.Scripts.GlobalShop
                 CountText.text = $"x{count}";
                 CountText.gameObject.SetActive(true);
             }
+        }
+
+        private void OnDestroy()
+        {
+            Toggle.onValueChanged.RemoveAllListeners();
+            BuyButton.onClick.RemoveAllListeners();
         }
     }
 }

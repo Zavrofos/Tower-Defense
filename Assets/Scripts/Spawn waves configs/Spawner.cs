@@ -1,6 +1,7 @@
 using System;
 using Assets.Scripts;
 using Assets.Scripts.Spawn_waves_configs;
+using Assets.Scripts.UIScripts;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -112,6 +113,7 @@ public class Spawner : MonoBehaviour
 
     private void SetNextWave()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         _timeAfterPreviousWave = _timeToSpawnNextWave;
     }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.UIScripts;
 using SaveSystemDir;
 using TMPro;
 using Unity.VisualScripting;
@@ -33,9 +34,14 @@ namespace Assets.Scripts.GlobalShop
         [field: SerializeField] public DescriptionItem DescriptionItem { get; private set; }
         [field: SerializeField] public GlobalShopConfig GlobalShopConfig { get; private set; }
         [field: SerializeField] public TMP_Text GlobalCoinCount { get; private set; }
-
-        public Dictionary<GlobalShopItemType, ItemInGlobalShop> Items;
         
+        public Dictionary<GlobalShopItemType, ItemInGlobalShop> Items;
+
+        private void Awake()
+        {
+            CloseButton.onClick.AddListener(CloseWindow);
+        }
+
         private void OnEnable()
         {
             Items = new Dictionary<GlobalShopItemType, ItemInGlobalShop>();
@@ -55,14 +61,24 @@ namespace Assets.Scripts.GlobalShop
                     if (value) SetDescription(info);
                 });
                 
-                item.BuyButton.onClick.AddListener(() => BuyItem(item));
+                item.BuyButton.onClick.AddListener(() =>
+                {
+                    BuyItem(item);
+                });
             }
             
-            CloseButton.onClick.AddListener(CloseWindow);
             SetSavedData();
             
             Items[GlobalShopItemType.TowerLow].Toggle.isOn = true;
             EventSystem.current.SetSelectedGameObject(Items[GlobalShopItemType.TowerLow].Toggle.gameObject);
+
+            foreach (var itemsValue in Items.Values)
+            {
+                itemsValue.Toggle.onValueChanged.AddListener(value =>
+                {
+                    ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
+                });
+            }
         }
 
         private void OnDisable()
@@ -74,14 +90,15 @@ namespace Assets.Scripts.GlobalShop
                 if(!itemInGlobalShop)
                     continue;
                 
-                itemInGlobalShop.Toggle.onValueChanged.RemoveAllListeners();
-                itemInGlobalShop.BuyButton.onClick.RemoveAllListeners();
                 itemsToRemove.Add(itemInGlobalShop);
             }
             
             for (int i = 0; i < itemsToRemove.Count; i++)
                 Destroy(itemsToRemove[i].gameObject);
-            
+        }
+
+        private void OnDestroy()
+        {
             CloseButton.onClick.RemoveAllListeners();
         }
 
@@ -116,6 +133,8 @@ namespace Assets.Scripts.GlobalShop
                 return;
             }
         
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.MoneyAudio);
+            
             bool isTower = item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerLow ||
                            item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerMedium ||
                            item.GlobalShopItemInfo.Type == GlobalShopItemType.TowerHigh ||
@@ -169,6 +188,7 @@ namespace Assets.Scripts.GlobalShop
 
         private void CloseWindow()
         {
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.BackAudioUI);
             gameObject.SetActive(false);
         }
         

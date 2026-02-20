@@ -17,8 +17,6 @@ public class GameAssets : MonoBehaviour
     public AudioClip BackAudioUI;
     public AudioClip CLickAudioUI;
     public AudioClip LifeDamageAudio;
-    public AudioClip LoseAudio;
     public AudioClip MoneyAudio;
     public AudioClip PopupShopAudio;
-    public AudioClip WinAudio;
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.UIScripts;
 using GameOverlayWindow;
 using TMPro;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class ImprovementButton : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
         GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
         

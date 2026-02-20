@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
+using Assets.Scripts.RepPoolObject;
+using Assets.Scripts.UIScripts;
 using GameOverlayWindow;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,11 +18,13 @@ public class WinMenu : MonoBehaviour
     [SerializeField] private GameObject ItemsParent;
     [SerializeField] private WinMenuNewItem _winMenuNewItem1;
     [SerializeField] private WinMenuNewItem _winMenuNewItem2;
+    [SerializeField] private AudioSource _audioSource;
     
     private List<GlobalShopItemType> _rewardItemsToShow = new ();
 
     private void Continue()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         GameManager.Instance.ObjectPooler.ClearPool();
         SceneManager.UnloadSceneAsync($"GameLevel_{GameManager.Instance.CurrentWorld}_{GameManager.Instance.CurrentLevel}");
         GameManager.Instance.GameHub.gameObject.SetActive(true);
@@ -38,12 +42,14 @@ public class WinMenu : MonoBehaviour
 
     private void MainMenu()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
 
     private void Quit()
     {
+        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         Application.Quit();
     }
 
@@ -54,6 +60,8 @@ public class WinMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        _audioSource.Play();
+        
         if(_rewardItemsToShow.Count == 0)
             return;
         

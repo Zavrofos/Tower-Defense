@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.UIScripts;
 using GameOverlayWindow;
 using TMPro;
 using UnityEngine;
@@ -43,6 +44,7 @@ public class ProductInShop : MonoBehaviour
             if (int.Parse(PriceText.text) > int.Parse(gameOverlay.CoinsText.text)) 
                 return;
             
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.MoneyAudio);
             gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) - int.Parse(PriceText.text)).ToString();
             BuildingPoint.BuildingTower(Tower);
             ButtonText.text = "Buyed";

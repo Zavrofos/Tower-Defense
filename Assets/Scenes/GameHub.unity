@@ -3078,6 +3078,12 @@ MonoBehaviour:
     TowerPrefab: {fileID: 7956219493098163114, guid: 2136cc1547a15d645a2b18e5977adaca, type: 3}
   - Type: 10
     TowerPrefab: {fileID: 6789707795654957662, guid: 7948ad5503d141049b4eb4d6ce0b9eb5, type: 3}
+  AcceptAudioUI: {fileID: 8300000, guid: dc28ac0087fe35e46934e9f16b495a7c, type: 3}
+  BackAudioUI: {fileID: 8300000, guid: 68df29bb63b835c45bf1b87756ab427c, type: 3}
+  CLickAudioUI: {fileID: 8300000, guid: 1d1dd194488ef164ea9d031cdc198182, type: 3}
+  LifeDamageAudio: {fileID: 8300000, guid: bbaba859a00885c4fb7ec8077a3b8255, type: 3}
+  MoneyAudio: {fileID: 8300000, guid: 5873aeff156f3154a8aa0a86930e443c, type: 3}
+  PopupShopAudio: {fileID: 8300000, guid: 0532538b5a1592740b82d84289b70810, type: 3}
 --- !u!4 &740885346
 Transform:
   m_ObjectHideFlags: 0

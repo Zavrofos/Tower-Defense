@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.RepPoolObject;
+using Assets.Scripts.UIScripts;
 using GameHubDir;
 using GameOverlayWindow;
 using UnityEngine;
@@ -32,7 +33,11 @@ namespace Assets.Scripts
         private void Awake()
         {
             Instance = this;
-            GameOverlay.PauseGameButton.onClick.AddListener(() => PauseGame(true));
+            GameOverlay.PauseGameButton.onClick.AddListener(() =>
+            {
+                ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
+                PauseGame(true);
+            });
             GameOverlay.SetGameFasterButton.onClick.AddListener(SwitchGameFaster);
             GameHub.ShopWindow.GlobalShopConfig.Init();
         }
@@ -68,6 +73,7 @@ namespace Assets.Scripts
         
         private void SwitchGameFaster()
         {
+            ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
             FastGameEnabled = !FastGameEnabled;
             Time.timeScale = FastGameEnabled ? 2f : 1f;
             CurrentSpeedGame = Time.timeScale;
