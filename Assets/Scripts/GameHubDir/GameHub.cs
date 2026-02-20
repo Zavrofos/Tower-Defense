@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Assets.Scripts;
 using Assets.Scripts.GlobalShop;
 using Assets.Scripts.UIScripts;
+using Cysharp.Threading.Tasks;
 using SaveSystemDir;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,7 @@ namespace GameHubDir
         [field: SerializeField] public Button ShopButton { get; private set; }
         [field: SerializeField] public GlobalShop ShopWindow { get; private set; }
         [field: SerializeField] public List<WorldPanel> WorldsPanels { get; private set; }
+        [field: SerializeField] public GameObject LoadingScreen { get; private set; }
 
         private void UpdateHub()
         {
@@ -35,7 +37,7 @@ namespace GameHubDir
             foreach (var worldPanel in WorldsPanels)
                 foreach (var levelButton in worldPanel.LevelsButtons)
                     levelButton.Button.onClick
-                        .AddListener(() => LoadLevel(levelButton.WorldNumber, levelButton.LevelNumber));
+                        .AddListener(() => LoadLevel(levelButton.WorldNumber, levelButton.LevelNumber).Forget());
             
             PlayButton.onClick.AddListener(PlayGame);
             MenuButton.onClick.AddListener(MainMenu);
@@ -58,13 +60,25 @@ namespace GameHubDir
             ShopButton.onClick.RemoveAllListeners();
         }
 
-        private void LoadLevel(int world, int level)
+        private async UniTask LoadLevel(int world, int level)
         {
             ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
-            string levelName = $"GameLevel_{world}_{level}";
-            SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
             GameManager.Instance.CurrentWorld = world;
             GameManager.Instance.CurrentLevel = level;
+            LoadingScreen.SetActive(true);
+
+            await UniTask.Yield();
+            
+            string levelName = $"GameLevel_{world}_{level}";
+            
+            await SceneManager
+                .LoadSceneAsync(levelName, LoadSceneMode.Additive)
+                .ToUniTask();
+            
+            await UniTask.Yield();
+            
+            LoadingScreen.SetActive(false);
+            
             GameManager.Instance.GameHub.gameObject.SetActive(false);
             GameManager.Instance.GameOverlay.gameObject.SetActive(true);
         }
@@ -86,7 +100,7 @@ namespace GameHubDir
                     if (!completed) 
                         continue;
                     
-                    LoadLevel(i + 1, j + 1);
+                    LoadLevel(i + 1, j + 1).Forget();
                     return;
                 }
             }

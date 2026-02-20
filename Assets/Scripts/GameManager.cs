@@ -16,7 +16,6 @@ namespace Assets.Scripts
         [field: SerializeField] public WinMenu WinMenu { get; set; }
         [field: SerializeField] public GameOver GameOverMenu { get; set; }
         [field: SerializeField] public GameOverlay GameOverlay { get; set; }
-        [field: SerializeField] public LoadingWindow LoadingWindow { get; set; }
         [field: SerializeField] public PauseMenu PauseMenu { get; set; }
         
         [field: SerializeField] public AudioClip[] DieEnemyAudios  { get; private set; }
