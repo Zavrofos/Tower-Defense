@@ -21,21 +21,10 @@ public class MainMenu : MonoBehaviour
         _audioMixer.SetFloat("MusicVolume", FormatToDb(SaveSystem.GetVolumeMusic()));
         _audioMixer.SetFloat("GameVolume", FormatToDb(SaveSystem.GetVolumeGame()));
     }
-
-    private bool _playClicked;
-    private bool _isDestroed;
     
-    private async UniTask OnPlay()
+    private void OnPlay()
     {
-        if(_playClicked)
-            return;
-
         ClickSoundPlayGlobal.Instance.Play(_clickAudio);
-        await UniTask.Delay(TimeSpan.FromSeconds(_clickAudio.length));
-        
-        if(_isDestroed)
-            return;
-        
         SceneManager.LoadScene("GameHub");
     }
 
@@ -53,7 +42,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _playButton.onClick.AddListener(() => OnPlay().Forget());
+        _playButton.onClick.AddListener(OnPlay);
         _settingsButton.onClick.AddListener(OnOpenOptions);
         _quitButton.onClick.AddListener(OnQuit);
     }
@@ -63,11 +52,6 @@ public class MainMenu : MonoBehaviour
         _playButton.onClick.RemoveAllListeners();
         _settingsButton.onClick.RemoveAllListeners();
         _quitButton.onClick.RemoveAllListeners();
-    }
-
-    private void OnDestroy()
-    {
-        _isDestroed = true;
     }
 
     private float FormatToDb(float value01)
