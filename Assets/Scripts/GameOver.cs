@@ -1,6 +1,7 @@
 using System;
 using Assets.Scripts;
 using Assets.Scripts.UIScripts;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class GameOver : MonoBehaviour
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Button _quitButton;
     [SerializeField] private AudioSource _audioSource;
+    
+    [field: SerializeField] public TMP_Text ReveardText { get; private set; }
 
     private void Awake()
     {

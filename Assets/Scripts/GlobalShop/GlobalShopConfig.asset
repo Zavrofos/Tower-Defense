@@ -65,7 +65,7 @@ MonoBehaviour:
       \u041D\u0430\u0437\u0435\u043C\u043D\u044B\u0435"
   - IconShopItem: {fileID: 21300000, guid: 514598230d88d3741b090ea1801ead6f, type: 3}
     IconDescriptionItem: {fileID: -7195887485728073887, guid: aa14d9c9c65ca504788c8826573e3244, type: 3}
-    Price: 150
+    Price: 200
     DescriptionItem: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u0440\u0430\u043A\u0435\u0442\u0430\u043C\u0438
       \u043D\u0430\u043D\u043E\u0441\u044F \u0443\u0440\u043E\u043D \u043F\u043E
       \u043E\u0431\u043B\u0430\u0441\u0442\u0438\n\n\u0412\u0440\u0430\u0433\u0438:
@@ -95,7 +95,7 @@ MonoBehaviour:
     IsUpgradeType: 1
     UpgradeIcon: {fileID: -31879317, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
     UpgradeDescriptionIcon: {fileID: 3645643785472610190, guid: f635c06cf7bc37347b03eee543e7a456, type: 3}
-    UpgradePrice: 150
+    UpgradePrice: 100
     UpgradedName: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0430\u044F \u043C\u043E\u0440\u043E\u0437\u043D\u043E\u0439
       \u043F\u0443\u0448\u043A\u0438"
     UpgradedDescription: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u043C\u043E\u0440\u043E\u0437\u043E\u043C
@@ -150,7 +150,7 @@ MonoBehaviour:
       \u043B\u0435\u0442\u0430\u044E\u0449\u0438\u0435"
   - IconShopItem: {fileID: -5890828503606760369, guid: 6d852e1ead57fe348ac75efa01c36fde, type: 3}
     IconDescriptionItem: {fileID: 7249823810617641683, guid: faaef6847fe9da945a48fd3e1e166ea7, type: 3}
-    Price: 100
+    Price: 200
     DescriptionItem: "\u041F\u043E\u0441\u043B\u0435 \u043D\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F
       \u043B\u0435\u0442\u0438\u0442 \u043A \u0446\u0435\u043B\u0438 \u0438 \u043F\u0440\u0438
       \u0432\u0437\u0440\u044B\u0432\u0435 \u043D\u0430\u043D\u043E\u0441\u0438\u0442
@@ -180,7 +180,7 @@ MonoBehaviour:
     UpgradedDescription: 
   - IconShopItem: {fileID: -2108460339286672713, guid: 0e45093e029c7da4a9c2910aee9daf72, type: 3}
     IconDescriptionItem: {fileID: -2108460339286672713, guid: 0e45093e029c7da4a9c2910aee9daf72, type: 3}
-    Price: 150
+    Price: 100
     DescriptionItem: "\u041D\u0430\u0447\u0438\u043D\u0430\u0435\u0442 \u043C\u0435\u0442\u0435\u043E\u0440\u0438\u0442\u043D\u044B\u0439
       \u0434\u043E\u0436\u0434\u044C \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u043D\u0430\u043D\u043E\u0441\u0438\u0442
       \u0443\u0440\u043E\u043D \u0432\u0440\u0430\u0433\u0430\u043C \u043F\u043E
@@ -211,7 +211,7 @@ MonoBehaviour:
     UpgradedDescription: 
   - IconShopItem: {fileID: 8204026490861039774, guid: ea7cbffd8cab31c4aa597497fe3e4e81, type: 3}
     IconDescriptionItem: {fileID: 8204026490861039774, guid: ea7cbffd8cab31c4aa597497fe3e4e81, type: 3}
-    Price: 1
+    Price: 50
     DescriptionItem: "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
       \u0447\u0430\u0441\u0442\u044C \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F
       \u043A\u0440\u0435\u043F\u043E\u0441\u0442\u0438"

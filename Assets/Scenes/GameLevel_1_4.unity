@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  IsTest: 1
+  IsTest: 0
   _wavesConfig: {fileID: 11400000, guid: 4364decbc18fee344bd76034edceb0e8, type: 2}
   _wavesConfigTest: {fileID: 11400000, guid: 9ead1efa578ebc948b14d6221861e36d, type: 2}
   _spawnPoint: {fileID: 840376051}
@@ -14443,8 +14443,9 @@ MonoBehaviour:
   <CameraPos>k__BackingField: {x: 0, y: 0.13, z: -10}
   <Canvas>k__BackingField: {fileID: 2128986815}
   <Home>k__BackingField: {fileID: 1457342057}
-  RevardForWinLevel: 300
-  RevardGameOverLevel: 150
+  <CoinsLevel>k__BackingField: 45
+  RevardForWinLevel: 200
+  RevardGameOverLevel: 10
   RewardItems: 0a000000
   Shops:
   - {fileID: 458445995537748801}

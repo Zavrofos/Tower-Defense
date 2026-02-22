@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 500
   _damage: 100
-  _reward: 200
+  _reward: 0
   _spriteRenderer: {fileID: 3473240890784696824}
   Animator: {fileID: 4017749533832875130}
   _applayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}

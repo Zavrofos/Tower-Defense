@@ -8,6 +8,7 @@ namespace Assets.Scripts.GlobalShop
     {
         public int[] Worlds;
         public LevelRow[] Levels;
+        public LevelRow[] LevelsCompleted;
         
         public int CurrentGlobalMoney = 0;
         
@@ -43,6 +44,16 @@ namespace Assets.Scripts.GlobalShop
             }
 
             Levels[0].Cols[0] = 1;
+            
+            LevelsCompleted ??= new LevelRow[3];
+
+            for (int i = 0; i < LevelsCompleted.Length; i++)
+            {
+                if (LevelsCompleted[i] == null)
+                    LevelsCompleted[i] = new LevelRow();
+
+                LevelsCompleted[i].Cols ??= new int[4];
+            }
             
             LowTowerData ??= new TowerData() { TowerType = GlobalShopItemType.TowerLow, IsBought = true, IsOpenToBuy = true};
             MediumTowerData ??= new TowerData () { TowerType = GlobalShopItemType.TowerMedium, IsBought = true, IsOpenToBuy = true};

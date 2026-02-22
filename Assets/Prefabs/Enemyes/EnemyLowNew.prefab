@@ -83,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -272636589
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1556748602, guid: 9c37da89d56ccda48967555e2083d5f0, type: 3}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 24
   _damage: 5
-  _reward: 2
+  _reward: 1
   _spriteRenderer: {fileID: 4701336977274424216}
   Animator: {fileID: 4223701077731905536}
   _applayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}

@@ -5,6 +5,8 @@ using Assets.Scripts.GlobalShop;
 using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.UIScripts;
 using GameOverlayWindow;
+using SaveSystemDir;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,6 +21,8 @@ public class WinMenu : MonoBehaviour
     [SerializeField] private WinMenuNewItem _winMenuNewItem1;
     [SerializeField] private WinMenuNewItem _winMenuNewItem2;
     [SerializeField] private AudioSource _audioSource;
+    
+    [field: SerializeField] public TMP_Text ReveardText { get; private set; }
     
     private List<GlobalShopItemType> _rewardItemsToShow = new ();
 
@@ -60,21 +64,28 @@ public class WinMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
+        
+        bool isOpenedLevel = SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] == 1;
+        SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] = 1;
+        
         _audioSource.Play();
         
         if(_rewardItemsToShow.Count == 0)
             return;
         
-        _winMenuNewItem1.Setup(_rewardItemsToShow[0]);
-        _winMenuNewItem1.gameObject.SetActive(true);
-
-        if (_rewardItemsToShow.Count > 1)
+        if (!isOpenedLevel)
         {
-            _winMenuNewItem2.Setup(_rewardItemsToShow[1]);
-            _winMenuNewItem2.gameObject.SetActive(true);
+            _winMenuNewItem1.Setup(_rewardItemsToShow[0]);
+            _winMenuNewItem1.gameObject.SetActive(true);
+
+            if (_rewardItemsToShow.Count > 1)
+            {
+                _winMenuNewItem2.Setup(_rewardItemsToShow[1]);
+                _winMenuNewItem2.gameObject.SetActive(true);
+            }
+            ItemsParent.SetActive(true);
         }
-        
-        ItemsParent.SetActive(true);
     }
 
     private void OnDestroy()
