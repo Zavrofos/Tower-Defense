@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94f87236b7bbe0498de5f1603787b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 400
+  _health: 100
   SpriteRender: {fileID: 6789707796415871935}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
   DestructorAnimator: {fileID: 3377778725140783925}
@@ -314,7 +314,7 @@ MonoBehaviour:
   _bulletPrefabs:
   - {fileID: 7791614356265837965, guid: 9a0366dbe6668ef4cb27bdce67d7121c, type: 3}
   - {fileID: 7187966143471351449, guid: babbba1d36e1f894cb450800e630cb5e, type: 3}
-  _delayTimeToShoot: 1
+  _delayTimeToShoot: 2
   _spriteRendererTower: {fileID: 6789707796415871935}
   _spritesTower:
   - {fileID: 21300000, guid: a5350621791e92f4c82c67de23597ad2, type: 3}

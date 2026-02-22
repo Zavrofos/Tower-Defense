@@ -83,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -272636589
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1884194182, guid: 9c37da89d56ccda48967555e2083d5f0, type: 3}
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 15
-  _damage: 7
+  _health: 24
+  _damage: 5
   _reward: 1
   _spriteRenderer: {fileID: 62958853325056737}
   Animator: {fileID: 3722984617934631173}

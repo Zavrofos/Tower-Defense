@@ -108,13 +108,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2321600036226989755}
   _speed: 300
-  Damage: 6
+  Damage: 7
   Direction: {x: 0, y: 0}
   StartPosition: {x: 0, y: 0, z: 0}
   distanceBullet: 0
   DamageRadius: 0
   IsExplosive: 0
-  BulletType: 1
+  IsImproved: 0
 --- !u!58 &8388556705254169252
 CircleCollider2D:
   m_ObjectHideFlags: 0

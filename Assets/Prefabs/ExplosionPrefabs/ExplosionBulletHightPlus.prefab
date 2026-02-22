@@ -4909,6 +4909,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 13
   _explosionParticle: {fileID: 7773842936797389140}
-  Damage: 2
+  Damage: 6
   DamageRadius: 2.5
   _explosionAudio: {fileID: 8300000, guid: f541595e9b55227498c70219fc9367a3, type: 3}

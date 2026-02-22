@@ -10,7 +10,8 @@ public class GameManagerInGame : MonoBehaviour
     [field: SerializeField] public Vector3 CameraPos { get; private set; }
     [field: SerializeField] public Canvas Canvas { get; private set; }
     [field: SerializeField] public Home Home { get; private set; }
-    
+
+    [field: SerializeField] public int CoinsLevel { get; private set; }
     [SerializeField] private int RevardForWinLevel = 100;
     [SerializeField] private int RevardGameOverLevel = 50;
     [SerializeField] private List<GlobalShopItemType> RewardItems = new ();
@@ -35,13 +36,18 @@ public class GameManagerInGame : MonoBehaviour
     {
         GameManager.Instance.CurrentSpawner.OnWinLevel += ShowWinWindow;
         GameManager.Instance.CurrentSpawner.OnWinLevel += () => GameManager.Instance.PauseGame(true, false);
-        GameManager.Instance.GameOverlay.CoinsText.text = "100";
+        GameManager.Instance.GameOverlay.CoinsText.text = GameManager.Instance.CurrentGameManagerLevel.CoinsLevel.ToString();
     }
     
     private void ShowWinWindow()
     {
+        bool isOpenedLevel = SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] == 1;
+        int revard = isOpenedLevel ? 20 : RevardForWinLevel;
+
+        GameManager.Instance.WinMenu.ReveardText.text = $"+ {revard}";
+        
         OpenNextLevel();
-        SaveSystem.CurrentGameData.CurrentGlobalMoney += RevardForWinLevel;
+        SaveSystem.CurrentGameData.CurrentGlobalMoney += revard;
 
         foreach (var rewardItem in RewardItems)
         {
@@ -88,6 +94,7 @@ public class GameManagerInGame : MonoBehaviour
 
     private void GameOverLevel()
     {
+        GameManager.Instance.GameOverMenu.ReveardText.text = $"+ {RevardGameOverLevel}";
         SaveSystem.CurrentGameData.CurrentGlobalMoney += RevardGameOverLevel;
         GameManager.Instance.SetNormalSpeedGame();
         SaveSystem.SaveGame();

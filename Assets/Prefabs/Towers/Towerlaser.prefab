@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb861e956c27ae4eba26de28c69b2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 400
+  _health: 100
   SpriteRender: {fileID: 2124735760161885360}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
   DestructorAnimator: {fileID: 3932564570646116778}

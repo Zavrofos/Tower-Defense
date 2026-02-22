@@ -14,6 +14,7 @@ namespace Assets.Scripts.Enemyes.MoveBehaviours
 
         private void Awake()
         {
+            CurrentSpeed = Speed;
             _pointsOfWay = GameManager.Instance.CurrentGameManagerLevel.PointsOfWayForEnemy;
             _enemy = GetComponent<Enemy>();
         }
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Enemyes.MoveBehaviours
             var point = _pointsOfWay[_currentPointOfWay].position;
             if(transform.position != point)
             {
-                transform.position = Vector2.MoveTowards(transform.position, point, Speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, point, CurrentSpeed * Time.deltaTime);
             }
             else
             {

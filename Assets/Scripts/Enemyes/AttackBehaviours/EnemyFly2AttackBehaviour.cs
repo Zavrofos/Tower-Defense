@@ -7,6 +7,7 @@ namespace Assets.Scripts.Enemyes.AttackBehaviours
     public class EnemyFly2AttackBehaviour : MonoBehaviour, IAttackBehaviour
     {
         public ParticleSystem AttackParticleSystem;
+        public int Damage;
         public bool Attacking { get; set; }
 
         private bool _isDestroyed;
@@ -28,17 +29,17 @@ namespace Assets.Scripts.Enemyes.AttackBehaviours
             Attacking = target != null && !target.IsStartDestroyAnimation;
             if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
-            target.ApplayDamage(1);
+            target.ApplayDamage(Damage);
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
             Attacking = target != null && !target.IsStartDestroyAnimation;
             if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
-            target.ApplayDamage(1);
+            target.ApplayDamage(Damage);
             await UniTask.Delay(TimeSpan.FromSeconds(1f));
             Attacking = target != null && !target.IsStartDestroyAnimation;
             if(!Attacking) StopAttackParticle();
             if(_isDestroyed || !Attacking) return;
-            target.ApplayDamage(1);
+            target.ApplayDamage(Damage);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             Attacking = target != null && !target.IsStartDestroyAnimation;
             if(_isDestroyed || !Attacking) return;

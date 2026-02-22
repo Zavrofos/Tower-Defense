@@ -4910,5 +4910,5 @@ MonoBehaviour:
   _type: 10
   _explosionParticle: {fileID: 7773842936797389140}
   Damage: 0
-  DamageRadius: 2
+  DamageRadius: 0
   _explosionAudio: {fileID: 8300000, guid: b86da893b52c3324a8af6018aed6987d, type: 3}

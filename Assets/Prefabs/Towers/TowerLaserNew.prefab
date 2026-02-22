@@ -575,11 +575,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94f87236b7bbe0498de5f1603787b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 300
+  _health: 100
   SpriteRender: {fileID: 6725850827454860027}
   ApplayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
   DestructorAnimator: {fileID: 6231913527031265337}
-  AbsTower: {fileID: 0}
+  AbsTower: {fileID: 8666408621050486836}
 --- !u!114 &8666408621050486836
 MonoBehaviour:
   m_ObjectHideFlags: 0

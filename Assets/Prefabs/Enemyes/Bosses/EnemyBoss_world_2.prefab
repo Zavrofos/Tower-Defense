@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -272636589
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a647d00a1f9bdbd499b552b03386569a, type: 3}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -272636589
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1628390753, guid: 8b02ebc1ecaf04f429b3476765c7450d, type: 3}
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 500
   _damage: 100
-  _reward: 200
+  _reward: 0
   _spriteRenderer: {fileID: 1845349280365932800}
   Animator: {fileID: 1845349280365932805}
   _applayDamageColor: {r: 1, g: 0.37254903, b: 0.37254903, a: 1}
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 200
-  Damage: 10
+  Damage: 30
 --- !u!1 &1845349281450110614
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +521,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -272636589
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a647d00a1f9bdbd499b552b03386569a, type: 3}
