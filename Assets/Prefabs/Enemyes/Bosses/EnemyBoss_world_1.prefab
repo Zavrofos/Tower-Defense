@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 500
+  _health: 400
   _damage: 100
   _reward: 0
   _spriteRenderer: {fileID: 3473240890784696824}
@@ -245,8 +245,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -272636589
-  m_SortingLayer: 1
+  m_SortingLayerID: -989617341
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8824623111115074211, guid: 27b11850b87b2c44488bc90418ddadc9, type: 3}

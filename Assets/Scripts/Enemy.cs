@@ -102,6 +102,7 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         if(collision.gameObject.TryGetComponent<Home>(out Home home))
         {
             home.ApplayDamage(_damage);
+            Destroy(gameObject);
         }
     }
 

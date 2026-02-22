@@ -59,5 +59,11 @@ TagManager:
   - name: UI
     uniqueID: 2610551263
     locked: 0
+  - name: Bosses
+    uniqueID: 3305349955
+    locked: 0
+  - name: GameUI
+    uniqueID: 56366555
+    locked: 0
   m_RenderingLayers:
   - Default
