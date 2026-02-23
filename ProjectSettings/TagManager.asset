@@ -62,6 +62,9 @@ TagManager:
   - name: Bosses
     uniqueID: 3305349955
     locked: 0
+  - name: Explosions
+    uniqueID: 4237566597
+    locked: 0
   - name: GameUI
     uniqueID: 56366555
     locked: 0

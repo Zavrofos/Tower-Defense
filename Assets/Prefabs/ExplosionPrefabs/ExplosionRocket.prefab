@@ -80,8 +80,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1178746319
-  m_SortingLayer: 3
+  m_SortingLayerID: -57400699
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_RenderMode: 0
@@ -4912,6 +4912,7 @@ MonoBehaviour:
   _explosionParticle: {fileID: 7773842936797389140}
   Damage: 5
   DamageRadius: 2
+  _explosionAudio: {fileID: 0}
 --- !u!82 &388779122175184692
 AudioSource:
   m_ObjectHideFlags: 0
