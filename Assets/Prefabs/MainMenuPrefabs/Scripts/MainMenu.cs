@@ -2,6 +2,7 @@ using System;
 using Assets.Scripts.UIScripts;
 using Cysharp.Threading.Tasks;
 using SaveSystemDir;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -18,8 +19,13 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        _audioMixer.SetFloat("MusicVolume", FormatToDb(SaveSystem.GetVolumeMusic()));
-        _audioMixer.SetFloat("GameVolume", FormatToDb(SaveSystem.GetVolumeGame()));
+        Observable.NextFrame()
+            .Subscribe(_ =>
+            {
+                _audioMixer.SetFloat("MusicVolume", FormatToDb(SaveSystem.GetVolumeMusic()));
+                _audioMixer.SetFloat("GameVolume", FormatToDb(SaveSystem.GetVolumeGame()));
+            })
+            .AddTo(this);
     }
     
     private void OnPlay()
