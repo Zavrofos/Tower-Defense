@@ -98,20 +98,23 @@ public abstract class AbsTower : MonoBehaviour
     private void StartCheckNearestEnemiesWithForceField()
     {
         _findNearestEnemiesWithForceFields = Observable
-            .Interval(TimeSpan.FromSeconds(0.2f))
-            .Subscribe((_) =>
+            .EveryUpdate()
+            .Sample(TimeSpan.FromSeconds(0.2f))
+            .TakeUntilDestroy(this)
+            .Subscribe(_ =>
             {
+                if (this == null) return;
+
                 bool enableDecelerate = FinderNearestEnemies
                     .Find("Enemy", transform.position)
-                    .Any(enemy => enemy.TryGetComponent(out ForceField _));
+                    .Any(enemy => enemy != null && enemy.TryGetComponent(out ForceField _));
 
                 if (enableDecelerate && !IsDecelerated)
                     SetDeceleration(true);
-                
-                if(!enableDecelerate && IsDecelerated)
+
+                if (!enableDecelerate && IsDecelerated)
                     SetDeceleration(false);
-            })
-            .AddTo(this);
+            });
     }
 
     private void SetDeceleration(bool value)

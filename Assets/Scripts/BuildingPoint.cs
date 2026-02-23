@@ -5,30 +5,22 @@ using UnityEngine;
 
 public class BuildingPoint : MonoBehaviour
 {
-    public GameObject CurrentTower { get; private set; }
+    public AbsTower CurrentTower { get; private set; }
     public ImprovementButton ButtonImprovement;
     public AudioClip _buildTowerAudio;
 
-    public void BuildingTower(GameObject tower)
+    public void BuildingTower(AbsTower tower)
     {
-        if(CurrentTower == null)
-        {
-            CurrentTower = Instantiate(tower, gameObject.transform);
-            
-        }
-        else
-        {
-            Destroy(CurrentTower);
-            CurrentTower = Instantiate(tower, gameObject.transform);
-            
-        }
+        if(CurrentTower)
+            Destroy(CurrentTower.gameObject);
+        
+        CurrentTower = Instantiate(tower, gameObject.transform);
         
         SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
         soundBox.Play(_buildTowerAudio, false);
         
-        AbsTower absTower = CurrentTower.GetComponent<AbsTower>();
-        ButtonImprovement.UpgradePriceText.text = absTower.UpgradePrice.ToString();
-        bool isUpgradedBought = SaveSystem.CurrentGameData.TowersData[absTower.Type].IsUpgradedBought;
+        ButtonImprovement.UpgradePriceText.text = CurrentTower.UpgradePrice.ToString();
+        bool isUpgradedBought = SaveSystem.CurrentGameData.TowersData[CurrentTower.Type].IsUpgradedBought;
         ButtonImprovement.gameObject.SetActive(isUpgradedBought);
     }
 }

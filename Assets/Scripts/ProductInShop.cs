@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using Assets.Scripts.GlobalShop;
 using Assets.Scripts.UIScripts;
 using GameOverlayWindow;
 using TMPro;
@@ -14,20 +15,23 @@ public class ProductInShop : MonoBehaviour
     public TMP_Text LabelProduct;
     public Button ButtonBuy;
     public TMP_Text ButtonText;
-    public GameObject Tower;
+    public AbsTower Tower;
     public BuildingPoint BuildingPoint;
     public TMP_Text PriceText;
     public TMP_Text DescriptionText;
-    private GameManagerInGame _gameManager;
+    
+    public Shop Shop { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         BuildingPoint = GetComponentInParent<Shop>().BuildingPoint;
-        _gameManager = GameManager.Instance.CurrentGameManagerLevel;
     }
     private void OnEnable()
     {
         ButtonBuy.onClick.AddListener(OnBuy);
+        
+        if(!BuildingPoint.CurrentTower || BuildingPoint.CurrentTower.Type != Tower.Type)
+            ButtonText.text = "Buy";
     }
 
     private void OnDisable()
@@ -35,7 +39,7 @@ public class ProductInShop : MonoBehaviour
         ButtonBuy.onClick.RemoveListener(OnBuy);
     }
 
-    public void OnBuy()
+    private void OnBuy()
     {
         if(ButtonText.text != "Buyed")
         {
@@ -48,6 +52,10 @@ public class ProductInShop : MonoBehaviour
             gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) - int.Parse(PriceText.text)).ToString();
             BuildingPoint.BuildingTower(Tower);
             ButtonText.text = "Buyed";
+
+            foreach (var productInShop in Shop.Products)
+                if (productInShop.Tower.Type != Tower.Type)
+                    productInShop.ButtonText.text = "Buy";
         }
     }
 }

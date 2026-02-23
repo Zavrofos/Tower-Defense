@@ -11,6 +11,8 @@ public class Shop : MonoBehaviour
     [SerializeField] private ProductInShop _productPrefab;
     public BuildingPoint BuildingPoint;
 
+    public List<ProductInShop> Products { get; private set; } = new List<ProductInShop>();
+
     private void Start()
     {
         List<GameObject> towers = new List<GameObject>();
@@ -45,8 +47,10 @@ public class Shop : MonoBehaviour
         transform.sizeDelta = newSize;
 
         product.LabelProduct.text = tower.Label;
-        product.Tower = towerObject;
+        product.Tower = tower;
         product.PriceText.text = tower.Price.ToString();
         product.DescriptionText.text = tower.Description;
+        product.Shop = this;
+        Products.Add(product);
     }
 }
