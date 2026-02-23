@@ -102,6 +102,8 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         if(collision.gameObject.TryGetComponent<Home>(out Home home))
         {
             home.ApplayDamage(_damage);
+            Spawner spawner = GameManager.Instance.CurrentSpawner;
+            spawner.CurrentCountOfEnemyesKilled++;
             Destroy(gameObject);
         }
     }
