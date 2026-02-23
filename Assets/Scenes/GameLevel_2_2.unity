@@ -12785,7 +12785,7 @@ MonoBehaviour:
   <CameraPos>k__BackingField: {x: 0, y: 0.43, z: -10}
   <Canvas>k__BackingField: {fileID: 2128986815}
   <Home>k__BackingField: {fileID: 1457342057}
-  <CoinsLevel>k__BackingField: 0
+  <CoinsLevel>k__BackingField: 45
   RevardForWinLevel: 200
   RevardGameOverLevel: 10
   RewardItems: 03000000

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Assets.Scripts.RepPoolObject;
+using Assets.Scripts.Tower.DamageSystem;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,6 +23,15 @@ namespace Assets.Scripts.MeteorsAbility
 
         [SerializeField] private List<AudioClip> _explosionAudioClips;
         
+        private IFinderObjects _finderObjectsSystem;
+        private IGivingEffects _givingEffectsSystem;
+
+        private void Awake()
+        {
+            _finderObjectsSystem = new CircleFinderObjects(2);
+            _givingEffectsSystem = new DamageEffect(5);
+        }
+
         public async UniTask PlayMeteorsShower(CancellationToken token)
         {
             SetupInitialState();
@@ -73,6 +83,13 @@ namespace Assets.Scripts.MeteorsAbility
         {
             Animator.gameObject.SetActive(true);
             Animator.SetTrigger("Destruct");
+            
+            foreach(var target in _finderObjectsSystem.Find("Enemy", transform.position))
+                _givingEffectsSystem.SetEffect(target);
+
+            foreach (var target in _finderObjectsSystem.Find("Tower", transform.position))
+                if(target.TryGetComponent(out DamageSystem damageSystem))
+                    damageSystem.ApplayDamage(5);
 
             while (MeteorSpriteRenderer.transform.localScale.x > 0.05f)
             {
