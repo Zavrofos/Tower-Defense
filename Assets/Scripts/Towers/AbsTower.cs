@@ -16,8 +16,7 @@ public abstract class AbsTower : MonoBehaviour
     public IRotateable RotationSystem;
     public IDeceleration DecelerationSystem;
     protected IFinderObjects FinderNearestEnemies;
-
-    public Vector3 InitRotationImageInShop;
+    
     public Sprite _icon;
     public string _label;
     public int _price;
