@@ -10,6 +10,13 @@ namespace GameOverlayWindow
         
         private void Update()
         {
+            if (GameManager.Instance.WinMenu.gameObject.activeSelf ||
+                GameManager.Instance.GameOverMenu.gameObject.activeSelf)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
             float x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
             float y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
             transform.position = new Vector2(x, y);
