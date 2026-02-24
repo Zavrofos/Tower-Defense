@@ -932,7 +932,7 @@ MonoBehaviour:
   _abilityPrefab: {fileID: 3429367365003089478, guid: abacc2c470490ee468a6859a0ee0cf78, type: 3}
   _button: {fileID: 7920044429813363895}
   ImageTime: {fileID: 3111251727009312066}
-  _timeToUsing: 5
+  _timeToUsing: 7
   _clickAudio: {fileID: 8486261060279836402}
 --- !u!82 &8486261060279836402
 AudioSource:
