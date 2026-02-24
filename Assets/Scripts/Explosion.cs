@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
 using System.Collections;
@@ -16,6 +17,8 @@ public class Explosion : PooledObject
     private IPlayableParticle _playParticleSystem;
     private IGivingEffects _givingEffectsSystem;
     private IFinderObjects _finderObjectsSystem;
+    
+    private Coroutine _turnOffCoroutine;
 
     private void Awake()
     {
@@ -36,12 +39,21 @@ public class Explosion : PooledObject
             _givingEffectsSystem.SetEffect(target);
         }
         
-        StartCoroutine(TurnOff(0.5f));
+        _turnOffCoroutine = StartCoroutine(TurnOff(0.5f));
     }
 
     private IEnumerator TurnOff(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         GameManager.Instance.ObjectPooler.ReturnToPool(this);
+    }
+
+    private void OnDestroy()
+    {
+        if (_turnOffCoroutine != null)
+        {
+            StopCoroutine(_turnOffCoroutine);
+            _turnOffCoroutine = null;
+        }
     }
 }
