@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
 using System.Linq;
-using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.Tower.RotationSystem;
 using Cysharp.Threading.Tasks;
 using Towers.DecelerationSystems;
 using UniRx;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Assets.Scripts.Tower.TowerLaserNew
 {
@@ -35,7 +32,7 @@ namespace Assets.Scripts.Tower.TowerLaserNew
         public override void StartGame()
         {
             _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
-            _finderObjectsSystemForApplyDamageImproveTower = new CircleFinderObjects(1);
+            _finderObjectsSystemForApplyDamageImproveTower = new CircleFinderObjects(2);
             RotationSystem = new RotateTargeting(this);
             DecelerationSystem = new DecelerationForNewLaserTower(this);
 
@@ -106,23 +103,33 @@ namespace Assets.Scripts.Tower.TowerLaserNew
 
             if (enemy != null)
             {
-                if(!_isImproved)
-                    enemy.ApplayDamage(1);
+                var center = enemy.transform.position;
+                
+                if (enemy.name.Contains("Boss"))
+                {
+                    enemy.ApplayDamage(_isImproved ? 50 : 30);
+                }
                 else
                 {
-                    var center = enemy.transform.position;
+                    if(!_isImproved)
+                        enemy.ApplayDamage(500);
+                    else
+                    {
+                        var targets = _finderObjectsSystemForApplyDamageImproveTower
+                            .Find("Enemy", center)
+                            .ToArray()
+                            .Select(t => t.GetComponent<Enemy>())
+                            .Where(e => e != null)
+                            .OrderBy(e => Vector2.Distance(e.transform.position, center))
+                            .Take(2);
 
-                    var targets = _finderObjectsSystemForApplyDamageImproveTower
-                        .Find("Enemy", center)
-                        .ToArray()
-                        .Select(t => t.GetComponent<Enemy>())
-                        .Where(e => e != null)
-                        .OrderBy(e => Vector2.Distance(e.transform.position, center))
-                        .Take(2);
+                        foreach (var target in targets)
+                            target.ApplayDamage(500);
+                    }
+                }
 
-                    foreach (var target in targets)
-                        target.ApplayDamage(1);
-
+                if (_isImproved)
+                {
                     ShootAnimator.transform.position = center;
                     ShootAnimator.gameObject.SetActive(true);
                     ShootAnimator.SetTrigger("Play");
@@ -137,15 +144,6 @@ namespace Assets.Scripts.Tower.TowerLaserNew
             await UniTask.Delay(TimeSpan.FromSeconds(CurrentDelayTimeToShoot));
             
             _canShoot = true;
-        }
-
-        private void PlaySound(SoundType type)
-        {
-            // SoundBox sound = (SoundBox)ObjectPooler.Instance.SpawnFromPool("SoundBox",
-            //     transform.position,
-            //     transform.rotation);
-            //
-            // sound.PlaySound(type);
         }
 
         public override void Improve()
