@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Assets.Scripts.UIScripts;
 using SaveSystemDir;
 using TMPro;
@@ -35,6 +36,8 @@ namespace Assets.Scripts.GlobalShop
         [field: SerializeField] public DescriptionItem DescriptionItem { get; private set; }
         [field: SerializeField] public GlobalShopConfig GlobalShopConfig { get; private set; }
         [field: SerializeField] public TMP_Text GlobalCoinCount { get; private set; }
+        [field: SerializeField] public Button BuyButton { get; private set; }
+        [field: SerializeField] public TMP_Text BuyButtonText { get; private set; }
         
         public Dictionary<GlobalShopItemType, ItemInGlobalShop> Items;
 
@@ -59,12 +62,17 @@ namespace Assets.Scripts.GlobalShop
                 
                 item.Toggle.onValueChanged.AddListener(value =>
                 {
-                    if (value) SetDescription(info);
-                });
-                
-                item.BuyButton.onClick.AddListener(() =>
-                {
-                    BuyItem(item);
+                    if (value)
+                    {
+                        SetDescription(info);
+                        BuyButton.onClick.RemoveAllListeners();
+                        BuyButton.onClick.AddListener(() => BuyItem(item));
+                        BuyButton.interactable = !item.Bought;
+                        BuyButtonText.text = item.Bought ? "Bought" : "Buy";
+                        item.PriceText.gameObject.SetActive(!item.Bought);
+                        item.CoinIcon.gameObject.SetActive(!item.Bought);
+                        item.BoughtImage.gameObject.SetActive(item.Bought);
+                    }
                 });
             }
             
@@ -163,8 +171,12 @@ namespace Assets.Scripts.GlobalShop
             if (towerData.IsBought)
             {
                 towerData.IsUpgradedBought = true;
-                item.BuyButton.interactable = false;
-                item.BuyButtonText.text = "Bought";
+                BuyButton.interactable = false;
+                BuyButtonText.text = "Bought";
+                item.Bought = true;
+                item.PriceText.gameObject.SetActive(false);
+                item.CoinIcon.gameObject.SetActive(false);
+                item.BoughtImage.gameObject.SetActive(true);
             }
             else
             {
@@ -182,8 +194,12 @@ namespace Assets.Scripts.GlobalShop
 
             if (item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityRocket)
             {
-                item.BuyButton.interactable = false;
-                item.BuyButtonText.text = "Bought";
+                BuyButton.interactable = false;
+                BuyButtonText.text = "Bought";
+                item.Bought = true;
+                item.PriceText.gameObject.SetActive(false);
+                item.CoinIcon.gameObject.SetActive(false);
+                item.BoughtImage.gameObject.SetActive(true);
             }
         }
 
@@ -204,8 +220,10 @@ namespace Assets.Scripts.GlobalShop
         
             if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityRocket].IsBought)
             {
-                Items[GlobalShopItemType.AbilityRocket].BuyButton.interactable = false;
-                Items[GlobalShopItemType.AbilityRocket].BuyButtonText.text = "Bought";
+                Items[GlobalShopItemType.AbilityRocket].Bought = true;
+                Items[GlobalShopItemType.AbilityRocket].PriceText.gameObject.SetActive(false);
+                Items[GlobalShopItemType.AbilityRocket].CoinIcon.gameObject.SetActive(false);
+                Items[GlobalShopItemType.AbilityRocket].BoughtImage.gameObject.SetActive(true);
             }
         }
 
@@ -220,8 +238,10 @@ namespace Assets.Scripts.GlobalShop
 
                 if (SaveSystem.CurrentGameData.TowersData[type].IsUpgradedBought)
                 {
-                    item.BuyButton.interactable = false;
-                    item.BuyButtonText.text = "Bought";
+                    item.Bought = true;
+                    item.PriceText.gameObject.SetActive(false);
+                    item.CoinIcon.gameObject.SetActive(false);
+                    item.BoughtImage.gameObject.SetActive(true);
                 }
             }
         }

@@ -10,11 +10,12 @@ namespace Assets.Scripts.GlobalShop
     {
         [field: SerializeField] public Toggle Toggle { get; private set; }
         [field: SerializeField] public Image ItemIcon { get; private set; }
+        [field: SerializeField] public Image BoughtImage { private set; get; }
+        [field: SerializeField] public Image CoinIcon { private set; get; }
         [field: SerializeField] public TMP_Text PriceText { get; private set; }
-        [field: SerializeField] public Button BuyButton { get; private set; }
-        [field: SerializeField] public TMP_Text BuyButtonText { get; private set; }
         [field: SerializeField] public GlobalShopItemInfo GlobalShopItemInfo { get; private set; }
         [field: SerializeField] public TMP_Text CountText;
+        [field: SerializeField] public bool Bought { get; set; }
 
         public void Init(GlobalShopItemInfo globalShopItemInfo, ToggleGroup toggleGroup)
         {
@@ -38,7 +39,6 @@ namespace Assets.Scripts.GlobalShop
         private void OnDestroy()
         {
             Toggle.onValueChanged.RemoveAllListeners();
-            BuyButton.onClick.RemoveAllListeners();
         }
     }
 }
