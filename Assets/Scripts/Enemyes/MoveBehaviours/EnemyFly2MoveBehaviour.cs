@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Enemyes.AttackBehaviours;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Assets.Scripts.Enemyes.MoveBehaviours
 {
@@ -66,8 +67,17 @@ namespace Assets.Scripts.Enemyes.MoveBehaviours
 
         private async UniTask StartAttack(Transform attackPoint, IDamageSystem targetToAttack)
         {
-            await UniTask.WaitUntil(() => Vector2.Distance(transform.position, attackPoint.position) <= 0.1f);
-            if(_isDestroyed) return;
+            float distance = Vector2.Distance(transform.position, attackPoint.position);
+            
+            while (distance > 0.1f)
+            {
+                await UniTask.Yield();
+                
+                if(_isDestroyed || !attackPoint)
+                    return;
+                
+                distance = Vector2.Distance(transform.position, attackPoint.position);
+            }
 
             EnemyFly2AttackBehaviour attackBehaviour = (EnemyFly2AttackBehaviour)_enemy.AttackBehaviour;
             attackBehaviour.Attack(targetToAttack);

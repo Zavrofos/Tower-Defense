@@ -14,42 +14,73 @@ namespace Assets.Scripts.Enemyes.AttackBehaviours
 
         public void Attack(IDamageSystem target)
         {
-            AttackTower(target).Forget();
+            AttackRoutine(target).Forget();
         }
 
-        private async UniTask AttackTower(IDamageSystem target)
+        private async UniTask AttackRoutine(IDamageSystem target)
         {
             Attacking = true;
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            Attacking = target != null && !target.IsStartDestroyAnimation;
-            if(!Attacking) StopAttackParticle();
-            if(_isDestroyed || !Attacking) return;
-            AttackParticleSystem.Play();
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f));
-            Attacking = target != null && !target.IsStartDestroyAnimation;
-            if(!Attacking) StopAttackParticle();
-            if(_isDestroyed || !Attacking) return;
-            target.ApplayDamage(Damage);
-            await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            Attacking = target != null && !target.IsStartDestroyAnimation;
-            if(!Attacking) StopAttackParticle();
-            if(_isDestroyed || !Attacking) return;
-            target.ApplayDamage(Damage);
-            await UniTask.Delay(TimeSpan.FromSeconds(1f));
-            Attacking = target != null && !target.IsStartDestroyAnimation;
-            if(!Attacking) StopAttackParticle();
-            if(_isDestroyed || !Attacking) return;
-            target.ApplayDamage(Damage);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
-            Attacking = target != null && !target.IsStartDestroyAnimation;
-            if(_isDestroyed || !Attacking) return;
-            AttackParticleSystem.Stop();
+
+            // подготовка
+            if (!await WaitAndCheck(target, 0.2f)) return;
+
+            PlayParticles();
+
+            // первый удар
+            if (!await WaitAndDamage(target, 0.2f)) return;
+
+            // второй
+            if (!await WaitAndDamage(target, 1f)) return;
+
+            // третий
+            if (!await WaitAndDamage(target, 1f)) return;
+
+            // завершение
+            if (!await WaitAndCheck(target, 0.5f)) return;
+
+            StopParticles();
             Attacking = false;
         }
 
-        private void StopAttackParticle()
+        private async UniTask<bool> WaitAndDamage(IDamageSystem target, float delay)
         {
-            AttackParticleSystem.Stop();
+            if (!await WaitAndCheck(target, delay))
+                return false;
+
+            target.ApplayDamage(Damage);
+            return true;
+        }
+
+        private async UniTask<bool> WaitAndCheck(IDamageSystem target, float delay)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(delay));
+
+            if (_isDestroyed)
+                return false;
+
+            Attacking = IsTargetValid(target);
+
+            if (!Attacking)
+                StopParticles();
+
+            return Attacking;
+        }
+
+        private bool IsTargetValid(IDamageSystem target)
+        {
+            return target != null && !target.IsStartDestroyAnimation;
+        }
+
+        private void PlayParticles()
+        {
+            if (AttackParticleSystem && !AttackParticleSystem.isPlaying)
+                AttackParticleSystem.Play();
+        }
+
+        private void StopParticles()
+        {
+            if (AttackParticleSystem && AttackParticleSystem.isPlaying)
+                AttackParticleSystem.Stop();
         }
 
         private void OnDestroy()
