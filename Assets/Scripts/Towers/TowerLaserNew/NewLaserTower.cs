@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 using Assets.Scripts.Tower.RotationSystem;
 using Cysharp.Threading.Tasks;
 using Towers.DecelerationSystems;
@@ -10,17 +11,14 @@ namespace Assets.Scripts.Tower.TowerLaserNew
 {
     public class NewLaserTower : AbsTower
     {
+        public SpriteRenderer LaserSprite;
         public Transform _shootPoint;
         public float _delayTimeToShoot;
         public SpriteRenderer _spriteRendererTower;
         public Sprite[] _spritesTower;
         public SoundType SoundShoot;
-        public LineRenderer Laser;
         public float LaserSpeed;
         public Animator ShootAnimator;
-        
-        public Gradient InitialLaserColor;
-        public Gradient DecelerateLaserColor;
 
         public float CurrentDelayTimeToShoot { get; set; }
 
@@ -28,24 +26,22 @@ namespace Assets.Scripts.Tower.TowerLaserNew
         private IFinderObjects _finderObjectsSystemForApplyDamageImproveTower;
 
         private bool _isImproved;
+        private CancellationTokenSource _cancellationTokenSource;
 
         public override void StartGame()
         {
             _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
             _finderObjectsSystemForApplyDamageImproveTower = new CircleFinderObjects(2);
             RotationSystem = new RotateTargeting(this);
-            DecelerationSystem = new DecelerationForNewLaserTower(this);
 
             _spriteRendererTower.sprite = _spritesTower[0];
             CurrentDelayTimeToShoot = _delayTimeToShoot;
 
-            Laser.positionCount = 2;
-            Laser.enabled = false;
+            Vector2 size = LaserSprite.size;
+            size.y = 0;
+            LaserSprite.size = size;
 
-            Laser.SetPosition(0, _shootPoint.position);
-            Laser.SetPosition(1, _shootPoint.position);
-
-            Laser.colorGradient = InitialLaserColor;
+            _cancellationTokenSource = new CancellationTokenSource();
         }
 
         public override void UpdateGame()
@@ -55,7 +51,8 @@ namespace Assets.Scripts.Tower.TowerLaserNew
             if (targetEnemy == null)
                 return;
             
-            RotationSystem.Rotate(targetEnemy);
+            if(_rotation)
+                RotationSystem.Rotate(targetEnemy);
             
             if (!_canShoot) 
                 return;
@@ -68,7 +65,7 @@ namespace Assets.Scripts.Tower.TowerLaserNew
                     {
                         if (enemy.Type == type && enemy.gameObject == targetEnemy.gameObject)
                         {
-                            Shoot(enemy).Forget();
+                            Shoot(enemy, _cancellationTokenSource.Token).Forget();
                         }
                     }
                     
@@ -78,29 +75,25 @@ namespace Assets.Scripts.Tower.TowerLaserNew
         }
 
         private bool _canShoot = true;
+        private bool _rotation = true;
         
-        private async UniTask Shoot(Enemy enemy)
+        private async UniTask Shoot(Enemy enemy, CancellationToken token)
         {
             _canShoot = false;
-
-            Laser.enabled = true;
-            Laser.SetPosition(0, _shootPoint.position);
-
+            _rotation = false;
+            
             Vector2 currentPoint = _shootPoint.position;
+            float sizeY = Vector2.Distance(enemy.transform.position, currentPoint);
+            
+            Vector2 size = LaserSprite.size;
+            size.y = sizeY;
+            LaserSprite.size = size;
 
-            while (enemy != null && Vector2.Distance(currentPoint, enemy.transform.position) > 0.1f)
-            {
-                Laser.SetPosition(0, _shootPoint.position);
-
-                Vector2 direction =
-                    ((Vector2)enemy.transform.position - currentPoint).normalized;
-
-                currentPoint += direction * LaserSpeed * Time.deltaTime;
-                Laser.SetPosition(1, currentPoint);
-
-                await UniTask.Yield();
-            }
-
+            await UniTask.Yield(token).SuppressCancellationThrow();
+            
+            if(token.IsCancellationRequested)
+                return;
+            
             if (enemy != null)
             {
                 var center = enemy.transform.position;
@@ -139,9 +132,20 @@ namespace Assets.Scripts.Tower.TowerLaserNew
                 }
             }
 
-            Laser.enabled = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(0.2f), cancellationToken: token).SuppressCancellationThrow();
+            
+            if(token.IsCancellationRequested)
+                return;
+            
+            size = LaserSprite.size;
+            size.y = 0;
+            LaserSprite.size = size;
+            _rotation = true;
 
-            await UniTask.Delay(TimeSpan.FromSeconds(CurrentDelayTimeToShoot));
+            await UniTask.Delay(TimeSpan.FromSeconds(CurrentDelayTimeToShoot), cancellationToken: token).SuppressCancellationThrow();
+            
+            if(token.IsCancellationRequested)
+                return;
             
             _canShoot = true;
         }
@@ -150,6 +154,14 @@ namespace Assets.Scripts.Tower.TowerLaserNew
         {
             _isImproved = true;
             _spriteRendererTower.sprite = _spritesTower[1];
+        }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource?.Dispose();
+            _cancellationTokenSource = null;
         }
     }
 }

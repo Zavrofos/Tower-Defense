@@ -122,7 +122,12 @@ public abstract class AbsTower : MonoBehaviour
         DecelerationSystem?.SetDeceleration(value);
     }
 
-    private void OnDestroy()
+    private  void OnDestroy()
+    {
+        Destroy();
+    }
+
+    public virtual void Destroy()
     {
         GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Remove(this);
     }
