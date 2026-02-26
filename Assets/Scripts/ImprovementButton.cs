@@ -12,6 +12,7 @@ public class ImprovementButton : MonoBehaviour
     [SerializeField] private BuildingPoint _buildingPoint;
     public TMP_Text UpgradePriceText;
     [SerializeField] private GameObject _improvementPriceObj;
+    public GameObject ImprovementPriceObj => _improvementPriceObj;
 
     private void OnEnable()
     {

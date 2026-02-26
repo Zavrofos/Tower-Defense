@@ -56,6 +56,8 @@ public class ProductInShop : MonoBehaviour
             foreach (var productInShop in Shop.Products)
                 if (productInShop.Tower.Type != Tower.Type)
                     productInShop.ButtonText.text = "Buy";
+            
+            Shop.Close();
         }
     }
 }

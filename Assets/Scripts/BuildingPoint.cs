@@ -13,9 +13,10 @@ public class BuildingPoint : MonoBehaviour
     {
         if(CurrentTower)
             Destroy(CurrentTower.gameObject);
-        
+
+        GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = false;
         CurrentTower = Instantiate(tower, gameObject.transform);
-        
+        CurrentTower.CurrentBuildingPoint = this;
         SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
         soundBox.Play(_buildTowerAudio, false);
         

@@ -41,6 +41,7 @@ public abstract class AbsTower : MonoBehaviour
     public Color InitialColor;
     public Color DecelerateColor;
     private IDisposable _findNearestEnemiesWithForceFields;
+    public BuildingPoint CurrentBuildingPoint;
 
     private void Start()
     {
@@ -50,6 +51,10 @@ public abstract class AbsTower : MonoBehaviour
         StartCheckNearestEnemiesWithForceField();
         StartGame();
         GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Add(this);
+
+        Observable.Timer(TimeSpan.FromSeconds(3))
+            .Subscribe(_ => Destroy(gameObject))
+            .AddTo(this);
     }
 
     private void Update()
@@ -129,6 +134,8 @@ public abstract class AbsTower : MonoBehaviour
 
     public virtual void Destroy()
     {
+        CurrentBuildingPoint.ButtonImprovement.ImprovementPriceObj.gameObject.SetActive(false);
+        CurrentBuildingPoint.ButtonImprovement.gameObject.SetActive(false);
         GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Remove(this);
     }
 }
