@@ -9,6 +9,7 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private GameObject _conteiner;
     [SerializeField] private ProductInShop _productPrefab;
+    [SerializeField] private Button _closeButton;
     public BuildingPoint BuildingPoint;
 
     public List<ProductInShop> Products { get; private set; } = new List<ProductInShop>();
@@ -24,6 +25,8 @@ public class Shop : MonoBehaviour
             
         foreach(var tower in towers)
             InstantiateTower(tower);
+        
+        _closeButton.onClick.AddListener(Close);
     }
 
     public void Close()
