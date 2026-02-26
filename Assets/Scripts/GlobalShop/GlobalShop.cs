@@ -66,7 +66,7 @@ namespace Assets.Scripts.GlobalShop
                     {
                         SetDescription(info);
                         BuyButton.onClick.RemoveAllListeners();
-                        BuyButton.onClick.AddListener(() => BuyItem(item));
+                        BuyButton.onClick.AddListener(() => BuyItem(item, info));
                         BuyButton.interactable = !item.Bought;
                         BuyButtonText.text = item.Bought ? "Bought" : "Buy";
                         item.PriceText.gameObject.SetActive(!item.Bought);
@@ -131,7 +131,7 @@ namespace Assets.Scripts.GlobalShop
                     : info.NameItem;
         }
         
-        private void BuyItem(ItemInGlobalShop item)
+        private void BuyItem(ItemInGlobalShop item, GlobalShopItemInfo info)
         {
             int money = SaveSystem.CurrentGameData.CurrentGlobalMoney;
             int price = int.Parse(item.PriceText.text);
@@ -156,6 +156,8 @@ namespace Assets.Scripts.GlobalShop
             else
                 BuyAbility(item);
         
+            SetDescription(info);
+            
             SaveSystem.CurrentGameData.CurrentGlobalMoney -= price;
             GlobalCoinCount.text = SaveSystem.CurrentGameData.CurrentGlobalMoney.ToString();
             SaveSystem.SaveGame();

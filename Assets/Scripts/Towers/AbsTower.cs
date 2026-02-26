@@ -130,6 +130,10 @@ public abstract class AbsTower : MonoBehaviour
 
     public virtual void Destroy()
     {
+        if(!CurrentBuildingPoint || !GameManager.Instance.CurrentGameManagerLevel || 
+           !CurrentBuildingPoint.ButtonImprovement || !CurrentBuildingPoint.ButtonImprovement.ImprovementPriceObj)
+            return;
+        
         CurrentBuildingPoint.ButtonImprovement.ImprovementPriceObj.gameObject.SetActive(false);
         CurrentBuildingPoint.ButtonImprovement.gameObject.SetActive(false);
         GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Remove(this);
