@@ -14,7 +14,7 @@ public class Home : MonoBehaviour
         _health -= damage;
         
         SoundBox  soundBox= (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
-        soundBox.Play(GameManager.Instance.GameAssets.LifeDamageAudio, true);
+        soundBox.Play(GameManager.Instance.GameAssets.LifeDamageAudio, false);
         
         if(_health <= 0)
             Killed?.Invoke();
