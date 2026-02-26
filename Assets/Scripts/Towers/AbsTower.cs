@@ -51,10 +51,6 @@ public abstract class AbsTower : MonoBehaviour
         StartCheckNearestEnemiesWithForceField();
         StartGame();
         GameManager.Instance.CurrentGameManagerLevel.CurrentTowers.Add(this);
-
-        Observable.Timer(TimeSpan.FromSeconds(3))
-            .Subscribe(_ => Destroy(gameObject))
-            .AddTo(this);
     }
 
     private void Update()
