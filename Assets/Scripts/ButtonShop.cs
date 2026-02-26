@@ -10,10 +10,11 @@ public class ButtonShop : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if(GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders)
+            return;
+
+        GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = true;
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
-        GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
-        if (gameManager.IsDisableButtonColliders) return;
-        gameManager.OpenShop(_shop);
         _shop.gameObject.SetActive(true);
     }
 }

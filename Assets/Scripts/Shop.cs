@@ -28,6 +28,7 @@ public class Shop : MonoBehaviour
 
     public void Close()
     {
+        GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders = false;
         gameObject.SetActive(false);
     }
 

@@ -82,15 +82,6 @@ public class GameManagerInGame : MonoBehaviour
         SaveSystem.CurrentGameData.Worlds[nextWorld - 1] = 1;
         SaveSystem.CurrentGameData.Levels[nextWorld - 1].Cols[nextLevel - 1] = 1;
     }
-     
-    public void OpenShop(Shop shop)
-    {
-        foreach(var item in Shops)
-        {
-            if (item == shop) continue;
-            item.Close();
-        }
-    }
 
     private void GameOverLevel()
     {

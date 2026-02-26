@@ -26,6 +26,9 @@ public class ImprovementButton : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if(GameManager.Instance.CurrentGameManagerLevel.IsDisableButtonColliders)
+            return;
+        
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         GameManagerInGame gameManager = GameManager.Instance.CurrentGameManagerLevel;
         GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
