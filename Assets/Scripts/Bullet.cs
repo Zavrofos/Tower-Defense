@@ -1,5 +1,7 @@
+using System;
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
+using UniRx;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -18,6 +20,10 @@ public class Bullet : MonoBehaviour
     {
         _rigidbody.AddForce(Direction * _speed);
         Destroy();
+
+        Observable.Timer(TimeSpan.FromSeconds(1))
+            .Subscribe(_ => Hit())
+            .AddTo(this);
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
