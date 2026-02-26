@@ -55,8 +55,6 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
             AudioClip dieAudio = GameManager.Instance.DieEnemyAudios[dieAudioIndex];
             SoundBox dieSoundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
             dieSoundBox.Play(dieAudio, false);
-            GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
-            gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) + _reward).ToString();
             Spawner spawner = GameManager.Instance.CurrentSpawner;
             spawner.CurrentCountOfEnemyesKilled++;
             spawner.CurrentCountOfEnemyesKilledInCurrentWave++;
@@ -110,6 +108,8 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 
     private void OnDestroy()
     {
+        GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
+        gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) + _reward).ToString();
         GameManager.Instance.CurrentGameManagerLevel.CurrentEnemies.Remove(this);
     }
 }
