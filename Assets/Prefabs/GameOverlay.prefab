@@ -234,6 +234,10 @@ MonoBehaviour:
   _mineAbilityPrefab: {fileID: 5544701862462024252, guid: 769cbcb9cd8d41f4f877b3246278b079, type: 3}
   <Button>k__BackingField: {fileID: 1970551829941259013}
   CountText: {fileID: 1369153382820544910}
+  _enableColor: {r: 1, g: 1, b: 1, a: 1}
+  _disableColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  _icon: {fileID: 6621191462263894083}
+  _backgroundCount: {fileID: 7048415472414492166}
 --- !u!1 &1736126290528982887
 GameObject:
   m_ObjectHideFlags: 0

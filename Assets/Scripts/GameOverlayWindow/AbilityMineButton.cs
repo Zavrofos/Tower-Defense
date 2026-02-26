@@ -13,6 +13,11 @@ namespace GameOverlayWindow
         [SerializeField] private MineAbility _mineAbilityPrefab;
         [field: SerializeField] public Button Button { get; private set; }
         public TMP_Text CountText;
+        
+        [SerializeField] private Color _enableColor;
+        [SerializeField] private Color _disableColor;
+        [SerializeField] private Image _icon;
+        [SerializeField] private Image _backgroundCount;
 
         private void Awake()
         {
@@ -27,7 +32,14 @@ namespace GameOverlayWindow
             mine.AbilityMineButton = this;
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count--;
             CountText.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count.ToString();
-            Button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0;
+            SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0);
+        }
+        
+        public void SetInteractableButton(bool value)
+        {
+            Button.interactable = value;
+            _icon.color = value ? _enableColor : _disableColor;
+            _backgroundCount.color = value ? _enableColor : _disableColor;
         }
 
         private void OnDestroy()

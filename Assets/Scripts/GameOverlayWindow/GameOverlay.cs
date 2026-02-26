@@ -27,7 +27,7 @@ namespace GameOverlayWindow
             
             AbilityMineButton.gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].IsBought);
             AbilityMineButton.CountText.text = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count.ToString();
-            AbilityMineButton.Button.interactable = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0;
+            AbilityMineButton.SetInteractableButton(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count > 0);
             
             AbilityMeteorButton.gameObject.SetActive(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].IsBought);
             AbilityMeteorButton.SetCountText(SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count.ToString());
