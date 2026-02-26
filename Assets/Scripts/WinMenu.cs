@@ -68,6 +68,7 @@ public class WinMenu : MonoBehaviour
         
         bool isOpenedLevel = SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] == 1;
         SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] = 1;
+        SaveSystem.SaveGame();
         
         _audioSource.Play();
         
