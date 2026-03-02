@@ -22,6 +22,43 @@ public class GameManagerInGame : MonoBehaviour
     public bool IsDisableButtonColliders { get; set; }
     public List<Enemy> CurrentEnemies { get; private set; } = new();
     public List<AbsTower> CurrentTowers { get; private set; } = new();
+
+
+    public int CountMine { get; private set; }
+    public int CountMeteors { get; private set; }
+    public int CountFood { get; private set; }
+    public int CountMoney { get; private set; }
+
+    private void SetCurrentCountAbilities()
+    {
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].IsBought)
+            CountMine = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count;
+        
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].IsBought)
+            CountMeteors = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count;
+        
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].IsBought)
+            CountFood = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count;
+        
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].IsBought)
+            CountMoney = SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count;
+    }
+
+    private void ReturnAbilities()
+    {
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].IsBought)
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count = CountMine;
+        
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].IsBought)
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count = CountMeteors;
+        
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].IsBought)
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count = CountFood;
+        
+        if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].IsBought)
+            SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count = CountMoney;
+    }
+    
     
     private void Awake()
     {
@@ -30,6 +67,7 @@ public class GameManagerInGame : MonoBehaviour
         Camera.main.gameObject.transform.position = CameraPos;
         Camera.main.orthographicSize = CameraSize;
         Canvas.worldCamera = Camera.main;
+        SetCurrentCountAbilities();
     }
 
     private void Start()
@@ -88,6 +126,7 @@ public class GameManagerInGame : MonoBehaviour
         GameManager.Instance.GameOverMenu.ReveardText.text = $"+ {RevardGameOverLevel}";
         SaveSystem.CurrentGameData.CurrentGlobalMoney += RevardGameOverLevel;
         GameManager.Instance.SetNormalSpeedGame();
+        ReturnAbilities();
         SaveSystem.SaveGame();
         GameManager.Instance.GameOverMenu.gameObject.SetActive(true);
         IsDisableButtonColliders = true;
