@@ -1,6 +1,7 @@
 using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
 using SaveSystemDir;
+using UniRx;
 using UnityEngine;
 
 public class BuildingPoint : MonoBehaviour
@@ -22,6 +23,9 @@ public class BuildingPoint : MonoBehaviour
         
         ButtonImprovement.UpgradePriceText.text = CurrentTower.UpgradePrice.ToString();
         bool isUpgradedBought = SaveSystem.CurrentGameData.TowersData[CurrentTower.Type].IsUpgradedBought;
-        ButtonImprovement.gameObject.SetActive(isUpgradedBought);
+
+        Observable.NextFrame()
+            .Subscribe((_) => ButtonImprovement.gameObject.SetActive(isUpgradedBought))
+            .AddTo(this);
     }
 }
