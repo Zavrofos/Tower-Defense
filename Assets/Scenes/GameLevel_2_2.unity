@@ -1961,7 +1961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  IsTest: 1
+  IsTest: 0
   _wavesConfig: {fileID: 11400000, guid: 214e21bdba888664ab677740bfa364ad, type: 2}
   _wavesConfigTest: {fileID: 11400000, guid: 1be5faef693cd574398ffaf0898b1ea4, type: 2}
   _spawnPoint: {fileID: 840376051}
