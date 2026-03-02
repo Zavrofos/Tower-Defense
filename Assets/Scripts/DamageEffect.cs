@@ -9,6 +9,7 @@ namespace Assets.Scripts
     public class DamageEffect : IGivingEffects
     {
         private int _damage;
+        public int Damage => _damage;
 
         public DamageEffect(int damage)
         {

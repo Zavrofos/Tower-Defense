@@ -46,6 +46,12 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
 
     public virtual void ApplayDamage(int damage)
     {
+        if (transform.childCount > 0 && transform.GetChild(0).TryGetComponent(out Shield shield))
+        {
+            shield.ApplayDamage(damage);
+            return;
+        }
+        
         _health -= damage;
         StartCoroutine(ChangeColorForHit());
         

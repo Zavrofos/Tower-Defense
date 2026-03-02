@@ -36,7 +36,10 @@ public class Explosion : PooledObject
 
         foreach(var target in _finderObjectsSystem.Find("Enemy", transform.position))
         {
-            _givingEffectsSystem.SetEffect(target);
+            if (target.transform.childCount > 0 && target.transform.GetChild(0).TryGetComponent(out Shield shield))
+                shield.ApplayDamage(_givingEffectsSystem.Damage);
+            else
+                _givingEffectsSystem.SetEffect(target);
         }
         
         _turnOffCoroutine = StartCoroutine(TurnOff(0.5f));
