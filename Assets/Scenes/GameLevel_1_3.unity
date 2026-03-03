@@ -39755,7 +39755,7 @@ MonoBehaviour:
   <CoinsLevel>k__BackingField: 60
   RevardForWinLevel: 200
   RevardGameOverLevel: 10
-  RewardItems: 07000000
+  RewardItems: 08000000
   Shops:
   - {fileID: 1895084131}
   - {fileID: 1820881532}
