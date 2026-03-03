@@ -80,7 +80,7 @@ public class GameManagerInGame : MonoBehaviour
     private void ShowWinWindow()
     {
         bool isOpenedLevel = SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] == 1;
-        int revard = isOpenedLevel ? 20 : RevardForWinLevel;
+        int revard = isOpenedLevel ? 70 : RevardForWinLevel;
 
         GameManager.Instance.WinMenu.ReveardText.text = $"+ {revard}";
         
