@@ -67,10 +67,8 @@ namespace Towers.ShootTowers
                 Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
                 Bullet bullet = Instantiate(_currentBullet, _shootPoint.position, rotation);
-                bullet.Direction = direction;
-                bullet.StartPosition = PartToRotate.position;
-                bullet.distanceBullet = _firingRadius;
-            
+                bullet.Init(direction, _firingRadius, PartToRotate.position);
+                
                 if(_fire != null)
                 {
                     _fire.gameObject.SetActive(true);

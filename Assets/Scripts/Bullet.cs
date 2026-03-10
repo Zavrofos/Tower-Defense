@@ -16,11 +16,15 @@ public class Bullet : MonoBehaviour
     public bool IsExplosive;
     public bool IsImproved;
 
-    private void Start()
+    public void Init(Vector2 direction, float distance, Vector3 startPos)
     {
+        Direction = direction.normalized;
+        StartPosition = startPos;
+        distanceBullet = distance;
+
         _rigidbody.linearVelocity = Direction * _speed;
     }
-
+    
     private void Update()
     {
         float distance = Vector2.Distance(StartPosition, transform.position);
