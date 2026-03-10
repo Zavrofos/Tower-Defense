@@ -595,7 +595,7 @@ MonoBehaviour:
   _icon: {fileID: 6171584013732223684, guid: 2c838567254349c429b7199366dc1b86, type: 3}
   _label: Shoot laser
   _price: 40
-  _upgradePrice: 30
+  _upgradePrice: 10
   _firingRadius: 3
   _description: 'Targets: All'
   PartToRotate: {fileID: 6789707796415871934}
@@ -604,6 +604,7 @@ MonoBehaviour:
   TargetsEnemyType: 0000000001000000
   InitialColor: {r: 1, g: 1, b: 1, a: 1}
   DecelerateColor: {r: 0.46666667, g: 0.9882353, b: 1, a: 1}
+  CurrentBuildingPoint: {fileID: 0}
   LaserSprite: {fileID: 984955604791312057}
   _shootPoint: {fileID: 6789707795951662982}
   _delayTimeToShoot: 5
