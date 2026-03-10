@@ -30,6 +30,13 @@ namespace GameOverlayWindow
                 _speed * Time.deltaTime
             );
 
+            if (GameManager.Instance.GameOverMenu.gameObject.activeSelf ||
+                GameManager.Instance.WinMenu.gameObject.activeSelf)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             if (_rocket.position == transform.position)
                 Destroy();
         }
