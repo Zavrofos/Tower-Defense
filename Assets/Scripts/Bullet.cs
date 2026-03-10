@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _speed;
 
     public int Damage;
@@ -21,14 +20,17 @@ public class Bullet : MonoBehaviour
         Direction = direction.normalized;
         StartPosition = startPos;
         distanceBullet = distance;
-
-        _rigidbody.linearVelocity = Direction * _speed;
+        
+        Observable.EveryUpdate()
+            .Subscribe(_ => Fly())
+            .AddTo(this);
     }
     
-    private void Update()
+    private void Fly()
     {
+        transform.position += (Vector3)Direction * _speed * Time.deltaTime;
         float distance = Vector2.Distance(StartPosition, transform.position);
-
+        
         if (distance >= distanceBullet)
             Hit();
     }
