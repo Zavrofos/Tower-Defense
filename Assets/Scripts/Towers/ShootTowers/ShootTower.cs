@@ -62,7 +62,7 @@ namespace Towers.ShootTowers
             _timeToShoot += Time.deltaTime;
             if (_timeToShoot >= CurrentDelayTimeToShoot)
             {
-                Vector2 direction = GetDirectionToShoot();
+                Vector2 direction = GetDirectionToShoot().normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
@@ -105,9 +105,7 @@ namespace Towers.ShootTowers
     
         public override Vector2 GetDirectionToShoot()
         {
-            Vector3 worldposition = transform.TransformPoint(transform.position);
-            Vector3 worldPositionPointToShoot = transform.TransformPoint(_shootPoint.position);
-            return worldPositionPointToShoot - worldposition;
+            return _shootPoint.position - transform.position;
         }
     }
 }

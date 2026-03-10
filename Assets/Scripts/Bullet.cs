@@ -8,55 +8,50 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _speed;
-    [SerializeField] public int Damage;
+
+    public int Damage;
     public Vector2 Direction;
     public Vector3 StartPosition;
     public float distanceBullet;
-    public float DamageRadius;
     public bool IsExplosive;
     public bool IsImproved;
 
-    private void FixedUpdate()
+    private void Start()
     {
-        _rigidbody.AddForce(Direction * _speed);
-        Destroy();
-
-        Observable.Timer(TimeSpan.FromSeconds(1))
-            .Subscribe(_ => Hit())
-            .AddTo(this);
+        _rigidbody.linearVelocity = Direction * _speed;
     }
-    
+
+    private void Update()
+    {
+        float distance = Vector2.Distance(StartPosition, transform.position);
+
+        if (distance >= distanceBullet)
+            Hit();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out IApplayDamage damagedObj))
+        if (collision.TryGetComponent(out IApplayDamage damagedObj))
         {
             damagedObj.ApplayDamage(Damage);
             Hit();
         }
     }
 
-    private void Destroy()
-    {
-        Vector2 vectorBetweenObjects = StartPosition - transform.position;
-        float distance = vectorBetweenObjects.magnitude;
-        if(distance >= distanceBullet)
-        {
-            Hit();
-        }
-    }
-
     private void Hit()
     {
-        if(IsExplosive)
-        {
+        if (IsExplosive)
             BlowUp();
-        }
+
         Destroy(gameObject);
     }
 
     private void BlowUp()
     {
-        PolledObjectType type = IsImproved ? PolledObjectType.ExplosionBulletHighPlus : PolledObjectType.ExplosionBulletHigh;
+        PolledObjectType type = IsImproved 
+            ? PolledObjectType.ExplosionBulletHighPlus 
+            : PolledObjectType.ExplosionBulletHigh;
+
         PooledObject pooledObj = GameManager.Instance.ObjectPooler.SpawnFromPool(type, transform.position, Quaternion.identity);
         Explosion explosion = (Explosion)pooledObj;
         explosion.ExplosonPlay();
