@@ -24,12 +24,14 @@ namespace GameOverlayWindow
 
         private void Update()
         {
-            float distance = (_rocket.position - transform.position).magnitude;
-            
-            if(distance < 0.5f)
+            _rocket.position = Vector3.MoveTowards(
+                _rocket.position,
+                transform.position,
+                _speed * Time.deltaTime
+            );
+
+            if (_rocket.position == transform.position)
                 Destroy();
-            
-            _rocket.Translate(_direction * _speed * Time.deltaTime);
         }
 
         private void Destroy()
