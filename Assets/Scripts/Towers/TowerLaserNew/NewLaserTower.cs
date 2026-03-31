@@ -20,6 +20,11 @@ namespace Assets.Scripts.Tower.TowerLaserNew
         public float LaserSpeed;
         public Animator ShootAnimator;
 
+        public Color InitialColorTower;
+        public Color DecelerateColorTower;
+        public Color InitialLaserColor;
+        public Color DecelerateLaserColor;
+
         public float CurrentDelayTimeToShoot { get; set; }
 
         private IFinderObjects _finderObjectsSystem;
@@ -33,6 +38,7 @@ namespace Assets.Scripts.Tower.TowerLaserNew
             _finderObjectsSystem = new RaycastFinderObjects(_shootPoint, _firingRadius);
             _finderObjectsSystemForApplyDamageImproveTower = new CircleFinderObjects(2);
             RotationSystem = new RotateTargeting(this);
+            DecelerationSystem = new DecelerationForLaseTowerNew(this);
 
             _spriteRendererTower.sprite = _spritesTower[0];
             CurrentDelayTimeToShoot = _delayTimeToShoot;
