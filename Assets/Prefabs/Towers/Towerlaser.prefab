@@ -969,7 +969,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
-  _damage: 5
+  _damage: 7
   IsImproved: 0
   SpeedLaserOnOff: 1
   InitialLaserColor:

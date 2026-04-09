@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5f9fa47c7506841b99eeafd9e5f245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 500
+  _health: 350
   _damage: 100
   _reward: 0
   _spriteRenderer: {fileID: 1845349280365932800}
@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 200
-  Damage: 30
+  Damage: 15
 --- !u!1 &1845349281450110614
 GameObject:
   m_ObjectHideFlags: 0

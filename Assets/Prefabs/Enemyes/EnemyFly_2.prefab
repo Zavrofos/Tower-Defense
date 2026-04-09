@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemyes.AttackBehaviours.EnemyFly2AttackBehaviour
   AttackParticleSystem: {fileID: 7200166595664380246}
-  Damage: 15
+  Damage: 10
 --- !u!1 &5179266580330705817
 GameObject:
   m_ObjectHideFlags: 0
