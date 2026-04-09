@@ -14,6 +14,13 @@ public class MineAbility : MonoBehaviour
     
     private void Update()
     {
+        if (GameManager.Instance.GameOverMenu.gameObject.activeSelf ||
+            GameManager.Instance.WinMenu.gameObject.activeSelf)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         if(_installed)
             return;
         
