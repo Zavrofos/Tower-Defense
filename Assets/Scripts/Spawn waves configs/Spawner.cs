@@ -9,10 +9,7 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float _timeToSpawnNextWave;
-    [SerializeField] private bool IsTest;
     [SerializeField] private WavesConfig _wavesConfig;
-    [SerializeField] private WavesConfig _wavesConfigTest;
-    private WavesConfig _waves;
     [SerializeField] private Transform _spawnPoint;
 
     private Wave _currentWave;
@@ -41,10 +38,9 @@ public class Spawner : MonoBehaviour
     {
         GameManager.Instance.GameOverlay.SetNextWaveButton.onClick.AddListener(SetNextWave);
         
-        _waves = IsTest ? _wavesConfigTest : _wavesConfig;
         SetWave(_currentWaveNumber);
         
-        foreach(var wave in _waves.Waves)
+        foreach(var wave in _wavesConfig.Waves)
             _countEnemyesInLevel += wave.Templates.Length;
         
         _startSpawnerDisposable = Observable.EveryUpdate()
@@ -80,7 +76,7 @@ public class Spawner : MonoBehaviour
             SetInteractableNextWaveButton(false);
             CurrentCountOfEnemyesKilledInCurrentWave = 0;
             
-            if(_currentWaveNumber == _waves.Waves.Count - 1)
+            if(_currentWaveNumber == _wavesConfig.Waves.Count - 1)
             {
                 _currentWave = null;
             }
@@ -102,7 +98,7 @@ public class Spawner : MonoBehaviour
             if(_currentTemplateNumber > _currentWave.Templates.Length - 1)
             {
                 _isNextWaveActive = true;
-                SetInteractableNextWaveButton(_currentWave != _waves.Waves[^1]);
+                SetInteractableNextWaveButton(_currentWave != _wavesConfig.Waves[^1]);
                 return;
             }
             
@@ -120,7 +116,7 @@ public class Spawner : MonoBehaviour
     private void SetWave(int index)
     {
         _currentTemplateNumber = 0;
-        _currentWave = _waves.Waves[index];
+        _currentWave = _wavesConfig.Waves[index];
     }
 
     private void InstantiateEnemy(int _numberEnemyInWave)

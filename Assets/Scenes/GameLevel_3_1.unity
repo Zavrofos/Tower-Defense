@@ -3439,9 +3439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  IsTest: 1
-  _wavesConfig: {fileID: 11400000, guid: a4ed2c9d9afdb804c93f92f88f15e1b4, type: 2}
-  _wavesConfigTest: {fileID: 11400000, guid: 6f84ce5b85a4eef46ba837e4cf314b08, type: 2}
+  _wavesConfig: {fileID: 11400000, guid: bb4b924fe7b89994dabeae7a0584451e, type: 2}
   _spawnPoint: {fileID: 840376051}
 --- !u!4 &840376051
 Transform:

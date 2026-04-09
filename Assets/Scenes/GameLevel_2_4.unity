@@ -3892,9 +3892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToSpawnNextWave: 20
-  IsTest: 1
   _wavesConfig: {fileID: 11400000, guid: e7638954875e59b418216ac77fe515a8, type: 2}
-  _wavesConfigTest: {fileID: 11400000, guid: 7c5a8f503e848a44eba3d87d0d1db795, type: 2}
   _spawnPoint: {fileID: 840376051}
 --- !u!4 &840376051
 Transform:
@@ -37304,7 +37302,7 @@ MonoBehaviour:
   <CameraPos>k__BackingField: {x: 2.58, y: 0, z: -10}
   <Canvas>k__BackingField: {fileID: 2128986815}
   <Home>k__BackingField: {fileID: 1457342057}
-  <CoinsLevel>k__BackingField: 45
+  <CoinsLevel>k__BackingField: 60
   RevardForWinLevel: 200
   RevardGameOverLevel: 50
   RewardItems: 0400000009000000
