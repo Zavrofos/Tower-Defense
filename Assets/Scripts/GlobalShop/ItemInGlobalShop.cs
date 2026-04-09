@@ -34,6 +34,16 @@ namespace Assets.Scripts.GlobalShop
                 CountText.text = $"x{count}";
                 CountText.gameObject.SetActive(true);
             }
+            else if (globalShopItemInfo.Type is not GlobalShopItemType.AbilityRocket)
+            {
+                TowerData towerData = SaveSystem.CurrentGameData.TowersData[globalShopItemInfo.Type];
+
+                if (towerData.IsBought)
+                {
+                    ItemIcon.sprite = globalShopItemInfo.UpgradeIcon;
+                    PriceText.text = globalShopItemInfo.UpgradePrice.ToString();
+                }
+            }
         }
 
         private void OnDestroy()
