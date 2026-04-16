@@ -13,7 +13,7 @@ namespace Towers.DecelerationSystems
 
         public void SetDeceleration(bool value)
         {
-            _towerOfCold.CurrentSpeedRotation = value ? _towerOfCold.CurrentSpeedRotation / 2 : _towerOfCold.CurrentSpeedRotation;
+            _towerOfCold.CurrentSpeedRotation = value ? _towerOfCold.SpeedRotation / 2 : _towerOfCold.SpeedRotation;
             _towerOfCold._spriteRendererTower.color = value ? _towerOfCold.DecelerateColor : _towerOfCold.InitialColor;
         }
     }

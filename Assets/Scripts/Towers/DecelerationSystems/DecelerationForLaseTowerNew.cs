@@ -14,7 +14,7 @@ namespace Towers.DecelerationSystems
 
         public void SetDeceleration(bool value)
         {
-            _towerLaser.CurrentSpeedRotation = value ? _towerLaser.CurrentSpeedRotation / 2 : _towerLaser.CurrentSpeedRotation;
+            _towerLaser.CurrentSpeedRotation = value ? _towerLaser.SpeedRotation / 2 : _towerLaser.SpeedRotation;
             _towerLaser._spriteRendererTower.color = value ? _towerLaser.DecelerateColorTower : _towerLaser.InitialColorTower;
             _towerLaser.LaserSprite.color = value ? _towerLaser.DecelerateLaserColor : _towerLaser.InitialLaserColor;
         }
