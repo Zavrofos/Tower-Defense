@@ -14,11 +14,14 @@ namespace GameHubDir
         [field: SerializeField] public TMP_Text LevelNumberText { get; private set; }
         [field: SerializeField] public Color LockColor { get; private set; }
         [field: SerializeField] public Color UnLockColor { get; private set; }
+        
+        [field: SerializeField] public Color LockColorText { get; private set; }
+        [field: SerializeField] public Color UnLockColorText { get; private set; }
 
         public void SetInteractable(bool value)
         {
             Button.interactable = value;
-            LevelNumberText.color = value ? UnLockColor : LockColor;
+            LevelNumberText.color = value ? UnLockColorText : LockColorText;
             LockImage.gameObject.SetActive(!value);
         }
     }

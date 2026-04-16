@@ -13,6 +13,8 @@ namespace GameHubDir
         [field: SerializeField] public TMP_Text NameWorldText { get; private set; }
         [field: SerializeField] public Color LockColor { get; private set; }
         [field: SerializeField] public Color UnLockColor { get; private set; }
+        [field: SerializeField] public Color LockColorText { get; private set; }
+        [field: SerializeField] public Color UnLockColorText { get; private set; }
         [field: SerializeField] public List<LevelButton> LevelsButtons { get; private set; }
 
         public void SetInteractable(bool value)
@@ -20,7 +22,7 @@ namespace GameHubDir
             LockImage.gameObject.SetActive(!value);
             BackGroundImage.color = value ? UnLockColor : LockColor;
             WorldIconImage.color = value ? UnLockColor : LockColor;
-            NameWorldText.color = value ? UnLockColor : LockColor;
+            NameWorldText.color = value ? UnLockColorText : LockColorText;
         }
     }
 }
