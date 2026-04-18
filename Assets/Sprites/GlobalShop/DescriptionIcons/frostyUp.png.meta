@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: f635c06cf7bc37347b03eee543e7a456
+guid: f073c4a221d1c9346a73611147e471e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3645643785472610190
-    second: "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430
-      2026-01-24 173350_0"
+      213: 8292613414057781936
+    second: frostyUp_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -101,14 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430
-        2026-01-24 173350_0"
+      name: frostyUp_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 776
-        height: 520
+        width: 842
+        height: 474
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8f84ba15bde79230800000000000000
-      internalID: 3645643785472610190
+      spriteID: 0baad84c6f7451370800000000000000
+      internalID: 8292613414057781936
       vertices: []
       indices: 
       edges: []
@@ -137,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430 2026-01-24 173350_0": 3645643785472610190
+      frostyUp_0: 8292613414057781936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -86,6 +86,8 @@ namespace Assets.Scripts.GlobalShop
                 {GlobalShopItemType.FoodAbility, FoodAbility},
                 {GlobalShopItemType.MoneyPocketAbility, PocketMoneyAbility},
             };
+
+            CurrentGlobalMoney = 1000;
         }
     }
     

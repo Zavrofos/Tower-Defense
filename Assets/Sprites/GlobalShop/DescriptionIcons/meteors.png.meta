@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: a1c465919ff9ddb42891448803233491
+guid: c4f63802709b00041a6b33065dcfe4b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1700265437884048986
-    second: "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430
-      2026-01-24 175020_0"
+      213: 590587900785439939
+    second: meteors_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -101,14 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430
-        2026-01-24 175020_0"
+      name: meteors_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 392
-        height: 260
+        width: 1265
+        height: 711
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6a91c07b7917768e0800000000000000
-      internalID: -1700265437884048986
+      spriteID: 3c4b5f21190323800800000000000000
+      internalID: 590587900785439939
       vertices: []
       indices: 
       edges: []
@@ -137,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430 2026-01-24 175020_0": -1700265437884048986
+      meteors_0: 590587900785439939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

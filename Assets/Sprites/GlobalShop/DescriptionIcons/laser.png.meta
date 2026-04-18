@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: 9931c1ae530610f4db5e9a0c37f94147
+guid: db263ce6be2e46d428415d7ab0814352
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4330390637682956944
-    second: "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430
-      2026-01-24 173317_0"
+      213: -3966654026724937289
+    second: laser_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -101,14 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430
-        2026-01-24 173317_0"
+      name: laser_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 905
-        height: 608
+        width: 967
+        height: 545
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09a15c17753a81c30800000000000000
-      internalID: 4330390637682956944
+      spriteID: 7b1ff2ecd2d93f8c0800000000000000
+      internalID: -3966654026724937289
       vertices: []
       indices: 
       edges: []
@@ -137,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u0421\u043D\u0438\u043C\u043E\u043A \u044D\u043A\u0440\u0430\u043D\u0430 2026-01-24 173317_0": 4330390637682956944
+      laser_0: -3966654026724937289
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
