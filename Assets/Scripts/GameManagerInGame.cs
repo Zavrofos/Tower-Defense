@@ -48,15 +48,27 @@ public class GameManagerInGame : MonoBehaviour
     {
         if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].IsBought)
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityMine].Count = CountMine;
-        
+
         if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].IsBought)
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MeteorShowerAbility].Count = CountMeteors;
-        
+
         if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].IsBought)
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.FoodAbility].Count = CountFood;
-        
+
         if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].IsBought)
             SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.MoneyPocketAbility].Count = CountMoney;
+    }
+
+    public void RestoreAbilitiesAndSave()
+    {
+        ReturnAbilities();
+        SaveSystem.SaveGame();
+    }
+
+    private void OnApplicationQuit()
+    {
+        ReturnAbilities();
+        SaveSystem.SaveGame();
     }
     
     

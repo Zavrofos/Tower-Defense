@@ -47,6 +47,7 @@ public class WinMenu : MonoBehaviour
     private void MainMenu()
     {
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
+        GameManager.Instance.CurrentGameManagerLevel.RestoreAbilitiesAndSave();
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
