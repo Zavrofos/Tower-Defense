@@ -120,15 +120,19 @@ namespace Assets.Scripts.GlobalShop
                     ? info.UpgradeDescriptionIcon 
                     : info.IconDescriptionItem;
             
-            DescriptionItem.Description.text = 
+            DescriptionItem.Description.Key = 
                 info.IsUpgradeType && currentGameData.TowersData[info.Type].IsBought
-                    ? info.UpgradedDescription 
-                    : info.DescriptionItem;
+                    ? info.UpgradedDescriptionKey 
+                    : info.DescriptionItemKey;
             
-            DescriptionItem.Name.text = 
+            DescriptionItem.Description.SetLocalization();
+            
+            DescriptionItem.Name.Key = 
                 info.IsUpgradeType && currentGameData.TowersData[info.Type].IsBought
-                    ? info.UpgradedName 
-                    : info.NameItem;
+                    ? info.UpgradedNameKey 
+                    : info.NameItemKey;
+            
+            DescriptionItem.Name.SetLocalization();
         }
         
         private void BuyItem(ItemInGlobalShop item, GlobalShopItemInfo info)

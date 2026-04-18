@@ -7,11 +7,14 @@ namespace Assets.Scripts
     [CreateAssetMenu(menuName = "Localization")]
     public class LocalizationSo : ScriptableObject
     {
-        public List<LocalizationBox> LocalizationBoxes = new List<LocalizationBox>();
-        private Dictionary<string, LocalizationBox> LocalizationBoxesDic = new Dictionary<string, LocalizationBox>();
+        public List<LocalizationBox> LocalizationBoxes = new ();
+        public List<LocalizationBox> LocalizationBoxesGlobalShopItems = new ();
+        private Dictionary<string, LocalizationBox> LocalizationBoxesDic = new ();
 
         public void Init()
         {
+            LocalizationBoxes.AddRange(LocalizationBoxesGlobalShopItems);
+            
             foreach (var localizationBox in LocalizationBoxes)
                 LocalizationBoxesDic.Add(localizationBox.Key, localizationBox);
         }

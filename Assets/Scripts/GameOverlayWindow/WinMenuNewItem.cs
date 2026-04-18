@@ -9,7 +9,7 @@ namespace GameOverlayWindow
 {
     public class WinMenuNewItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private TMP_Text _name;
+        [SerializeField] private LocalizationText _name;
         [SerializeField] private Image Image;
         [SerializeField] private NewItemDescription _newItemDescription;
 
@@ -20,15 +20,18 @@ namespace GameOverlayWindow
         {
             _config = GameManager.Instance.GameHub.ShopWindow.GlobalShopConfig;
             _itemType = itemType;
-            _name.text = _config.InfosDic[itemType].NameItem;
+            _name.Key = _config.InfosDic[itemType].NameItemKey;
+            _name.SetLocalization();
             Image.sprite = _config.InfosDic[itemType].IconShopItem;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _newItemDescription.Name.text = _config.InfosDic[_itemType].NameItem;
+            _newItemDescription.Name.Key = _config.InfosDic[_itemType].NameItemKey;
+            _newItemDescription.Name.SetLocalization();
             _newItemDescription.ImageDescription.sprite = _config.InfosDic[_itemType].IconDescriptionItem;
-            _newItemDescription.DescriptionText.text = _config.InfosDic[_itemType].DescriptionItem;
+            _newItemDescription.DescriptionText.Key = _config.InfosDic[_itemType].DescriptionItemKey;
+            _newItemDescription.DescriptionText.SetLocalization();
             _newItemDescription.gameObject.SetActive(true);
         }
 

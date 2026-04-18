@@ -149,15 +149,15 @@ MonoBehaviour:
     IconShopItem: {fileID: 0}
     IconDescriptionItem: {fileID: 0}
     Price: 0
-    DescriptionItem: 
-    NameItem: 
+    NameItemKey: 
+    DescriptionItemKey: 
     Type: 0
     IsUpgradeType: 0
     UpgradeIcon: {fileID: 0}
     UpgradeDescriptionIcon: {fileID: 0}
     UpgradePrice: 0
-    UpgradedName: 
-    UpgradedDescription: 
+    UpgradedNameKey: 
+    UpgradedDescriptionKey: 
   CountText: {fileID: 1728682321279132596}
   <Bought>k__BackingField: 0
 --- !u!1 &2648494320367073572
