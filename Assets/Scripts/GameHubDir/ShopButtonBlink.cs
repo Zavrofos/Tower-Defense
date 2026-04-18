@@ -13,6 +13,14 @@ namespace GameHubDir
         private void Awake()
         {
             _baseScale = transform.localScale;
+
+            RectTransform rt = GetComponent<RectTransform>();
+            Vector2 size = rt.rect.size;
+            Vector2 oldPivot = rt.pivot;
+            Vector2 newPivot = new Vector2(0.5f, 0.5f);
+            Vector2 delta = (newPivot - oldPivot) * size;
+            rt.pivot = newPivot;
+            rt.anchoredPosition += delta;
         }
 
         private void Update()
