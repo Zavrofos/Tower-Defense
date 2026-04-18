@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 28288594}
   - component: {fileID: 28288596}
   - component: {fileID: 28288595}
+  - component: {fileID: 28288597}
   m_Layer: 5
   m_Name: label
   m_TagString: Untagged
@@ -331,6 +332,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28288593}
   m_CullTransparentMesh: 1
+--- !u!114 &28288597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28288593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: World1
 --- !u!1 &31157969
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +356,7 @@ GameObject:
   - component: {fileID: 31157970}
   - component: {fileID: 31157972}
   - component: {fileID: 31157971}
+  - component: {fileID: 31157973}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -468,6 +483,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31157969}
   m_CullTransparentMesh: 1
+--- !u!114 &31157973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31157969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: Menu
 --- !u!1 &54064901
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,6 +840,7 @@ GameObject:
   - component: {fileID: 178804688}
   - component: {fileID: 178804690}
   - component: {fileID: 178804689}
+  - component: {fileID: 178804691}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -924,7 +953,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 20.515526, y: 0, z: 24.136116, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -938,6 +967,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178804687}
   m_CullTransparentMesh: 1
+--- !u!114 &178804691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178804687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: Shop
 --- !u!1 &189371695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,7 +5227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3096736076031759957, guid: 37ed36de615649945a84763f403223fd, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 240
+      value: 246.94
       objectReference: {fileID: 0}
     - target: {fileID: 5403419592326416469, guid: 37ed36de615649945a84763f403223fd, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5201,7 +5243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5790581191407731618, guid: 37ed36de615649945a84763f403223fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 203.47
       objectReference: {fileID: 0}
     - target: {fileID: 5790581191407731618, guid: 37ed36de615649945a84763f403223fd, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5664,6 +5706,7 @@ GameObject:
   - component: {fileID: 1371865588}
   - component: {fileID: 1371865590}
   - component: {fileID: 1371865589}
+  - component: {fileID: 1371865591}
   m_Layer: 5
   m_Name: label
   m_TagString: Untagged
@@ -5790,6 +5833,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371865587}
   m_CullTransparentMesh: 1
+--- !u!114 &1371865591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371865587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: World2
 --- !u!1 &1372452299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7204,6 +7260,7 @@ GameObject:
   - component: {fileID: 1820347558}
   - component: {fileID: 1820347560}
   - component: {fileID: 1820347559}
+  - component: {fileID: 1820347561}
   m_Layer: 5
   m_Name: label
   m_TagString: Untagged
@@ -7330,6 +7387,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820347557}
   m_CullTransparentMesh: 1
+--- !u!114 &1820347561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820347557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: World3
 --- !u!1 &1841772402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7622,6 +7692,7 @@ GameObject:
   - component: {fileID: 1942966496}
   - component: {fileID: 1942966498}
   - component: {fileID: 1942966497}
+  - component: {fileID: 1942966499}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7748,6 +7819,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942966495}
   m_CullTransparentMesh: 1
+--- !u!114 &1942966499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942966495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: Play
 --- !u!1 &1977337056
 GameObject:
   m_ObjectHideFlags: 0
@@ -8299,9 +8383,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 582387593}
     m_Modifications:
+    - target: {fileID: 1085240981501211044, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085240981501211044, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085240981501211044, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085240981501211044, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085240981501211044, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 386.22797
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085240981501211044, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -355.21118
+      objectReference: {fileID: 0}
     - target: {fileID: 1944809429194921287, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.73820496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345430762075216, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345430762075216, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345430762075216, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345430762075216, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345431499157276, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345431499157276, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345431499157276, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936345431499157276, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 3936345431565083196, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
       propertyPath: m_Name
@@ -8390,6 +8530,22 @@ PrefabInstance:
     - target: {fileID: 3936345431565083197, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046044282975625670, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046044282975625670, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046044282975625670, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046044282975625670, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 5193875256103327726, guid: d46f2e8f2f6a0a94a9cf6d5c572df359, type: 3}
       propertyPath: m_AnchoredPosition.x

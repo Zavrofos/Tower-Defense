@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 9026398114348811236}
   - component: {fileID: 2011379623280344780}
   - component: {fileID: 1056023649305872058}
+  - component: {fileID: 8340185437855674927}
   m_Layer: 5
   m_Name: ContinueButtonText
   m_TagString: Untagged
@@ -212,6 +213,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8340185437855674927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826686765374698286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: Continue
 --- !u!1 &3836563337079003797
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +374,7 @@ GameObject:
   - component: {fileID: 3936345429840498033}
   - component: {fileID: 3936345429840498035}
   - component: {fileID: 3936345429840498034}
+  - component: {fileID: 7772405785999081414}
   m_Layer: 5
   m_Name: GameOverLabel
   m_TagString: Untagged
@@ -486,6 +501,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7772405785999081414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936345429840498032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: GameOver
 --- !u!1 &3936345430252596890
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +525,7 @@ GameObject:
   - component: {fileID: 3936345430252596891}
   - component: {fileID: 3936345430252596885}
   - component: {fileID: 3936345430252596884}
+  - component: {fileID: 1748645843255480465}
   m_Layer: 5
   m_Name: MainMenuButtonText
   m_TagString: Untagged
@@ -623,6 +652,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1748645843255480465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936345430252596890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: MainMenu
 --- !u!1 &3936345430762075223
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +797,7 @@ GameObject:
   - component: {fileID: 3936345431332485757}
   - component: {fileID: 3936345431332485759}
   - component: {fileID: 3936345431332485758}
+  - component: {fileID: 4058542958672568099}
   m_Layer: 5
   m_Name: QuitButtonText
   m_TagString: Untagged
@@ -881,6 +924,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4058542958672568099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936345431332485756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: Quit
 --- !u!1 &3936345431493174503
 GameObject:
   m_ObjectHideFlags: 0

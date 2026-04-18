@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts;
 using Assets.Scripts.UIScripts;
 using Cysharp.Threading.Tasks;
 using SaveSystemDir;
@@ -24,6 +25,7 @@ public class MainMenu : MonoBehaviour
             {
                 _audioMixer.SetFloat("MusicVolume", FormatToDb(SaveSystem.GetVolumeMusic()));
                 _audioMixer.SetFloat("GameVolume", FormatToDb(SaveSystem.GetVolumeGame()));
+                LocalizationSystem.Instance.SetLanguage(SaveSystem.GetCurrentLanguage());
             })
             .AddTo(this);
     }

@@ -14,7 +14,7 @@ public class ProductInShop : MonoBehaviour
     public RectTransform ImageRectTransform;
     public TMP_Text LabelProduct;
     public Button ButtonBuy;
-    public TMP_Text ButtonText;
+    public LocalizationText TextBuyBatton;
     public AbsTower Tower;
     public BuildingPoint BuildingPoint;
     public TMP_Text PriceText;
@@ -29,9 +29,12 @@ public class ProductInShop : MonoBehaviour
     private void OnEnable()
     {
         ButtonBuy.onClick.AddListener(OnBuy);
-        
-        if(!BuildingPoint.CurrentTower || BuildingPoint.CurrentTower.Type != Tower.Type)
-            ButtonText.text = "Buy";
+
+        if (!BuildingPoint.CurrentTower || BuildingPoint.CurrentTower.Type != Tower.Type)
+        {
+            TextBuyBatton.Key = "Buy";
+            TextBuyBatton.SetLocalization();
+        }
     }
 
     private void OnDisable()
@@ -41,7 +44,7 @@ public class ProductInShop : MonoBehaviour
 
     private void OnBuy()
     {
-        if(ButtonText.text != "Buyed")
+        if(TextBuyBatton.Key != "Buyed")
         {
             GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
             
@@ -51,11 +54,15 @@ public class ProductInShop : MonoBehaviour
             ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.MoneyAudio);
             gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) - int.Parse(PriceText.text)).ToString();
             BuildingPoint.BuildingTower(Tower);
-            ButtonText.text = "Buyed";
+            TextBuyBatton.Key = "Buyed";
+            TextBuyBatton.SetLocalization();
 
             foreach (var productInShop in Shop.Products)
                 if (productInShop.Tower.Type != Tower.Type)
-                    productInShop.ButtonText.text = "Buy";
+                {
+                    productInShop.TextBuyBatton.Key = "Buy";
+                    productInShop.TextBuyBatton.SetLocalization();
+                }
             
             Shop.Close();
         }

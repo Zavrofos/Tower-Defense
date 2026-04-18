@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 5896539204687335536}
   - component: {fileID: 4293780651275990257}
   - component: {fileID: 5393528829729877727}
+  - component: {fileID: 4870274049049576897}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -411,6 +412,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4870274049049576897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722904810090326689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: Buy
 --- !u!1 &4390671853828186232
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,11 +943,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImageProduct: {fileID: 5005148060649565016}
-  InitRotationImage: {x: 0, y: 0, z: 0}
   ImageRectTransform: {fileID: 2637797921539820497}
   LabelProduct: {fileID: 1318741519882809766}
   ButtonBuy: {fileID: 4621927564274278030}
-  ButtonText: {fileID: 5393528829729877727}
+  TextBuyBatton: {fileID: 4870274049049576897}
   Tower: {fileID: 0}
   BuildingPoint: {fileID: 0}
   PriceText: {fileID: 3764815378279629487}
