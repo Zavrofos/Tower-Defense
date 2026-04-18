@@ -12,13 +12,13 @@ public class ProductInShop : MonoBehaviour
 {
     public Image ImageProduct;
     public RectTransform ImageRectTransform;
-    public TMP_Text LabelProduct;
+    public LocalizationText LabelProduct;
     public Button ButtonBuy;
     public LocalizationText TextBuyBatton;
     public AbsTower Tower;
     public BuildingPoint BuildingPoint;
     public TMP_Text PriceText;
-    public TMP_Text DescriptionText;
+    public LocalizationText DescriptionText;
     
     public Shop Shop { get; set; }
 
@@ -44,7 +44,7 @@ public class ProductInShop : MonoBehaviour
 
     private void OnBuy()
     {
-        if(TextBuyBatton.Key != "Buyed")
+        if(TextBuyBatton.Key != "Purchased")
         {
             GameOverlay gameOverlay = GameManager.Instance.GameOverlay;
             
@@ -54,7 +54,7 @@ public class ProductInShop : MonoBehaviour
             ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.MoneyAudio);
             gameOverlay.CoinsText.text = (int.Parse(gameOverlay.CoinsText.text) - int.Parse(PriceText.text)).ToString();
             BuildingPoint.BuildingTower(Tower);
-            TextBuyBatton.Key = "Buyed";
+            TextBuyBatton.Key = "Purchased";
             TextBuyBatton.SetLocalization();
 
             foreach (var productInShop in Shop.Products)

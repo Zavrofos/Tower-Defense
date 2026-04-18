@@ -9,13 +9,17 @@ namespace Assets.Scripts
     {
         public List<LocalizationBox> LocalizationBoxes = new ();
         public List<LocalizationBox> LocalizationBoxesGlobalShopItems = new ();
+        public List<LocalizationBox> LocalizationBoxesTowers = new ();
         private Dictionary<string, LocalizationBox> LocalizationBoxesDic = new ();
 
         public void Init()
         {
-            LocalizationBoxes.AddRange(LocalizationBoxesGlobalShopItems);
+            List<LocalizationBox> boxes = new List<LocalizationBox>();
+            boxes.AddRange(LocalizationBoxes);
+            boxes.AddRange(LocalizationBoxesGlobalShopItems);
+            boxes.AddRange(LocalizationBoxesTowers);
             
-            foreach (var localizationBox in LocalizationBoxes)
+            foreach (var localizationBox in boxes)
                 LocalizationBoxesDic.Add(localizationBox.Key, localizationBox);
         }
 

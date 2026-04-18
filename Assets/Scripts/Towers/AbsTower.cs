@@ -29,7 +29,7 @@ public abstract class AbsTower : MonoBehaviour
     public float CurrentSpeedRotation { get; set; }
 
     public Sprite Icon => _icon;
-    public string Label => _label;
+    public string LabelKey => _label;
     public int Price => _price;
     public int UpgradePrice => _upgradePrice;
     public float FiringRadius => _firingRadius;

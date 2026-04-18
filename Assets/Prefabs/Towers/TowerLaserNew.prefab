@@ -594,11 +594,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Tower.TowerLaserNew.NewLaserTower
   _icon: {fileID: 6171584013732223684, guid: 2c838567254349c429b7199366dc1b86, type: 3}
-  _label: Shoot laser
+  _label: LaserTurret
   _price: 40
   _upgradePrice: 10
   _firingRadius: 3
-  _description: 'Targets: All'
+  _description: TargetsGroundAir
   PartToRotate: {fileID: 6789707796415871934}
   SpeedRotation: 10
   Type: 10

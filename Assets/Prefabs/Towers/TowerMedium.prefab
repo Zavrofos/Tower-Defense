@@ -305,11 +305,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 9e03a753945d31e44bb7e6f4c9628315, type: 3}
-  _label: TowerMedium
+  _label: MediumCannon
   _price: 30
   _upgradePrice: 10
   _firingRadius: 3
-  _description: 'Targets: Ground'
+  _description: TargetsGround
   PartToRotate: {fileID: 6789707796415871934}
   SpeedRotation: 10
   Type: 1

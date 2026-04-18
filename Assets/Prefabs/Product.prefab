@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3663080180728747664}
   - component: {fileID: 7058481884338657806}
   - component: {fileID: 4918217746735919669}
+  - component: {fileID: 2136415302802760159}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -137,6 +138,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2136415302802760159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111331960483713088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: 
 --- !u!1 &996990440681939668
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +450,7 @@ GameObject:
   - component: {fileID: 2882139593529565052}
   - component: {fileID: 7181277801607808497}
   - component: {fileID: 1318741519882809766}
+  - component: {fileID: 153509968102045960}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -562,6 +577,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &153509968102045960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390671853828186232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: 
 --- !u!1 &5196611057600086534
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,10 +972,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImageProduct: {fileID: 5005148060649565016}
   ImageRectTransform: {fileID: 2637797921539820497}
-  LabelProduct: {fileID: 1318741519882809766}
+  LabelProduct: {fileID: 153509968102045960}
   ButtonBuy: {fileID: 4621927564274278030}
   TextBuyBatton: {fileID: 4870274049049576897}
   Tower: {fileID: 0}
   BuildingPoint: {fileID: 0}
   PriceText: {fileID: 3764815378279629487}
-  DescriptionText: {fileID: 4918217746735919669}
+  DescriptionText: {fileID: 2136415302802760159}

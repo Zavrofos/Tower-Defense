@@ -224,11 +224,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
-  _label: TowerOfCold
+  _label: FrostCannon
   _price: 20
   _upgradePrice: 10
   _firingRadius: 2
-  _description: 'Targets: Ground'
+  _description: TargetsGround
   PartToRotate: {fileID: 6789707796415871934}
   SpeedRotation: 10
   Type: 3

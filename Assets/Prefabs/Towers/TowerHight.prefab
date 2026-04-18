@@ -298,11 +298,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: a5350621791e92f4c82c67de23597ad2, type: 3}
-  _label: TowerHight
+  _label: RocketLauncher
   _price: 40
   _upgradePrice: 10
   _firingRadius: 3
-  _description: 'Targets: Ground'
+  _description: TargetsGround
   PartToRotate: {fileID: 6789707796415871934}
   SpeedRotation: 10
   Type: 2

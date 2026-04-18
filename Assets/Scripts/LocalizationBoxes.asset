@@ -85,7 +85,7 @@ MonoBehaviour:
     RusLocalization: "\u041A\u0443\u043F\u0438\u0442\u044C"
     EngLocalization: Buy
     TurkLocalization: 
-  - Key: Buyed
+  - Key: Purchased
     RusLocalization: "\u041A\u0443\u043F\u043B\u0435\u043D\u043E"
     EngLocalization: Buyed
     TurkLocalization: 
@@ -369,4 +369,14 @@ MonoBehaviour:
       \u0447\u0430\u0441\u0442\u044C \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F
       \u043A\u0440\u0435\u043F\u043E\u0441\u0442\u0438"
     EngLocalization: Restores a portion of the fortress health.
+    TurkLocalization: 
+  LocalizationBoxesTowers:
+  - Key: TargetsGroundAir
+    RusLocalization: "\u0426\u0435\u043B\u0438: \u041D\u0430\u0437\u0435\u043C\u043D\u044B\u0435,
+      \u043B\u0435\u0442\u0430\u044E\u0449\u0438\u0435"
+    EngLocalization: 'Targets: Ground, Air'
+    TurkLocalization: 
+  - Key: TargetsGround
+    RusLocalization: "\u0426\u0435\u043B\u0438: \u041D\u0430\u0437\u0435\u043C\u043D\u044B\u0435"
+    EngLocalization: 'Targets: Ground'
     TurkLocalization: 

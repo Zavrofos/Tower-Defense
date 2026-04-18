@@ -944,11 +944,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
-  _label: TowerLaser
+  _label: LaserCannon
   _price: 30
   _upgradePrice: 10
   _firingRadius: 2.5
-  _description: 'Targets: Ground'
+  _description: TargetsGround
   PartToRotate: {fileID: 825172555351694145}
   SpeedRotation: 100
   Type: 4

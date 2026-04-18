@@ -371,12 +371,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
+  m_fontSize: 30
   m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 20
-  m_fontSizeMax: 72
+  m_fontSizeMax: 30
   m_fontStyle: 4
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   <GlobalShopConfig>k__BackingField: {fileID: 11400000, guid: fad2dabd0828b4149821e9d2b6965adc, type: 2}
   <GlobalCoinCount>k__BackingField: {fileID: 1654722028862200718}
   <BuyButton>k__BackingField: {fileID: 1154394533740780043}
-  <BuyButtonText>k__BackingField: {fileID: 3114166967605443501}
+  <BuyButtonText>k__BackingField: {fileID: 5037791353159195653}
 --- !u!114 &8061063771870554812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,6 +1926,7 @@ GameObject:
   - component: {fileID: 8228022520943773551}
   - component: {fileID: 1781016008667112594}
   - component: {fileID: 3114166967605443501}
+  - component: {fileID: 5037791353159195653}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2054,6 +2055,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5037791353159195653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551290511209432231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe085d07609140bbaeb52c78a1fc5e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.LocalizationText
+  Key: 
 --- !u!1 &8745719291571250159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,7 +2103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.026253777, y: 0.18870895}
   m_AnchorMax: {x: 0.96500003, y: 0.5}
-  m_AnchoredPosition: {x: 0.20503235, y: 0.5228882}
+  m_AnchoredPosition: {x: 0.20503235, y: 1}
   m_SizeDelta: {x: -2.6581001, y: -1.1781006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8341274824252166414

@@ -37,7 +37,7 @@ namespace Assets.Scripts.GlobalShop
         [field: SerializeField] public GlobalShopConfig GlobalShopConfig { get; private set; }
         [field: SerializeField] public TMP_Text GlobalCoinCount { get; private set; }
         [field: SerializeField] public Button BuyButton { get; private set; }
-        [field: SerializeField] public TMP_Text BuyButtonText { get; private set; }
+        [field: SerializeField] public LocalizationText BuyButtonText { get; private set; }
         
         public Dictionary<GlobalShopItemType, ItemInGlobalShop> Items;
 
@@ -68,7 +68,8 @@ namespace Assets.Scripts.GlobalShop
                         BuyButton.onClick.RemoveAllListeners();
                         BuyButton.onClick.AddListener(() => BuyItem(item, info));
                         BuyButton.interactable = !item.Bought;
-                        BuyButtonText.text = item.Bought ? "Bought" : "Buy";
+                        BuyButtonText.Key = item.Bought ? "Purchased" : "Buy";
+                        BuyButtonText.SetLocalization();
                         item.PriceText.gameObject.SetActive(!item.Bought);
                         item.CoinIcon.gameObject.SetActive(!item.Bought);
                         item.BoughtImage.gameObject.SetActive(item.Bought);
@@ -178,7 +179,8 @@ namespace Assets.Scripts.GlobalShop
             {
                 towerData.IsUpgradedBought = true;
                 BuyButton.interactable = false;
-                BuyButtonText.text = "Bought";
+                BuyButtonText.Key = "Purchased";
+                BuyButtonText.SetLocalization();
                 item.Bought = true;
                 item.PriceText.gameObject.SetActive(false);
                 item.CoinIcon.gameObject.SetActive(false);
@@ -201,7 +203,8 @@ namespace Assets.Scripts.GlobalShop
             if (item.GlobalShopItemInfo.Type == GlobalShopItemType.AbilityRocket)
             {
                 BuyButton.interactable = false;
-                BuyButtonText.text = "Bought";
+                BuyButtonText.Key = "Purchased";
+                BuyButtonText.SetLocalization();
                 item.Bought = true;
                 item.PriceText.gameObject.SetActive(false);
                 item.CoinIcon.gameObject.SetActive(false);

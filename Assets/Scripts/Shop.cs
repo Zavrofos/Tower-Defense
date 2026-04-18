@@ -49,10 +49,12 @@ public class Shop : MonoBehaviour
         Vector2 newSize = new Vector2(size.x * 1.5f, size.y * 1.5f);
         transform.sizeDelta = newSize;
 
-        product.LabelProduct.text = tower.Label;
+        product.LabelProduct.Key = tower.LabelKey;
+        product.LabelProduct.SetLocalization();
         product.Tower = tower;
         product.PriceText.text = tower.Price.ToString();
-        product.DescriptionText.text = tower.Description;
+        product.DescriptionText.Key = tower.Description;
+        product.DescriptionText.SetLocalization();
         product.Shop = this;
         Products.Add(product);
     }
