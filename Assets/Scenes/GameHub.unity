@@ -3210,6 +3210,7 @@ GameObject:
   - component: {fileID: 743109287}
   - component: {fileID: 743109286}
   - component: {fileID: 743109285}
+  - component: {fileID: 743109288}
   m_Layer: 5
   m_Name: shop_button
   m_TagString: Untagged
@@ -3319,6 +3320,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743109283}
   m_CullTransparentMesh: 1
+--- !u!114 &743109288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743109283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799d3018a93ba6847b4e35527d31eda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameHubDir.ShopButtonBlink
+  _speed: 2
+  _minScale: 0.9
+  _maxScale: 1.1
 --- !u!1 &744889206
 GameObject:
   m_ObjectHideFlags: 0
