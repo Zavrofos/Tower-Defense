@@ -226,6 +226,7 @@ namespace Assets.Scripts.GlobalShop
             SetTowerSaveData(GlobalShopItemType.TowerHigh);
             SetTowerSaveData(GlobalShopItemType.TowerCold);
             SetTowerSaveData(GlobalShopItemType.TowerLaser);
+            SetTowerSaveData(GlobalShopItemType.TowerLaserNew);
         
             if (SaveSystem.CurrentGameData.AbilityData[GlobalShopItemType.AbilityRocket].IsBought)
             {
