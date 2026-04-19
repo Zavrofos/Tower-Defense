@@ -10,7 +10,7 @@ namespace SaveSystemDir
         
         private const string SaveVolumeMusicPrefKey = "SaveVolumeMusicPrefKey";
         private const string SaveVolumeGamePrefKey = "SaveVolumeGamePrefKey";
-        private const string SaveLocalizationPrefKey = "SaveVolumeGamePrefKey";
+        private const string SaveLocalizationPrefKey = "SaveLocalizationPrefKey";
         
         private static string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
         
