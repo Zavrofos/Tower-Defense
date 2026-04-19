@@ -43,9 +43,9 @@ TextureImporter:
     wrapU: 1
     wrapV: 1
     wrapW: 1
-  nPOTScale: 0
+  nPOTScale: 1
   lightmap: 0
-  compressionQuality: 50
+  compressionQuality: 75
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -76,8 +76,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 75
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -89,8 +89,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 75
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0

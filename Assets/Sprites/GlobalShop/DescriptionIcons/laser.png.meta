@@ -45,7 +45,7 @@ TextureImporter:
     wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  compressionQuality: 50
+  compressionQuality: 75
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -76,8 +76,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 75
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -89,8 +89,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 75
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -106,16 +106,16 @@ TextureImporter:
         x: 0
         y: 0
         width: 967
-        height: 545
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7b1ff2ecd2d93f8c0800000000000000
+      spriteID: d42dfc0510973a44785c52c3587bbf4d
       internalID: -3966654026724937289
       vertices: []
       indices: 
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c63f371c83eac7f44b180e71200669fb
     internalID: 0
     vertices: []
     indices: 
