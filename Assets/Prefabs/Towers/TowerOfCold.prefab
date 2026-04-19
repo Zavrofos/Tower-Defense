@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3834a4d8c9a9048aac5ed79fac4580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _icon: {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
+  _icon: {fileID: 4598745828727997347, guid: c18ab7a8219e63049a3bbd9d724d2eda, type: 3}
   _label: FrostCannon
   _price: 20
   _upgradePrice: 10
@@ -240,8 +240,8 @@ MonoBehaviour:
   _delayTimeToShoot: 1
   _spriteRendererTower: {fileID: 6789707796415871935}
   _spritesTower:
-  - {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
-  - {fileID: -31879317, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
+  - {fileID: 4598745828727997347, guid: c18ab7a8219e63049a3bbd9d724d2eda, type: 3}
+  - {fileID: -1638742826679662767, guid: c18ab7a8219e63049a3bbd9d724d2eda, type: 3}
   _timeToShoot: 0
   _coldEfect: {fileID: 5839133723329101923}
   _shootAudio: {fileID: 8300000, guid: 8ef7e153a4973f34b9bd0aea73ac88f5, type: 3}
@@ -419,7 +419,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -427,7 +427,7 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!199 &6605053940686694699
 ParticleSystemRenderer:

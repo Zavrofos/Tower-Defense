@@ -49,14 +49,14 @@ MonoBehaviour:
     UpgradePrice: 100
     UpgradedNameKey: RocketLauncherUpgrade
     UpgradedDescriptionKey: RocketLauncherUpgradeDescription
-  - IconShopItem: {fileID: 1556198881, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
+  - IconShopItem: {fileID: 4598745828727997347, guid: c18ab7a8219e63049a3bbd9d724d2eda, type: 3}
     IconDescriptionItem: {fileID: -3669944299437661560, guid: 8bff677d6572eeb4d811024bc27118af, type: 3}
     Price: 200
     NameItemKey: FrostCannon
     DescriptionItemKey: FrostCannonDescription
     Type: 3
     IsUpgradeType: 1
-    UpgradeIcon: {fileID: -31879317, guid: 673cbe97d0ac40542ae7abd98856b354, type: 3}
+    UpgradeIcon: {fileID: -1638742826679662767, guid: c18ab7a8219e63049a3bbd9d724d2eda, type: 3}
     UpgradeDescriptionIcon: {fileID: 8292613414057781936, guid: f073c4a221d1c9346a73611147e471e6, type: 3}
     UpgradePrice: 100
     UpgradedNameKey: FrostCannonUpgrade
