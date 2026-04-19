@@ -61,7 +61,7 @@ MonoBehaviour:
     UpgradePrice: 100
     UpgradedNameKey: FrostCannonUpgrade
     UpgradedDescriptionKey: FrostCannonUpgradeDescription
-  - IconShopItem: {fileID: 1080646496, guid: dd8beb6a194e333459ea598e86577ee5, type: 3}
+  - IconShopItem: {fileID: 2909458258800530498, guid: b3f460d76ea9f184d974ec289de67400, type: 3}
     IconDescriptionItem: {fileID: -3966654026724937289, guid: db263ce6be2e46d428415d7ab0814352, type: 3}
     Price: 200
     NameItemKey: LaserCannon

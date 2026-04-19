@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6b35191cb52dac249b125138dbe80a9d
+guid: b3f460d76ea9f184d974ec289de67400
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6006099851514728370
-    second: Tanks1_0
+      213: 2909458258800530498
+    second: Tanks_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tanks1_0
+      name: Tanks_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 84
-        height: 151
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 85
+        height: 118
+      alignment: 9
+      pivot: {x: 0.49022195, y: 0.33888012}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2bfcf074ef3f95350800000000000000
-      internalID: 6006099851514728370
+      spriteID: 244d1a41fd8706820800000000000000
+      internalID: 2909458258800530498
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e4324d5c39beee045be45dcfbcf734d9
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tanks1_0: 6006099851514728370
+      Tanks_0: 2909458258800530498
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
