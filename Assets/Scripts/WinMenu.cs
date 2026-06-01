@@ -63,6 +63,15 @@ public class WinMenu : MonoBehaviour
         _rewardItemsToShow = new List<GlobalShopItemType>(rewards);
     }
 
+    public void PlaySound(AudioClip clip)
+    {
+        if (!clip)
+            return;
+
+        _audioSource.clip = clip;
+        _audioSource.Play();
+    }
+
     private void OnEnable()
     {
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
@@ -70,9 +79,7 @@ public class WinMenu : MonoBehaviour
         bool isOpenedLevel = SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] == 1;
         SaveSystem.CurrentGameData.LevelsCompleted[GameManager.Instance.CurrentWorld - 1].Cols[GameManager.Instance.CurrentLevel - 1] = 1;
         SaveSystem.SaveGame();
-        
-        _audioSource.Play();
-        
+
         if(_rewardItemsToShow.Count == 0)
             return;
         

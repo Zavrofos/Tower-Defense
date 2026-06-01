@@ -17318,6 +17318,8 @@ MonoBehaviour:
   RevardForWinLevel: 200
   RevardGameOverLevel: 50
   RewardItems: 05000000
+  WinLevelAudio: {fileID: 8300000, guid: 43d406496bba4004693415b2504ef848, type: 3}
+  LoseLevelAudio: {fileID: 8300000, guid: ae505cd0446fe144ea8b41841dd8f024, type: 3}
   Shops:
   - {fileID: 1847019391}
   - {fileID: 1040427476}

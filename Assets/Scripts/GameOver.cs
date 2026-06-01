@@ -46,8 +46,12 @@ public class GameOver : MonoBehaviour
         Application.Quit();
     }
 
-    private void OnEnable()
+    public void PlaySound(AudioClip clip)
     {
+        if (!clip)
+            return;
+
+        _audioSource.clip = clip;
         _audioSource.Play();
     }
 

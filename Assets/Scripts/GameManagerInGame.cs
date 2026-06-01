@@ -15,6 +15,8 @@ public class GameManagerInGame : MonoBehaviour
     [SerializeField] private int RevardForWinLevel = 100;
     [SerializeField] private int RevardGameOverLevel = 50;
     [SerializeField] private List<GlobalShopItemType> RewardItems = new ();
+    [SerializeField] private AudioClip WinLevelAudio;
+    [SerializeField] private AudioClip LoseLevelAudio;
 
     public Shop[] Shops;
     public Transform[] PointsOfWayForEnemy;
@@ -113,6 +115,7 @@ public class GameManagerInGame : MonoBehaviour
         GameManager.Instance.SetNormalSpeedGame();
         GameManager.Instance.WinMenu.SetRewardItemsToShow(RewardItems);
         GameManager.Instance.WinMenu.gameObject.SetActive(true);
+        GameManager.Instance.WinMenu.PlaySound(WinLevelAudio);
         IsDisableButtonColliders = true;
     }
 
@@ -141,6 +144,7 @@ public class GameManagerInGame : MonoBehaviour
         ReturnAbilities();
         SaveSystem.SaveGame();
         GameManager.Instance.GameOverMenu.gameObject.SetActive(true);
+        GameManager.Instance.GameOverMenu.PlaySound(LoseLevelAudio);
         IsDisableButtonColliders = true;
         Time.timeScale = 0;
     }
