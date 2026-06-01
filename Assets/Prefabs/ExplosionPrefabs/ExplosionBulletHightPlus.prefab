@@ -4911,4 +4911,8 @@ MonoBehaviour:
   _explosionParticle: {fileID: 7773842936797389140}
   Damage: 6
   DamageRadius: 2.5
-  _explosionAudio: {fileID: 8300000, guid: f541595e9b55227498c70219fc9367a3, type: 3}
+  _explosionAudios:
+  - {fileID: 8300000, guid: e8d0c1233069a0747a866613b9308462, type: 3}
+  - {fileID: 8300000, guid: a6a7140f07ec0e54db260bad67bad57b, type: 3}
+  - {fileID: 8300000, guid: 38fff01caab35ff42b96a042674a5e21, type: 3}
+  - {fileID: 8300000, guid: b42e5a47be304eb428ab0d83ba9e7ccc, type: 3}

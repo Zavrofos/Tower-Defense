@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour, IFrozen, IApplayDamage
         
         if (_health <= 0)
         {
-            int dieAudioIndex = Random.Range(0, GameManager.Instance.DieEnemyAudios.Length - 1);
+            int dieAudioIndex = Random.Range(0, GameManager.Instance.DieEnemyAudios.Length);
             AudioClip dieAudio = GameManager.Instance.DieEnemyAudios[dieAudioIndex];
             SoundBox dieSoundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
             dieSoundBox.Play(dieAudio, false);

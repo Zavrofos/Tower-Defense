@@ -3,6 +3,7 @@ using Assets.Scripts;
 using Assets.Scripts.RepPoolObject;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Explosion : PooledObject
 {
@@ -12,7 +13,7 @@ public class Explosion : PooledObject
     [SerializeField] private ParticleSystem _explosionParticle;
     public int Damage;
     public float DamageRadius;
-    [SerializeField] private AudioClip _explosionAudio;
+    [SerializeField] private AudioClip[] _explosionAudios;
 
     private IPlayableParticle _playParticleSystem;
     private IGivingEffects _givingEffectsSystem;
@@ -29,8 +30,10 @@ public class Explosion : PooledObject
 
     public void ExplosonPlay()
     {
+        int explosionAudioIndex = Random.Range(0, _explosionAudios.Length);
+        AudioClip explosionAudio = _explosionAudios[explosionAudioIndex];
         SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
-        soundBox.Play(_explosionAudio, false);
+        soundBox.Play(explosionAudio, false);
         
         _playParticleSystem.Play();
 
