@@ -8040,10 +8040,9 @@ MonoBehaviour:
   <GameOverlay>k__BackingField: {fileID: 1259861052}
   <PauseMenu>k__BackingField: {fileID: 9185484822286362644}
   <DieEnemyAudios>k__BackingField:
-  - {fileID: 8300000, guid: f29152fc1586e7447b2ef167dacdaf6b, type: 3}
-  - {fileID: 8300000, guid: f95c5d8713c6a6c42a3f4b60e432fac8, type: 3}
-  - {fileID: 8300000, guid: a8ad758b33629a34aa82660479b39bb3, type: 3}
-  - {fileID: 8300000, guid: 0d363b4bb5ad989418bd2f654e724bef, type: 3}
+  - {fileID: 8300000, guid: 68fc8149f118659468b379aecc02fdc0, type: 3}
+  - {fileID: 8300000, guid: dcb3bb860ed476144b610b1a0cafb6af, type: 3}
+  - {fileID: 8300000, guid: a67b15324094f2741863ba67f245bc41, type: 3}
   <DamageTowerAudio>k__BackingField: {fileID: 8300000, guid: b47cda997433fb04cbe28dbdc8bb2e72, type: 3}
   <DestrouTowerAudio>k__BackingField: {fileID: 8300000, guid: bfdb636afbdf72f4b83defdbc29ecfbf, type: 3}
 --- !u!1 &2059666935
