@@ -35,8 +35,8 @@ MonoBehaviour:
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
     Delay: 1
-    StartAudio: {fileID: 0}
-    StartAudioDelay: 0
+    StartAudio: {fileID: 8300000, guid: 61011dd2cc693f845a661046cc48f471, type: 3}
+    StartAudioDelay: 3
   - Templates:
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
     - {fileID: 4344546557281716026, guid: c0cbaa77a218aca43a928f447f88102a, type: 3}
