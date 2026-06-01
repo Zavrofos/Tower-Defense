@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts;
+using Assets.Scripts.RepPoolObject;
 using Assets.Scripts.Spawn_waves_configs;
 using Assets.Scripts.UIScripts;
 using UniRx;
@@ -18,6 +19,9 @@ public class Spawner : MonoBehaviour
     private float _timeAfterLastSpawn;
     private float _timeAfterPreviousWave;
     private bool _isNextWaveActive;
+
+    private float _timeAfterWaveStart;
+    private bool _isWaitingStartAudioDelay;
 
     private int _countEnemyesInLevel;
     public int CurrentCountOfEnemyesKilled { get; set; }
@@ -90,6 +94,16 @@ public class Spawner : MonoBehaviour
             return;
         }
 
+        if (_isWaitingStartAudioDelay)
+        {
+            _timeAfterWaveStart += Time.deltaTime;
+
+            if (_timeAfterWaveStart < _currentWave.StartAudioDelay)
+                return;
+
+            _isWaitingStartAudioDelay = false;
+        }
+
         _timeAfterLastSpawn += Time.deltaTime;
 
         if(_timeAfterLastSpawn >= _currentWave.Delay)
@@ -117,6 +131,21 @@ public class Spawner : MonoBehaviour
     {
         _currentTemplateNumber = 0;
         _currentWave = _wavesConfig.Waves[index];
+
+        _timeAfterLastSpawn = 0;
+        _timeAfterWaveStart = 0;
+        _isWaitingStartAudioDelay = true;
+
+        PlayWaveStartSound(_currentWave);
+    }
+
+    private void PlayWaveStartSound(Wave wave)
+    {
+        if (!wave.StartAudio)
+            return;
+
+        SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, Vector3.zero, Quaternion.identity);
+        soundBox.Play(wave.StartAudio, false);
     }
 
     private void InstantiateEnemy(int _numberEnemyInWave)
@@ -135,4 +164,6 @@ public class Wave
 {
     public GameObject[] Templates;
     public float Delay;
+    public AudioClip StartAudio;
+    public float StartAudioDelay;
 }

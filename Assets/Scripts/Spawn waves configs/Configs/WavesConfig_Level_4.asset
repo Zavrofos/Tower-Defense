@@ -30,6 +30,8 @@ MonoBehaviour:
     - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
     - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
     Delay: 2
+    StartAudio: {fileID: 0}
+    StartAudioDelay: 0
   - Templates:
     - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
     - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
@@ -42,6 +44,8 @@ MonoBehaviour:
     - {fileID: 5840811301553217760, guid: b552f376b5880a847ae01b034559aa06, type: 3}
     - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
     Delay: 2
+    StartAudio: {fileID: 0}
+    StartAudioDelay: 0
   - Templates:
     - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
     - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
@@ -64,6 +68,8 @@ MonoBehaviour:
     - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
     - {fileID: 4934421654313914877, guid: 55ada329a1fc47741a897c89e9774d06, type: 3}
     Delay: 0.7
+    StartAudio: {fileID: 8300000, guid: 710216ca88e8dd74cab1b22fa36cff97, type: 3}
+    StartAudioDelay: 2
   - Templates:
     - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
     - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
@@ -76,6 +82,10 @@ MonoBehaviour:
     - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
     - {fileID: 7135216326149346138, guid: dfc775892e8573448ad32e7d6d0ed3c5, type: 3}
     Delay: 2
+    StartAudio: {fileID: 0}
+    StartAudioDelay: 0
   - Templates:
     - {fileID: 1845349280365932795, guid: 5611f2de288f750439c92976af1731c9, type: 3}
     Delay: 2
+    StartAudio: {fileID: 8300000, guid: 14cfbe9af100fc24aa75d03337941170, type: 3}
+    StartAudioDelay: 2
