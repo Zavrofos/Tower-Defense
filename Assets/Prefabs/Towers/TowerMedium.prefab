@@ -329,7 +329,9 @@ MonoBehaviour:
   _fire: {fileID: 7705580741368652392}
   _currentBullet: {fileID: 0}
   _timeToShoot: 0
-  _shootAudio: {fileID: 8300000, guid: 566d6b8d87202f24fb651cf3fe1f462d, type: 3}
+  _shootAudios:
+  - {fileID: 8300000, guid: 9c35edccce20f6d49be93895b4945935, type: 3}
+  - {fileID: 8300000, guid: 960c8130472286741a1e66a626f61ac0, type: 3}
 --- !u!1 &6789707795951662981
 GameObject:
   m_ObjectHideFlags: 0

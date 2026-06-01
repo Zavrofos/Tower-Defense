@@ -17,7 +17,7 @@ namespace Towers.ShootTowers
         public Bullet _currentBullet;
         public float _timeToShoot;
         
-        [SerializeField] private AudioClip _shootAudio;
+        [SerializeField] private AudioClip[] _shootAudios;
 
         public float CurrentDelayTimeToShoot { get; set; }
 
@@ -83,11 +83,13 @@ namespace Towers.ShootTowers
 
         private void PlaySound()
         {
-            if(_shootAudio == null)
+            if(_shootAudios == null || _shootAudios.Length == 0)
                 return;
-            
+
+            int shootAudioIndex = Random.Range(0, _shootAudios.Length);
+            AudioClip shootAudio = _shootAudios[shootAudioIndex];
             SoundBox soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(PolledObjectType.SoundBox, transform.position, transform.rotation);
-            soundBox.Play(_shootAudio, false);
+            soundBox.Play(shootAudio, false);
         }
 
         public override void Improve()
