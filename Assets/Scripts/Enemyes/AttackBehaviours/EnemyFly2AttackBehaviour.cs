@@ -1,4 +1,5 @@
 using System;
+using Assets.Scripts.RepPoolObject;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace Assets.Scripts.Enemyes.AttackBehaviours
         public int Damage;
         public bool Attacking { get; set; }
 
+        [SerializeField] private AudioClip _attackAudio;
+
+        private SoundBox _soundBox;
         private bool _isDestroyed;
 
         public void Attack(IDamageSystem target)
@@ -75,17 +79,41 @@ namespace Assets.Scripts.Enemyes.AttackBehaviours
         {
             if (AttackParticleSystem && !AttackParticleSystem.isPlaying)
                 AttackParticleSystem.Play();
+
+            PlayAttackSound();
         }
 
         private void StopParticles()
         {
             if (AttackParticleSystem && AttackParticleSystem.isPlaying)
                 AttackParticleSystem.Stop();
+
+            StopAttackSound();
+        }
+
+        private void PlayAttackSound()
+        {
+            if (!_attackAudio || _soundBox)
+                return;
+
+            _soundBox = (SoundBox)GameManager.Instance.ObjectPooler.SpawnFromPool(
+                PolledObjectType.SoundBox, transform.position, transform.rotation);
+            _soundBox.Play(_attackAudio, true);
+        }
+
+        private void StopAttackSound()
+        {
+            if (!_soundBox)
+                return;
+
+            _soundBox.Stop();
+            _soundBox = null;
         }
 
         private void OnDestroy()
         {
             _isDestroyed = true;
+            StopAttackSound();
         }
     }
 }

@@ -163,7 +163,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.67142856, y: 0.54285717}
+    oldSize: {x: 0.6714286, y: 0.54285717}
     newSize: {x: 0.67142856, y: 0.54285717}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Enemyes.AttackBehaviours.EnemyFly2AttackBehaviour
   AttackParticleSystem: {fileID: 7200166595664380246}
   Damage: 10
+  _attackAudio: {fileID: 8300000, guid: 0cb6e50af257743448ed1bac5e7e16e5, type: 3}
 --- !u!1 &5179266580330705817
 GameObject:
   m_ObjectHideFlags: 0
