@@ -27,12 +27,14 @@ public class LocationMusicPlayer : MonoBehaviour
 
     private AudioSource _transitionSource;
     private AudioSource[] _mainSources;
+    private Coroutine[] _mainFades;
     private int _activeMain;
 
     private void Awake()
     {
         _transitionSource = CreateSource();
         _mainSources = new[] { CreateSource(), CreateSource() };
+        _mainFades = new Coroutine[2];
         _activeMain = 0;
     }
 
@@ -95,7 +97,10 @@ public class LocationMusicPlayer : MonoBehaviour
 
         // 2. предыдущий трек плавно затухает за _fadeOutTime секунд
         if (oldMain.isPlaying)
-            StartCoroutine(FadeOut(oldMain, _fadeOutTime));
+        {
+            StopMainFade(_activeMain);
+            _mainFades[_activeMain] = StartCoroutine(FadeOut(oldMain, _fadeOutTime));
+        }
 
         // 3. ждём до момента "за _fadeInLeadBeforeEnd секунд до конца транзишона"
         float waitBeforeNext = Mathf.Max(0f, transitionLength - _fadeInLeadBeforeEnd);
@@ -105,11 +110,15 @@ public class LocationMusicPlayer : MonoBehaviour
         AudioClip nextClip = GetRandomClip(target == MusicState.Heavy ? _config.Heavy : _config.Light);
         if (nextClip)
         {
+            // отменяем возможный незавершённый фейд на этом источнике,
+            // чтобы старая FadeOut не оборвала и не «передёрнула» свежий трек
+            StopMainFade(nextIndex);
+
             newMain.clip = nextClip;
             newMain.loop = true;
             newMain.volume = 0f;
             newMain.Play();
-            StartCoroutine(FadeIn(newMain, _fadeInTime));
+            _mainFades[nextIndex] = StartCoroutine(FadeIn(newMain, _fadeInTime));
         }
 
         _state = target;
@@ -128,6 +137,8 @@ public class LocationMusicPlayer : MonoBehaviour
         if (!clip)
             return;
 
+        StopMainFade(_activeMain);
+
         AudioSource source = _mainSources[_activeMain];
         source.clip = clip;
         source.loop = true;
@@ -136,8 +147,24 @@ public class LocationMusicPlayer : MonoBehaviour
         _trackStartTime = Time.unscaledTime;
     }
 
+    private void StopMainFade(int index)
+    {
+        if (_mainFades[index] == null)
+            return;
+
+        StopCoroutine(_mainFades[index]);
+        _mainFades[index] = null;
+    }
+
     private IEnumerator FadeOut(AudioSource source, float duration)
     {
+        if (duration <= 0f)
+        {
+            source.volume = 0f;
+            source.Stop();
+            yield break;
+        }
+
         float startVolume = source.volume;
         float t = 0f;
 
@@ -154,6 +181,12 @@ public class LocationMusicPlayer : MonoBehaviour
 
     private IEnumerator FadeIn(AudioSource source, float duration)
     {
+        if (duration <= 0f)
+        {
+            source.volume = _volume;
+            yield break;
+        }
+
         float t = 0f;
 
         while (t < duration)
@@ -168,6 +201,9 @@ public class LocationMusicPlayer : MonoBehaviour
 
     private IEnumerator WaitUnscaled(float seconds)
     {
+        if (seconds <= 0f)
+            yield break;
+
         float t = 0f;
 
         while (t < seconds)
@@ -187,6 +223,9 @@ public class LocationMusicPlayer : MonoBehaviour
 
     private int GetEnemiesCount()
     {
+        if (GameManager.Instance == null)
+            return 0;
+
         GameManagerInGame level = GameManager.Instance.CurrentGameManagerLevel;
         return level != null ? level.CurrentEnemies.Count : 0;
     }
