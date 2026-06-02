@@ -18,6 +18,7 @@ public class LocationMusicPlayer : MonoBehaviour
     [SerializeField] private float _fadeOutTime = 3f;         // затухание предыдущего трека
     [SerializeField] private float _fadeInTime = 3f;          // появление следующего трека
     [SerializeField] private float _fadeInLeadBeforeEnd = 2f; // за сколько секунд до конца транзишона стартует следующий
+    [SerializeField] private float _transitionFadeTime = 1f;  // появление/затухание самого транзишона
 
     private enum MusicState { Light, Heavy }
 
@@ -28,6 +29,7 @@ public class LocationMusicPlayer : MonoBehaviour
     private AudioSource _transitionSource;
     private AudioSource[] _mainSources;
     private Coroutine[] _mainFades;
+    private Coroutine _transitionEnvelope;
     private int _activeMain;
 
     private void Awake()
@@ -83,16 +85,17 @@ public class LocationMusicPlayer : MonoBehaviour
         int nextIndex = 1 - _activeMain;
         AudioSource newMain = _mainSources[nextIndex];
 
-        // 1. транзишон стартует на полной громкости
+        // 1. транзишон: плавное появление в начале и плавное затухание к концу клипа
         AudioClip transitionClip = GetRandomClip(_config.Transitions);
         float transitionLength = 0f;
         if (transitionClip)
         {
-            _transitionSource.loop = false;
-            _transitionSource.clip = transitionClip;
-            _transitionSource.volume = _volume;
-            _transitionSource.Play();
             transitionLength = transitionClip.length;
+
+            if (_transitionEnvelope != null)
+                StopCoroutine(_transitionEnvelope);
+
+            _transitionEnvelope = StartCoroutine(PlayTransition(transitionClip, transitionLength));
         }
 
         // 2. предыдущий трек плавно затухает за _fadeOutTime секунд
@@ -129,6 +132,27 @@ public class LocationMusicPlayer : MonoBehaviour
         yield return WaitUnscaled(_fadeInTime);
 
         _isTransitioning = false;
+    }
+
+    private IEnumerator PlayTransition(AudioClip clip, float length)
+    {
+        // ограничиваем длительность фейдов половиной клипа, чтобы появление и
+        // затухание не пересекались на коротких транзишонах
+        float fade = Mathf.Min(_transitionFadeTime, length * 0.5f);
+
+        _transitionSource.loop = false;
+        _transitionSource.clip = clip;
+        _transitionSource.volume = 0f;
+        _transitionSource.Play();
+
+        // плавное появление
+        yield return FadeIn(_transitionSource, fade);
+
+        // держим на полной громкости до момента затухания
+        yield return WaitUnscaled(length - fade * 2f);
+
+        // плавное затухание к концу транзишона
+        yield return FadeOut(_transitionSource, fade);
     }
 
     private void PlayMainImmediate(AudioClip[] clips)
