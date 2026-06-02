@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda5e185f199b6643991cedcb7848ac8, type: 3}
+  m_Name: Desert2
+  m_EditorClassIdentifier: Assembly-CSharp::LocationMusicConfig
+  Light:
+  - {fileID: 8300000, guid: a9d2d187093d2a745bf2a76c83870f28, type: 3}
+  - {fileID: 8300000, guid: 6b28de235b33cc1408e2c811023e1c6f, type: 3}
+  Heavy:
+  - {fileID: 8300000, guid: e2202281ff9879a489973a8517839650, type: 3}
+  - {fileID: 8300000, guid: 3e7bac58637f06343b002f71d83942bc, type: 3}
+  Transitions:
+  - {fileID: 8300000, guid: 9f362bf41f1edff4e9f061f256574ae1, type: 3}

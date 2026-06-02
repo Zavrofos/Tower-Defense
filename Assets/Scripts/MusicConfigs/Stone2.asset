@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda5e185f199b6643991cedcb7848ac8, type: 3}
+  m_Name: Stone2
+  m_EditorClassIdentifier: Assembly-CSharp::LocationMusicConfig
+  Light:
+  - {fileID: 8300000, guid: 56fb8d8dd5b348a4c87c8f27d30453bb, type: 3}
+  - {fileID: 8300000, guid: 5d7207815b4e8464e93f7866d9451f09, type: 3}
+  Heavy:
+  - {fileID: 8300000, guid: 7132f6708e549f548b4887a7dfe5ba5e, type: 3}
+  - {fileID: 8300000, guid: 78488fd7f60dbfa45a3d13b64d7e43ed, type: 3}
+  Transitions:
+  - {fileID: 8300000, guid: df619a2984b40674c8399801d8b869ed, type: 3}
