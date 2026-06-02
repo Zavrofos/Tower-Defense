@@ -30,12 +30,20 @@ public class GameOver : MonoBehaviour
         GameManager.Instance.GameHub.gameObject.SetActive(true);
         GameManager.Instance.GameOverlay.gameObject.SetActive(false);
         GameManager.Instance.SetNormalSpeedGame();
+
+        if (MenuMusicPlayer.Instance != null)
+            MenuMusicPlayer.Instance.PlayMusic();
+
         gameObject.SetActive(false);
     }
 
     private void MainMenu()
     {
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
+
+        if (MenuMusicPlayer.Instance != null)
+            MenuMusicPlayer.Instance.PlayMusic();
+
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }

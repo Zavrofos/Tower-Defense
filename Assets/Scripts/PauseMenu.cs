@@ -32,6 +32,10 @@ public class PauseMenu : MonoBehaviour
     {
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         GameManager.Instance.CurrentGameManagerLevel.RestoreAbilitiesAndSave();
+
+        if (MenuMusicPlayer.Instance != null)
+            MenuMusicPlayer.Instance.PlayMusic();
+
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }

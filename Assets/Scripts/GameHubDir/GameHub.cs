@@ -78,7 +78,10 @@ namespace GameHubDir
             await UniTask.Yield();
             
             LoadingScreen.SetActive(false);
-            
+
+            if (MenuMusicPlayer.Instance != null)
+                MenuMusicPlayer.Instance.StopMusic();
+
             GameManager.Instance.GameHub.gameObject.SetActive(false);
             GameManager.Instance.GameOverlay.gameObject.SetActive(true);
         }
@@ -109,6 +112,10 @@ namespace GameHubDir
         private void MainMenu()
         {
             ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
+
+            if (MenuMusicPlayer.Instance != null)
+                MenuMusicPlayer.Instance.PlayMusic();
+
             SceneManager.LoadScene("MainMenu");
         }
 

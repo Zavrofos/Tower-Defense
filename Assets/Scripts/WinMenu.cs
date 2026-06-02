@@ -34,6 +34,10 @@ public class WinMenu : MonoBehaviour
         GameManager.Instance.GameHub.gameObject.SetActive(true);
         GameManager.Instance.GameOverlay.gameObject.SetActive(false);
         GameManager.Instance.SetNormalSpeedGame();
+
+        if (MenuMusicPlayer.Instance != null)
+            MenuMusicPlayer.Instance.PlayMusic();
+
         gameObject.SetActive(false);
     }
 
@@ -48,6 +52,10 @@ public class WinMenu : MonoBehaviour
     {
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
         GameManager.Instance.CurrentGameManagerLevel.RestoreAbilitiesAndSave();
+
+        if (MenuMusicPlayer.Instance != null)
+            MenuMusicPlayer.Instance.PlayMusic();
+
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
