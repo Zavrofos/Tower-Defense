@@ -1,16 +1,23 @@
 using System.Collections;
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.Audio;
 
-[RequireComponent(typeof(AudioSource))]
 public class LocationMusicPlayer : MonoBehaviour
 {
     [SerializeField] private LocationMusicConfig _config;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioMixerGroup _outputGroup; // опционально, для маршрутизации в микшер
 
+    [Header("Thresholds")]
     [SerializeField] private int _highThreshold = 10;
     [SerializeField] private int _lowThreshold = 8;
     [SerializeField] private float _minPlayTime = 5f;
+
+    [Header("Fades")]
+    [SerializeField, Range(0f, 1f)] private float _volume = 1f;
+    [SerializeField] private float _fadeOutTime = 3f;         // затухание предыдущего трека
+    [SerializeField] private float _fadeInTime = 3f;          // появление следующего трека
+    [SerializeField] private float _fadeInLeadBeforeEnd = 2f; // за сколько секунд до конца транзишона стартует следующий
 
     private enum MusicState { Light, Heavy }
 
@@ -18,10 +25,26 @@ public class LocationMusicPlayer : MonoBehaviour
     private bool _isTransitioning;
     private float _trackStartTime;
 
+    private AudioSource _transitionSource;
+    private AudioSource[] _mainSources;
+    private int _activeMain;
+
     private void Awake()
     {
-        if (_audioSource == null)
-            _audioSource = GetComponent<AudioSource>();
+        _transitionSource = CreateSource();
+        _mainSources = new[] { CreateSource(), CreateSource() };
+        _activeMain = 0;
+    }
+
+    private AudioSource CreateSource()
+    {
+        AudioSource source = gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
+        source.loop = false;
+        source.spatialBlend = 0f;
+        source.volume = _volume;
+        source.outputAudioMixerGroup = _outputGroup;
+        return source;
     }
 
     private void Start()
@@ -30,7 +53,7 @@ public class LocationMusicPlayer : MonoBehaviour
             return;
 
         _state = MusicState.Light;
-        PlayMainTrack(_config.Light);
+        PlayMainImmediate(_config.Light);
     }
 
     private void Update()
@@ -38,8 +61,7 @@ public class LocationMusicPlayer : MonoBehaviour
         if (_config == null || _isTransitioning)
             return;
 
-        // правило 5 секунд: основной трек должен проиграть минимум _minPlayTime,
-        // прежде чем разрешён переход (время реальное, т.к. музыка играет и на паузе)
+        // правило 5 секунд: основной трек должен проиграть минимум _minPlayTime до перехода
         if (Time.unscaledTime - _trackStartTime < _minPlayTime)
             return;
 
@@ -55,34 +77,104 @@ public class LocationMusicPlayer : MonoBehaviour
     {
         _isTransitioning = true;
 
+        AudioSource oldMain = _mainSources[_activeMain];
+        int nextIndex = 1 - _activeMain;
+        AudioSource newMain = _mainSources[nextIndex];
+
+        // 1. транзишон стартует на полной громкости
         AudioClip transitionClip = GetRandomClip(_config.Transitions);
+        float transitionLength = 0f;
         if (transitionClip)
         {
-            _audioSource.loop = false;
-            _audioSource.clip = transitionClip;
-            _audioSource.Play();
+            _transitionSource.loop = false;
+            _transitionSource.clip = transitionClip;
+            _transitionSource.volume = _volume;
+            _transitionSource.Play();
+            transitionLength = transitionClip.length;
+        }
 
-            // ждём, пока связка доиграет до конца (yield return null тикает и на паузе)
-            while (_audioSource.isPlaying)
-                yield return null;
+        // 2. предыдущий трек плавно затухает за _fadeOutTime секунд
+        if (oldMain.isPlaying)
+            StartCoroutine(FadeOut(oldMain, _fadeOutTime));
+
+        // 3. ждём до момента "за _fadeInLeadBeforeEnd секунд до конца транзишона"
+        float waitBeforeNext = Mathf.Max(0f, transitionLength - _fadeInLeadBeforeEnd);
+        yield return WaitUnscaled(waitBeforeNext);
+
+        // 4. следующий трек стартует и плавно появляется за _fadeInTime секунд
+        AudioClip nextClip = GetRandomClip(target == MusicState.Heavy ? _config.Heavy : _config.Light);
+        if (nextClip)
+        {
+            newMain.clip = nextClip;
+            newMain.loop = true;
+            newMain.volume = 0f;
+            newMain.Play();
+            StartCoroutine(FadeIn(newMain, _fadeInTime));
         }
 
         _state = target;
-        PlayMainTrack(target == MusicState.Heavy ? _config.Heavy : _config.Light);
+        _activeMain = nextIndex;
+        _trackStartTime = Time.unscaledTime;
+
+        // не разрешаем новый переход, пока следующий трек не появился полностью
+        yield return WaitUnscaled(_fadeInTime);
 
         _isTransitioning = false;
     }
 
-    private void PlayMainTrack(AudioClip[] clips)
+    private void PlayMainImmediate(AudioClip[] clips)
     {
         AudioClip clip = GetRandomClip(clips);
         if (!clip)
             return;
 
-        _audioSource.loop = true;
-        _audioSource.clip = clip;
-        _audioSource.Play();
+        AudioSource source = _mainSources[_activeMain];
+        source.clip = clip;
+        source.loop = true;
+        source.volume = _volume;
+        source.Play();
         _trackStartTime = Time.unscaledTime;
+    }
+
+    private IEnumerator FadeOut(AudioSource source, float duration)
+    {
+        float startVolume = source.volume;
+        float t = 0f;
+
+        while (t < duration && source.isPlaying)
+        {
+            t += Time.unscaledDeltaTime;
+            source.volume = Mathf.Lerp(startVolume, 0f, t / duration);
+            yield return null;
+        }
+
+        source.volume = 0f;
+        source.Stop();
+    }
+
+    private IEnumerator FadeIn(AudioSource source, float duration)
+    {
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            source.volume = Mathf.Lerp(0f, _volume, t / duration);
+            yield return null;
+        }
+
+        source.volume = _volume;
+    }
+
+    private IEnumerator WaitUnscaled(float seconds)
+    {
+        float t = 0f;
+
+        while (t < seconds)
+        {
+            t += Time.unscaledDeltaTime;
+            yield return null;
+        }
     }
 
     private AudioClip GetRandomClip(AudioClip[] clips)
