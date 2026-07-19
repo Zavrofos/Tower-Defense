@@ -36,6 +36,5 @@ namespace Assets.Scripts
         
         [TextArea(10, 10)] public string RusLocalization;
         [TextArea(10, 10)] public string EngLocalization;
-        [TextArea(10, 10)] public string TurkLocalization;
     }
 }

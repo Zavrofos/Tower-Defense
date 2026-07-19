@@ -18,7 +18,6 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private AudioClip _clickAudio;
     [SerializeField] private Toggle _rusLangToggle;
     [SerializeField] private Toggle _engLangToggle;
-    [SerializeField] private Toggle _turkLangToggle;
 
     private void Awake()
     {
@@ -26,7 +25,6 @@ public class SettingsMenu : MonoBehaviour
         _sliderVolumeGame.value = SaveSystem.GetVolumeGame();
         _rusLangToggle.SetIsOnWithoutNotify(SaveSystem.GetCurrentLanguage() == Language.Russian);
         _engLangToggle.SetIsOnWithoutNotify(SaveSystem.GetCurrentLanguage() == Language.English);
-        _turkLangToggle.SetIsOnWithoutNotify(SaveSystem.GetCurrentLanguage() == Language.Turkish);
         _sliderVolumeMusic.onValueChanged.AddListener(SetVolumeMusic);
         _sliderVolumeGame.onValueChanged.AddListener(SetVolumeGame);
         _rusLangToggle.onValueChanged.AddListener((value) =>
@@ -43,13 +41,7 @@ public class SettingsMenu : MonoBehaviour
             
             SetLanguage(Language.English);
         });
-        _turkLangToggle.onValueChanged.AddListener((value) =>
-        {
-            if(!value)
-                return;
-            
-            SetLanguage(Language.Turkish);
-        });
+        
         _closeButton.onClick.AddListener(Close);
     }
     

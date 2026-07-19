@@ -37,9 +37,6 @@ namespace Assets.Scripts
                 case Language.English:
                     _TMPText.text = localizationBox.EngLocalization;
                     break;
-                case Language.Turkish:
-                    _TMPText.text = localizationBox.TurkLocalization;
-                    break;
             }
         }
     }
