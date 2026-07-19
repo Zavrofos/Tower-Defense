@@ -5,8 +5,10 @@ using UnityEngine.Audio;
 
 public class LocationMusicPlayer : MonoBehaviour
 {
+    public static LocationMusicPlayer Instance;
+
     [SerializeField] private LocationMusicConfig _config;
-    [SerializeField] private AudioMixerGroup _outputGroup; // опционально, для маршрутизации в микшер
+    [SerializeField] private AudioMixerGroup _outputGroup; // группа музыкального микшера (берётся из источника в сцене)
 
     [Header("Thresholds")]
     [SerializeField] private int _highThreshold = 10;
@@ -31,13 +33,28 @@ public class LocationMusicPlayer : MonoBehaviour
     private Coroutine[] _mainFades;
     private Coroutine _transitionEnvelope;
     private int _activeMain;
+    private bool _isGamePaused;
 
     private void Awake()
     {
+        Instance = this;
+
+        // источник, уже стоящий в сцене, направлен в группу музыкального микшера —
+        // берём его маршрутизацию, чтобы создаваемые источники шли в тот же микшер
+        AudioSource sceneSource = GetComponent<AudioSource>();
+        if (sceneSource != null && sceneSource.outputAudioMixerGroup != null)
+            _outputGroup = sceneSource.outputAudioMixerGroup;
+
         _transitionSource = CreateSource();
         _mainSources = new[] { CreateSource(), CreateSource() };
         _mainFades = new Coroutine[2];
         _activeMain = 0;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     private AudioSource CreateSource()
@@ -62,7 +79,9 @@ public class LocationMusicPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (_config == null || _isTransitioning)
+        HandlePause();
+
+        if (_config == null || _isTransitioning || _isGamePaused)
             return;
 
         // правило 5 секунд: основной трек должен проиграть минимум _minPlayTime до перехода
@@ -75,6 +94,53 @@ public class LocationMusicPlayer : MonoBehaviour
             StartCoroutine(TransitionTo(MusicState.Heavy));
         else if (_state == MusicState.Heavy && enemiesCount < _lowThreshold)
             StartCoroutine(TransitionTo(MusicState.Light));
+    }
+
+    // пауза игры (Time.timeScale == 0) ставит на паузу только музыку локации; эмбиенс не трогаем
+    private void HandlePause()
+    {
+        if (Time.timeScale == 0f && !_isGamePaused)
+        {
+            _isGamePaused = true;
+
+            _transitionSource.Pause();
+            foreach (var source in _mainSources)
+                source.Pause();
+        }
+        else if (Time.timeScale > 0f && _isGamePaused)
+        {
+            _isGamePaused = false;
+
+            _transitionSource.UnPause();
+            foreach (var source in _mainSources)
+                source.UnPause();
+        }
+    }
+
+    // выключает музыку локации и эмбиенс (при победе/проигрыше, чтобы джингл звучал чисто).
+    // эмбиенс сидит в той же группе музыкального микшера, поэтому глушим всю группу
+    public void StopMusic()
+    {
+        StopAllCoroutines();
+        _isTransitioning = false;
+        _isGamePaused = false;
+        _transitionEnvelope = null;
+
+        for (int i = 0; i < _mainFades.Length; i++)
+            _mainFades[i] = null;
+
+        _transitionSource.Stop();
+        foreach (var source in _mainSources)
+            source.Stop();
+
+        if (_outputGroup == null)
+            return;
+
+        foreach (var source in FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
+        {
+            if (source.outputAudioMixerGroup == _outputGroup)
+                source.Stop();
+        }
     }
 
     private IEnumerator TransitionTo(MusicState target)
@@ -192,8 +258,16 @@ public class LocationMusicPlayer : MonoBehaviour
         float startVolume = source.volume;
         float t = 0f;
 
-        while (t < duration && source.isPlaying)
+        // на паузе источник приостановлен (isPlaying == false), поэтому держим фейд
+        // тоже на паузе, иначе трек оборвётся раньше времени
+        while (t < duration && (source.isPlaying || _isGamePaused))
         {
+            if (_isGamePaused)
+            {
+                yield return null;
+                continue;
+            }
+
             t += Time.unscaledDeltaTime;
             source.volume = Mathf.Lerp(startVolume, 0f, t / duration);
             yield return null;
@@ -215,6 +289,12 @@ public class LocationMusicPlayer : MonoBehaviour
 
         while (t < duration)
         {
+            if (_isGamePaused)
+            {
+                yield return null;
+                continue;
+            }
+
             t += Time.unscaledDeltaTime;
             source.volume = Mathf.Lerp(0f, _volume, t / duration);
             yield return null;
@@ -232,6 +312,12 @@ public class LocationMusicPlayer : MonoBehaviour
 
         while (t < seconds)
         {
+            if (_isGamePaused)
+            {
+                yield return null;
+                continue;
+            }
+
             t += Time.unscaledDeltaTime;
             yield return null;
         }

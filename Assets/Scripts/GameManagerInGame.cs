@@ -115,6 +115,10 @@ public class GameManagerInGame : MonoBehaviour
         GameManager.Instance.SetNormalSpeedGame();
         GameManager.Instance.WinMenu.SetRewardItemsToShow(RewardItems);
         GameManager.Instance.WinMenu.gameObject.SetActive(true);
+
+        if (LocationMusicPlayer.Instance != null)
+            LocationMusicPlayer.Instance.StopMusic();
+
         GameManager.Instance.WinMenu.PlaySound(WinLevelAudio);
         IsDisableButtonColliders = true;
     }
@@ -144,6 +148,10 @@ public class GameManagerInGame : MonoBehaviour
         ReturnAbilities();
         SaveSystem.SaveGame();
         GameManager.Instance.GameOverMenu.gameObject.SetActive(true);
+
+        if (LocationMusicPlayer.Instance != null)
+            LocationMusicPlayer.Instance.StopMusic();
+
         GameManager.Instance.GameOverMenu.PlaySound(LoseLevelAudio);
         IsDisableButtonColliders = true;
         Time.timeScale = 0;
