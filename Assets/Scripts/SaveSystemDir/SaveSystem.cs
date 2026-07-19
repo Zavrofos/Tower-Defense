@@ -74,11 +74,13 @@ namespace SaveSystemDir
         public static void SaveVolumeMusicScreen(float value)
         {
             PlayerPrefs.SetFloat(SaveVolumeMusicPrefKey, value);
+            PlayerPrefs.Save();
         }
 
         public static void SaveLocalization(Language language)
         {
             PlayerPrefs.SetInt(SaveLocalizationPrefKey, (int)language);
+            PlayerPrefs.Save();
         }
 
         public static Language GetCurrentLanguage()
@@ -97,6 +99,7 @@ namespace SaveSystemDir
         public static void SaveVolumeGameScreen(float value)
         {
             PlayerPrefs.SetFloat(SaveVolumeGamePrefKey, value);
+            PlayerPrefs.Save();
         }
 
         public static float GetVolumeGame()
