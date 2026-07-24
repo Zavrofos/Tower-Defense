@@ -13,7 +13,6 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _settingsButton;
-    [SerializeField] private Button _quitButton;
     [SerializeField] private SettingsMenu _settingsMenu;
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private AudioClip _clickAudio;
@@ -42,24 +41,16 @@ public class MainMenu : MonoBehaviour
         _settingsMenu.gameObject.SetActive(true);
     }
 
-    private void OnQuit()
-    {
-        ClickSoundPlayGlobal.Instance.Play(_clickAudio);
-        Application.Quit();
-    }
-
     private void OnEnable()
     {
         _playButton.onClick.AddListener(OnPlay);
         _settingsButton.onClick.AddListener(OnOpenOptions);
-        _quitButton.onClick.AddListener(OnQuit);
     }
 
     private void OnDisable()
     {
         _playButton.onClick.RemoveAllListeners();
         _settingsButton.onClick.RemoveAllListeners();
-        _quitButton.onClick.RemoveAllListeners();
     }
 
     private float FormatToDb(float value01)

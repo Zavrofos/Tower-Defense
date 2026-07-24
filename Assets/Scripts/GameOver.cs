@@ -10,7 +10,6 @@ public class GameOver : MonoBehaviour
 {
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _mainMenuButton;
-    [SerializeField] private Button _quitButton;
     [SerializeField] private AudioSource _audioSource;
     
     [field: SerializeField] public TMP_Text ReveardText { get; private set; }
@@ -19,7 +18,6 @@ public class GameOver : MonoBehaviour
     {
         _continueButton.onClick.AddListener(Continue);
         _mainMenuButton.onClick.AddListener(MainMenu);
-        _quitButton.onClick.AddListener(Quit);
     }
 
     private void Continue()
@@ -47,13 +45,7 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
-
-    private void Quit()
-    {
-        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
-        Application.Quit();
-    }
-
+    
     public void PlaySound(AudioClip clip)
     {
         if (!clip)
@@ -67,7 +59,6 @@ public class GameOver : MonoBehaviour
     {
         _continueButton.onClick.RemoveAllListeners();
         _mainMenuButton.onClick.RemoveAllListeners();
-        _quitButton.onClick.RemoveAllListeners();
     }
 
 }

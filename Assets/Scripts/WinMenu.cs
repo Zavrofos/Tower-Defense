@@ -15,7 +15,6 @@ public class WinMenu : MonoBehaviour
 {
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _mainMenuButton;
-    [SerializeField] private Button _quitButton;
 
     [SerializeField] private GameObject ItemsParent;
     [SerializeField] private WinMenuNewItem _winMenuNewItem1;
@@ -45,7 +44,6 @@ public class WinMenu : MonoBehaviour
     {
         _continueButton.onClick.AddListener(Continue);
         _mainMenuButton.onClick.AddListener(MainMenu);
-        _quitButton.onClick.AddListener(Quit);
     }
 
     private void MainMenu()
@@ -58,12 +56,6 @@ public class WinMenu : MonoBehaviour
 
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
-    }
-
-    private void Quit()
-    {
-        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
-        Application.Quit();
     }
 
     public void SetRewardItemsToShow(List<GlobalShopItemType> rewards)
@@ -109,6 +101,5 @@ public class WinMenu : MonoBehaviour
     {
         _continueButton.onClick.RemoveAllListeners();
         _mainMenuButton.onClick.RemoveAllListeners();
-        _quitButton.onClick.RemoveAllListeners();
     }
 }
