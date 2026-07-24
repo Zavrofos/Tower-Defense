@@ -9,6 +9,8 @@ namespace Assets.Scripts
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
+        
+        [field: SerializeField] public Sprite[] FortressIcons;
         [field: SerializeField] public ObjectPooler ObjectPooler { get; set; }
         [field: SerializeField] public GameAssets GameAssets { get; set; }
         [field: SerializeField] public GameHub GameHub { get; set; }

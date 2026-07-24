@@ -8033,6 +8033,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c2e3d955eb3824ab9d11f39eb8a61c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FortressIcons:
+  - {fileID: -5071400700529682891, guid: 31e76eb0cc47f7144b67835b5afa4ff6, type: 3}
+  - {fileID: 7225575888738433091, guid: 0d1a626626a97ab4eb590ef549183b9b, type: 3}
+  - {fileID: 5332379853258373254, guid: 0d1a626626a97ab4eb590ef549183b9b, type: 3}
+  - {fileID: 6217167083484509658, guid: 0d1a626626a97ab4eb590ef549183b9b, type: 3}
   <ObjectPooler>k__BackingField: {fileID: 1063011277}
   <GameAssets>k__BackingField: {fileID: 740885345}
   <GameHub>k__BackingField: {fileID: 1344986561}
