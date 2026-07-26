@@ -8,7 +8,6 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Button _settingsButton;
     [SerializeField] private Button _mainMenuButton;
-    [SerializeField] private Button _quitButton;
     [SerializeField] private Button _closeWindowButton;
 
     public bool IsPause { get; set; }
@@ -17,7 +16,6 @@ public class PauseMenu : MonoBehaviour
     {
         _settingsButton.onClick.AddListener(OnOpenSettingsMenu);
         _mainMenuButton.onClick.AddListener(OnBackToMainMenu);
-        _quitButton.onClick.AddListener(OnQuit);
         _closeWindowButton.onClick.AddListener(OnCloseWindow);
         gameObject.SetActive(true);
     }
@@ -40,12 +38,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void OnQuit()
-    {
-        ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.CLickAudioUI);
-        Application.Quit();
-    }
-
     private void OnCloseWindow()
     {
         ClickSoundPlayGlobal.Instance.Play(GameManager.Instance.GameAssets.BackAudioUI);
@@ -58,7 +50,6 @@ public class PauseMenu : MonoBehaviour
     {
         _settingsButton.onClick.RemoveAllListeners();
         _mainMenuButton.onClick.RemoveAllListeners();
-        _quitButton.onClick.RemoveAllListeners();
         _closeWindowButton.onClick.RemoveAllListeners();
     }
 }

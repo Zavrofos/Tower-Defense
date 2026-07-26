@@ -85,7 +85,8 @@ namespace SaveSystemDir
 
         public static Language GetCurrentLanguage()
         {
-            return (Language) PlayerPrefs.GetInt(SaveLocalizationPrefKey, 0);
+            // язык по умолчанию (до первого выбора игроком) — английский
+            return (Language) PlayerPrefs.GetInt(SaveLocalizationPrefKey, (int)Language.English);
         }
 
         public static float GetVolumeMusic()
