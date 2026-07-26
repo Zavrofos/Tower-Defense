@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameManagerInGame : MonoBehaviour
 {
-    [field: SerializeField] public SpriteRenderer FortressSpriteRenderer { get; private set; }
     [field: SerializeField] public float CameraSize { get; private set; }
     [field: SerializeField] public Vector3 CameraPos { get; private set; }
     [field: SerializeField] public Canvas Canvas { get; private set; }
@@ -90,26 +89,6 @@ public class GameManagerInGame : MonoBehaviour
         GameManager.Instance.CurrentSpawner.OnWinLevel += ShowWinWindow;
         GameManager.Instance.CurrentSpawner.OnWinLevel += () => GameManager.Instance.PauseGame(true, false);
         GameManager.Instance.GameOverlay.CoinsText.text = GameManager.Instance.CurrentGameManagerLevel.CoinsLevel.ToString();
-
-        UpdateFortressSprite(Home.Health, Home.MaxHealth);
-    }
-
-    // Sets the fortress sprite from GameManager.FortressIcons based on the current health.
-    // Health is split into equal bands: the first band (full health) uses the first icon,
-    // and 0 health uses the last icon. Fortresses are not present on every level, so guard
-    // against a missing renderer or an empty icons list.
-    public void UpdateFortressSprite(float health, float maxHealth)
-    {
-        if (FortressSpriteRenderer == null)
-            return;
-
-        Sprite[] icons = GameManager.Instance.FortressIcons;
-        if (icons == null || icons.Length == 0)
-            return;
-
-        float fraction = maxHealth > 0 ? Mathf.Clamp01(health / maxHealth) : 0f;
-        int index = Mathf.Clamp(Mathf.FloorToInt((1f - fraction) * icons.Length), 0, icons.Length - 1);
-        FortressSpriteRenderer.sprite = icons[index];
     }
     
     private void ShowWinWindow()

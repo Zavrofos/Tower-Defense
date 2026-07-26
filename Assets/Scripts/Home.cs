@@ -7,7 +7,6 @@ public class Home : MonoBehaviour
 {
     private float _maxHealth  = 100;
     public float Health { get; private set; } = 100;
-    public float MaxHealth => _maxHealth;
     public event Action Killed;
 
     public void ApplayDamage(int damage)
@@ -21,7 +20,6 @@ public class Home : MonoBehaviour
             Killed?.Invoke();
 
         GameManager.Instance.GameOverlay.HealthBar.OnValueChanged(Health, _maxHealth);
-        GameManager.Instance.CurrentGameManagerLevel.UpdateFortressSprite(Health, _maxHealth);
     }
 
     public void AddHealth(int count)
@@ -29,6 +27,5 @@ public class Home : MonoBehaviour
         Health += count;
         Health = Health > _maxHealth ? _maxHealth : Health;
         GameManager.Instance.GameOverlay.HealthBar.OnValueChanged(Health, _maxHealth);
-        GameManager.Instance.CurrentGameManagerLevel.UpdateFortressSprite(Health, _maxHealth);
     }
 }
